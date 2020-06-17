@@ -1,0 +1,25 @@
+{
+  "name": "fbc",
+  "version": "0.1.1",
+  "description": "full build css",
+  "main": "umd/index.js",
+  "types": "umd/index.d.ts",
+  "private": false,
+  "scripts": {
+    "lib": "node rollup.config.js"
+  },
+  "devDependencies": {
+    "rollup": "^1.24.0",
+    "rollup-plugin-typescript2": "^0.24.3",
+    "rollup-plugin-uglify": "^6.0.3",
+    "typescript": "3.5.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ymzuiku/fbc.git"
+  },
+  "bugs": {
+    "url": "git+https://github.com/ymzuiku/fbc.git"
+  },
+  "homepage": "git+https://github.com/ymzuiku/fbc.git"
+}
