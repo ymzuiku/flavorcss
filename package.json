@@ -1,6 +1,6 @@
 {
   "name": "fbc",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "full build css",
   "main": "umd/index.js",
   "types": "umd/index.d.ts",
