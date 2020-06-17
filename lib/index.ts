@@ -19,34 +19,32 @@ const hidden = "mini-scrollbar-hidden";
 const miniHidden = mini + " " + hidden;
 
 const scrollbar = `
-  @media screen and (min-width: 641px) {
-    :root {
-      --use-scrollbar-track: rgba(100, 101, 105, 0);
-      --use-scrollbar-thumb: rgba(100, 101, 105, 0.25);
-      --use-scrollbar-thumb-hover: rgba(100, 101, 105, 0.5);
-      --use-scrollbar-size: 6px;
-    }
-    .${mini} {
-      -webkit-overflow-scrolling: touch;
-    }
-    .${mini}::-webkit-scrollbar {
-      width: var(--use-scrollbar-size);
-      height: var(--use-scrollbar-size);
-    }
-    .${mini}::-webkit-scrollbar-track {
-      background: var(--use-scrollbar-track);
-    }
-    .${mini}::-webkit-scrollbar-thumb {
-      border-radius: 4px;
-      background: var(--use-scrollbar-thumb);
-    }
-    .${mini}::-webkit-scrollbar-thumb:hover {
-      background: var(--use-scrollbar-thumb-hover);
-    }
-    .${hidden}::-webkit-scrollbar-thumb {
-      background: rgba(100, 100, 100, 0) !important;
-    }
-  }
+:root {
+  --use-scrollbar-track: rgba(100, 101, 105, 0);
+  --use-scrollbar-thumb: rgba(100, 101, 105, 0.25);
+  --use-scrollbar-thumb-hover: rgba(100, 101, 105, 0.5);
+  --use-scrollbar-size: 6px;
+}
+.${mini} {
+  -webkit-overflow-scrolling: touch;
+}
+.${mini}::-webkit-scrollbar {
+  width: var(--use-scrollbar-size);
+  height: var(--use-scrollbar-size);
+}
+.${mini}::-webkit-scrollbar-track {
+  background: var(--use-scrollbar-track);
+}
+.${mini}::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: var(--use-scrollbar-thumb);
+}
+.${mini}::-webkit-scrollbar-thumb:hover {
+  background: var(--use-scrollbar-thumb-hover);
+}
+.${hidden}::-webkit-scrollbar-thumb {
+  background: rgba(100, 100, 100, 0) !important;
+}
 `;
 
 css += `
@@ -169,41 +167,41 @@ let max = "";
 let min = "";
 
 const mknow = (n: string, v: string) => {
-  css += `.${n}{${v}} `;
-  max += `.phone\\:${n}{${v}}`;
-  min += `.pc\\:${n}{${v}}`;
+  css += `.${n}{${v}}`;
+  max += `.sm\\:${n}{${v}}`;
+  min += `.lg\\:${n}{${v}}`;
 };
 
-const mkodd = (n: string, v: string) => {
-  [
-    ["first", "first-child"],
-    ["last", "last-child"],
-    ["odd", "nth-child(odd)"],
-  ].forEach(([h, h2]) => {
-    css += `.${h}\\:${n}:${h2}{${v}} `;
-  });
-};
-
-const mkout = (n: string, v: string) => {
+const mkhover = (n: string, v: string) => {
   min += `.hover\\:${n}:hover{${v}}`;
   min += `.group:hover .group\\:hover\\:${n}{${v}}`;
+};
+
+const mkactive = (n: string, v: string) => {
   ["focus", "active"].forEach((h) => {
     css += `.${h}\\:${n}:${h}{${v}} `;
     css += `.group:${h} .group\\:${h}\\:${n}{${v}} `;
     max += `.sm\\:${h}\\:${n}:${h}{${v}}`;
     min += `.lg\\:${h}\\:${n}:${h}{${v}}`;
-    max += `.group:${h} .group\\:phone\\:${h}\\:${n}{${v}}`;
-    min += `.group:${h} .group\\:pc\\:${h}\\:${n}{${v}}`;
   });
 };
 
-function start(mk: any, isFirst: boolean) {
-  if (!isFirst) {
-    css = "";
-    min = "";
-    max = "";
-  }
-  // animation
+
+
+function mkEle() {
+  const el = document.createElement("style");
+  el.type = "text/css";
+  el.innerText =
+    css +
+    `@media screen and (min-width:720px){${min}}` +
+    `@media screen and (max-width:720px){${max}}`;
+  document.head.appendChild(el);
+  css = "";
+  min = "";
+  max = "";
+}
+
+function start(mk: any) {
   vl((i) => {
     mk(`move-x-${i}`, `--move-x:var(--a-${i})`);
     mk(`move-y-${i}`, `--move-y:var(--a-${i})`);
@@ -238,9 +236,6 @@ function start(mk: any, isFirst: boolean) {
   }
 
   mk("container", "width: 100%");
-  if (isFirst) {
-    css += `@media screen and (max-width: 640px) {.container{max-width:640px}}`;
-  }
   mk("border-box", "box-sizing: border-box");
   mk("content-box", "box-sizing: content-box");
 
@@ -709,167 +704,152 @@ function start(mk: any, isFirst: boolean) {
   ].forEach((v) => {
     mk(v, `display: ${v}`);
   });
+}
 
-  if (isFirst) {
-    css += `.clearfix {
-      &::after {
-        content: "";
-        display: table;
-        clear: both;
-      }
-      }`;
-
-    css += `
-    :root {
-    --fs-xs: .75rem;
-    --fs-sm: .875rem;
-    --fs-base: 1rem;
-    --fs-lg: 1.125rem;
-    --fs-xl: 1.25rem;
-    --fs-2xl: 1.5rem;
-    --fs-3xl: 1.875rem;
-    --fs-4xl: 2.25rem;
-    --fs-5xl: 3rem;
-    --fs-6xl: 4rem;
-    --sm: 640px;
-    --md: 720px;
-    --lg: 1024px;
-    --xl: 1280px;
-    --white: 255,255,255;
-    --black: 0,0,0;
-    --primary-100: 235,248,255;
-    --primary-200: 190,227,248;
-    --primary-300: 144,205,244;
-    --primary-400: 98,179,237;
-    --primary-500: 66,153,225;
-    --primary-600: 49,130,206;
-    --primary-700: 43,109,176;
-    --primary-800: 44,82,130;
-    --primary-900: 43,67,101;
-    --gray-200: 237,242,246;
-    --gray-300: 226,232,240;
-    --gray-400: 204,213,224;
-    --gray-500: 160,174,192;
-    --gray-600: 113,128,150;
-    --gray-700: 73,85,104;
-    --gray-800: 44,55,72;
-    --gray-900: 26,32,44;
-    --red-100: 254,245,245;
-    --red-200: 255,215,215;
-    --red-300: 254,178,178;
-    --red-400: 246,173,84;
-    --red-500: 236,137,54;
-    --red-600: 221,106,31;
-    --red-700: 192,85,33;
-    --red-800: 155,66,33;
-    --red-900: 123,52,30;
-    --orange-100: 255,250,240;
-    --orange-200: 255,235,200;
-    --orange-300: 251,211,141;
-    --orange-400: 246,173,84;
-    --orange-500: 236,137,54;
-    --orange-600: 221,106,31;
-    --orange-700: 192,85,33;
-    --orange-800: 155,66,33;
-    --orange-900: 123,52,30;
-    --yellow-100: 255,255,240;
-    --yellow-200: 255,252,191;
-    --yellow-300: 250,240,136;
-    --yellow-400: 245,224,94;
-    --yellow-500: 235,200,75;
-    --yellow-600: 215,158,46;
-    --yellow-700: 182,121,31;
-    --yellow-800: 151,90,23;
-    --yellow-900: 116,65,16;
-    --green-100: 240,255,244;
-    --green-200: 198,246,213;
-    --green-300: 155,230,180;
-    --green-400: 104,211,145;
-    --green-500: 72,187,129;
-    --green-600: 56,161,105;
-    --green-700: 47,132,90;
-    --green-800: 39,104,73;
-    --green-900: 33,84,61;
-    --teal-100: 230,255,250;
-    --teal-200: 177,245,234;
-    --teal-300: 129,231,217;
-    --teal-400: 78,209,197;
-    --teal-500: 55,179,172;
-    --teal-600: 49,151,149;
-    --teal-700: 46,122,123;
-    --teal-800: 39,94,97;
-    --teal-900: 35,78,82;
-    --blue-100: 235,248,255;
-    --blue-200: 190,227,248;
-    --blue-300: 144,205,244;
-    --blue-400: 98,179,237;
-    --blue-500: 66,153,225;
-    --blue-600: 49,130,206;
-    --blue-700: 43,109,176;
-    --blue-800: 44,82,130;
-    --blue-900: 43,67,101;
-    --indigo-100: 236,244,255;
-    --indigo-200: 195,218,254;
-    --indigo-300: 162,191,250;
-    --indigo-400: 127,156,244;
-    --indigo-500: 102,126,234;
-    --indigo-600: 89,104,216;
-    --indigo-700: 76,82,191;
-    --indigo-800: 67,64,144;
-    --indigo-900: 60,54,107;
-    --purple-100: 250,245,255;
-    --purple-200: 233,217,253;
-    --purple-300: 215,188,250;
-    --purple-400: 182,147,244;
-    --purple-500: 159,121,234;
-    --purple-600: 128,90,213;
-    --purple-700: 108,71,193;
-    --purple-800: 85,60,154;
-    --purple-900: 67,51,122;
-    --pink-100: 255,245,247;
-    --pink-200: 255,214,226;
-    --pink-300: 251,182,206;
-    --pink-400: 245,136,179;
-    --pink-500: 237,99,166;
-    --pink-600: 214,63,140;
-    --pink-700: 184,50,128;
-    --pink-800: 151,39,109;
-    --pink-900: 112,35,89;
-    --none: none;
-    --auto: auto;
-    --px: 0.5px;
-    --full: 100%;
-    --vw: 100vw;
-    --vh: 100vh;
-    --ease: cubic-bezier(0.23, 1, 0.32, 1);
-    --shadow-color: 0,0,0;
-    --shadow-opa: 0.1;
+start(mknow);
+css += `.clearfix {
+    &::after {
+      content: "";
+      display: table;
+      clear: both;
     }
-    `;
-  }
+    }`;
+css += `@media screen and (max-width: 640px) {.container{max-width:640px}}`;
+css += `
+:root {
+--fs-xs: .75rem;
+--fs-sm: .875rem;
+--fs-base: 1rem;
+--fs-lg: 1.125rem;
+--fs-xl: 1.25rem;
+--fs-2xl: 1.5rem;
+--fs-3xl: 1.875rem;
+--fs-4xl: 2.25rem;
+--fs-5xl: 3rem;
+--fs-6xl: 4rem;
+--sm: 640px;
+--md: 720px;
+--lg: 1024px;
+--xl: 1280px;
+--white: 255,255,255;
+--black: 0,0,0;
+--primary-100: 235,248,255;
+--primary-200: 190,227,248;
+--primary-300: 144,205,244;
+--primary-400: 98,179,237;
+--primary-500: 66,153,225;
+--primary-600: 49,130,206;
+--primary-700: 43,109,176;
+--primary-800: 44,82,130;
+--primary-900: 43,67,101;
+--gray-200: 237,242,246;
+--gray-300: 226,232,240;
+--gray-400: 204,213,224;
+--gray-500: 160,174,192;
+--gray-600: 113,128,150;
+--gray-700: 73,85,104;
+--gray-800: 44,55,72;
+--gray-900: 26,32,44;
+--red-100: 254,245,245;
+--red-200: 255,215,215;
+--red-300: 254,178,178;
+--red-400: 246,173,84;
+--red-500: 236,137,54;
+--red-600: 221,106,31;
+--red-700: 192,85,33;
+--red-800: 155,66,33;
+--red-900: 123,52,30;
+--orange-100: 255,250,240;
+--orange-200: 255,235,200;
+--orange-300: 251,211,141;
+--orange-400: 246,173,84;
+--orange-500: 236,137,54;
+--orange-600: 221,106,31;
+--orange-700: 192,85,33;
+--orange-800: 155,66,33;
+--orange-900: 123,52,30;
+--yellow-100: 255,255,240;
+--yellow-200: 255,252,191;
+--yellow-300: 250,240,136;
+--yellow-400: 245,224,94;
+--yellow-500: 235,200,75;
+--yellow-600: 215,158,46;
+--yellow-700: 182,121,31;
+--yellow-800: 151,90,23;
+--yellow-900: 116,65,16;
+--green-100: 240,255,244;
+--green-200: 198,246,213;
+--green-300: 155,230,180;
+--green-400: 104,211,145;
+--green-500: 72,187,129;
+--green-600: 56,161,105;
+--green-700: 47,132,90;
+--green-800: 39,104,73;
+--green-900: 33,84,61;
+--teal-100: 230,255,250;
+--teal-200: 177,245,234;
+--teal-300: 129,231,217;
+--teal-400: 78,209,197;
+--teal-500: 55,179,172;
+--teal-600: 49,151,149;
+--teal-700: 46,122,123;
+--teal-800: 39,94,97;
+--teal-900: 35,78,82;
+--blue-100: 235,248,255;
+--blue-200: 190,227,248;
+--blue-300: 144,205,244;
+--blue-400: 98,179,237;
+--blue-500: 66,153,225;
+--blue-600: 49,130,206;
+--blue-700: 43,109,176;
+--blue-800: 44,82,130;
+--blue-900: 43,67,101;
+--indigo-100: 236,244,255;
+--indigo-200: 195,218,254;
+--indigo-300: 162,191,250;
+--indigo-400: 127,156,244;
+--indigo-500: 102,126,234;
+--indigo-600: 89,104,216;
+--indigo-700: 76,82,191;
+--indigo-800: 67,64,144;
+--indigo-900: 60,54,107;
+--purple-100: 250,245,255;
+--purple-200: 233,217,253;
+--purple-300: 215,188,250;
+--purple-400: 182,147,244;
+--purple-500: 159,121,234;
+--purple-600: 128,90,213;
+--purple-700: 108,71,193;
+--purple-800: 85,60,154;
+--purple-900: 67,51,122;
+--pink-100: 255,245,247;
+--pink-200: 255,214,226;
+--pink-300: 251,182,206;
+--pink-400: 245,136,179;
+--pink-500: 237,99,166;
+--pink-600: 214,63,140;
+--pink-700: 184,50,128;
+--pink-800: 151,39,109;
+--pink-900: 112,35,89;
+--shadow-color: 0,0,0;
+--shadow-opa: 0.09;
+--none: none;
+--auto: auto;
+--px: 0.5px;
+--full: 100%;
+--vw: 100vw;
+--vh: 100vh;
+--ease: cubic-bezier(0.23, 1, 0.32, 1);
 }
-function mkEle(_css: string, _min: string, _max: string) {
-  const el = document.createElement("style");
-  el.type = "text/css";
-  el.innerText =
-    _css +
-    `@media screen and (min-width:720px){${_min}}` +
-    `@media screen and (max-width:720px){${_max}}`;
-  document.head.appendChild(el);
-}
-
-start(mknow, true);
-mkEle(css, min, max);
+`;
+mkEle();
 
 setTimeout(() => {
-  console.time("fbc-2");
-  start(mkodd, false);
-  mkEle(css, min, max);
-  console.timeEnd("fbc-2");
-  setTimeout(()=>{
-    console.time("fbc-3");
-    start(mkout, false);
-    mkEle(css, min, max);
-    console.timeEnd("fbc-3");
-  }, 150)
-}, 150);
+  start(mkhover);
+  mkEle();
+  setTimeout(() => {
+    start(mkactive);
+    mkEle();
+  }, 1200);  
+});
+

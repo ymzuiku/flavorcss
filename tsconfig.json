@@ -1,27 +1,31 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext", "webworker"],
-    "allowJs": false,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "baseUrl": "./",
+    "allowJs": true,
     "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
+    "strict": false,
     "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": false,
-    "noEmitHelpers": false,
-    "importHelpers": true,
-    "noResolve": false,
-    "noEmit": true,
-    "inlineSourceMap": false,
-    "declaration": true,
-    "outDir": "./umd",
-    "declarationDir": "./",
-    "jsx": "react"
+    "isolatedModules": true,
+    "jsx": "preserve"
   },
-  "exclude": ["node_modules", "umd"],
-  "include": ["lib"]
+  "exclude": [
+    "node_modules",
+    "lib"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }

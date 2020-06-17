@@ -45,6 +45,7 @@ const watchOptions = [
     },
     plugins: [
       rollupTypescript({
+      tsconfig: './rollup.tsconfig.json',
         useTsconfigDeclarationDir: false,
       }),
       uglify({
@@ -73,6 +74,6 @@ watcher.on('event', event => {
       watcher.close();
     }
 
-    fs.copyFileSync('./umd/index.js', 'www/index.js')
+    fs.copyFileSync('./umd/index.js', 'static/fbc.js')
   }
 });
