@@ -1,5 +1,5 @@
 let css = "";
-const unit = ["auto", "none", "px", "vw", "vh"];
+const unit = ["auto", "none", "full", "px", "vw", "vh"];
 const scUnit = ["sm", "md", "lg", "xl"];
 const fsUnit = [
   "xs",
@@ -13,6 +13,42 @@ const fsUnit = [
   "5xl",
   "6xl",
 ];
+
+const mini = "mini-scrollbar";
+const hidden = "mini-scrollbar-hidden";
+const miniHidden = mini + " " + hidden;
+
+const scrollbar = `
+  @media screen and (min-width: 641px) {
+    :root {
+      --use-scrollbar-track: rgba(100, 101, 105, 0);
+      --use-scrollbar-thumb: rgba(100, 101, 105, 0.25);
+      --use-scrollbar-thumb-hover: rgba(100, 101, 105, 0.5);
+      --use-scrollbar-size: 6px;
+    }
+    .${mini} {
+      -webkit-overflow-scrolling: touch;
+    }
+    .${mini}::-webkit-scrollbar {
+      width: var(--use-scrollbar-size);
+      height: var(--use-scrollbar-size);
+    }
+    .${mini}::-webkit-scrollbar-track {
+      background: var(--use-scrollbar-track);
+    }
+    .${mini}::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+      background: var(--use-scrollbar-thumb);
+    }
+    .${mini}::-webkit-scrollbar-thumb:hover {
+      background: var(--use-scrollbar-thumb-hover);
+    }
+    .${hidden}::-webkit-scrollbar-thumb {
+      background: rgba(100, 100, 100, 0) !important;
+    }
+  }
+`;
+
 css += `
 adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}
 blockquote,dl,dd,h1,h2,h3,h4,h5,h6,figure,p,pre {
@@ -21,6 +57,9 @@ blockquote,dl,dd,h1,h2,h3,h4,h5,h6,figure,p,pre {
 h1,h2,h3,h4,h5,h6 {
   font-size: inherit;
   font-weight: inherit;
+}
+a {
+  text-decoration:none;
 }
 ol,ul {
   list-style: none;
@@ -61,6 +100,7 @@ body {font-size:16px;padding:0px;margin:0px;font-family: var(--sans);}
 .appearance-none {appearance:none;}
 .outline-none {outline:none}
 @keyframes fbc-spin { 0% {transform: rotate(0deg);} 100% {transform: rotate(359deg);}}
+${scrollbar}
 `;
 
 // details
@@ -81,6 +121,7 @@ const fm = {
 } as any;
 
 const colors = [
+  "primary",
   "white",
   "black",
   "gray",
@@ -102,7 +143,7 @@ const l3 = l2 + 9;
 
 // value list
 function vl(fn: (i: number) => any) {
-  for (let i = 1; i <= l1; i++) {
+  for (let i = 0; i <= l1; i++) {
     fn(i);
   }
   for (let i = l1; i <= l2; i++) {
@@ -129,8 +170,8 @@ let min = "";
 
 const mknow = (n: string, v: string) => {
   css += `.${n}{${v}} `;
-  max += `.sm\\:${n}{${v}}`;
-  min += `.lg\\:${n}{${v}}`;
+  max += `.phone\\:${n}{${v}}`;
+  min += `.pc\\:${n}{${v}}`;
 };
 
 const mkodd = (n: string, v: string) => {
@@ -151,8 +192,8 @@ const mkout = (n: string, v: string) => {
     css += `.group:${h} .group\\:${h}\\:${n}{${v}} `;
     max += `.sm\\:${h}\\:${n}:${h}{${v}}`;
     min += `.lg\\:${h}\\:${n}:${h}{${v}}`;
-    max += `.group:${h} .group\\:sm\\:${h}\\:${n}{${v}}`;
-    min += `.group:${h} .group\\:lg\\:${h}\\:${n}{${v}}`;
+    max += `.group:${h} .group\\:phone\\:${h}\\:${n}{${v}}`;
+    min += `.group:${h} .group\\:pc\\:${h}\\:${n}{${v}}`;
   });
 };
 
@@ -431,9 +472,9 @@ function start(mk: any, isFirst: boolean) {
   }
 
   mk(`line-none`, `line-height:1`);
-  for (let i = 0; i <= 10; i++) {
-    mk(`line-${i}`, `line-height:${0.5 + i * 0.125}rem`);
-  }
+  vl((i) => {
+    mk(`line-${i}`, `line-height:var(--a-${i})`);
+  });
 
   for (let i = 0; i <= 7; i++) {
     mk(`fw-${i}00`, `font-weight:${i}00`);
@@ -445,6 +486,10 @@ function start(mk: any, isFirst: boolean) {
 
   ["inside", "outside"].forEach((v) => {
     mk(`list-${v}`, `list-style-position:${v}`);
+  });
+
+  ["decoration", "none"].forEach((v) => {
+    mk(`decoration-${v}`, `text-decoration:${v}`);
   });
 
   // space
@@ -692,7 +737,15 @@ function start(mk: any, isFirst: boolean) {
     --xl: 1280px;
     --white: 255,255,255;
     --black: 0,0,0;
-    --gray-100: 248,250,252;
+    --primary-100: 235,248,255;
+    --primary-200: 190,227,248;
+    --primary-300: 144,205,244;
+    --primary-400: 98,179,237;
+    --primary-500: 66,153,225;
+    --primary-600: 49,130,206;
+    --primary-700: 43,109,176;
+    --primary-800: 44,82,130;
+    --primary-900: 43,67,101;
     --gray-200: 237,242,246;
     --gray-300: 226,232,240;
     --gray-400: 204,213,224;
@@ -785,6 +838,7 @@ function start(mk: any, isFirst: boolean) {
     --none: none;
     --auto: auto;
     --px: 0.5px;
+    --full: 100%;
     --vw: 100vw;
     --vh: 100vh;
     --ease: cubic-bezier(0.23, 1, 0.32, 1);
@@ -799,22 +853,23 @@ function mkEle(_css: string, _min: string, _max: string) {
   el.type = "text/css";
   el.innerText =
     _css +
-    `@media screen and (min-width:640px){${_min}}` +
-    `@media screen and (max-width:640px){${_max}}`;
+    `@media screen and (min-width:720px){${_min}}` +
+    `@media screen and (max-width:720px){${_max}}`;
   document.head.appendChild(el);
 }
 
 start(mknow, true);
 mkEle(css, min, max);
+
 setTimeout(() => {
   console.time("fbc-2");
   start(mkodd, false);
   mkEle(css, min, max);
   console.timeEnd("fbc-2");
-  setTimeout(() => {
+  setTimeout(()=>{
     console.time("fbc-3");
     start(mkout, false);
     mkEle(css, min, max);
     console.timeEnd("fbc-3");
-  });
-});
+  }, 150)
+}, 150);
