@@ -8,5 +8,5 @@ full build css
 Add script in html
 
 ```html
-<script src="https://unpkg.com/fbc@0.1.1/umd/index.js"></script>
+<script src="https://unpkg.com/fbc@0.2.0/umd/index.js"></script>
 ```

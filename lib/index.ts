@@ -1,6 +1,4 @@
-const timeStart = Date.now();
 let css = "";
-
 const unit = ["auto", "px", "vw", "vh"];
 css += `
 adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}
@@ -32,7 +30,7 @@ body {font-size:16px;padding:0px;margin:0px}
 .sans	{font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";}
 .serif {font-family: Georgia, Cambria, "Times New Roman", Times, serif;}
 .mono	{font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
-.trans {
+.transform {
   --move-x: 0; --move-y: 0; --rotate: 0; --skew-x: 0; --skew-y: 0; --scale-x: 1; --scale-y: 1;
   transform: translateX(var(--move-x)) translateY(var(--move-y)) rotate(var(--rotate)) skewX(var(--skew-x)) skewY(var(--skew-y)) scaleX(var(--scale-x)) scaleY(var(--scale-y));
 }
@@ -40,6 +38,7 @@ body {font-size:16px;padding:0px;margin:0px}
 .smooth-auto { -webkit-font-smoothing: auto; -moz-osx-font-smoothing: auto; }
 .appearance-none {appearance:none;}
 .outline-none {outline:none}
+@keyframes fbc-spin { 0% {transform: rotate(0deg);} 100% {transform: rotate(359deg);}}
 `;
 
 // const childs = [
@@ -255,8 +254,13 @@ add("inset-0", "top:0;right:0;bottom:0;left:0;");
 add("visible", "visibility:visible");
 add("hidden", "visibility:hidden");
 
-["row", "row-reverse", "column", "column-reverse"].forEach((v) => {
-  add(v === "column" ? "col" : v, `flex-direction:${v}`);
+[
+  ["row", "row"],
+  ["row-r", "row-reverse"],
+  ["col", "column"],
+  ["col-r", "column-reverse"],
+].forEach(([n, a]) => {
+  add(n, `display:flex; flex-direction:${a}`);
 });
 
 ["nowrap", "wrap", "wrap-reverse"].forEach((v) => {
@@ -333,12 +337,8 @@ css += `.clearfix {
 }`;
 
 for (let i = 0; i <= 20; i++) {
-  add(
-    `an-${i * 50}`,
-    `--ease: cubic-bezier(0.23, 1, 0.32, 1); transition: all ${
-      i * 50
-    }ms var(--ease)`
-  );
+  add(`an-${i * 50}`, `transition: all ${i * 50}ms var(--ease)`);
+  add(`spin-${i * 500}`, `animation: fbc-spin ${i * 0.5}s linear infinite`);
   [
     ["none", "none"],
     ["opa", "opacity"],
@@ -346,12 +346,7 @@ for (let i = 0; i <= 20; i++) {
     ["shadow", "box-shadow"],
     ["trans", "transform"],
   ].forEach((v) => {
-    add(
-      `an-${v[0]}-${i * 50}`,
-      `--ease: cubic-bezier(0.23, 1, 0.32, 1); transition: ${v[1]} ${
-        i * 50
-      }ms var(--ease)`
-    );
+    add(`an-${v[0]}-${i * 50}`, `transition: ${v[1]} ${i * 50}ms var(--ease)`);
   });
 }
 
@@ -539,7 +534,7 @@ for (let i = 0; i <= 7; i++) {
 
 add(
   `shadow`,
-  `--shadow-color: 0,0,0; --shadow-opa: 0.1; box-shadow: 0 1px 3px 0 rgba(var(--shadow-color), var(--shadow-opa)), 0 1px 2px 0 rgba(var(--shadow-color), calc(var(--shadow-opa) / 2));`
+  ` box-shadow: 0 1px 3px 0 rgba(var(--shadow-color), var(--shadow-opa)), 0 1px 2px 0 rgba(var(--shadow-color), calc(var(--shadow-opa) / 2));`
 );
 
 [
@@ -555,7 +550,7 @@ add(
   const [n, a, b] = v;
   add(
     `shadow-${n}`,
-    `--shadow-color: 0,0,0; --shadow-opa: 0.08; box-shadow: ${a} rgba(var(--shadow-color), var(--shadow-opa)), ${b} rgba(var(--shadow-color), calc(var(--shadow-opa) / 2));`
+    `box-shadow: ${a} rgba(var(--shadow-color), var(--shadow-opa)), ${b} rgba(var(--shadow-color), calc(var(--shadow-opa) / 2));`
   );
 });
 
@@ -585,13 +580,13 @@ add(
       if (once) {
         add(
           `${n}-${c}${hov}`,
-          ` --${n}-opa: 1; ${a}:rgba(var(--${c}), var(--${n}-opa));`
+          `--${n}-opa: 1; ${a}:rgba(var(--${c}), var(--${n}-opa));`
         );
       } else {
         for (let i = 1; i <= 9; i++) {
           add(
             `${n}-${c}-${i}${hov}`,
-            ` --${n}-opa: 1; ${a}:rgba(var(--${c}-${i}), var(--${n}-opa));`
+            `--${n}-opa: 1; ${a}:rgba(var(--${c}-${i}), var(--${n}-opa));`
           );
         }
       }
@@ -747,13 +742,15 @@ css += `
 --px: 0.5px;
 --vw: 100vw;
 --vh: 100vh;
+--ease: cubic-bezier(0.23, 1, 0.32, 1);
+--shadow-color: 0,0,0;
+--shadow-opa: 0.1;
 }
 `;
 
-console.log("time1:", Date.now() - timeStart);
-
 const el = document.createElement("style");
-el.textContent =
+el.type = "text/css";
+el.innerText =
   css +
   `@media screen and (min-width:640px){${min}}` +
   `@media screen and (max-width:640px){${max}}`;
@@ -763,10 +760,5 @@ css = void 0 as any;
 min = void 0 as any;
 max = void 0 as any;
 
-console.log("time:", Date.now() - timeStart);
-const fbc = document.getElementById("fbc");
-if (fbc) {
-  fbc.style.removeProperty("display");
-}
 
 export default 0;
