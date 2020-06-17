@@ -96,8 +96,9 @@ const colors = [
 ];
 
 let root = "";
-const l1 = 40;
-const l2 = l1 + 22;
+const l1 = 20;
+const l2 = l1 + 19;
+const l3 = l2 + 9;
 
 // value list
 function vl(fn: (i: number) => any) {
@@ -105,7 +106,10 @@ function vl(fn: (i: number) => any) {
     fn(i);
   }
   for (let i = l1; i <= l2; i++) {
-    fn((i - l1) * 20 + 60);
+    fn((i - l1) * 2 + 22);
+  }
+  for (let i = l1; i <= l3; i++) {
+    fn((i - l1) * 20 + 80);
   }
 }
 root += `--a-0: 0rem;`;
@@ -122,9 +126,6 @@ css += `:root{${root}}`;
 
 let max = "";
 let min = "";
-let css2 = "";
-let min2 = "";
-let max2 = "";
 
 const mknow = (n: string, v: string) => {
   css += `.${n}{${v}} `;
@@ -132,20 +133,35 @@ const mknow = (n: string, v: string) => {
   min += `.lg\\:${n}{${v}}`;
 };
 
+const mkodd = (n: string, v: string) => {
+  [
+    ["first", "first-child"],
+    ["last", "last-child"],
+    ["odd", "nth-child(odd)"],
+  ].forEach(([h, h2]) => {
+    css += `.${h}\\:${n}:${h2}{${v}} `;
+  });
+};
+
 const mkout = (n: string, v: string) => {
-  min2 += `.hover\\:${n}:hover{${v}}`;
-  min2 += `.group:hover .group\\:hover\\:${n}{${v}}`;
+  min += `.hover\\:${n}:hover{${v}}`;
+  min += `.group:hover .group\\:hover\\:${n}{${v}}`;
   ["focus", "active"].forEach((h) => {
-    css2 += `.${h}\\:${n}:${h}{${v}} `;
-    css2 += `.group:${h} .group\\:${h}\\:${n}{${v}} `;
-    max2 += `.sm\\:${h}\\:${n}:${h}{${v}}`;
-    min2 += `.lg\\:${h}\\:${n}:${h}{${v}}`;
-    max2 += `.group:${h} .group\\:sm\\:${h}\\:${n}{${v}}`;
-    min2 += `.group:${h} .group\\:lg\\:${h}\\:${n}{${v}}`;
+    css += `.${h}\\:${n}:${h}{${v}} `;
+    css += `.group:${h} .group\\:${h}\\:${n}{${v}} `;
+    max += `.sm\\:${h}\\:${n}:${h}{${v}}`;
+    min += `.lg\\:${h}\\:${n}:${h}{${v}}`;
+    max += `.group:${h} .group\\:sm\\:${h}\\:${n}{${v}}`;
+    min += `.group:${h} .group\\:lg\\:${h}\\:${n}{${v}}`;
   });
 };
 
 function start(mk: any, isFirst: boolean) {
+  if (!isFirst) {
+    css = "";
+    min = "";
+    max = "";
+  }
   // animation
   vl((i) => {
     mk(`move-x-${i}`, `--move-x:var(--a-${i})`);
@@ -791,7 +807,14 @@ function mkEle(_css: string, _min: string, _max: string) {
 start(mknow, true);
 mkEle(css, min, max);
 setTimeout(() => {
-  start(mkout, false);
-  mkEle(css2, min2, max2);
-}, 50);
-
+  console.time("fbc-2");
+  start(mkodd, false);
+  mkEle(css, min, max);
+  console.timeEnd("fbc-2");
+  setTimeout(() => {
+    console.time("fbc-3");
+    start(mkout, false);
+    mkEle(css, min, max);
+    console.timeEnd("fbc-3");
+  });
+});

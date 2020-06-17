@@ -6,6 +6,7 @@
   "types": "umd/index.d.ts",
   "private": false,
   "scripts": {
+    "start": "cd www && browser-sync start --server --files './*' --files '*.html'",
     "lib": "node rollup.config.js"
   },
   "devDependencies": {
