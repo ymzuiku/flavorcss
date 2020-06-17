@@ -1,2 +1,14 @@
-declare const _default: 0;
-export default _default;
+declare let css: string;
+declare const unit: string[];
+declare const scUnit: string[];
+declare const fsUnit: string[];
+declare let max: string;
+declare let min: string;
+declare const mk: (n: string, v: string) => void;
+declare const colors: string[];
+declare let root: string;
+declare const l1 = 40;
+declare const l2: number;
+declare function vl(fn: (i: number) => any): void;
+declare const fm: any;
+declare const el: HTMLStyleElement;
