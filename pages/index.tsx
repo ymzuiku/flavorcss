@@ -1,25 +1,10 @@
-import { useState, useRef, useEffect } from "react";
-
-function Side() {
-  return (
-    <aside>
-      <div>list</div>
-    </aside>
-  );
-}
-
-function Nav() {
-  return <nav>nav</nav>;
-}
+import React, { useState, useRef, useEffect } from "react";
+import CodeEditor from "components/CodeEditor";
+import Nav from "pages/Nav";
 
 export default () => {
-  const [code, setCode] = useState(base);
-  const ref = useRef<HTMLDivElement>();
-  useEffect(() => {
-    ref.current.innerHTML = code;
-  }, []);
   return (
-    <div className="mini-scrollbar h-vh overflow-y-auto">
+    <div className="h-vh overflow-y-auto">
       <Nav />
       <div className="max-w-md bg-white mx-auto col center-center b-1 b-teal-300 radius-6 m-24 p-24">
         <h1 className="fs-4xl text-teal-300">
@@ -31,25 +16,18 @@ export default () => {
           提交编译好你所需要的所有CSS
         </h4>
       </div>
-      <div className="row mx-auto m-12 max-w-sm radius-4 overflow-hidden b-1 b-teal-300 col">
-        <textarea
-          className="bg-teal-100 mono text-teal-600 fs-xs min-w-6/12 min-h-260 mini-scrollbar"
-          value={code}
-          onChange={(e) => {
-            const c = e.target.value;
-            setCode(c);
-            ref.current.innerHTML = c;
-          }}
-        />
-        <div className="min-w-6/12">
-          <div ref={(r) => (ref.current = r)}></div>
-        </div>
-      </div>
+      <CodeEditor
+        className="col-r m-24 max-w-md mx-auto shadow radius-6 overflow-hidden"
+        codeClassName="py-6 px-12 mini-scrollbar bg-white max-w-md mx-auto max-h-260"
+      >
+        {base}
+      </CodeEditor>
     </div>
   );
 };
 
 const base = `
+<!-- 您可实时编辑此代码 -->
 <section class="bg-gray-500 p-24">
       <div
         class="max-w-md mx-auto w-full sm:max-w-full lg:flex b-0 b-teal-500 shadow-md bg-white radius-6 mt-24 overflow-hidden">

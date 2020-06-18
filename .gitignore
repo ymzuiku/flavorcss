@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 .next
-.out
+out
 deploy.js
 
 # testing

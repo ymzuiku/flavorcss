@@ -2,6 +2,17 @@
 
 **/.next
 **/pages
+pages/*
+static/*
+.next/*
+out/*
+rollup.config.js
+rollup.tsconfig.json
+deploy.js
+tslint.json
+yarn.lock
+components
+**/static
 **/components
 **/rollup.config.js
 **/tsconfig.json

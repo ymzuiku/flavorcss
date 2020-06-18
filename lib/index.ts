@@ -1,5 +1,5 @@
 let css = "";
-const unit = ["auto", "none", "full", "px", "vw", "vh"];
+const unit = ["auto", "none", "px", "vw", "vh"];
 const scUnit = ["sm", "md", "lg", "xl"];
 const fsUnit = [
   "xs",
@@ -20,27 +20,27 @@ const miniHidden = mini + " " + hidden;
 
 const scrollbar = `
 :root {
-  --use-scrollbar-track: rgba(100, 101, 105, 0);
-  --use-scrollbar-thumb: rgba(100, 101, 105, 0.25);
-  --use-scrollbar-thumb-hover: rgba(100, 101, 105, 0.5);
-  --use-scrollbar-size: 6px;
+  --mini-scrollbar-track: rgba(100, 101, 105, 0);
+  --mini-scrollbar-thumb: rgba(100, 101, 105, 0.25);
+  --mini-scrollbar-thumb-hover: rgba(100, 101, 105, 0.5);
+  --mini-scrollbar-size: 6px;
 }
 .${mini} {
   -webkit-overflow-scrolling: touch;
 }
 .${mini}::-webkit-scrollbar {
-  width: var(--use-scrollbar-size);
-  height: var(--use-scrollbar-size);
+  width: var(--mini-scrollbar-size);
+  height: var(--mini-scrollbar-size);
 }
 .${mini}::-webkit-scrollbar-track {
-  background: var(--use-scrollbar-track);
+  background: var(--mini-scrollbar-track);
 }
 .${mini}::-webkit-scrollbar-thumb {
   border-radius: 4px;
-  background: var(--use-scrollbar-thumb);
+  background: var(--mini-scrollbar-thumb);
 }
 .${mini}::-webkit-scrollbar-thumb:hover {
-  background: var(--use-scrollbar-thumb-hover);
+  background: var(--mini-scrollbar-thumb-hover);
 }
 .${hidden}::-webkit-scrollbar-thumb {
   background: rgba(100, 100, 100, 0) !important;
@@ -185,8 +185,6 @@ const mkactive = (n: string, v: string) => {
     min += `.lg\\:${h}\\:${n}:${h}{${v}}`;
   });
 };
-
-
 
 function mkEle() {
   const el = document.createElement("style");
@@ -354,31 +352,34 @@ function start(mk: any) {
     mk(`flex-shrink-${v}`, `flex-shrink:${v}`);
   });
 
-  for (let i = -2; i <= 12; i++) {
-    mk(`order-${i}`, `order: ${i}`);
-    mk(
-      `grid-cols-${i}`,
-      `	grid-template-columns: repeat(${i}, minmax(0,${i}fr));`
-    );
-    mk(`grid-rows-${i}`, `	grid-template-rows: repeat(${i},minmax(0, ${i}fr));`);
-    mk(`col-span-${i}`, `grid-column: span ${i} / span ${i}`);
-    mk(`col-start-${i}`, `grid-column-start: ${i}`);
-    mk(`col-end-${i}`, `grid-column-end: ${i}`);
-  }
-  mk(`grid-cols-none`, `	grid-template-columns:none`);
-  mk(`grid-rows-none`, `	grid-template-rows:none`);
-  mk(`col-auto`, `grid-column:auto`);
-  mk(`col-start-auto`, `grid-column-start:auto`);
-  mk(`col-end-auto`, `grid-column-end:auto`);
+  // for (let i = -2; i <= 12; i++) {
+  //   mk(`order-${i}`, `order: ${i}`);
+  //   mk(
+  //     `grid-cols-${i}`,
+  //     `	grid-template-columns: repeat(${i}, minmax(0,${i}fr));`
+  //   );
+  //   mk(`grid-rows-${i}`, `	grid-template-rows: repeat(${i},minmax(0, ${i}fr));`);
+  // }
+  // for (let x = -2; x <= 12; x++) {
+  //   for (let y = -2; y <= 12; y++) {
+  //     mk("row-${x}-${y}", `grid-row-start: ${x};grid-row-end: ${y}`);
+  //     mk("col-${x}-${y}", `grid-column-start: ${x};grid-column-end: ${y}`);
+  //   }
+  // }
+  // mk(`grid-cols-none`, `	grid-template-columns:none`);
+  // mk(`grid-rows-none`, `	grid-template-rows:none`);
+  // mk(`col-auto`, `grid-column:auto`);
+  // mk(`col-start-auto`, `grid-column-start:auto`);
+  // mk(`col-end-auto`, `grid-column-end:auto`);
 
-  [
-    ["row", "row"],
-    ["col", "column"],
-    ["row-dense", "row dense"],
-    ["col-dense", "column dense"],
-  ].forEach((v) => {
-    mk(`grid-flow-${v[0]}`, `grid-auto-flow:${v[1]}`);
-  });
+  // [
+  //   ["row", "row"],
+  //   ["col", "column"],
+  //   ["row-dense", "row dense"],
+  //   ["col-dense", "column dense"],
+  // ].forEach((v) => {
+  //   mk(`grid-flow-${v[0]}`, `grid-auto-flow:${v[1]}`);
+  // });
 
   ["auto", "stretch", "center", "baseline"].forEach((v) => {
     mk(`content-${v}`, `align-content:${fm[v]}`);
@@ -483,8 +484,11 @@ function start(mk: any) {
     mk(`list-${v}`, `list-style-position:${v}`);
   });
 
-  ["decoration", "none"].forEach((v) => {
-    mk(`decoration-${v}`, `text-decoration:${v}`);
+  [
+    ["underline", "underline"],
+    ["none-underline", "none"],
+  ].forEach((v) => {
+    mk(v[0], `text-decoration:${v[1]}`);
   });
 
   // space
@@ -832,11 +836,10 @@ css += `
 --pink-800: 151,39,109;
 --pink-900: 112,35,89;
 --shadow-color: 0,0,0;
---shadow-opa: 0.09;
+--shadow-opa: 0.1;
 --none: none;
 --auto: auto;
 --px: 0.5px;
---full: 100%;
 --vw: 100vw;
 --vh: 100vh;
 --ease: cubic-bezier(0.23, 1, 0.32, 1);
@@ -850,6 +853,7 @@ setTimeout(() => {
   setTimeout(() => {
     start(mkactive);
     mkEle();
-  }, 1200);  
+  }, 600);
 });
 
+(window as any).__fbc = true;
