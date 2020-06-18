@@ -1,10 +1,13 @@
+console.time("fbc-1");
 let css = "";
-const unit = ["auto", "none", "px", "vw", "vh"];
-const scUnit = ["sm", "md", "lg", "xl"];
-const fsUnit = [
+const sc = ["small", "middle", "large", "vw", "vh"];
+const pt = [
+  "auto",
+  "0",
+  "px",
   "xs",
   "sm",
-  "base",
+  "md",
   "lg",
   "xl",
   "2xl",
@@ -135,27 +138,6 @@ const colors = [
 ];
 
 let root = "";
-const l1 = 20;
-const l2 = l1 + 19;
-const l3 = l2 + 9;
-
-// value list
-function vl(fn: (i: number) => any) {
-  for (let i = 0; i <= l1; i++) {
-    fn(i);
-  }
-  for (let i = l1; i <= l2; i++) {
-    fn((i - l1) * 2 + 22);
-  }
-  for (let i = l1; i <= l3; i++) {
-    fn((i - l1) * 20 + 80);
-  }
-}
-root += `--a-0: 0rem;`;
-vl((i) => {
-  root += `--a-${i}: ${i / 16}rem;`;
-});
-
 root += `--b-0: 0%`;
 for (let i = 1; i <= 12; i++) {
   root += `--b-${i}: ${(100 * i) / 12}%; `;
@@ -200,11 +182,17 @@ function mkEle() {
 }
 
 function start(mk: any) {
-  vl((i) => {
-    mk(`move-x-${i}`, `--move-x:var(--a-${i})`);
-    mk(`move-y-${i}`, `--move-y:var(--a-${i})`);
-    mk(`move-x--${i}`, `--move-x:calc(0px - var(--a-${i}))`);
-    mk(`move-y--${i}`, `--move-y:calc(0px - var(--a-${i}))`);
+  sc.forEach((i) => {
+    mk(`move-x-${i}`, `--move-x:var(--${i})`);
+    mk(`move-y-${i}`, `--move-y:var(--${i})`);
+    mk(`move-x--${i}`, `--move-x:calc(0px - var(--${i}))`);
+    mk(`move-y--${i}`, `--move-y:calc(0px - var(--${i}))`);
+  });
+  pt.forEach((i) => {
+    mk(`move-x-${i}`, `--move-x:var(--pt-${i})`);
+    mk(`move-y-${i}`, `--move-y:var(--pt-${i})`);
+    mk(`move-x--${i}`, `--move-x:calc(0px - var(--pt-${i}))`);
+    mk(`move-y--${i}`, `--move-y:calc(0px - var(--pt-${i}))`);
   });
 
   for (let i = 0; i <= 12; i++) {
@@ -214,7 +202,7 @@ function start(mk: any) {
     mk(`move-y--${i}\\/12`, `--move-y:calc(0px - var(--b-${i}))`);
   }
 
-  for (let i = 0; i <= 100; i++) {
+  for (let i = 0; i <= 100; i += 5) {
     const a = i ? i / 100 : 0;
     mk(`scale-${i}`, `--scale-x:${a};--scale-y:${a}`);
     mk(`scale-x-${i}`, `--scale-x: ${a}`);
@@ -426,10 +414,7 @@ function start(mk: any) {
   }
 
   [["fs", "font-size"]].forEach((v) => {
-    fsUnit.forEach((s) => mk(`${v[0]}-${s}`, `${v[1]}:var(--fs-${s})`));
-    vl((i) => {
-      mk(`${v[0]}-${i}`, `${v[1]}:var(--a-${i})`);
-    });
+    pt.forEach((s) => mk(`${v[0]}-${s}`, `${v[1]}:var(--fs-${s})`));
   });
 
   [
@@ -468,8 +453,8 @@ function start(mk: any) {
   }
 
   mk(`line-none`, `line-height:1`);
-  vl((i) => {
-    mk(`line-${i}`, `line-height:var(--a-${i})`);
+  pt.forEach((i) => {
+    mk(`line-${i}`, `line-height:var(--fs-${i})`);
   });
 
   for (let i = 0; i <= 7; i++) {
@@ -499,14 +484,13 @@ function start(mk: any) {
     ["right", "right"],
     ["bottom", "bottom"],
   ].forEach((v) => {
-    scUnit.forEach((s) => mk(`${v[0]}-${s}`, `${v[1]}:var(--${s})`));
-    scUnit.forEach((s) =>
-      mk(`${v[0]}--${s}`, `${v[1]}:calc(0px - var(--${s}))`)
-    );
-
-    vl((i) => {
-      mk(`${v[0]}-${i}`, `${v[1]}:var(--a-${i})`);
-      mk(`${v[0]}--${i}`, `${v[1]}:calc(0px - var(--a-${i}))`);
+    sc.forEach((i) => {
+      mk(`${v[0]}-${i}`, `${v[1]}:var(--${i})`);
+      mk(`${v[0]}--${i}`, `${v[1]}:calc(0px - var(--${i}))`);
+    });
+    pt.forEach((i) => {
+      mk(`${v[0]}-${i}`, `${v[1]}:var(--pt-${i})`);
+      mk(`${v[0]}--${i}`, `${v[1]}:calc(0px - var(--pt-${i}))`);
     });
     for (let i = 0; i <= 12; i++) {
       mk(`${v[0]}-${i}\\/12`, `${v[1]}:var(--b-${i})`);
@@ -521,14 +505,12 @@ function start(mk: any) {
     ["h", "height"],
     ["min-h", "min-height"],
     ["max-h", "max-height"],
+    ["p", "padding"],
+    ["m", "margin"],
   ].forEach((v) => {
-    unit.forEach((s) => mk(`${v[0]}-${s}`, `${v[1]}:var(--${s})`));
-    unit.forEach((s) => mk(`${v[0]}-${s}`, `${v[1]}:var(--${s})`));
-    scUnit.forEach((s) => mk(`${v[0]}-${s}`, `${v[1]}:var(--${s})`));
-    scUnit.forEach((s) => mk(`${v[0]}-${s}`, `${v[1]}:var(--${s})`));
-
-    vl((i) => {
-      mk(`${v[0]}-${i}`, `${v[1]}:var(--a-${i})`);
+    sc.forEach((s) => mk(`${v[0]}-${s}`, `${v[1]}:var(--${s})`));
+    pt.forEach((i) => {
+      mk(`${v[0]}-${i}`, `${v[1]}:var(--pt-${i})`);
     });
 
     for (let i = 0; i <= 12; i++) {
@@ -537,21 +519,15 @@ function start(mk: any) {
   });
 
   [
-    ["p", "padding"],
-    ["m", "margin"],
     ["stroke", "stroke-width"],
     ["radius", "border-radius"],
     ["radius-q", "border-top-left-radius"],
     ["radius-w", "border-top-right-radius"],
     ["radius-a", "border-bottom-left-radius"],
     ["radius-s", "border-bottom-right-radius"],
-    ["gap", "gap"],
-    ["row-gap", "row-gap"],
-    ["col-gap", "column-gap"],
   ].forEach((v) => {
-    unit.forEach((s) => mk(`${v[0]}-${s}`, `${v[1]}:var(--${s})`));
-    vl((i) => {
-      mk(`${v[0]}-${i}`, `${v[1]}:var(--a-${i})`);
+    pt.forEach((i) => {
+      mk(`${v[0]}-${i}`, `${v[1]}:var(--li-${i})`);
     });
   });
 
@@ -561,12 +537,9 @@ function start(mk: any) {
     ["mx", "margin-left", "margin-right"],
     ["my", "margin-top", "margin-bottom"],
   ].forEach((v) => {
-    unit.forEach((s) =>
-      mk(`${v[0]}-${s}`, `${v[1]}:var(--${s}); ${v[2]}:var(--${s})`)
+    pt.forEach((s) =>
+      mk(`${v[0]}-${s}`, `${v[1]}:var(--pt-${s}); ${v[2]}:var(--pt-${s})`)
     );
-    vl((i) => {
-      mk(`${v[0]}-${i}`, `${v[1]}:var(--a-${i}); ${v[2]}:var(--a-${i})`);
-    });
   });
 
   [
@@ -579,13 +552,9 @@ function start(mk: any) {
     ["ml", "margin-left"],
     ["mr", "margin-right"],
   ].forEach((v) => {
-    unit.forEach((s) => mk(`${v[0]}-${s}`, `${v[1]}: var(--${s})`));
-    unit.forEach((s) =>
-      mk(`${v[0]}--${s}`, `${v[1]}: calc(0px - var(--${s}))`)
-    );
-    vl((i) => {
-      mk(`${v[0]}-${i}`, `${v[1]}: var(--a-${i})`);
-      mk(`${v[0]}--${i}`, `${v[1]}: calc(0px - var(--a-${i}))`);
+    pt.forEach((s) => {
+      mk(`${v[0]}-${s}`, `${v[1]}: var(--pt-${s})`);
+      mk(`${v[0]}--${s}`, `${v[1]}: calc(0px - var(--pt-${s}))`);
     });
   });
 
@@ -596,8 +565,8 @@ function start(mk: any) {
     ["bl", "border-left"],
     ["br", "border-right"],
   ].forEach((v) => {
-    vl((i) => {
-      mk(`${v[0]}-${i}`, `${v[1]}-width: var(--a-${i});solid #000;`);
+    pt.forEach((i) => {
+      mk(`${v[0]}-${i}`, `${v[1]}-width: var(--li-${i});solid #000;`);
     });
 
     ["solid", "dotted", "dashed"].forEach((s) => {
@@ -721,9 +690,20 @@ css += `.clearfix {
 css += `@media screen and (max-width: 640px) {.container{max-width:640px}}`;
 css += `
 :root {
+--none: none;
+--auto: auto;
+--px: 0.5px;
+--vw: 100vw;
+--vh: 100vh;
+--small: 640px;
+--middle: 720px;
+--large: 1024px;
+--fs-0: 0rem;
+--fs-auto: auto;
+--fs-px: 0.5rem;
 --fs-xs: .75rem;
 --fs-sm: .875rem;
---fs-base: 1rem;
+--fs-md: 1rem;
 --fs-lg: 1.125rem;
 --fs-xl: 1.25rem;
 --fs-2xl: 1.5rem;
@@ -731,10 +711,32 @@ css += `
 --fs-4xl: 2.25rem;
 --fs-5xl: 3rem;
 --fs-6xl: 4rem;
---sm: 640px;
---md: 720px;
---lg: 1024px;
---xl: 1280px;
+--pt-0: 0px;
+--pt-auto: auto;
+--pt-px: 1px;
+--pt-xs: 4px;
+--pt-sm: 8px;
+--pt-md: 16px;
+--pt-lg: 24px;
+--pt-xl: 34px;
+--pt-2xl: 48px;
+--pt-3xl: 64px;
+--pt-4xl: 170px;
+--pt-5xl: 260px;
+--pt-6xl: 340px;
+--li-0: 0px;
+--li-auto: auto;
+--li-px: 1px;
+--li-xs: 2px;
+--li-sm: 4px;
+--li-md: 6px;
+--li-lg: 8px;
+--li-xl: 12px;
+--li-2xl: 18px;
+--li-3xl: 24px;
+--li-4xl: 32px;
+--li-5xl: 42px;
+--li-6xl: 999px;
 --white: 255,255,255;
 --black: 0,0,0;
 --primary-100: 235,248,255;
@@ -837,22 +839,22 @@ css += `
 --pink-900: 112,35,89;
 --shadow-color: 0,0,0;
 --shadow-opa: 0.1;
---none: none;
---auto: auto;
---px: 0.5px;
---vw: 100vw;
---vh: 100vh;
 --ease: cubic-bezier(0.23, 1, 0.32, 1);
 }
 `;
 mkEle();
+console.timeEnd("fbc-1");
 
 setTimeout(() => {
+  console.time("fbc-2");
   start(mkhover);
   mkEle();
+  console.timeEnd("fbc-2");
   setTimeout(() => {
+    console.time("fbc-3");
     start(mkactive);
     mkEle();
+    console.timeEnd("fbc-3");
   }, 600);
 });
 

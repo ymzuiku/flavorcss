@@ -1,14 +1,8 @@
 export default function Github() {
   return (
-    <div className="row center-center group hover:bg-teal-100 h-12/12 px-12">
-      {/* <a
-        href="https://github.com/ymzuiku/fbc"
-        className="pr-12 text-teal-600 h-38 line-38 item-center cursor-pointer group:hover:text-teal-900 fs-xs"
-      >
-        Start Us
-      </a> */}
+    <div className="row center-center group hover:bg-teal-100 h-12/12 px-sm">
       <svg
-        className="text-teal-600 group:hover:text-teal-900  fill-current w-16 h-16"
+        className="text-teal-600 group:hover:text-teal-900  fill-current w-md h-md"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
       >

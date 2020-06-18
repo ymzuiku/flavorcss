@@ -3,8 +3,8 @@ import { DocCode, DocH1, DocP, DocPage, DocPre } from "components/Doc";
 import CodeEditor from "components/CodeEditor";
 
 const cssSec =
-  "my-8 bg-indigo-100 p-6 bl-6 br-6 radius-2 b-indigo-200 text-indigo-900 ";
-const cssSpan = "fs-30 px-12 mx-4";
+  "my-sm bg-indigo-100 p-sm bl-sm br-sm radius-sm b-indigo-200 text-indigo-900 ";
+const cssSpan = "fs-2xl px-sm mx-xs";
 
 export default () => {
   return (
@@ -44,25 +44,25 @@ export default () => {
           wrap
           theme="dracula"
           className="col-r"
-          codeClassName="bg-gray-900 p-12 radius-2 bl-4 br-4 b-gray-700"
+          codeClassName="bg-gray-900 p-md radius-sm bl-sm br-sm b-gray-700"
         >{`
 <!-- 我们随意修改下面的样式, 实时更新这个按钮，例如，我们把 px-16 改为 px-32-->
 <button class="
-  px-16 py-8 radius-4 m-24 
+  px-lg py-sm radius-sm m-lg 
   bg-blue-600 hover:bg-blue-500 active:bg-blue-400 
   shadow hover:shadow-lg 
   transform hover:move-y--1 active:move-y-0 
   text-white cursor-pointer an-500"
 >hello</button>
         `}</CodeEditor>
-        <div className="h-24"></div>
+        <div className="h-lg"></div>
         <DocP>
           我们可以看到我们很随意的就创建了一个性感的按钮，并且可以很轻松的把它移动到任何项目中，我们只需要引入
           <DocCode>fbc.js</DocCode>
           ，然后拷贝这行 html 代码，使用在任何前端项目中即可
         </DocP>
         <DocP>
-          刚开始有部分人会对这种写法感到困惑，我们这么多css类是什么意思？我们是回到了编写内联样式的时代么？
+          刚开始有部分人会对这种写法感到困惑，我们这么多css类是什么意思？我们是回到了编写内联样式的时代么？我们不应该遵守关注点分离原则么？
         </DocP>
         <DocP>
           首先我们回答一个它和内联样式的区别：内联样式无法直接编写媒体查询和伪类，而这些是我们编写响应式界面非常频繁的操作。
@@ -134,28 +134,28 @@ export default () => {
           </div>
           <div className={cssSec}>
             <span className={cssSpan}>2.</span>
-            fbc 会阻塞渲染，花费大约 70ms
-            创建所有布局相关的原子类，包括媒体查询，大约840kb 的 css
+            fbc 会阻塞渲染，花费大约 30ms
+            创建所有布局相关的原子类，包括媒体查询，大约370kb 的 css
             代码；然后常规渲染页面，此时我们不会就好像将 css 文件放在 head
             引入一样，用户不会看到页面有布局闪动的变化
           </div>
           <div className={cssSec}>
             <span className={cssSpan}>3.</span>
-            紧接着 fbc 花费大约 70ms 创建 hover 相关的伪类，大约有770kb的 css
+            紧接着 fbc 花费大约 25ms 创建 hover 相关的伪类，大约有330kb的 css
             代码，用户这时候鼠标交互页面能看到相应的相应。
           </div>
           <div className={cssSec}>
             <span className={cssSpan}>4.</span>
-            fbc 会延迟 600ms，花费大约 250ms，创建
+            fbc 会延迟 100ms，花费大约 90ms，创建
             active、focus、group（跨层级的组合伪类）、结合媒体查询的伪类等复杂原子类，这是非常庞大的原子类，大约有
-            3100kb 的 css 代码，用户这时候鼠标点击按钮能看到点击的样式。
+            1300kb 的 css 代码，用户这时候鼠标点击按钮能看到点击的样式。
           </div>
         </DocP>
 
         <div className="h-24"></div>
         <DocP>
-          而用户在第70ms之后就可以立即访问到页面；总共460ms的计算时常，最终创建了大概
-          4500 kb 的 css
+          而用户在第70ms之后就可以立即访问到页面；总共140ms的计算时常，最终创建了大概
+          1900 kb 的 css
           代码，整个过程用户是无感知的。包含了成千上万种颜色、透明度、尺寸、媒体查询、伪类的组合，并且都以
           css values
           的方式运作，我们可以随意的覆盖基础变量，足以满足绝大部分样式的需求，你现在访问的这个网站是完全是用

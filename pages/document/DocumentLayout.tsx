@@ -11,7 +11,7 @@ export default ({ children, nowUrl }: Props) => {
   return (
     <div className="h-vh col">
       <Nav />
-      <div className="mt-48 flex-1 row sm:col-r">
+      <div className="mt-2xl flex-1 row sm:col-r">
         <DocumentSide nowUrl={nowUrl} />
         {children}
       </div>
