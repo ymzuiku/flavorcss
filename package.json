@@ -1,6 +1,6 @@
 {
   "name": "fbc",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "full build css",
   "main": "umd/index.js",
   "types": "umd/index.d.ts",
@@ -9,7 +9,7 @@
     "browser": "cd static && browser-sync start --server --files './*' --files '*.html'",
     "lib": "node rollup.config.js",
     "deplpy": "node deploy.js",
-    "build": "next build && next export",
+    "build": "next build",
     "dev": "host=local next -p 4090",
     "start": "host=local next start -p 4090"
   },

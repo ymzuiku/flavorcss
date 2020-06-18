@@ -166,6 +166,16 @@ const mkactive = (n: string, v: string) => {
     max += `.sm\\:${h}\\:${n}:${h}{${v}}`;
     min += `.lg\\:${h}\\:${n}:${h}{${v}}`;
   });
+
+  [
+    ["first", "first-child"],
+    ["last", "last-child"],
+    ["odd", "nth-child(odd)"],
+  ].forEach(([h, h2]) => {
+    css += `.${h}\\:${n}:${h2}{${v}} `;
+    max += `.sm\\:${h}\\:${n}:${h2}{${v}}`;
+    min += `.lg\\:${h}\\:${n}:${h2}{${v}}`;
+  });
 };
 
 function mkEle() {
@@ -855,7 +865,7 @@ setTimeout(() => {
     start(mkactive);
     mkEle();
     console.timeEnd("fbc-3");
-  }, 600);
+  }, 100);
 });
 
 (window as any).__fbc = true;

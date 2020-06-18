@@ -24,7 +24,7 @@ export default () => {
           等文件，也没有使用 css-in-js 等内联样式的方案。
         </DocP>
         <DocP>您需要的仅仅是在html中引用 fbc，它很小，只有6kb(gzip):</DocP>
-        <DocPre>{`<script src="https://unpkg.com/fbc@0.4.0/umd/index.js"></script>`}</DocPre>
+        <DocPre>{`<script src="https://unpkg.com/fbc@0.4.2/umd/index.js"></script>`}</DocPre>
         <DocP>或使用 npm :</DocP>
         <DocPre>{`npm install --save fbc`}</DocPre>
         <DocH1>原子类CSS</DocH1>
@@ -146,16 +146,16 @@ export default () => {
           </div>
           <div className={cssSec}>
             <span className={cssSpan}>4.</span>
-            fbc 会延迟 100ms，花费大约 90ms，创建
+            fbc 会延迟 100ms，花费大约 180ms，创建
             active、focus、group（跨层级的组合伪类）、结合媒体查询的伪类等复杂原子类，这是非常庞大的原子类，大约有
-            1300kb 的 css 代码，用户这时候鼠标点击按钮能看到点击的样式。
+            1800kb 的 css 代码，用户这时候鼠标点击按钮能看到点击的样式。
           </div>
         </DocP>
 
         <div className="h-24"></div>
         <DocP>
-          而用户在第70ms之后就可以立即访问到页面；总共140ms的计算时常，最终创建了大概
-          1900 kb 的 css
+          而用户在第30ms之后就可以立即访问到页面样式和布局；总共240ms的计算时长，最终创建了大概
+          3500 kb 的 css
           代码，整个过程用户是无感知的。包含了成千上万种颜色、透明度、尺寸、媒体查询、伪类的组合，并且都以
           css values
           的方式运作，我们可以随意的覆盖基础变量，足以满足绝大部分样式的需求，你现在访问的这个网站是完全是用
@@ -170,8 +170,8 @@ export default () => {
         <DocP>
           fbc
           尝试了许多方案和配置，最终在css覆盖和初始开销上选择了一个相对合适的边界，其实整个css编译过程用户并不能明显感知到。为此，我们放弃了一些
-          first-child、last-child、odd-child 等伪类，因为这些我们在使用 react 或
-          vue 的时候，可以很容易判断得到。
+          first-child、last-child、odd-child 等伪类
+          的第一时间创建，所以尽量不要在首页使用以上伪类设定变化明显的布局。
         </DocP>
         <div className="h-100"></div>
       </DocPage>
