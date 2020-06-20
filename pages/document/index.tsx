@@ -1,4 +1,4 @@
-import { DocCode, DocH1, DocP, DocPage, DocPre } from "components/Doc";
+import { DocCode, DocH1, DocP, DocPage, DocPre } from "components/Doc/comp";
 import CodeEditor from "components/CodeEditor";
 import Layout from './Layout';
 

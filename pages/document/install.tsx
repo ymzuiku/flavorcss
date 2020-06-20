@@ -1,4 +1,4 @@
-import doc from "components/Doc/doc";
+import doc from "components/Doc";
 import Layout from "./Layout";
 import Code from "components/Code";
 

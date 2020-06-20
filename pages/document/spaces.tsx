@@ -1,4 +1,4 @@
-import { DocH1, DocP, DocPage } from "components/Doc";
+import { DocH1, DocP, DocPage } from "components/Doc/comp";
 import Layout from "./Layout";
 
 export default () => {
