@@ -3,7 +3,7 @@ import Layout from "./Layout";
 
 export default () => {
   return (
-    <Layout nowUrl="/document/grid-template-auto-flow">
+    <Layout>
       <DocPage>
         <DocH1>float</DocH1>
         <DocP>page</DocP>

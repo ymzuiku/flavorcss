@@ -8,7 +8,7 @@ const cssSpan = "fs-2xl px-sm mx-xs";
 
 export default () => {
   return (
-    <Layout nowUrl="/document">
+    <Layout>
       <DocPage>
         <DocH1>fbc 是一个CSS库/方案</DocH1>
         <DocP>

@@ -3,7 +3,7 @@ import Layout from "./Layout";
 
 export default () => {
   return (
-    <Layout nowUrl="/document/install">
+    <Layout>
       <DocPage>
         <DocH1>install</DocH1>
         <DocP>page</DocP>

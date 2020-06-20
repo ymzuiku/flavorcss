@@ -2,7 +2,7 @@ import Layout from "./Layout";
 
 export default () => {
   return (
-    <Layout nowUrl="/example">
+    <Layout>
       <div>example</div>
     </Layout>
   );

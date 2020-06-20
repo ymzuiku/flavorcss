@@ -3,7 +3,7 @@ import Layout from "./Layout";
 
 export default () => {
   return (
-    <Layout nowUrl="/document/block-point">
+    <Layout>
       <DocPage>
         <DocH1>block-point</DocH1>
         <DocP>page</DocP>

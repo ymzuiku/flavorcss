@@ -21,7 +21,7 @@ export default ({ children, nowUrl, list }: DocumentlayoutProps) => {
         >
           <DocumentSide nowUrl={nowUrl} list={list} />
         </div>
-        <div className="lg:pl-4xl w-12/12">{children}</div>
+        <div className="lg:pl-5xl w-12/12">{children}</div>
       </div>
     </div>
   );

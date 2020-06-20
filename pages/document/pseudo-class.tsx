@@ -3,7 +3,7 @@ import Layout from "./Layout";
 
 export default () => {
   return (
-    <Layout nowUrl="/document/pseudo-class">
+    <Layout>
       <DocPage>
         <DocH1>pseudo-class</DocH1>
         <DocP>page</DocP>

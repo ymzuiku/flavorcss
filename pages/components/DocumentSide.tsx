@@ -38,8 +38,8 @@ export default function DocumentSide({ nowUrl, list }: DocumentSideProps) {
             <Link key={v.url} href={v.url}>
               <a
                 className={[
-                  "block cursor-pointer text-teal-800 hover:bg-teal-100 p-sm pl-lg fs-sm w-12/12 last:mb-lg",
-                  nowUrl === v.url && "fw-700 bg-teal-100",
+                  "block cursor-pointer text-teal-800 hover:bg-teal-100 p-sm pl-lg fs-sm w-12/12 last:mb-lg an-400 bl-0",
+                  nowUrl === v.url && "bl-md b-teal-700 fw-700 bg-teal-100",
                 ].join(" ")}
               >
                 {v.title}

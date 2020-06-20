@@ -3,7 +3,7 @@ import Layout from "./Layout";
 
 export default () => {
   return (
-    <Layout nowUrl="/document/box-sizing">
+    <Layout>
       <DocPage>
         <DocH1>box-sizing</DocH1>
         <DocP>page</DocP>

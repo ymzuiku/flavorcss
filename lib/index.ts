@@ -652,13 +652,13 @@ function start(mk: any) {
       }
     });
 
-    for (let i = 0; i <= 100; i += 5) {
+    for (let i = 1; i <= 100; i += 5) {
       mk(`${n}-opa-${i}`, `--${n}-opa: ${i / 100}`);
     }
     mk(`${n}-opa-0`, `--${n}-opa: 0`);
   });
 
-  for (let i = 0; i <= 100; i += 5) {
+  for (let i = 1; i <= 100; i += 5) {
     mk(`opa-${i}`, `opacity: ${i / 100}`);
   }
   mk(`opa-0`, `opacity: 0`);
