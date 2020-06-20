@@ -3,7 +3,7 @@ import CodeEditor from "components/CodeEditor";
 import Layout from './Layout';
 
 const cssSec =
-  "my-sm bg-indigo-100 p-sm bl-sm br-sm radius-sm b-indigo-200 text-indigo-900 ";
+  "my-sm bg-indigo-100 p-sm bl-sm br-sm radius-sm b-indigo-200 c-indigo-900 ";
 const cssSpan = "fs-2xl px-sm mx-xs";
 
 export default () => {
@@ -52,7 +52,7 @@ export default () => {
   bg-blue-600 hover:bg-blue-500 active:bg-blue-400 
   shadow hover:shadow-lg 
   transform hover:move-y--1 active:move-y-0 
-  text-white cursor-pointer an-500"
+  c-white cursor-pointer an-500"
 >hello</button>
         `}</CodeEditor>
         <div className="h-lg"></div>
@@ -70,7 +70,7 @@ export default () => {
         <DocP>
           关于更深层次问题，各CSS社区有许多讨论，这里有一篇比较深刻的文章描述:
           <a
-            className="text-teal-500 px-8 underline"
+            className="c-primary-500 px-8 underline"
             href="https://adamwathan.me/css-utility-classes-and-separation-of-concerns/"
           >
             CSS Utility Classes and "Separation of Concerns"
@@ -118,7 +118,7 @@ export default () => {
         <DocP>
           相信如果你真正长时间使用 Tailwind CSS
           就会遇到以上问题，并且会非常痛苦：
-          <span className="bg-pink-500 text-white p-4 radius-4">
+          <span className="bg-pink-500 c-white p-4 radius-4">
             明明遇到真爱，却不能在一起。
           </span>
         </DocP>

@@ -17,7 +17,7 @@ export default function DocumentSide({ list }: DocumentSideProps) {
   return (
     <aside
       className="min-w-5xl w-5xl sm:w-12/12 h-12/12 br-px b-gray-300 overflow-y-auto overflow-x-hidden"
-      style={{ "--mini-scrollbar-color": "var(--teal-800" } as any}
+      style={{ "--mini-scrollbar-color": "var(--primary-800" } as any}
     >
       <div
         ref={(r) => (ref.current = r)}
@@ -28,7 +28,7 @@ export default function DocumentSide({ list }: DocumentSideProps) {
             return (
               <p
                 key={v.head}
-                className="text-teal-500 fw-500 fs-xs px-lg py-sm pt-md"
+                className="c-primary-500 fw-500 fs-xs px-lg py-sm pt-md"
               >
                 {v.head}
               </p>
@@ -38,8 +38,8 @@ export default function DocumentSide({ list }: DocumentSideProps) {
             <Link key={v.url} href={v.url}>
               <a
                 className={[
-                  "block cursor-pointer text-teal-800 hover:bg-teal-100 p-sm pl-lg fs-sm w-12/12 last:mb-lg an-400 bl-0",
-                  pathname === v.url && "bl-md b-teal-700 fw-700 bg-teal-100",
+                  "block cursor-pointer c-primary-800 hover:bg-primary-100 p-sm pl-lg fs-sm w-12/12 last:mb-lg an-400 bl-0",
+                  pathname === v.url && "bl-md b-primary-700 fw-700 bg-primary-100",
                 ].join(" ")}
               >
                 {v.title}

@@ -1,8 +1,8 @@
 export default function Github() {
   return (
-    <div className="row center-center group hover:bg-teal-100 h-12/12 px-sm">
+    <div className="row center-center group hover:bg-primary-100 h-12/12 px-sm">
       <svg
-        className="text-teal-600 group:hover:text-teal-900  fill-current w-md h-md"
+        className="c-primary-600 group:hover:c-primary-900  fill-current w-md h-md"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
       >
