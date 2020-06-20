@@ -5,7 +5,7 @@ import Nav from "pages/Nav";
 export default () => {
   return (
     <div className="h-vh overflow-y-auto">
-      <Nav />
+      <Nav nowUrl="/" />
       <div className="mt-3xl max-w-middle bg-white mx-auto col center-center b-px b-teal-300 radius-sm m-xl p-xl">
         <h1 className="fs-xxl text-teal-300">
           <b className="text-teal-800">f</b>ull{" "}

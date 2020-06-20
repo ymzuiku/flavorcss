@@ -1,6 +1,6 @@
-import DocumentLayout from "./DocumentLayout";
 import { DocCode, DocH1, DocP, DocPage, DocPre } from "components/Doc";
 import CodeEditor from "components/CodeEditor";
+import Layout from './Layout';
 
 const cssSec =
   "my-sm bg-indigo-100 p-sm bl-sm br-sm radius-sm b-indigo-200 text-indigo-900 ";
@@ -8,7 +8,7 @@ const cssSpan = "fs-2xl px-sm mx-xs";
 
 export default () => {
   return (
-    <DocumentLayout nowUrl="/document">
+    <Layout nowUrl="/document">
       <DocPage>
         <DocH1>fbc 是一个CSS库/方案</DocH1>
         <DocP>
@@ -42,7 +42,7 @@ export default () => {
         <DocP>这是一个带一点点性感的按钮：</DocP>
         <CodeEditor
           wrap
-          theme="dracula"
+          theme="dark"
           className="col-r"
           codeClassName="bg-gray-900 p-md radius-sm bl-sm br-sm b-gray-700"
         >{`
@@ -175,6 +175,6 @@ export default () => {
         </DocP>
         <div className="h-100"></div>
       </DocPage>
-    </DocumentLayout>
+    </Layout>
   );
 };

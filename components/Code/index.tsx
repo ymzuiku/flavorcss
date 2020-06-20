@@ -1,4 +1,4 @@
-import { useState, useEffect, ReactNode, CSSProperties } from "react";
+import { useState, useEffect, ReactNode, CSSProperties, useRef } from "react";
 
 export interface CodeProps {
   children: ReactNode;
@@ -15,7 +15,7 @@ let defaultProps: any;
 let themeList: any;
 
 export default ({
-  theme = "vscode",
+  theme = "light",
   language = "html",
   wrap,
   children,
@@ -25,6 +25,7 @@ export default ({
 }: CodeProps) => {
   const code = typeof children === "string" ? children.trim() : "";
   const [num, setNum] = useState(0);
+  const ref = useRef<HTMLPreElement>();
 
   useEffect(() => {
     import("./hightlight").then((d) => {
@@ -34,6 +35,12 @@ export default ({
       setNum(num + 1);
     });
   }, []);
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.setAttribute("contenteditable", "true");
+    }
+  }, [ref.current, Highlight]);
 
   if (!Highlight) {
     return null;
@@ -55,8 +62,8 @@ export default ({
       }) => {
         return (
           <pre
+            ref={(r) => (ref.current = r)}
             spellCheck={false}
-            contentEditable={true}
             className={[className, themeClassName].join(" ")}
             style={
               {

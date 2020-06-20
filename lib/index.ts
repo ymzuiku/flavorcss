@@ -23,9 +23,12 @@ const miniHidden = mini + " " + hidden;
 
 const scrollbar = `
 :root {
-  --mini-scrollbar-track: rgba(100, 101, 105, 0);
-  --mini-scrollbar-thumb: rgba(100, 101, 105, 0.25);
-  --mini-scrollbar-thumb-hover: rgba(100, 101, 105, 0.5);
+  --mini-scrollbar-color: 100,101,105;
+  --mini-scrollbar-bg: 100,101,105;
+  --mini-scrollbar-bg-opa: 0;
+  --mini-scrollbar-color-opa:.25;
+  --mini-scrollbar-hover: 100,101,105;
+  --mini-scrollbar-hover-opa:.25;
   --mini-scrollbar-size: 6px;
 }
 .${mini} {
@@ -36,14 +39,14 @@ const scrollbar = `
   height: var(--mini-scrollbar-size);
 }
 .${mini}::-webkit-scrollbar-track {
-  background: var(--mini-scrollbar-track);
+  background: rgba(var(--mini-scrollbar-bg), var(--mini-scrollbar-bg-opa));
 }
 .${mini}::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  background: var(--mini-scrollbar-thumb);
+  border-radius: 0px;
+  background: rgba(var(--mini-scrollbar-color), var(--mini-scrollbar-color-opa));
 }
 .${mini}::-webkit-scrollbar-thumb:hover {
-  background: var(--mini-scrollbar-thumb-hover);
+  background: rgba(var(--mini-scrollbar-hover), var(--mini-scrollbar-hover-opa));
 }
 .${hidden}::-webkit-scrollbar-thumb {
   background: rgba(100, 100, 100, 0) !important;
@@ -211,6 +214,7 @@ function start(mk: any) {
     mk(`move-x--${i}\\/12`, `--move-x:calc(0px - var(--b-${i}));`);
     mk(`move-y--${i}\\/12`, `--move-y:calc(0px - var(--b-${i}))`);
   }
+  
 
   for (let i = 0; i <= 100; i += 5) {
     const a = i ? i / 100 : 0;
@@ -229,6 +233,9 @@ function start(mk: any) {
   for (let i = 0; i <= 10; i++) {
     mk(`skew-x-${i}0`, `--skew-x:${i * 10}deg`);
     mk(`skew-y-${i}0`, `--skew-y:${i * 10}deg`);
+  }
+  for (let i = 0; i <= 100; i += 10) {
+    mk(`z-${i}`, `z-index: ${i}`);
   }
 
   mk("container", "width: 100%");
@@ -848,7 +855,7 @@ css += `
 --pink-800: 151,39,109;
 --pink-900: 112,35,89;
 --shadow-color: 0,0,0;
---shadow-opa: 0.1;
+--shadow-opa: 0.13;
 --ease: cubic-bezier(0.23, 1, 0.32, 1);
 }
 `;
