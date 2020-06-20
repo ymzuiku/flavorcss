@@ -1,15 +1,10 @@
-import React, { ReactNode, useState } from "react";
+import React from "react";
 import DocumentLayout, {
   DocumentlayoutProps,
 } from "pages/components/DocumentLayout";
-import useSSRLayoutEffect from "components/useSSRLayoutEffect";
 
 export default ({ children }: DocumentlayoutProps) => {
-  const [pathname, setPathname] = useState("");
-  useSSRLayoutEffect(() => {
-    setPathname(location.pathname);
-  }, []);
-  return <DocumentLayout nowUrl={pathname} list={list} children={children} />;
+  return <DocumentLayout list={list} children={children} />;
 };
 
 const list = [

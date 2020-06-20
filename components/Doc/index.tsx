@@ -1,12 +1,20 @@
 import Code from "components/Code";
 
 export function DocPage(props: any) {
-  return <div className="p-lg w-12/12 lg:w-middle mx-auto text-teal-900" {...props}></div>;
+  return (
+    <div
+      className="p-lg w-12/12 lg:w-middle mx-auto text-teal-900"
+      {...props}
+    ></div>
+  );
 }
 
 export function DocCode(props: any) {
   return (
-    <code className="bg-teal-100 mx-sm my-md radius-sm py-px p-xs" {...props}></code>
+    <code
+      className="bg-teal-100 mx-sm my-md radius-sm py-px p-xs"
+      {...props}
+    ></code>
   );
 }
 
@@ -16,6 +24,10 @@ export function DocP(props: any) {
 
 export function DocH1(props: any) {
   return <h1 className="fs-3xl py-lg pt-lg fw-500" {...props}></h1>;
+}
+
+export function DocH2(props: any) {
+  return <h2 className="fs-2xl py-lg pt-lg fw-500" {...props}></h2>;
 }
 
 export function DocPre(props: any) {

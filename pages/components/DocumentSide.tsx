@@ -1,5 +1,6 @@
 import Link from "next/link";
 import useScrollTopRef from "components/useScrolllTopRef";
+import usePathname from "components/usePathname";
 export interface DocumentSideList {
   title?: string;
   head?: string;
@@ -7,13 +8,12 @@ export interface DocumentSideList {
 }
 
 export interface DocumentSideProps {
-  nowUrl?: string;
   list?: DocumentSideList[];
 }
 
-
-export default function DocumentSide({ nowUrl, list }: DocumentSideProps) {
+export default function DocumentSide({ list }: DocumentSideProps) {
   const ref = useScrollTopRef("DocumentSide");
+  const pathname = usePathname();
   return (
     <aside
       className="min-w-5xl w-5xl sm:w-12/12 h-12/12 br-px b-gray-300 overflow-y-auto overflow-x-hidden"
@@ -39,7 +39,7 @@ export default function DocumentSide({ nowUrl, list }: DocumentSideProps) {
               <a
                 className={[
                   "block cursor-pointer text-teal-800 hover:bg-teal-100 p-sm pl-lg fs-sm w-12/12 last:mb-lg an-400 bl-0",
-                  nowUrl === v.url && "bl-md b-teal-700 fw-700 bg-teal-100",
+                  pathname === v.url && "bl-md b-teal-700 fw-700 bg-teal-100",
                 ].join(" ")}
               >
                 {v.title}

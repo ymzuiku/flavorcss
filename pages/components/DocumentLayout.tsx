@@ -1,6 +1,7 @@
 import Nav from "pages/Nav";
 import { ReactNode } from "react";
 import DocumentSide, { DocumentSideProps } from "./DocumentSide";
+import usePathname from "components/usePathname";
 
 export interface DocumentlayoutProps extends DocumentSideProps {
   children: ReactNode;
@@ -8,9 +9,10 @@ export interface DocumentlayoutProps extends DocumentSideProps {
 }
 
 export default ({ children, nowUrl, list }: DocumentlayoutProps) => {
+
   return (
     <div className="h-vh col">
-      <Nav nowUrl={nowUrl} />
+      <Nav />
       <div className="mt-2xl h-auto flex-1 row">
         <div
           className="sm:none fixed left-0 bg-white z-10"
@@ -19,7 +21,7 @@ export default ({ children, nowUrl, list }: DocumentlayoutProps) => {
             maxHeight: "100vh",
           }}
         >
-          <DocumentSide nowUrl={nowUrl} list={list} />
+          <DocumentSide list={list} />
         </div>
         <div className="lg:pl-5xl w-12/12">{children}</div>
       </div>
