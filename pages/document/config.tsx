@@ -216,7 +216,7 @@ body {
         <h2 className={doc.h1}>高级配置</h2>
         <p className={doc.p}>
           修改媒体查询宽度 、开启 first-child、last-child、odd-child
-          等媒体查询等高级配置，为了兼容 SSR 方案中的配置，我们使用 DOM
+          等媒体查询等高级配置，为了更简单的兼容 SSR 方案，我们使用 DOM
           元素的属性进行描述配置。
         </p>
         <p className={doc.p}>添加下面元素在 fbc.js 脚本之前，进行配置：</p>

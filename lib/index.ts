@@ -369,7 +369,7 @@ function mkEle() {
     css +
     `@media screen and (min-width:${media}){${min}}` +
     `@media screen and (max-width:${media}){${max}}`;
-  document.head.appendChild(el);
+  document.body.appendChild(el);
   css = "";
   min = "";
   max = "";

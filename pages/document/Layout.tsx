@@ -10,9 +10,11 @@ export default ({ children }: DocumentlayoutProps) => {
 const list = [
   { head: "Document" },
   { title: "Why fbc?", url: "/document" },
+  { title: "对比其他原子类CSS库", url: "/document/vs-other" },
   { head: "入门" },
   { title: "安装", url: "/document/install" },
   { title: "浏览器支持", url: "/document/browser" },
+  { title: "SSR 支持", url: "/document/ssr" },
   { head: "核心概念" },
   { title: "运行机制", url: "/document/operating" },
   { title: "Utility-First", url: "/document/utility-first" },
