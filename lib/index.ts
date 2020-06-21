@@ -304,6 +304,7 @@ const fm = {
   around: "flex-around",
   auto: "auto",
   baseline: "baseline",
+  stretch: "stretch",
 } as any;
 
 const colors = [
@@ -594,60 +595,67 @@ function start(mk: any) {
     mk(n, `display:flex; flex-direction:${a}`);
   });
 
-  ["nowrap", "wrap", "wrap-reverse"].forEach((v) => {
+  ["nowrap", "wrap", "wrap-r"].forEach((v) => {
     mk(`flex-${v}`, `flex-wrap:${v}`);
   });
 
-  [
-    ["inital", "0 0 auto"],
-    ["1", "1 1 0%"],
-    ["auto", "1 1 auto"],
-    ["none", "none"],
-  ].forEach((v) => {
-    mk(`flex-${v[0]}`, `flex:${v[1]}`);
-  });
+  mk(`flex-1`, `flex:1 1 0%`);
+  mk(`flex-0`, `flex:0 1 auto`);
+  for (let a = 0; a <= 12; a++) {
+    for (let b = 0; b <= 1; b++) {
+      mk(`flex-${a}-${b}`, `flex:${a} ${b} 0%`);
+      mk(`flex-${a}-${b}-auto`, `flex:${a} ${b} auto`);
+    }
+  }
+  mk(`flex-none`, `flex: none`);
 
   [0, 1].forEach((v) => {
     mk(`flex-grow-${v}`, `flex-grow:${v}`);
     mk(`flex-shrink-${v}`, `flex-shrink:${v}`);
   });
 
-  // for (let i = -2; i <= 12; i++) {
-  //   mk(`order-${i}`, `order: ${i}`);
-  //   mk(
-  //     `grid-cols-${i}`,
-  //     `	grid-template-columns: repeat(${i}, minmax(0,${i}fr));`
-  //   );
-  //   mk(`grid-rows-${i}`, `	grid-template-rows: repeat(${i},minmax(0, ${i}fr));`);
-  // }
-  // for (let x = -2; x <= 12; x++) {
-  //   for (let y = -2; y <= 12; y++) {
-  //     mk("row-${x}-${y}", `grid-row-start: ${x};grid-row-end: ${y}`);
-  //     mk("col-${x}-${y}", `grid-column-start: ${x};grid-column-end: ${y}`);
-  //   }
-  // }
-  // mk(`grid-cols-none`, `	grid-template-columns:none`);
-  // mk(`grid-rows-none`, `	grid-template-rows:none`);
-  // mk(`col-auto`, `grid-column:auto`);
-  // mk(`col-start-auto`, `grid-column-start:auto`);
-  // mk(`col-end-auto`, `grid-column-end:auto`);
+  for (let i = -2; i <= 12; i++) {
+    mk(`order-${i}`, `order: ${i}`);
+    mk(
+      `grid-cols-${i}`,
+      `	grid-template-columns: repeat(${i}, minmax(0,${i}fr));`
+    );
+    mk(`grid-rows-${i}`, `	grid-template-rows: repeat(${i},minmax(0, ${i}fr));`);
+  }
+  mk(`order-first`, `order: -9999`);
+  mk(`order-last`, `order: 9999`);
 
-  // [
-  //   ["row", "row"],
-  //   ["col", "column"],
-  //   ["row-dense", "row dense"],
-  //   ["col-dense", "column dense"],
-  // ].forEach((v) => {
-  //   mk(`grid-flow-${v[0]}`, `grid-auto-flow:${v[1]}`);
-  // });
+  for (let x = -2; x <= 13; x++) {
+    for (let y = -2; y <= 13; y++) {
+      if (x === 12) {
+        x = 'auto' as any;
+      }
+      if (y === 13) {
+        y = 'auto' as any;
+      }
+      mk("row-${x}-${y}", `grid-row-start: ${x};grid-row-end: ${y}`);
+      mk("col-${x}-${y}", `grid-column-start: ${x};grid-column-end: ${y}`);
+    }
+  }
+  mk(`grid-cols-none`, `	grid-template-columns:none`);
+  mk(`grid-rows-none`, `	grid-template-rows:none`);
 
-  ["auto", "stretch", "center", "baseline"].forEach((v) => {
-    mk(`content-${v}`, `align-content:${fm[v]}`);
+  [
+    ["row", "row"],
+    ["col", "column"],
+    ["row-d", "row dense"],
+    ["col-d", "column dense"],
+  ].forEach((v) => {
+    mk(`grid-flow-${v[0]}`, `grid-auto-flow:${v[1]}`);
+  });
+
+  ["auto", "start", "center", "end", "stretch"].forEach((v) => {
     mk(`self-${v}`, `align-self:${fm[v]}`);
   });
 
   ["start", "center", "end", "between", "around"].forEach((j) => {
-    ["start", "center", "end", "auto", "baseline"].forEach((a) => {
+    mk(`content-${j}`, `align-content:${fm[j]}`);
+    ["start", "center", "end", "baseline", "auto"].forEach((a) => {
       mk(`${j}-${a}`, `justify-content: ${fm[j]}; align-items:${fm[a]}`);
     });
   });
@@ -685,7 +693,6 @@ function start(mk: any) {
     mk(`z-${i * 10}`, `z-index:${i * 10}`);
   }
   mk(`z-auto`, `z-index:zuto`);
-
 
   [["fs", "font-size"]].forEach((v) => {
     pt.forEach((s) => mk(`${v[0]}-${s}`, `${v[1]}:var(--fs-${s})`));
@@ -811,6 +818,9 @@ function start(mk: any) {
     ["py", "padding-top", "padding-bottom"],
     ["mx", "margin-left", "margin-right"],
     ["my", "margin-top", "margin-bottom"],
+    ["gap", "gap"],
+    ["row-gap", "row-gap"],
+    ["col-gap", "column-gap"],
   ].forEach((v) => {
     pt.forEach((s) =>
       mk(`${v[0]}-${s}`, `${v[1]}:var(--pt-${s}); ${v[2]}:var(--pt-${s})`)
@@ -839,9 +849,13 @@ function start(mk: any) {
     ["bb", "border-bottom"],
     ["bl", "border-left"],
     ["br", "border-right"],
+    ["outline", "outline"],
   ].forEach((v) => {
     pt.forEach((i) => {
-      mk(`${v[0]}-${i}`, `${v[1]}-width: var(--li-${i});solid #000;`);
+      mk(
+        `${v[0]}-${i}`,
+        `${v[1]}-width: var(--li-${i}); ${v[1]}-style: solid;`
+      );
     });
 
     ["solid", "dotted", "dashed"].forEach((s) => {

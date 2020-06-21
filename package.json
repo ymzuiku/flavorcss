@@ -9,7 +9,7 @@
     "browser": "cd static && browser-sync start --server --files './*' --files '*.html'",
     "lib": "node rollup.config.js",
     "deplpy": "node deploy.js",
-    "build": "next build",
+    "build": "next build && next export",
     "dev": "host=local next -p 4090",
     "start": "host=local next start -p 4090"
   },

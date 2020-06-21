@@ -1,4 +1,3 @@
-
 export default (n: string) => {
   return [
     [`.${n}-0`, `${n}: 0;`],
@@ -34,5 +33,24 @@ export default (n: string) => {
     [`.${n}-10/12`, `${n}: 83.333333%;`],
     [`.${n}-11/12`, `${n}: 91.666667%;`],
     [`.${n}-12/12`, `${n}: 100%;`],
+  ];
+};
+
+export const getUnitLiList = (n: string) => {
+  return [
+    [`.${n}-0`, `${n}: 0;`],
+    [`.${n}-px`, `${n}: var(--pt-px);`],
+    [`.${n}-none`, `${n}: var(--pt-none);`],
+    [`.${n}-auto`, `${n}: var(--pt-auto);`],
+    [`.${n}-xs`, `${n}: var(--pt-xs);`],
+    [`.${n}-sm`, `${n}: var(--pt-sm);`],
+    [`.${n}-md`, `${n}: var(--pt-md);`],
+    [`.${n}-lg`, `${n}: var(--pt-lg);`],
+    [`.${n}-xl`, `${n}: var(--pt-xl);`],
+    [`.${n}-2xl`, `${n}: var(--pt-2xl);`],
+    [`.${n}-3xl`, `${n}: var(--pt-3xl);`],
+    [`.${n}-4xl`, `${n}: var(--pt-4xl);`],
+    [`.${n}-5xl`, `${n}: var(--pt-5xl);`],
+    [`.${n}-6xl`, `${n}: var(--pt-6xl);`],
   ];
 };

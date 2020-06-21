@@ -1,6 +1,5 @@
 import doc from "components/Doc";
 import Layout from "./Layout";
-import CodeEditor from "components/CodeEditor";
 import DocumentTry from "pages/components/DocumentTry";
 
 export default () => {
@@ -22,8 +21,10 @@ export default () => {
           </thead>
           <tbody>
             {[
-              [".visible", "visibility: visible;"],
-              [".hidden", "visibility: hidden;"],
+              [".grid-flow-row", "grid-auto-flow: row;"],
+              [".grid-flow-col", "grid-auto-flow: column;"],
+              [".grid-flow-row-d", "grid-auto-flow: row dense;"],
+              [".grid-flow-col-d", "grid-auto-flow: column dense;"],  
             ].map((item, a) => {
               return (
                 <tr key={a}>

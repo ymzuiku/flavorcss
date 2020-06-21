@@ -67,14 +67,11 @@ export default ({
             className={[className, themeClassName].join(" ")}
             style={
               {
-                // fontFamily:
-                //   "Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace",
-                "-webkit-font-smoothing": "auto",
+                WebkitFontSmoothing: "auto",
                 ...themeStyle,
                 whiteSpace: wrap ? "pre-wrap" : undefined,
                 wordWrap: wrap ? "break-word" : undefined,
                 overflow: "auto",
-                // backgroundColor: themeBackground[theme],
                 backgroundColor: undefined,
                 ...style,
               } as any

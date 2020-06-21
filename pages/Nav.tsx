@@ -3,9 +3,9 @@ import Link from "next/link";
 import usePathname from "components/usePathname";
 
 const list = [
-  { title: "Home", url: "/" },
+  { title: "Example", url: "/" },
   { title: "Document", url: "/document" },
-  { title: "Example", url: "/example" },
+  // { title: "Example", url: "/example" },
 ];
 
 export default function Nav() {

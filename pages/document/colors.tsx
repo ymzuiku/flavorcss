@@ -55,12 +55,12 @@ export default () => {
           </thead>
           <tbody>
             {[
-              ["background-color", "bg-red-500", "bg-opa-50"],
-              ["border-color", "bg-red-500", "bg-opa-50"],
-              ["color", "c-red-500", "c-opa-50"],
-              ["box-shadow-color", "shadow-red-500", "shadow-opa-50"],
-              ["outline", "outline-red-500", "outline-opa-50"],
-              ["placeholder", "placeholder-red-500", "placeholder-opa-50"],
+              ["background-color", ".bg-red-500", ".bg-opa-50"],
+              ["border-color", ".bg-red-500", ".bg-opa-50"],
+              ["color", ".c-red-500", ".c-opa-50"],
+              ["box-shadow-color", ".shadow-red-500", ".shadow-opa-50"],
+              ["outline", ".outline-red-500", ".outline-opa-50"],
+              ["placeholder", ".placeholder-red-500", ".placeholder-opa-50"],
             ].map((item, a) => {
               return (
                 <tr key={a}>
@@ -77,19 +77,23 @@ export default () => {
           </tbody>
         </table>
         <h1 className={doc.h1}>颜色使用示例</h1>
-        <CodeEditor codeClassName={doc.editCode}>
+        <CodeEditor className={doc.edit} codeClassName={doc.editCode}>
           {`
-<div class="bg-gray-100 p-2xl row">
+<div class="p-2xl row">
   <!-- 背景色 -->
   <div class="bg-red-200 m-md w-2xl h-2xl radius-lg "></div>
   <!-- 背景色透明度 -->
   <div class="bg-red-300 bg-opa-10 m-md w-2xl h-2xl radius-lg "></div>
   <!-- border 颜色 -->
   <div class="b-red-400 m-md w-2xl h-2xl radius-lg bg-white b-xs "></div>
-  <!-- shadow颜色 -->
+  <!-- shadow 颜色 -->
   <div class="shadow-red-600 shadow-opa-50 shadow-md m-md w-2xl h-2xl radius-lg bg-red-500"></div>
-  <!-- 文字颜色设置 -->
+  <!-- outline 颜色 -->
+  <div class="outline-md outline-yellow-500 m-md w-2xl h-2xl"></div>
+  <!-- 文字颜色 -->
   <div class="c-red-700 m-md w-2xl h-2xl radius-lg ">Hello Text Color</div>
+  <!-- placeholder 颜色 -->
+  <input class="m-md w-4xl h-2xl bg-teal-100 radius-sm p-sm placeholder-blue-500" placeholder="Please input..."></input>
 </div>
 `}
         </CodeEditor>
