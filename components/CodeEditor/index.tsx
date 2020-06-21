@@ -6,6 +6,7 @@ interface Props {
   codeClassName?: string;
   style?: CSSProperties;
   children: string;
+  language?: string;
   theme?: "vscode" | "light" | "dark" | "dracula" | "oceanicNext";
   wrap?: boolean;
 }
@@ -14,6 +15,7 @@ export default ({
   theme = "dark",
   children,
   codeClassName,
+  language = "html",
   wrap,
   ...rest
 }: Props) => {
@@ -25,7 +27,13 @@ export default ({
   }, [code]);
   return (
     <div {...rest}>
-      <Code wrap={wrap} theme={theme} className={codeClassName} onInput={setCode}>
+      <Code
+        language={language}
+        wrap={wrap}
+        theme={theme}
+        className={codeClassName}
+        onInput={setCode}
+      >
         {children}
       </Code>
       <div ref={(r) => (ref.current = r)}></div>

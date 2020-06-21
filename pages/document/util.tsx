@@ -8,6 +8,9 @@ export default () => {
       <main className={doc.page}>
         <h1 className={doc.h1}>单位</h1>
         <h2 className={doc.h2}>大部分都会拥有以下单位：</h2>
+        <p className={doc.p}>
+          如：width、height、move、padding、margin、border-width、border-radius、
+        </p>
         <table className="w-12/12">
           <thead>
             <tr>
@@ -27,13 +30,22 @@ export default () => {
               ["lg", "指偏大单位"],
               ["xl", "指大单位"],
               [
-                "2xl ~ 6xl",
+                "2xl",
                 "超出常规尺寸，一般用于定制化的大小，如特大字体、按钮宽度",
               ],
-              ["0/12 ~ 12/12", "0%~100% 一般用于布局中"],
-              ["small", "只有width、height、move拥有该尺寸，默认为 640px"],
-              ["middle", "只有width、height、move拥有该尺寸，默认为 720px"],
-              ["large", "只有width、height、move拥有该尺寸，默认为 1024px"],
+              [
+                "3xl",
+                "超出常规尺寸，一般用于定制化的大小，如特大字体、按钮宽度",
+              ],
+              [
+                "4xl",
+                "超出常规尺寸，一般用于定制化的大小，如特大字体、按钮宽度",
+              ],
+              [
+                "5xl",
+                "超出常规尺寸，一般用于定制化的大小，如特大字体、按钮宽度",
+              ],
+              ["6xl", "最大尺寸特定尺寸"],
             ].map((item, a) => {
               return (
                 <tr key={a}>
@@ -49,7 +61,10 @@ export default () => {
             })}
           </tbody>
         </table>
-        <h2 className={doc.h2}>只有 width、height、move 尺寸拥有以下单位：</h2>
+        <h2 className={doc.h2}>布局相关单位拥有以下单位：</h2>
+        <p className={doc.p}>
+          如：width、height、move、left、top、bottom、right
+        </p>
         <table className="w-12/12">
           <thead>
             <tr>
@@ -59,11 +74,26 @@ export default () => {
           </thead>
           <tbody>
             {[
+              ["0", "0px"],
               ["vh", "100vh"],
               ["vm", "100vm"],
-              ["small", "默认为 640px"],
-              ["middle", "默认为 720px"],
-              ["large", "默认为 1024px"],
+              ["@sm", "添加前缀@区分于普通的 sm, 默认为 640px"],
+              ["@md", "添加前缀@区分于普通的 md, 默认为 720px"],
+              ["@lg", "添加前缀@区分于普通的 lg, 默认为 1024px"],
+              ["@xl", "添加前缀@区分于普通的 xl, 默认为 1280px"],
+              ["0/12", "0%"],
+              ["1/12", "8.333333%"],
+              ["2/12", "16.666667%"],
+              ["3/12", "25%"],
+              ["4/12", "33.333333%"],
+              ["5/12", "41.666667%"],
+              ["6/12", "50%"],
+              ["7/12", "58.333333%"],
+              ["8/12", "66.666667%"],
+              ["9/12", "0.75%"],
+              ["10/12", "83.333333%"],
+              ["11/12", "91.666667%"],
+              ["12/12", "100%"],
             ].map((item, a) => {
               return (
                 <tr key={a}>
@@ -89,10 +119,13 @@ export default () => {
           </thead>
           <tbody>
             {[
-              ["--fs-?", "指 font-size 的单位"],
-              ["--pt-?", "指宽度较大的属性的单位，如 width、margin、padding"],
+              ["--fs-sm, --fs-md ...", "指 font-size 的单位"],
               [
-                "--li-?",
+                "--pt-sm, --pt-md ...",
+                "指宽度较大的属性的单位，如 width、margin、padding",
+              ],
+              [
+                "--li-sm, --li-md ...",
                 "指宽度较小的属性的单位，如 border-weight、border-radius",
               ],
             ].map((item, a) => {

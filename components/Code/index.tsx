@@ -15,7 +15,7 @@ let defaultProps: any;
 let themeList: any;
 
 export default ({
-  theme = "light",
+  theme = "dracula",
   language = "html",
   wrap,
   children,

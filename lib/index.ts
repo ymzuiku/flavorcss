@@ -1,6 +1,6 @@
 console.time("fbc-base");
 let css = "";
-const sc = ["small", "middle", "large", "vw", "vh"];
+const sc = ["\\@sm", "\\@md", "\\@lg", "\\@xl", "vw", "vh"];
 const pt = [
   "auto",
   "0",
@@ -20,11 +20,13 @@ const pt = [
 const mini = "mini-scrollbar";
 const hidden = "mini-scrollbar-hidden";
 const miniHidden = mini + " " + hidden;
-const fbc = document.getElementById('fbc');
-const media = fbc && fbc.getAttribute('media-width') || '720px';
-const isUseChild = fbc && fbc.getAttribute('use-child');
-
-
+const fbc = document.getElementById("fbc");
+const mediaSm = (fbc && fbc.getAttribute("media-sm")) || "640px";
+const mediaMd = (fbc && fbc.getAttribute("media-md")) || "720px";
+const mediaLg = (fbc && fbc.getAttribute("media-lg")) || "1024px";
+const mediaXl = (fbc && fbc.getAttribute("media-xl")) || "1280px";
+const isUseChild = fbc && fbc.getAttribute("use-child");
+const isNotUseEffect = fbc && fbc.getAttribute("not-effect");
 
 const scrollbar = `
 :root {
@@ -67,9 +69,10 @@ font-size: 16px;
 --px: 0.5px;
 --vw: 100vw;
 --vh: 100vh;
---small: 640px;
---middle: 720px;
---large: 1024px;
+--\\@sm: 640px;
+--\\@md: 720px;
+--\\@lg: 1024px;
+--\\@xl: 1280px;
 --fs-0: 0rem;
 --fs-auto: auto;
 --fs-px: 0.5em;
@@ -223,7 +226,25 @@ font-size: 16px;
 `;
 
 css += `
-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}
+.sans	{font-family: var(--sans)}
+.serif {font-family: var(--serif)}
+.mono	{font-family: var(--mono)}
+.transform {
+  --move-x: 0; --move-y: 0; --rotate: 0; --skew-x: 0; --skew-y: 0; --scale-x: 1; --scale-y: 1;
+  transform: translateX(var(--move-x)) translateY(var(--move-y)) rotate(var(--rotate)) skewX(var(--skew-x)) skewY(var(--skew-y)) scaleX(var(--scale-x)) scaleY(var(--scale-y));
+}
+.smooth { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.smooth-auto { -webkit-font-smoothing: auto; -moz-osx-font-smoothing: auto; }
+.appearance-none {appearance:none;}
+.outline-none {outline:none}
+@keyframes fbc-spin { 0% {transform: rotate(0deg);} 100% {transform: rotate(359deg);}}
+${scrollbar}
+`;
+
+if (!isNotUseEffect) {
+  css += `
+html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}
+
 blockquote,dl,dd,h1,h2,h3,h4,h5,h6,figure,p,pre {
   margin: 0;
   font-size: 1em;
@@ -240,14 +261,15 @@ ol,ul {
   margin: 0;
   padding: 0;
 }
-img,svg,video,canvas,audio,iframe,embed,object {
-  display: block;
-  vertical-align: middle;
-}
 img, image {
   object-fit: cover;
   object-position: 50% 50%;
 }
+img,svg,video,canvas,audio,iframe,embed,object {
+  display: block;
+  vertical-align: middle;
+}
+
 *,
 *::before,
 *::after {
@@ -258,20 +280,8 @@ img, image {
 table {border-collapse: collapse}
 body {padding:0px;margin:0px;font-family: var(--sans);}
 * {box-sizing: border-box; outline:0;-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;}
-.sans	{font-family: var(--sans)}
-.serif {font-family: var(--serif)}
-.mono	{font-family: var(--mono)}
-.transform {
-  --move-x: 0; --move-y: 0; --rotate: 0; --skew-x: 0; --skew-y: 0; --scale-x: 1; --scale-y: 1;
-  transform: translateX(var(--move-x)) translateY(var(--move-y)) rotate(var(--rotate)) skewX(var(--skew-x)) skewY(var(--skew-y)) scaleX(var(--scale-x)) scaleY(var(--scale-y));
-}
-.smooth { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-.smooth-auto { -webkit-font-smoothing: auto; -moz-osx-font-smoothing: auto; }
-.appearance-none {appearance:none;}
-.outline-none {outline:none}
-@keyframes fbc-spin { 0% {transform: rotate(0deg);} 100% {transform: rotate(359deg);}}
-${scrollbar}
 `;
+}
 
 // details
 for (let x = 0; x <= 4; x++) {
@@ -314,38 +324,38 @@ for (let i = 1; i <= 12; i++) {
 
 css += `:root{${root}}`;
 
-let max = "";
-let min = "";
+let sm = "";
+let lg = "";
 
 const mknow = (n: string, v: string) => {
   css += `.${n}{${v}}`;
-  max += `.sm\\:${n}{${v}}`;
-  min += `.lg\\:${n}{${v}}`;
+  sm += `.sm\\:${n}{${v}}`;
+  lg += `.lg\\:${n}{${v}}`;
 };
 
 const mkimport = (n: string, v: string) => {
   css += `.${n}\\!{${v}}`;
-  max += `.sm\\:${n}\\!{${v}}`;
-  min += `.lg\\:${n}\\!{${v}}`;
-  min += `.hover\\:${n}:hover\\!{${v}}`;
+  sm += `.sm\\:${n}\\!{${v}}`;
+  lg += `.lg\\:${n}\\!{${v}}`;
+  lg += `.hover\\:${n}:hover\\!{${v}}`;
   ["focus", "active"].forEach((h) => {
     css += `.${h}\\:${n}:${h}\\!{${v}} `;
-    max += `.sm\\:${h}\\:${n}:${h}\\!{${v}}`;
-    min += `.lg\\:${h}\\:${n}:${h}\\!{${v}}`;
+    sm += `.sm\\:${h}\\:${n}:${h}\\!{${v}}`;
+    lg += `.lg\\:${h}\\:${n}:${h}\\!{${v}}`;
   });
 };
 
 const mkhover = (n: string, v: string) => {
-  min += `.hover\\:${n}:hover{${v}}`;
-  min += `.group:hover .group\\:hover\\:${n}{${v}}`;
+  lg += `.hover\\:${n}:hover{${v}}`;
+  lg += `.group:hover .group\\:hover\\:${n}{${v}}`;
 };
 
 const mkactive = (n: string, v: string) => {
   ["focus", "active"].forEach((h) => {
     css += `.${h}\\:${n}:${h}{${v}} `;
     css += `.group:${h} .group\\:${h}\\:${n}{${v}} `;
-    max += `.sm\\:${h}\\:${n}:${h}{${v}}`;
-    min += `.lg\\:${h}\\:${n}:${h}{${v}}`;
+    sm += `.sm\\:${h}\\:${n}:${h}{${v}}`;
+    lg += `.lg\\:${h}\\:${n}:${h}{${v}}`;
   });
 };
 
@@ -356,23 +366,22 @@ const mkchild = (n: string, v: string) => {
     ["odd", "nth-child(odd)"],
   ].forEach(([h, h2]) => {
     css += `.${h}\\:${n}:${h2}{${v}} `;
-    max += `.sm\\:${h}\\:${n}:${h2}{${v}}`;
-    min += `.lg\\:${h}\\:${n}:${h2}{${v}}`;
+    sm += `.sm\\:${h}\\:${n}:${h2}{${v}}`;
+    lg += `.lg\\:${h}\\:${n}:${h2}{${v}}`;
   });
 };
-
 
 function mkEle() {
   const el = document.createElement("style");
   el.type = "text/css";
   el.innerText =
     css +
-    `@media screen and (min-width:${media}){${min}}` +
-    `@media screen and (max-width:${media}){${max}}`;
+    `@media screen and (min-width:${mediaSm}){${lg}}` +
+    `@media screen and (max-width:${mediaSm}){${sm}}`;
   document.body.appendChild(el);
   css = "";
-  min = "";
-  max = "";
+  lg = "";
+  sm = "";
 }
 
 function start(mk: any) {
