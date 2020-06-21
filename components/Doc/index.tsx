@@ -13,5 +13,5 @@ export default {
   sectionSpan: "fs-2xl px-sm mx-xs",
   footerSpace: "h-4xl",
   th: "p-md bb-px bt-px wrap b-teal-200 bg-teal-100 text-start",
-  td: "p-md bb-px wrap b-teal-200 b-opa-50 c-teal-700 text-start",
+  td: "p-md bb-px wrap b-teal-200 b-opa-50 c-blue-700 text-start",
 };
