@@ -6,9 +6,9 @@ export default () => {
     <Layout>
       <main className={doc.page}>
         <h1 className={doc.h1}>单位</h1>
-        <h2 className={doc.h2}>大部分都会拥有以下单位：</h2>
+        <h2 className={doc.h2}>通用单位：</h2>
         <p className={doc.p}>
-          如：width、height、move、padding、margin、border-width、border-radius、
+          大部分都会拥有以下单位，如：width、height、move、padding、margin、border-width、border-radius、
         </p>
         <table className="w-12/12">
           <thead>
@@ -60,9 +60,9 @@ export default () => {
             })}
           </tbody>
         </table>
-        <h2 className={doc.h2}>布局相关单位拥有以下单位：</h2>
+        <h2 className={doc.h2}>屏幕单位：</h2>
         <p className={doc.p}>
-          如：width、height、move、left、top、bottom、right
+          布局相关，需要有较大范围的对象有屏幕单位：如：width、height、move、left、top、bottom、right
         </p>
         <table className="w-12/12">
           <thead>
@@ -147,4 +147,3 @@ export default () => {
     </Layout>
   );
 };
-

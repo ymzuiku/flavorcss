@@ -27,7 +27,7 @@ export default function DocumentSide({ list }: DocumentSideProps) {
             return (
               <p
                 key={v.head}
-                className="c-primary-500 fw-500 fs-xs px-lg py-sm pt-md"
+                className="c-green-800 c-opa-40 fw-500 fs-xs px-lg py-sm pt-md"
               >
                 {v.head}
               </p>

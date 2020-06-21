@@ -239,8 +239,8 @@ css += `
   --move-x: 0; --move-y: 0; --rotate: 0; --skew-x: 0; --skew-y: 0; --scale-x: 1; --scale-y: 1;
   transform: translateX(var(--move-x)) translateY(var(--move-y)) rotate(var(--rotate)) skewX(var(--skew-x)) skewY(var(--skew-y)) scaleX(var(--scale-x)) scaleY(var(--scale-y));
 }
-.smooth { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-.smooth-auto { -webkit-font-smoothing: auto; -moz-osx-font-smoothing: auto; }
+.smoothing { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.smoothing-auto { -webkit-font-smoothing: auto; -moz-osx-font-smoothing: auto; }
 .appearance-none {appearance:none;}
 .outline-none {outline:none}
 @keyframes fbc-spin { 0% {transform: rotate(0deg);} 100% {transform: rotate(359deg);}}
@@ -579,9 +579,9 @@ function start(mk: any) {
     mk(`${v}`, `position: ${v}`);
   });
 
-  mk("inset-0", "top:0;right:0;bottom:0;left:0;");
-  mk("inset-x-0", "right:0;left:0;");
-  mk("inset-y-0", "top:0;bottom:0;");
+  // mk("inset-0", "top:0;right:0;bottom:0;left:0;");
+  // mk("inset-x-0", "right:0;left:0;");
+  // mk("inset-y-0", "top:0;bottom:0;");
 
   mk("visible", "visibility:visible");
   mk("hidden", "visibility:hidden");
@@ -730,16 +730,17 @@ function start(mk: any) {
     }
   );
 
-  for (let i = -2; i <= 7; i++) {
-    mk(`letter-${i}`, `letter-spacing:${i * 0.05}em`);
+  for (let i = -5; i <= 10; i++) {
+    mk(`letter-${i}`, `letter-spacing:${(i * 0.025).toFixed(3)}em`);
   }
+
 
   mk(`line-none`, `line-height:1`);
   pt.forEach((i) => {
     mk(`line-${i}`, `line-height:var(--fs-${i})`);
   });
 
-  for (let i = 0; i <= 7; i++) {
+  for (let i = 1; i <= 9; i++) {
     mk(`fw-${i}00`, `font-weight:${i}00`);
   }
 

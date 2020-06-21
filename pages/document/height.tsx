@@ -1,13 +1,15 @@
-import { DocH1, DocP, DocPage } from "components/Doc/comp";
-import Layout from "./Layout";
+import DocumentUnitPage from "pages/components/DocumentUnitPage";
 
 export default () => {
   return (
-    <Layout>
-      <DocPage>
-        <DocH1>float</DocH1>
-        <DocP>page</DocP>
-      </DocPage>
-    </Layout>
+    <DocumentUnitPage
+      isScreen
+      title="Height"
+      list={[
+        ["h", "height"],
+        ["max-h", "max-height"],
+        ["min-h", "min-height"],
+      ]}
+    />
   );
 };

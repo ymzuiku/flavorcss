@@ -1,13 +1,13 @@
-import { DocH1, DocP, DocPage } from "components/Doc/comp";
-import Layout from "./Layout";
+import DocumentThinPage from "pages/components/DocumentThinPage";
 
 export default () => {
   return (
-    <Layout>
-      <DocPage>
-        <DocH1>float</DocH1>
-        <DocP>page</DocP>
-      </DocPage>
-    </Layout>
+    <DocumentThinPage
+      title="Font Style"
+      list={[
+        [".italic", "font-style: italic;"],
+        [".not-italic", "font-style: normal;"],
+      ]}
+    />
   );
 };
