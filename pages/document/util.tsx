@@ -1,6 +1,5 @@
 import doc from "components/Doc";
 import Layout from "./Layout";
-import Code from "components/Code";
 
 export default () => {
   return (
@@ -90,7 +89,7 @@ export default () => {
               ["6/12", "50%"],
               ["7/12", "58.333333%"],
               ["8/12", "66.666667%"],
-              ["9/12", "0.75%"],
+              ["9/12", "75%"],
               ["10/12", "83.333333%"],
               ["11/12", "91.666667%"],
               ["12/12", "100%"],
@@ -148,3 +147,4 @@ export default () => {
     </Layout>
   );
 };
+
