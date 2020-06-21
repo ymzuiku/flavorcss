@@ -22,7 +22,7 @@ export default function DocumentSide({ list }: DocumentSideProps) {
         ref={(r) => (ref.current = r)}
         className="h-12/12 overflow-y-auto overflow-x-hidden"
       >
-        {list.map((v) => {
+        {list && list.map((v) => {
           if (v.head) {
             return (
               <p
