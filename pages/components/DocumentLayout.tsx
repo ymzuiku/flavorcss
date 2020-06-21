@@ -1,7 +1,6 @@
 import Nav from "pages/Nav";
 import { ReactNode } from "react";
 import DocumentSide, { DocumentSideProps } from "./DocumentSide";
-import usePathname from "components/usePathname";
 
 export interface DocumentlayoutProps extends DocumentSideProps {
   children: ReactNode;

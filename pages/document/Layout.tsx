@@ -52,7 +52,7 @@ const list = [
   { title: "Grid Template Columns", url: "/document/grid-template-columns" },
   { title: "Grid Column Start End", url: "/document/grid-column-start-end" },
   { title: "Grid Template Rows", url: "/document/grid-template-rows" },
-  { title: "Grid Row Start/End", url: "/document/grid-template-start-end" },
+  { title: "Grid Row Start/End", url: "/document/grid-row-start-end" },
   { title: "Gap", url: "/document/gap" },
   { title: "Grid Auto Flow", url: "/document/grid-auto-flow" },
   { head: "Sizing" },

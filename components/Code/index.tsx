@@ -70,14 +70,6 @@ export default ({
                 // fontFamily:
                 //   "Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace",
                 "-webkit-font-smoothing": "auto",
-                "--mini-scrollbar-thumb":
-                  theme !== "vscode" && theme !== "light"
-                    ? "rgba(200,200,200,0.5)"
-                    : undefined,
-                "--mini-scrollbar-thumb-hover":
-                  theme !== "vscode" && theme !== "light"
-                    ? "rgba(200,200,200,0.6)"
-                    : undefined,
                 ...themeStyle,
                 whiteSpace: wrap ? "pre-wrap" : undefined,
                 wordWrap: wrap ? "break-word" : undefined,
