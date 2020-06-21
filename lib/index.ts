@@ -490,10 +490,6 @@ function start(mk: any) {
     mk(`skew-x-${i}0`, `--skew-x:${i * 10}deg`);
     mk(`skew-y-${i}0`, `--skew-y:${i * 10}deg`);
   }
-  for (let i = 0; i <= 100; i += 10) {
-    mk(`z-${i}`, `z-index: ${i}`);
-  }
-
   mk("border-box", "box-sizing: border-box");
   mk("content-box", "box-sizing: content-box");
 
@@ -686,8 +682,10 @@ function start(mk: any) {
   }
 
   for (let i = 0; i <= 100; i++) {
-    mk(`z-${i * 10}`, `z:${i * 10}`);
+    mk(`z-${i * 10}`, `z-index:${i * 10}`);
   }
+  mk(`z-auto`, `z-index:zuto`);
+
 
   [["fs", "font-size"]].forEach((v) => {
     pt.forEach((s) => mk(`${v[0]}-${s}`, `${v[1]}:var(--fs-${s})`));

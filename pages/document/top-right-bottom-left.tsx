@@ -2,6 +2,7 @@ import doc from "components/Doc";
 import Layout from "./Layout";
 import CodeEditor from "components/CodeEditor";
 import getUnitList from "utils/getUnitList";
+import DocumentTry from "pages/components/DocumentTry";
 
 
 export default () => {
@@ -43,13 +44,7 @@ export default () => {
             })}
           </tbody>
         </table>
-        <p className={doc.h3}>您可以在下面的代码尝试以上属性</p>
-        <CodeEditor className={doc.edit} codeClassName={doc.editCode}>{`
-<div class="row center-center">
-  <div class="bg-red-400 w-3xl h-3xl m-lg"></div>
-  <div class="bg-blue-400 w-3xl h-3xl m-lg"></div>
-</div>
-          `}</CodeEditor>
+        <DocumentTry />
       </main>
       <div className={doc.footerSpace}></div>
     </Layout>
