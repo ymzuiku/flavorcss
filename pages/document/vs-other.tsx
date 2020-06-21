@@ -45,12 +45,12 @@ export default () => {
         <table className="w-12/12 table-fixed">
           <thead>
             <tr>
-              <th className={doc.th2}>项目名</th>
-              <th className={doc.th2}>体积(Not Gzip)</th>
-              <th className={doc.th2}>All CSS Values</th>
-              <th className={doc.th2}>All Css Pseudo</th>
-              <th className={doc.th2}>All Css Media</th>
-              <th className={doc.th2}>Dynamic allocation</th>
+              <th className={doc.th}>项目名</th>
+              <th className={doc.th}>体积(Not Gzip)</th>
+              <th className={doc.th}>All CSS Values</th>
+              <th className={doc.th}>All Css Pseudo</th>
+              <th className={doc.th}>All Css Media</th>
+              <th className={doc.th}>Dynamic allocation</th>
             </tr>
           </thead>
           <tbody>
@@ -72,7 +72,7 @@ export default () => {
                 <tr key={a}>
                   {item.map((v, i) => {
                     return (
-                      <td key={i} className={doc.td2}>
+                      <td key={i} className={doc.td}>
                         {v}
                       </td>
                     );

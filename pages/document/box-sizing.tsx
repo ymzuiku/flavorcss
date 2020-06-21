@@ -22,7 +22,7 @@ export default () => {
             <tr>
               {["Class", "Properties"].map((v) => {
                 return (
-                  <th key={v} className={doc.th2}>
+                  <th key={v} className={doc.th}>
                     {v}
                   </th>
                 );
@@ -38,7 +38,7 @@ export default () => {
                 <tr key={a}>
                   {item.map((v, i) => {
                     return (
-                      <td key={i} className={doc.td2}>
+                      <td key={i} className={doc.td}>
                         {v}
                       </td>
                     );

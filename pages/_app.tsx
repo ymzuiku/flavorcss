@@ -26,7 +26,7 @@ export default function MyApp({ Component, pageProps }: any) {
             overflow: hidden;
           }`}
         </style>
-        <div id="fbc" use-full-media=""></div>
+        <div id="fbc" use-child="true"></div>
         {fbc}
       </Head>
 
