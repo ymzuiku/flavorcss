@@ -25,17 +25,22 @@ const mediaSm = (fbc && fbc.getAttribute("media-sm")) || "640px";
 const mediaMd = (fbc && fbc.getAttribute("media-md")) || "720px";
 const mediaLg = (fbc && fbc.getAttribute("media-lg")) || "1024px";
 const mediaXl = (fbc && fbc.getAttribute("media-xl")) || "1280px";
+
 const isUseChild = fbc && fbc.getAttribute("use-child");
 const isNotUseEffect = fbc && fbc.getAttribute("not-effect");
+const isUseMediaSm = fbc && fbc.getAttribute("use-media-sm");
+const isUseMediaMd = fbc && fbc.getAttribute("use-media-md");
+const isUseMediaLg = fbc && fbc.getAttribute("use-media-lg");
+const isUseMediaXl = fbc && fbc.getAttribute("use-media-xl");
 
 const scrollbar = `
 :root {
-  --mini-scrollbar-color: 100,101,105;
+  --mini-scrollbar-color: 150,151,155;
   --mini-scrollbar-bg: 100,101,105;
   --mini-scrollbar-bg-opa: 0;
-  --mini-scrollbar-color-opa:.25;
-  --mini-scrollbar-hover: 100,101,105;
-  --mini-scrollbar-hover-opa:.25;
+  --mini-scrollbar-color-opa:.45;
+  --mini-scrollbar-hover: 150,151,155;
+  --mini-scrollbar-hover-opa:.65;
   --mini-scrollbar-size: 6px;
 }
 .${mini} {
@@ -69,10 +74,11 @@ font-size: 16px;
 --px: 0.5px;
 --vw: 100vw;
 --vh: 100vh;
---\\@sm: 640px;
---\\@md: 720px;
---\\@lg: 1024px;
---\\@xl: 1280px;
+--\\@sm: ${mediaSm};
+--\\@md: ${mediaMd};
+--\\@lg: ${mediaLg};
+--\\@xl: ${mediaXl};
+--\\@container: 75%;
 --fs-0: 0rem;
 --fs-auto: auto;
 --fs-px: 0.5em;
@@ -325,37 +331,84 @@ for (let i = 1; i <= 12; i++) {
 css += `:root{${root}}`;
 
 let sm = "";
+let md = "";
 let lg = "";
+let xl = "";
 
 const mknow = (n: string, v: string) => {
   css += `.${n}{${v}}`;
-  sm += `.sm\\:${n}{${v}}`;
-  lg += `.lg\\:${n}{${v}}`;
+  md += `.pc\\:${n}{${v}}`;
+  if (isUseMediaSm) {
+    sm += `.sm\\:${n}{${v}}`;
+  }
+  if (isUseMediaMd) {
+    md += `.md\\:${n}{${v}}`;
+  }
+  if (isUseMediaLg) {
+    lg += `.lg\\:${n}{${v}}`;
+  }
+  if (isUseMediaXl) {
+    xl += `.xl\\:${n}{${v}}`;
+  }
 };
 
 const mkimport = (n: string, v: string) => {
   css += `.${n}\\!{${v}}`;
-  sm += `.sm\\:${n}\\!{${v}}`;
-  lg += `.lg\\:${n}\\!{${v}}`;
-  lg += `.hover\\:${n}:hover\\!{${v}}`;
+  md += `.pc\\:${n}\\!{${v}}`;
+  if (isUseMediaSm) {
+    sm += `.sm\\:${n}\\!{${v}}`;
+  }
+  if (isUseMediaMd) {
+    md += `.md\\:${n}\\!{${v}}`;
+  }
+  if (isUseMediaLg) {
+    lg += `.lg\\:${n}\\!{${v}}`;
+  }
+  if (isUseMediaXl) {
+    xl += `.xl\\:${n}\\!{${v}}`;
+  }
+
+  md += `.hover\\:${n}:hover\\!{${v}}`;
   ["focus", "active"].forEach((h) => {
     css += `.${h}\\:${n}:${h}\\!{${v}} `;
-    sm += `.sm\\:${h}\\:${n}:${h}\\!{${v}}`;
-    lg += `.lg\\:${h}\\:${n}:${h}\\!{${v}}`;
+    md += `.pc\\:${h}\\:${n}:${h}\\!{${v}}`;
+    if (isUseMediaSm) {
+      sm += `.sm\\:${h}\\:${n}:${h}\\!{${v}}`;
+    }
+    if (isUseMediaMd) {
+      md += `.md\\:${h}\\:${n}:${h}\\!{${v}}`;
+    }
+    if (isUseMediaLg) {
+      lg += `.lg\\:${h}\\:${n}:${h}\\!{${v}}`;
+    }
+    if (isUseMediaXl) {
+      xl += `.xl\\:${h}\\:${n}:${h}\\!{${v}}`;
+    }
   });
 };
 
 const mkhover = (n: string, v: string) => {
-  lg += `.hover\\:${n}:hover{${v}}`;
-  lg += `.group:hover .group\\:hover\\:${n}{${v}}`;
+  md += `.hover\\:${n}:hover{${v}}`;
+  md += `.group:hover .group\\:hover\\:${n}{${v}}`;
 };
 
 const mkactive = (n: string, v: string) => {
   ["focus", "active"].forEach((h) => {
     css += `.${h}\\:${n}:${h}{${v}} `;
     css += `.group:${h} .group\\:${h}\\:${n}{${v}} `;
-    sm += `.sm\\:${h}\\:${n}:${h}{${v}}`;
-    lg += `.lg\\:${h}\\:${n}:${h}{${v}}`;
+    md += `.pc\\:${h}\\:${n}:${h}{${v}}`;
+    if (isUseMediaSm) {
+      sm += `.sm\\:${h}\\:${n}:${h}{${v}}`;
+    }
+    if (isUseMediaMd) {
+      md += `.md\\:${h}\\:${n}:${h}{${v}}`;
+    }
+    if (isUseMediaLg) {
+      lg += `.lg\\:${h}\\:${n}:${h}{${v}}`;
+    }
+    if (isUseMediaXl) {
+      xl += `.xl\\:${h}\\:${n}:${h}{${v}}`;
+    }
   });
 };
 
@@ -366,21 +419,35 @@ const mkchild = (n: string, v: string) => {
     ["odd", "nth-child(odd)"],
   ].forEach(([h, h2]) => {
     css += `.${h}\\:${n}:${h2}{${v}} `;
-    sm += `.sm\\:${h}\\:${n}:${h2}{${v}}`;
-    lg += `.lg\\:${h}\\:${n}:${h2}{${v}}`;
+    md += `.pc\\:${h}\\:${n}:${h2}{${v}}`;
+    if (isUseMediaSm) {
+      sm += `.sm\\:${h}\\:${n}:${h2}{${v}}`;
+    }
+    if (isUseMediaMd) {
+      md += `.md\\:${h}\\:${n}:${h2}{${v}}`;
+    }
+    if (isUseMediaLg) {
+      lg += `.lg\\:${h}\\:${n}:${h2}{${v}}`;
+    }
+    if (isUseMediaXl) {
+      xl += `.xl\\:${h}\\:${n}:${h2}{${v}}`;
+    }
   });
 };
 
 function mkEle() {
   const el = document.createElement("style");
   el.type = "text/css";
-  el.innerText =
-    css +
-    `@media screen and (min-width:${mediaSm}){${lg}}` +
-    `@media screen and (max-width:${mediaSm}){${sm}}`;
+  css +=
+    `@media (min-width:${mediaSm}){${sm}}` +
+    `@media (min-width:${mediaMd}){${md}}` +
+    `@media (min-width:${mediaLg}){${lg}}` +
+    `@media (min-width:${mediaXl}){${xl}}`;
+
+  el.innerText = css;
   document.body.appendChild(el);
   css = "";
-  lg = "";
+  md = "";
   sm = "";
 }
 
@@ -427,7 +494,6 @@ function start(mk: any) {
     mk(`z-${i}`, `z-index: ${i}`);
   }
 
-  mk("container", "width: 100%");
   mk("border-box", "box-sizing: border-box");
   mk("content-box", "box-sizing: content-box");
 
@@ -647,6 +713,7 @@ function start(mk: any) {
   mk("break-word", "overflow-wrap:break-word;");
   mk("break-all", "work-break:break-all;");
   mk("nowrap", "overflow:hidden;text-overflow:ellipsis;white-space:nowrap");
+  mk("wrap", "overflow:hidden;overflow-wra:break-word; word-break:break-all;");
 
   ["baseline", "top", "middle", "bottom", "text-top", "text-bottom"].forEach(
     (v) => {
@@ -861,6 +928,9 @@ function start(mk: any) {
     `position: static;width: auto;height: auto;padding: 0;margin: 0;overflow: visible;clip: auto;white-space: normal;`
   );
 
+  mk("table-fixed", "table-layout: fixed");
+  mk("table-auto", "table-layout: auto");
+
   [
     "none",
     "block",
@@ -892,7 +962,6 @@ css += `.clearfix {
       clear: both;
     }
     }`;
-css += `@media screen and (max-width: var(--small)) {.container{max-width:var(--small)}}`;
 mkEle();
 console.timeEnd("fbc-base");
 

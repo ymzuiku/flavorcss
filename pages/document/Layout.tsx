@@ -18,7 +18,7 @@ const list = [
   { head: "核心概念" },
   { title: "运行机制", url: "/document/operating" },
   { title: "Utility-First", url: "/document/utility-first" },
-  { title: "响应式设计", url: "/document/relevant-design" },
+  { title: "响应式设计", url: "/document/responsive-design" },
   { title: "Pseudo-Class Variants", url: "/document/pseudo-class" },
   { title: "提取组件", url: "/document/use-components" },
   { head: "定制" },

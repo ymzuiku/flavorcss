@@ -10,7 +10,6 @@ export default function MyApp({ Component, pageProps }: any) {
 
   return (
     <>
-      {/* <div id="fbc" media-width="1424px" use-child="true" ></div> */}
       <Head>
         <title>My page title</title>
         <meta
@@ -27,6 +26,7 @@ export default function MyApp({ Component, pageProps }: any) {
             overflow: hidden;
           }`}
         </style>
+        <div id="fbc" use-full-media=""></div>
         {fbc}
       </Head>
 

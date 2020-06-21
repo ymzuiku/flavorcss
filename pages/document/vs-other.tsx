@@ -42,7 +42,7 @@ export default () => {
           特性, 为内联样式保留了最高权限，也为定制化 !important 预留了空间
         </p>
         <h2 className={doc.h2}>基本模块对比</h2>
-        <table className="w-12/12">
+        <table className="w-12/12 table-fixed">
           <thead>
             <tr>
               <th className={doc.th2}>项目名</th>
@@ -85,7 +85,7 @@ export default () => {
         <p className={doc.p}>
           tailwindcss 是一个发布前编译，所以它的功能相对于其他 Atomic Class
           数十倍丰富，但是每增加一项功能，就会带来相应的体积。即便我们使用
-          Purgecss 去清理未使用的类别，但是如果我们使用了非常多的 Atomic
+          Purgecss 去清理未使用的类别，但随着项目的庞大，我们会使用了非常多的 Atomic
           Class，体积还是会逐步接近 Purgecss 之前的体积。
         </p>
         <p className={doc.p}>

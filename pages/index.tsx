@@ -30,7 +30,7 @@ const base = `
 <!-- 您可实时编辑此代码 -->
 <section class="bg-gray-500 p-lg">
       <div
-        class="max-w-middle mx-auto w-full sm:max-w-12/12 lg:flex b-0 b-primary-500 shadow-md bg-white radius-md mt-lg overflow-hidden">
+        class="max-w-middle mx-auto w-full sm:max-w-12/12 md:flex b-0 b-primary-500 shadow-md bg-white radius-md mt-lg overflow-hidden">
         <img class="w-5xl h-12/12 sm:h-5xl sm:w-12/12" src="/static/imgs/build.jpeg"></img>
         <div class="p-lg col">
           <div class="fs-sm c-gray-600 row start-center items-center">
