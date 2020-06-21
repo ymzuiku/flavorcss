@@ -1,6 +1,5 @@
 import doc from "components/Doc";
 import Layout from "./Layout";
-import Code from "components/Code";
 import CodeEditor from "components/CodeEditor";
 
 export default () => {
@@ -22,7 +21,7 @@ export default () => {
           小练习，将下面的 pc:max-w-@sm 改为
           pc:max-w-8/12，然后拖动浏览器查看样式区别
         </p>
-        <CodeEditor className="col" codeClassName={doc.edit}>{`
+        <CodeEditor className="col" codeClassName={doc.editCode}>{`
 <div class="bg-gray-500 radius-md py-3xl w-12/12">
     <!-- 修改下面的 pc:max-w-@sm -->
     <div class="bg-white mx-auto pc:max-w-@sm radius-md row overflow-hidden shadow-md">

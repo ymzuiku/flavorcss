@@ -3,7 +3,7 @@ import { useState, useEffect, ReactNode, CSSProperties, useRef } from "react";
 export interface CodeProps {
   children: ReactNode;
   language?: string;
-  theme?: "vscode" | "light" | "dark" | "dracula" | "oceanicNext";
+  theme?: "nightOwl" | "github" | "light" | "dark" | "dracula" | "oceanicNext";
   className?: string;
   wrap?: boolean;
   onInput?: (code: string) => any;
@@ -15,7 +15,7 @@ let defaultProps: any;
 let themeList: any;
 
 export default ({
-  theme = "dracula",
+  theme = "nightOwl",
   language = "html",
   wrap,
   children,
@@ -67,6 +67,9 @@ export default ({
             className={[className, themeClassName].join(" ")}
             style={
               {
+                // fontFamily:
+                //   "Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace",
+                "-webkit-font-smoothing": "auto",
                 "--mini-scrollbar-thumb":
                   theme !== "vscode" && theme !== "light"
                     ? "rgba(200,200,200,0.5)"

@@ -77,7 +77,7 @@ export default () => {
           </tbody>
         </table>
         <h1 className={doc.h1}>颜色使用示例</h1>
-        <CodeEditor codeClassName={doc.edit}>
+        <CodeEditor codeClassName={doc.editCode}>
           {`
 <div class="bg-gray-100 p-2xl row">
   <!-- 背景色 -->

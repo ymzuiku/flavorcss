@@ -16,7 +16,7 @@ export default () => {
           中使用的示例.
         </p>
         <p className={doc.p}>编写 _app.js:</p>
-        <Code wrap theme="dracula" language="jsx" className={doc.edit}>
+        <Code wrap theme="dracula" language="jsx" className={doc.editCode}>
           {`
 import { useEffect } from "react";
 import Head from 'next/head';

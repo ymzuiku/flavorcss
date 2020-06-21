@@ -195,24 +195,6 @@ body {
   --primary-900: 123,52,30;
 }
 `}</Code>
-        <h2 className={doc.h2}>指定元素样式覆盖</h2>
-        <p className={doc.p}>
-          我们也可以使用 css values 的特性，仅对某些层级的元素进行样式覆盖
-        </p>
-        <CodeEditor language="css" codeClassName={doc.edit}>
-          {`
-<div class="max-w-100 p-md bg-teal-100">
-  <h2 class="fs-lg c-blue-500">Hello</h2>
-  <p class="fs-md">Configs</p>
-</div>
-<!-- 相同的样式，我们将基础字号覆盖为40px，蓝色覆盖为红色 -->
-<div class="max-w-100 p-md bg-teal-100" style="font-size:40px;
---blue-500:255,0,0">
-  <h2 class="fs-lg c-blue-500">Hello</h2>
-  <p class="fs-md">Configs</p>
-</div>
-`}
-        </CodeEditor>
         <h2 className={doc.h1}>高级配置</h2>
         <p className={doc.p}>
           修改媒体查询宽度 、开启 first-child、last-child、odd-child
@@ -221,9 +203,23 @@ body {
         </p>
         <p className={doc.p}>添加下面元素在 fbc.js 脚本之前，进行配置：</p>
         <Code className={doc.pre}>{`
-<div id="fbc" media-sm="640px" media-md="720px" media-lg="1024px" media-sm="1280px" use-child="true"></div>
+<div id="fbc" use-child="true"></div>
 `}</Code>
-        <h2 className="">默认的全局样式</h2>
+        <h2 className={doc.h2}>高级配置</h2>
+        <p className={doc.p}>
+          默认我们仅添加了一种媒体查询<span className={doc.code}>pc:</span>.
+          若要开启多维度媒体查询，我们可以进行配置，我们不建议开启多维度媒体查询，每开启一类媒体查询，会对运行机制中每个阶段的运行时常增加大约 25%。通常情况下，fbc 默认提供的 pc: 维度的媒体查询就足够了。
+        </p>
+        <p className={doc.p}>所开启所有媒体查询：sm/md/lg/xl</p>
+        <Code className={doc.pre}>{`
+<div id="fbc" use-media-sm="true" use-media-md="true" use-media-lg="true" use-media-xl="true"></div>
+`}</Code>
+        <p className={doc.p}>修改默认的媒体查询节点：</p>
+        <Code className={doc.pre}>{`
+<div id="fbc" media-sm="640px" media-md="720px" media-lg="1024px" media-sm="1280px" ></div>
+`}</Code>
+
+        <h2 className={doc.h2}>带全局污染样式</h2>
         <p className={doc.p}>
           fbc在 Normalize.css
           的基础上为了常规更好的编写代码，加入一部分全局样式，这对现有项目可能会有影响：
@@ -250,9 +246,26 @@ body { padding:0px;margin:0px;font-family: var(--sans);}
         <Code className={doc.pre}>{`
 <div id="fbc" not-effect="true"></div>
 `}</Code>
+        <h1 className={doc.h1}>指定元素样式覆盖</h1>
+        <p className={doc.p}>
+          我们也可以使用 css values 的特性，仅对某些层级的元素进行样式覆盖
+        </p>
+        <CodeEditor language="css" codeClassName={doc.editCode}>
+          {`
+<div class="max-w-100 p-md bg-teal-100">
+  <h2 class="fs-lg c-blue-500">Hello</h2>
+  <p class="fs-md">Configs</p>
+</div>
+<!-- 相同的样式，我们将基础字号覆盖为40px，蓝色覆盖为红色 -->
+<div class="max-w-100 p-md bg-teal-100" style="font-size:40px;
+--blue-500:255,0,0">
+  <h2 class="fs-lg c-blue-500">Hello</h2>
+  <p class="fs-md">Configs</p>
+</div>
+`}
+        </CodeEditor>
       </main>
       <div className={doc.footerSpace}></div>
-
     </Layout>
   );
 };

@@ -7,12 +7,12 @@ interface Props {
   style?: CSSProperties;
   children: string;
   language?: string;
-  theme?: "vscode" | "light" | "dark" | "dracula" | "oceanicNext";
+  theme?: "nightOwl" | "github" | "light" | "dark" | "dracula" | "oceanicNext";
   wrap?: boolean;
 }
 
 export default ({
-  theme = "dark",
+  theme = "nightOwl",
   children,
   codeClassName,
   language = "html",
