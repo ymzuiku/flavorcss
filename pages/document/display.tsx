@@ -52,7 +52,7 @@ export default () => {
             })}
           </tbody>
         </table>
-        <p className={doc.h3}>修改下面的代码，体验以下 Display 相关的类</p>
+        <p className={doc.h3}>在下面的代码使用 Display 相关的类</p>
         <CodeEditor className={doc.edit} codeClassName={doc.editCode}>{`
 <div class="block p-xl border-box mx-auto h-4xl bg-white">
     <div class="b-px p-sm b-gray-400 bt-0 first:bt-px">Try</div>

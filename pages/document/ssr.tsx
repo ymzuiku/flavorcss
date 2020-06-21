@@ -46,16 +46,16 @@ const useScript = (src: string) => {
 export default function MyApp({ Component, pageProps }: any) {
   // 建议将 node_modules/fbc/umd/index.js 拷贝至 static 下
   const fbc = useScript("/static/fbc.js");
+
+  // 不要使用 next/head 组件，next/head 组件会导致 head 渲染被 vdom 接管，从而清除 fbc 写入 head 中的 style
   return (
     <>
-      <Head>
-        <title>My page title</title>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui, viewport-fit=cover"
-        />
-        {fbc}
-      </Head>
+      <title>My page title</title>
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui, viewport-fit=cover"
+      />
+      {fbc}
       <div className="full">
         <Component {...pageProps} />
       </div>

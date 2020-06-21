@@ -21,17 +21,10 @@ export default () => {
           </thead>
           <tbody>
             {[
-              [".float-right", "float: right"],
-              [".float-left", "float: left"],
-              [".float-none", "float: none"],
-              [
-                ".clearfix",
-                `	&::after {
-  content: "";
-  display: table;
-  clear: both;
-}`,
-              ],
+              [".clear-right", "clear: right"],
+              [".clear-left", "clear: left"],
+              [".clear-both", "clear: both"],
+              [".clear-none", "clear: none"],
             ].map((item, a) => {
               return (
                 <tr key={a}>
@@ -47,11 +40,11 @@ export default () => {
             })}
           </tbody>
         </table>
-        <p className={doc.h3}>修改下面的代码，体验以下 Float 相关的类</p>
+        <p className={doc.h3}>在下面的代码使用 clear 相关的类</p>
         <CodeEditor className={doc.edit} codeClassName={doc.editCode}>{`
 <div class="block p-xl border-box mx-auto h-4xl bg-white">
     <div class="float-left b-px p-sm b-gray-400 m-xs">Item 1</div>
-    <div class="float-left b-px p-sm b-gray-400 m-xs">Item 2</div>
+    <div class="float-left clear-left b-px p-sm b-gray-400 m-xs">Item 2</div>
     <div class="float-right b-px p-sm b-gray-400 m-xs">Item 3</div>
 </div>
           `}</CodeEditor>

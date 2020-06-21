@@ -16,12 +16,11 @@ export default function DocumentSide({ list }: DocumentSideProps) {
   const pathname = usePathname();
   return (
     <aside
-      className="min-w-5xl w-5xl sm:w-12/12 h-12/12 br-px b-gray-300 overflow-y-auto overflow-x-hidden"
-      // style={{ "--mini-scrollbar-color": "var(--primary-800" } as any}
+      className="min-w-5xl w-5xl sm:w-12/12 h-12/12 overflow-y-auto overflow-x-hidden"
     >
       <div
         ref={(r) => (ref.current = r)}
-        className="h-12/12 overflow-y-auto overflow-x-hidden mini-scrollbar"
+        className="h-12/12 overflow-y-auto overflow-x-hidden"
       >
         {list.map((v) => {
           if (v.head) {

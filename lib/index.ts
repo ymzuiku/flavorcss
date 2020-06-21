@@ -445,7 +445,7 @@ function mkEle() {
     `@media (min-width:${mediaXl}){${xl}}`;
 
   el.innerText = css;
-  document.body.appendChild(el);
+  document.head.appendChild(el);
   css = "";
   md = "";
   sm = "";
@@ -520,6 +520,8 @@ function start(mk: any) {
 
   for (let x = 0; x <= 4; x++) {
     for (let y = 0; y <= 4; y++) {
+      x = x * 25;
+      y = y * 25;
       mk(`bg-${x}-${y}`, `background-position:${x}% ${y}%`);
       mk(`object-${x}-${y}`, `object-position:${x}% ${y}%`);
       mk(`transform-${x}-${y}`, `transform-position:${x}% ${y}%`);
@@ -534,10 +536,6 @@ function start(mk: any) {
 
   ["auto", "cover", "contain"].forEach((v) => {
     mk(`bg-${v}`, `background-size:${v}`);
-  });
-
-  ["auto", "hidden", "visible", "scroll", "auto"].forEach((v) => {
-    mk(`overflow-${v}`, `overflow:${v}`);
   });
 
   ["none", "auto"].forEach((v) => {
@@ -560,6 +558,10 @@ function start(mk: any) {
     mk(`resize-${v[0]}`, `resize:${v[1]}`);
   });
 
+  ["auto", "hidden", "visible", "scroll", "auto"].forEach((v) => {
+    mk(`overflow-${v}`, `overflow:${v}`);
+  });
+
   [
     ["x", "auto"],
     ["y", "auto"],
@@ -573,8 +575,8 @@ function start(mk: any) {
     mk(`overflow-${v[0]}-${v[1]}`, `overflow-${v[0]}:${v[1]}`);
   });
 
-  mk("scroll-touch", "	-webkit-overflow-scrolling:touch");
-  mk("scroll-auto", "	-webkit-overflow-scrolling:auto");
+  mk("scrolling-touch", "	-webkit-overflow-scrolling:touch");
+  mk("scrolling-auto", "	-webkit-overflow-scrolling:auto");
 
   ["static", "fixed", "absolute", "relative", "sticky"].forEach((v) => {
     mk(`${v}`, `position: ${v}`);

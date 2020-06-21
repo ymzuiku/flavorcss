@@ -47,7 +47,7 @@ export default () => {
             })}
           </tbody>
         </table>
-        <p className={doc.h3}>修改下面的代码，体验以下 Float 相关的类</p>
+        <p className={doc.h3}>在下面的代码使用 Float 相关的类</p>
         <CodeEditor className={doc.edit} codeClassName={doc.editCode}>{`
 <div class="block p-xl border-box mx-auto h-4xl bg-white">
     <div class="float-left b-px p-sm b-gray-400 m-xs">Item 1</div>
