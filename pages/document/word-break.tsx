@@ -1,13 +1,16 @@
-import { DocH1, DocP, DocPage } from "components/Doc/comp";
-import Layout from "./Layout";
+import DocumentThinPage from "pages/components/DocumentThinPage";
 
 export default () => {
   return (
-    <Layout>
-      <DocPage>
-        <DocH1>float</DocH1>
-        <DocP>page</DocP>
-      </DocPage>
-    </Layout>
+    <DocumentThinPage
+      title="Work break"
+      list={[
+        [".break-normal", "word-break: normal; overflow-wrap: normal"],
+        [".break-words", "overflow-wrap: break-word;"],
+        [".break-all", "word-break: break-all;"],
+        [".wrap-hidden", "overflow: hidden; text-overflow:ellipsis; white-space: nowrap"],
+        [".wrap", "overflow:hidden;overflow-wra:break-word; word-break:break-all;"],
+      ]}
+    />
   );
 };

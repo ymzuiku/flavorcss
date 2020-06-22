@@ -7,14 +7,23 @@ import DocumentUnitList from "pages/components/DocumentUnitList";
 interface Props {
   title: string;
   isScreen?: boolean;
+  info?: string[];
   list?: [string, string?][];
 }
 
-export default ({ title, isScreen, list }: Props) => {
+export default ({ title, isScreen, info, list }: Props) => {
   return (
     <Layout>
       <main className={doc.page}>
         <h1 className={doc.h1}>{title}</h1>
+        {info &&
+          info.map((str) => {
+            return (
+              <p key={str} className={doc.p}>
+                {str}
+              </p>
+            );
+          })}
         <p className={doc.p}>
           {title} 遵循<b className="mx-sm">通用单位</b>
           {isScreen && (
@@ -29,7 +38,7 @@ export default ({ title, isScreen, list }: Props) => {
         </p>
         <p className={doc.p}>
           下面各表均是{" "}
-          {list.map((item, i) => (
+          {list && list.map((item, i) => (
             <span className={doc.code}>
               {item[0]}
               {i !== list.length - 1 && "、"}
@@ -43,7 +52,7 @@ export default ({ title, isScreen, list }: Props) => {
           )}
           的遍历
         </p>
-        {list.map((item) => {
+        {list && list.map((item) => {
           return (
             <DocumentUnitList
               key={item[0]}

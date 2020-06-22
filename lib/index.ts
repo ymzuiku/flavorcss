@@ -628,10 +628,10 @@ function start(mk: any) {
   for (let x = -2; x <= 13; x++) {
     for (let y = -2; y <= 13; y++) {
       if (x === 12) {
-        x = 'auto' as any;
+        x = "auto" as any;
       }
       if (y === 13) {
-        y = 'auto' as any;
+        y = "auto" as any;
       }
       mk("row-${x}-${y}", `grid-row-start: ${x};grid-row-end: ${y}`);
       mk("col-${x}-${y}", `grid-column-start: ${x};grid-column-end: ${y}`);
@@ -705,7 +705,7 @@ function start(mk: any) {
     mk(v[0], `font-style: ${v[1]}`);
   });
 
-  ["start", "end", "left", "center", "right", "justify"].forEach((v) => {
+  ["left", "center", "right", "justify"].forEach((v) => {
     mk(`text-${v}`, `text-align:${v}`);
   });
 
@@ -718,10 +718,17 @@ function start(mk: any) {
     mk(`writespace-${v}`, `white-space:${v}`);
   });
 
+  ["fixed", "local", "scroll"].forEach((v) => {
+    mk(`bg-${v}`, `background-attachment:${v}`);
+  });
+
   mk("break-normal", "work-break:normal;overflow-wrap:normal;");
   mk("break-word", "overflow-wrap:break-word;");
   mk("break-all", "work-break:break-all;");
-  mk("nowrap", "overflow:hidden;text-overflow:ellipsis;white-space:nowrap");
+  mk(
+    "wrap-hidden",
+    "overflow:hidden;text-overflow:ellipsis;white-space:nowrap"
+  );
   mk("wrap", "overflow:hidden;overflow-wra:break-word; word-break:break-all;");
 
   ["baseline", "top", "middle", "bottom", "text-top", "text-bottom"].forEach(
@@ -733,7 +740,6 @@ function start(mk: any) {
   for (let i = -5; i <= 10; i++) {
     mk(`letter-${i}`, `letter-spacing:${(i * 0.025).toFixed(3)}em`);
   }
-
 
   mk(`line-none`, `line-height:1`);
   pt.forEach((i) => {
@@ -757,6 +763,10 @@ function start(mk: any) {
     ["none-underline", "none"],
   ].forEach((v) => {
     mk(v[0], `text-decoration:${v[1]}`);
+  });
+
+  ["collapse", "separate"].forEach((v) => {
+    mk(`border-${v}`, `border-collapse:${v}`);
   });
 
   // space
@@ -859,7 +869,7 @@ function start(mk: any) {
       );
     });
 
-    ["solid", "dotted", "dashed"].forEach((s) => {
+    ["solid", "dotted", "dashed", "double", "none"].forEach((s) => {
       mk(`${v[0]}-${s}`, `${v[1]}-style: ${s}`);
     });
   });

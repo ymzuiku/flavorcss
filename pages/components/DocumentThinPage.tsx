@@ -34,10 +34,10 @@ export default ({ title, info, list }: Props) => {
             </tr>
           </thead>
           <tbody>
-            {list.map((item, a) => {
+            {list && list.map((item, a) => {
               return (
                 <tr key={a}>
-                  {item.map((v, i) => {
+                  {item && item.map((v, i) => {
                     return (
                       <td key={i} className={doc.td}>
                         {v}

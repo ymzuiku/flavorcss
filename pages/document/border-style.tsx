@@ -1,13 +1,13 @@
-import { DocH1, DocP, DocPage } from "components/Doc/comp";
-import Layout from "./Layout";
+import DocumentThinPage from "pages/components/DocumentThinPage";
 
 export default () => {
   return (
-    <Layout>
-      <DocPage>
-        <DocH1>float</DocH1>
-        <DocP>page</DocP>
-      </DocPage>
-    </Layout>
+    <DocumentThinPage
+      title="Border Style"
+      list={["solid", "dotted", "dashed", "double", "none"].map((v) => [
+        `b-${v}`,
+        `border-style:${v}`,
+      ])}
+    />
   );
 };

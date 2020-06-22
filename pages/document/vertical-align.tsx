@@ -1,13 +1,17 @@
-import { DocH1, DocP, DocPage } from "components/Doc/comp";
-import Layout from "./Layout";
+import DocumentThinPage from "pages/components/DocumentThinPage";
 
 export default () => {
   return (
-    <Layout>
-      <DocPage>
-        <DocH1>float</DocH1>
-        <DocP>page</DocP>
-      </DocPage>
-    </Layout>
+    <DocumentThinPage
+      title="Vertical Align"
+      list={[
+        [".align-baseline", "vertical-align: baseline;"],
+        [".align-top", "vertical-align: top;"],
+        [".align-middle", "vertical-align: middle;"],
+        [".align-bottom", "vertical-align: bottom;"],
+        [".align-text-top", "vertical-align: text-top;"],
+        [".align-text-bottom", "vertical-align: text-bottom;"],
+      ]}
+    />
   );
 };
