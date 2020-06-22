@@ -92,12 +92,12 @@ const list = [
   { title: "Opacity", url: "/document/opacity" },
   { head: "Transition" },
   { title: "Transition Property", url: "/document/transition-property" },
-  { title: "Transition Duration", url: "/document/transition-duration" },
   {
     title: "Transition Timing Function",
     url: "/document/transition-timing-function",
   },
   { title: "Transition Delay", url: "/document/transition-delay" },
+  { title: "Animation Spin", url: "/document/animation-spin" },
   { head: "Transforms" },
   { title: "Scale", url: "/document/scale" },
   { title: "Rotate", url: "/document/rotate" },

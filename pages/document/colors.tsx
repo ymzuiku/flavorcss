@@ -14,7 +14,7 @@ function Item({ item, i }: any) {
             <div key={i} className="p-xl col center-center">
               <div
                 className={[
-                  "w-3xl h-3xl radius-lg transform hover:scale-120 an-450  shadow-xl shadow-opa-5",
+                  "w-3xl h-3xl radius-lg transform hover:scale-120 an-450  shadow-xl shadow-opacity-5",
                   v[1] === "255,255,255" && "b-px b-primary-200",
                 ].join(" ")}
                 style={{ background: `rgb(${v[1]})` }}
@@ -55,12 +55,12 @@ export default () => {
           </thead>
           <tbody>
             {[
-              ["background-color", ".bg-red-500", ".bg-opa-50"],
-              ["border-color", ".bg-red-500", ".bg-opa-50"],
-              ["color", ".c-red-500", ".c-opa-50"],
-              ["box-shadow-color", ".shadow-red-500", ".shadow-opa-50"],
-              ["outline", ".outline-red-500", ".outline-opa-50"],
-              ["placeholder", ".placeholder-red-500", ".placeholder-opa-50"],
+              ["background-color", ".bg-red-500", ".bg-opacity-50"],
+              ["border-color", ".bg-red-500", ".bg-opacity-50"],
+              ["color", ".c-red-500", ".c-opacity-50"],
+              ["box-shadow-color", ".shadow-red-500", ".shadow-opacity-50"],
+              ["outline", ".outline-red-500", ".outline-opacity-50"],
+              ["placeholder", ".placeholder-red-500", ".placeholder-opacity-50"],
             ].map((item, a) => {
               return (
                 <tr key={a}>
@@ -83,11 +83,11 @@ export default () => {
   <!-- 背景色 -->
   <div class="bg-red-200 m-md w-2xl h-2xl radius-lg "></div>
   <!-- 背景色透明度 -->
-  <div class="bg-red-300 bg-opa-10 m-md w-2xl h-2xl radius-lg "></div>
+  <div class="bg-red-300 bg-opacity-10 m-md w-2xl h-2xl radius-lg "></div>
   <!-- border 颜色 -->
   <div class="b-red-400 m-md w-2xl h-2xl radius-lg bg-white b-xs "></div>
   <!-- shadow 颜色 -->
-  <div class="shadow-red-600 shadow-opa-50 shadow-md m-md w-2xl h-2xl radius-lg bg-red-500"></div>
+  <div class="shadow-red-600 shadow-opacity-50 shadow-md m-md w-2xl h-2xl radius-lg bg-red-500"></div>
   <!-- outline 颜色 -->
   <div class="outline-md outline-yellow-500 m-md w-2xl h-2xl"></div>
   <!-- 文字颜色 -->

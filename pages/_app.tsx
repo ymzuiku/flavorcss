@@ -14,7 +14,6 @@ export default function MyApp({ Component, pageProps }: any) {
         content="width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui, viewport-fit=cover"
       />
       {/* <link rel="icon" href="/poet.ico" /> */}
-      <div id="fbc-use-child"></div>
       <style type="text/css">
         {`.icon {
             width: 1em; height: 1em;
@@ -23,7 +22,7 @@ export default function MyApp({ Component, pageProps }: any) {
             overflow: hidden;
           }`}
       </style>
-      <div id="fbc" use-child="true"></div>
+      {/* <div id="fbc" use-child="true"></div> */}
       {fbc}
 
       <div className="full">

@@ -7,6 +7,13 @@ export default () => {
     <Layout>
       <main className={doc.page}>
         <h1 className={doc.h1}>Overflow</h1>
+        <p className={doc.h3}>在下面的代码使用 overflow 相关的类</p>
+        <CodeEditor className={doc.edit} codeClassName={doc.editCode}>{`
+<div class="block p-md border-box mx-auto bg-white">
+<img class="object-cover object-0-0 bg-gray-400 m-md w-4xl h-4xl mx-auto" src="/static/imgs/building.jpeg">
+<img class="object-contain object-50-50 bg-gray-400 m-md w-4xl h-4xl mx-auto" src="/static/imgs/building.jpeg">
+</div>
+          `}</CodeEditor>
         <table className="w-12/12 table-fixed">
           <thead>
             <tr>
@@ -51,13 +58,6 @@ export default () => {
             })}
           </tbody>
         </table>
-        <p className={doc.h3}>在下面的代码使用 overflow 相关的类</p>
-        <CodeEditor className={doc.edit} codeClassName={doc.editCode}>{`
-<div class="overflow-auto block p-xl border-box h-4xl mx-auto bg-white">
-  <img class="object-cover object-0-0 bg-gray-400 m-md w-5xl h-5xl mx-auto" src="/static/imgs/building.jpeg">
-  <img class="object-contain object-50-50 bg-gray-400 m-md w-5xl h-5xl mx-auto" src="/static/imgs/building.jpeg">
-</div>
-          `}</CodeEditor>
       </main>
       <div className={doc.footerSpace}></div>
     </Layout>

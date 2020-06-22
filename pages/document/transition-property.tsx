@@ -1,13 +1,18 @@
-import { DocH1, DocP, DocPage } from "components/Doc/comp";
-import Layout from "./Layout";
+import DocumentThinPage from "pages/components/DocumentThinPage";
 
 export default () => {
   return (
-    <Layout>
-      <DocPage>
-        <DocH1>float</DocH1>
-        <DocP>page</DocP>
-      </DocPage>
-    </Layout>
+    <DocumentThinPage
+      title="Transition Property"
+      info={[
+        "transition 的时间由 0ms - 2000ms, 每50ms为一阶梯，例如：",
+        "transition-all-350 、transition-opacity-600.",
+        "下表列出支持的属性：",
+      ]}
+      list={["all", "opacity", "background", "transform", "none"].map((v) => [
+        `transition-${v}-?`,
+        `transition:${v} ? var(--ease)`,
+      ])}
+    />
   );
 };

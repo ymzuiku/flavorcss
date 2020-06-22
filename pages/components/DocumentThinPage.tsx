@@ -6,9 +6,10 @@ interface Props {
   title: string;
   info?: string[];
   list?: [string, string][];
+  CodeTry?: any;
 }
 
-export default ({ title, info, list }: Props) => {
+export default ({ title, info, list, CodeTry }: Props) => {
   return (
     <Layout>
       <main className={doc.page}>
@@ -21,6 +22,8 @@ export default ({ title, info, list }: Props) => {
               </p>
             );
           })}
+        {CodeTry ? <CodeTry /> : <DocumentTry />}
+
         <table className="w-12/12 table-fixed">
           <thead>
             <tr>
@@ -34,22 +37,23 @@ export default ({ title, info, list }: Props) => {
             </tr>
           </thead>
           <tbody>
-            {list && list.map((item, a) => {
-              return (
-                <tr key={a}>
-                  {item && item.map((v, i) => {
-                    return (
-                      <td key={i} className={doc.td}>
-                        {v}
-                      </td>
-                    );
-                  })}
-                </tr>
-              );
-            })}
+            {list &&
+              list.map((item, a) => {
+                return (
+                  <tr key={a}>
+                    {item &&
+                      item.map((v, i) => {
+                        return (
+                          <td key={i} className={doc.td}>
+                            {v}
+                          </td>
+                        );
+                      })}
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
-        <DocumentTry />
       </main>
       <div className={doc.footerSpace}></div>
     </Layout>

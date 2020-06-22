@@ -6,12 +6,12 @@ export default {
   h3: "fs-xl py-lg pt-lg fw-500",
   p: "line-3xl py-sm",
   editCode: "bg-gray-900 p-md bl-sm br-sm b-gray-700 mini-scrollbar",
-  edit: "b-px b-teal-900 b-opa-10 radius-sm overflow-hidden",
+  edit: "b-px b-teal-900 b-opacity-10 radius-sm overflow-hidden",
   pre: "my-sm bg-gray-900  p-lg radius-sm bl-sm br-sm b-gray-700 mono nowrap",
   section:
     "my-sm bg-indigo-100 p-sm bl-sm br-sm radius-sm b-indigo-200 c-indigo-900",
   sectionSpan: "fs-2xl px-sm mx-xs",
   footerSpace: "h-4xl",
   th: "p-md bb-px bt-px wrap b-teal-200 bg-teal-100 text-start",
-  td: "p-md bb-px wrap b-teal-200 b-opa-50 c-blue-700 text-start",
+  td: "p-md bb-px wrap b-teal-200 b-opacity-50 c-blue-700 text-start",
 };

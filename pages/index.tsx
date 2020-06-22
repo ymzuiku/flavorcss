@@ -44,10 +44,10 @@ const base = `
           <div class="fs-2xl c-primary-800 fw-700 pt-md">
             您是否有尝试过原子风格的CSS编写方式?
           </div>
-          <p class="fs-md c-primary-800 c-opa-70 line-2xl pt-md">
+          <p class="fs-md c-primary-800 c-opacity-70 line-2xl pt-md">
             原子风格非常好，但是原子的边界在哪里？定义多少原子，才能完全摆脱编写 css 类？
           </p>
-          <p class="fs-md c-primary-800 c-opa-70 line-2xl pt-md">
+          <p class="fs-md c-primary-800 c-opacity-70 line-2xl pt-md">
             对于
             TailwindCSS 的方案，唯一美中不足的就是无法满足所有CSS功能的前提下确保足够小的体积。fbc的出现就是为了解决此问题。
           </p>

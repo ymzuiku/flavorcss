@@ -6,7 +6,7 @@ export default () => {
       title="Opacity"
       list={Array(21)
         .fill(0)
-        .map((_, i) => [`opacity-${i * 5}`, `opacity:${i * 5}`])}
+        .map((_, i) => [`opacity-${i * 5}`, `opacity:${(i * 5 / 100).toFixed(2)}`])}
     />
   );
 };

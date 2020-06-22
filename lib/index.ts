@@ -37,10 +37,10 @@ const scrollbar = `
 :root {
   --mini-scrollbar-color: 150,151,155;
   --mini-scrollbar-bg: 100,101,105;
-  --mini-scrollbar-bg-opa: 0;
-  --mini-scrollbar-color-opa:.45;
+  --mini-scrollbar-bg-opacity: 0;
+  --mini-scrollbar-color-opacity:.45;
   --mini-scrollbar-hover: 150,151,155;
-  --mini-scrollbar-hover-opa:.65;
+  --mini-scrollbar-hover-opacity:.65;
   --mini-scrollbar-size: 6px;
 }
 .${mini} {
@@ -51,14 +51,14 @@ const scrollbar = `
   height: var(--mini-scrollbar-size);
 }
 .${mini}::-webkit-scrollbar-track {
-  background: rgba(var(--mini-scrollbar-bg), var(--mini-scrollbar-bg-opa));
+  background: rgba(var(--mini-scrollbar-bg), var(--mini-scrollbar-bg-opacity));
 }
 .${mini}::-webkit-scrollbar-thumb {
   border-radius: 0px;
-  background: rgba(var(--mini-scrollbar-color), var(--mini-scrollbar-color-opa));
+  background: rgba(var(--mini-scrollbar-color), var(--mini-scrollbar-color-opacity));
 }
 .${mini}::-webkit-scrollbar-thumb:hover {
-  background: rgba(var(--mini-scrollbar-hover), var(--mini-scrollbar-hover-opa));
+  background: rgba(var(--mini-scrollbar-hover), var(--mini-scrollbar-hover-opacity));
 }
 .${hidden}::-webkit-scrollbar-thumb {
   background: rgba(100, 100, 100, 0) !important;
@@ -220,7 +220,7 @@ font-size: 16px;
 --pink-800: 151,39,109;
 --pink-900: 112,35,89;
 --shadow-color: 0,0,0;
---shadow-opa: 0.13;
+--shadow-opacity: 0.13;
 --ease: cubic-bezier(0.23, 1, 0.32, 1);
 --ease-in: cubic-bezier(0.4, 0, 1, 1);
 --ease-out: cubic-bezier(0, 0, 0.2, 1);
@@ -236,12 +236,11 @@ css += `
 .serif {font-family: var(--serif)}
 .mono	{font-family: var(--mono)}
 .transform {
-  --move-x: 0; --move-y: 0; --rotate: 0; --skew-x: 0; --skew-y: 0; --scale-x: 1; --scale-y: 1;
-  transform: translateX(var(--move-x)) translateY(var(--move-y)) rotate(var(--rotate)) skewX(var(--skew-x)) skewY(var(--skew-y)) scaleX(var(--scale-x)) scaleY(var(--scale-y));
+  --translate-x: 0; --translate-y: 0; --rotate: 0; --skew-x: 0; --skew-y: 0; --scale-x: 1; --scale-y: 1;
+  transform: translateX(var(--translate-x)) translateY(var(--translate-y)) rotate(var(--rotate)) skewX(var(--skew-x)) skewY(var(--skew-y)) scaleX(var(--scale-x)) scaleY(var(--scale-y));
 }
 .smoothing { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 .smoothing-auto { -webkit-font-smoothing: auto; -moz-osx-font-smoothing: auto; }
-.appearance-none {appearance:none;}
 .outline-none {outline:none}
 @keyframes fbc-spin { 0% {transform: rotate(0deg);} 100% {transform: rotate(359deg);}}
 ${scrollbar}
@@ -290,11 +289,6 @@ body {padding:0px;margin:0px;font-family: var(--sans);}
 }
 
 // details
-for (let x = 0; x <= 4; x++) {
-  for (let y = 0; y <= 4; y++) {
-    css += `.orign-${x * 25}-${y * 25}{transform-orign:${x * 25}% ${y * 25}%}`;
-  }
-}
 
 const fm = {
   center: "center",
@@ -326,7 +320,7 @@ const colors = [
 let root = "";
 root += `--fbc-0: 0%`;
 for (let i = 1; i <= 12; i++) {
-  root += `--fbc-${i}: ${(100 * i) / 12}%; `;
+  root += `--fbc-${i}: ${((100 * i) / 12).toFixed(6)}%; `;
 }
 
 css += `:root{${root}}`;
@@ -454,26 +448,26 @@ function mkEle() {
 
 function start(mk: any) {
   sc.forEach((i) => {
-    mk(`move-x-${i}`, `--move-x:var(--${i})`);
-    mk(`move-y-${i}`, `--move-y:var(--${i})`);
-    mk(`move-x--${i}`, `--move-x:calc(0px - var(--${i}))`);
-    mk(`move-y--${i}`, `--move-y:calc(0px - var(--${i}))`);
+    mk(`translate-x-${i}`, `--translate-x:var(--${i})`);
+    mk(`translate-y-${i}`, `--translate-y:var(--${i})`);
+    mk(`translate-x--${i}`, `--translate-x:calc(0px - var(--${i}))`);
+    mk(`translate-y--${i}`, `--translate-y:calc(0px - var(--${i}))`);
   });
   pt.forEach((i) => {
-    mk(`move-x-${i}`, `--move-x:var(--pt-${i})`);
-    mk(`move-y-${i}`, `--move-y:var(--pt-${i})`);
-    mk(`move-x--${i}`, `--move-x:calc(0px - var(--pt-${i}))`);
-    mk(`move-y--${i}`, `--move-y:calc(0px - var(--pt-${i}))`);
+    mk(`translate-x-${i}`, `--translate-x:var(--pt-${i})`);
+    mk(`translate-y-${i}`, `--translate-y:var(--pt-${i})`);
+    mk(`translate-x--${i}`, `--translate-x:calc(0px - var(--pt-${i}))`);
+    mk(`translate-y--${i}`, `--translate-y:calc(0px - var(--pt-${i}))`);
   });
 
   for (let i = 0; i <= 12; i++) {
-    mk(`move-x-${i}\\/12`, `--move-x:var(--fbc-${i});`);
-    mk(`move-y-${i}\\/12`, `--move-y:var(--fbc-${i})`);
-    mk(`move-x--${i}\\/12`, `--move-x:calc(0px - var(--fbc-${i}));`);
-    mk(`move-y--${i}\\/12`, `--move-y:calc(0px - var(--fbc-${i}))`);
+    mk(`translate-x-${i}\\/12`, `--translate-x:var(--fbc-${i});`);
+    mk(`translate-y-${i}\\/12`, `--translate-y:var(--fbc-${i})`);
+    mk(`translate-x--${i}\\/12`, `--translate-x:calc(0px - var(--fbc-${i}));`);
+    mk(`translate-y--${i}\\/12`, `--translate-y:calc(0px - var(--fbc-${i}))`);
   }
 
-  for (let i = 0; i <= 200; i += 5) {
+  for (let i = 0; i <= 201; i += 5) {
     const a = i ? i / 100 : 0;
     mk(`scale-${i}`, `--scale-x:${a};--scale-y:${a}`);
     mk(`scale-x-${i}`, `--scale-x: ${a}`);
@@ -486,11 +480,11 @@ function start(mk: any) {
     mk(`rotate-${i * 10}`, `--rotate:${i * 10}deg`);
     mk(`rotate--${i * 10}`, `--rotate:-${i * 10}deg`);
   }
-
-  for (let i = 0; i <= 10; i++) {
-    mk(`skew-x-${i}0`, `--skew-x:${i * 10}deg`);
-    mk(`skew-y-${i}0`, `--skew-y:${i * 10}deg`);
+  for (let i = 0; i <= 101; i += 5) {
+    mk(`skew-x-${i}`, `--skew-x:${i}deg`);
+    mk(`skew-y-${i}`, `--skew-y:${i}deg`);
   }
+
   mk("border-box", "box-sizing: border-box");
   mk("content-box", "box-sizing: content-box");
 
@@ -521,7 +515,8 @@ function start(mk: any) {
       y = y * 25;
       mk(`bg-${x}-${y}`, `background-position:${x}% ${y}%`);
       mk(`object-${x}-${y}`, `object-position:${x}% ${y}%`);
-      mk(`transform-${x}-${y}`, `transform-position:${x}% ${y}%`);
+      mk(`orign-${x * 25}-${y * 25}`, `transform-orign:${x * 25}% ${y * 25}%`);
+      // mk(`transform-${x}-${y}`, `transform-position:${x}% ${y}%`);
     }
   }
 
@@ -585,6 +580,8 @@ function start(mk: any) {
 
   mk("visible", "visibility:visible");
   mk("hidden", "visibility:hidden");
+  mk("appearance-none", "appearance:none; -moz-appearance:none;-webkit-appearance:none;");
+
 
   [
     ["row", "row"],
@@ -660,24 +657,28 @@ function start(mk: any) {
     });
   });
 
-  for (let i = 0; i <= 20; i++) {
-    mk(`an-${i * 50}`, `transition: all ${i * 50}ms var(--ease)`);
-    mk(`spin-${i * 500}`, `animation: fbc-spin ${i * 0.5}s linear infinite`);
+  for (let i = 0; i <= 41; i++) {
+    mk(`transition-${i * 50}`, `transition: all ${i * 50}ms var(--ease)`);
+    mk(`spin-${i * 500}`, `animation: fbc-spin ${i * 1}s linear infinite`);
+    mk(`delay-${i * 500}`, `transition-delay: ${i * 50}ms`);
 
     [
       ["none", "none"],
-      ["opa", "opacity"],
+      ["opacity", "opacity"],
       ["bg", "background"],
       ["shadow", "box-shadow"],
-      ["trans", "transform"],
+      ["transform", "transform"],
     ].forEach((v) => {
-      mk(`an-${v[0]}-${i * 50}`, `transition: ${v[1]} ${i * 50}ms var(--ease)`);
+      mk(
+        `transition-${v[0]}-${i * 50}`,
+        `transition: ${v[1]} ${i * 50}ms var(--ease)`
+      );
     });
   }
 
   [
     ["ease", "var(--ease)"],
-    ["linear", "linear"],
+    ["ease-linear", "linear"],
     ["ease-in", "var(--ease-in)"],
     ["ease-out", "var(--ease-out)"],
     ["ease-in-out", "var(--ease-in-out)"],
@@ -876,7 +877,7 @@ function start(mk: any) {
 
   mk(
     `shadow`,
-    ` box-shadow: 0 1px 3px 0 rgba(var(--shadow-color), var(--shadow-opa)), 0 1px 2px 0 rgba(var(--shadow-color), calc(var(--shadow-opa) / 2));`
+    ` box-shadow: 0 1px 3px 0 rgba(var(--shadow-color), var(--shadow-opacity)), 0 1px 2px 0 rgba(var(--shadow-color), calc(var(--shadow-opacity) / 2));`
   );
 
   [
@@ -892,7 +893,7 @@ function start(mk: any) {
     const [n, a, b] = v;
     mk(
       `shadow-${n}`,
-      `box-shadow: ${a} rgba(var(--shadow-color), var(--shadow-opa)), ${b} rgba(var(--shadow-color), calc(var(--shadow-opa) / 2));`
+      `box-shadow: ${a} rgba(var(--shadow-color), var(--shadow-opacity)), ${b} rgba(var(--shadow-color), calc(var(--shadow-opacity) / 2));`
     );
   });
 
@@ -923,13 +924,13 @@ function start(mk: any) {
         if (once) {
           mk(
             `${n}-${c}${hov}`,
-            `--${n}-opa: 1; ${a}:rgba(var(--${c}), var(--${n}-opa));`
+            `--${n}-opacity: 1; ${a}:rgba(var(--${c}), var(--${n}-opacity));`
           );
         } else {
           for (let i = 1; i <= 9; i++) {
             mk(
               `${n}-${c}-${i}00${hov}`,
-              `--${n}-opa: 1; ${a}:rgba(var(--${c}-${i}00), var(--${n}-opa));`
+              `--${n}-opacity: 1; ${a}:rgba(var(--${c}-${i}00), var(--${n}-opacity));`
             );
           }
         }
@@ -937,12 +938,12 @@ function start(mk: any) {
     });
 
     for (let i = 0; i <= 100; i += 5) {
-      mk(`${n}-opa-${i}`, `--${n}-opa: ${i == 0 ? 0 : i / 100}`);
+      mk(`${n}-opacity-${i}`, `--${n}-opacity: ${i == 0 ? 0 : i / 100}`);
     }
   });
 
   for (let i = 0; i <= 100; i += 5) {
-    mk(`opa-${i}`, `opacity: ${i === 0 ? 0 : i / 100}`);
+    mk(`opacity-${i}`, `opacity: ${i === 0 ? 0 : i / 100}`);
   }
 
   mk(
@@ -1022,5 +1023,3 @@ setTimeout(() => {
     });
   });
 });
-
-(window as any).__fbc = true;
