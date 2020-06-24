@@ -1,4 +1,3 @@
-console.time("flavorcss-base");
 let css = "";
 const sc = ["screen-sm", "screen-md", "screen-lg", "screen-xl", "vw", "vh"];
 const pt = [
@@ -351,38 +350,38 @@ const mkactiveGroup = (n: string, v: string) => {
   });
 };
 
-const mkimport = (n: string, v: string) => {
-  css += `.${n}\\!{${v}} `;
-  md += `.pc\\:${n}\\!{${v}} `;
-  md += `.hover\\:${n}:hover\\!{${v}} `;
-};
+// const mkimport = (n: string, v: string) => {
+//   css += `.${n}\\!{${v}} `;
+//   md += `.pc\\:${n}\\!{${v}} `;
+//   md += `.hover\\:${n}:hover\\!{${v}} `;
+// };
 
-const mkimportActive = (n: string, v: string) => {
-  ["focus", "active"].forEach((h) => {
-    css += `.${h}\\:${n}:${h}\\!{${v}} `;
-    md += `.pc\\:${h}\\:${n}:${h}\\!{${v}} `;
-  });
-};
+// const mkimportActive = (n: string, v: string) => {
+//   ["focus", "active"].forEach((h) => {
+//     css += `.${h}\\:${n}:${h}\\!{${v}} `;
+//     md += `.pc\\:${h}\\:${n}:${h}\\!{${v}} `;
+//   });
+// };
 
-const mkchild = (n: string, v: string) => {
-  [
-    ["first", "first-child"],
-    ["last", "last-child"],
-    ["odd", "nth-child(odd)"],
-  ].forEach(([h, h2]) => {
-    css += `.${h}\\:${n}:${h2}{${v}} `;
-  });
-};
+// const mkchild = (n: string, v: string) => {
+//   [
+//     ["first", "first-child"],
+//     ["last", "last-child"],
+//     // ["odd", "nth-child(odd)"],
+//   ].forEach(([h, h2]) => {
+//     css += `.${h}\\:${n}:${h2}{${v}} `;
+//   });
+// };
 
-const mkchildMd = (n: string, v: string) => {
-  [
-    ["first", "first-child"],
-    ["last", "last-child"],
-    ["odd", "nth-child(odd)"],
-  ].forEach(([h, h2]) => {
-    md += `.pc\\:${h}\\:${n}:${h2}{${v}} `;
-  });
-};
+// const mkchildMd = (n: string, v: string) => {
+//   [
+//     ["first", "first-child"],
+//     ["last", "last-child"],
+//     // ["odd", "nth-child(odd)"],
+//   ].forEach(([h, h2]) => {
+//     md += `.pc\\:${h}\\:${n}:${h2}{${v}} `;
+//   });
+// };
 
 function mkEle() {
   const el = document.createElement("style");
@@ -416,7 +415,7 @@ function render(mk: any) {
     mk(`move-y--${i}\\/12`, `--move-y:calc(0px - var(--rate-${i}))`);
   }
 
-  for (let i = 0; i <= 201; i += 5) {
+  for (let i = 0; i <= 201; i += 10) {
     const a = i ? i / 100 : 0;
     mk(`scale-${i}`, `--scale-x:${a};--scale-y:${a}`);
     mk(`scale-x-${i}`, `--scale-x: ${a}`);
@@ -605,7 +604,10 @@ function render(mk: any) {
       );
     }
 
-    mk(`spin-${i * 500}`, `animation: flavorcss-spin ${i * 500}ms linear infinite`);
+    mk(
+      `spin-${i * 500}`,
+      `animation: flavorcss-spin ${i * 500}ms linear infinite`
+    );
     mk(`delay-${i * 500}`, `transition-delay: ${i * 500}ms`);
 
     [
@@ -974,42 +976,57 @@ css += `.clearfix {
 const mkList = [
   mknow,
   mkhover,
-  mkchild,
-  mkchildMd,
+  // mkchild,
+  // mkchildMd,
   mkfocus,
   mkfocusGroup,
   mkactive,
   mkactiveGroup,
-  mkimport,
-  mkimportActive,
+  // mkimport,
+  // mkimportActive,
 ];
 const mkListLength = mkList.length;
 
-const times = [
-  "mknow",
-  "mkhover",
-  "mkchild",
-  "mkchildMd",
-  "mkfocus",
-  "mkfocusGroup",
-  "mkactive",
-  "mkactiveGroup",
-  "mkimport",
-  "mkimportActive",
-];
-
 let mi = 0;
-console.time("end");
+
+// const times = [
+//   "mknow",
+//   "mkhover",
+//   // "mkchild",
+//   // "mkchildMd",
+//   "mkfocus",
+//   "mkfocusGroup",
+//   "mkactive",
+//   "mkactiveGroup",
+//   // "mkimport",
+//   // "mkimportActive",
+// ];
+
+// let len = 0;
+// console.time("end");
+// function timoutRun() {
+//   console.time(times[mi]);
+//   render(mkList[mi]);
+//   len += css.length;
+//   len += md.length;
+//   mkEle();
+//   console.timeEnd(times[mi]);
+//   mi++;
+//   console.log(len);
+//   if (mi < mkListLength) {
+//     setTimeout(timoutRun, 50);
+//   } else {
+//     console.timeEnd("end");
+//   }
+// }
+
 function timoutRun() {
-  console.time(times[mi]);
   render(mkList[mi]);
   mkEle();
-  console.timeEnd(times[mi]);
   mi++;
   if (mi < mkListLength) {
     setTimeout(timoutRun, 50);
-  } else {
-    console.timeEnd("end");
   }
 }
+
 timoutRun();
