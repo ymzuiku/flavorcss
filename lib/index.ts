@@ -1,5 +1,13 @@
 let css = "";
-const sc = ["screen-sm", "screen-md", "screen-lg", "screen-xl", "vw", "vh"];
+const sc = [
+  "screen-xs",
+  "screen-sm",
+  "screen-md",
+  "screen-lg",
+  "screen-xl",
+  "vw",
+  "vh",
+];
 const pt = [
   "auto",
   "0",
@@ -62,6 +70,7 @@ font-size: 16px;
 --px: 0.5px;
 --vw: 100vw;
 --vh: 100vh;
+--screen-xs: 480px;
 --screen-sm: 640px;
 --screen-md: 720px;
 --screen-lg: 1024px;

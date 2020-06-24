@@ -1,10 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import CodeEditor from "components/CodeEditor";
 import Nav from "pages/Nav";
+import doc from "components/doc";
 
 export default () => {
   return (
-    <div className="h-vh overflow-y-auto">
+    <div className="h-vh max-w-screen-lg mx-auto">
       <Nav />
       <div className="mt-3xl max-w-middle bg-white mx-auto col center-center b-px b-primary-300 radius-sm m-xl p-xl">
         <h1 className="fs-xxl c-primary-300">
@@ -17,21 +18,22 @@ export default () => {
         </h4>
       </div>
       <CodeEditor
-        className="col-r m-lg max-w-middle mx-auto shadow radius-sm overflow-hidden"
-        codeClassName="py-sm px-md mini-scrollbar bg-white max-w-middle mx-auto max-h-4xl"
+        className={[doc.edit].join(' ')}
+        codeClassName={[doc.editCode, 'max-h-5xl'].join(' ')}
       >
         {base}
       </CodeEditor>
+      <div className="h-4xl"></div>
     </div>
   );
 };
 
 const base = `
 <!-- 您可实时编辑此代码 -->
-<section class="bg-gray-500 p-lg">
+<section class="bg-gray-500 p-xl">
       <div
-        class="max-w-middle mx-auto w-full sm:max-w-12/12 md:flex b-0 b-primary-500 shadow-md bg-white radius-md mt-lg overflow-hidden">
-        <img class="w-5xl h-12/12 sm:h-5xl sm:w-12/12" src="/static/imgs/build.jpeg"></img>
+        class="pc:max-w-screen-md mx-auto w-full max-w-12/12 b-0 b-primary-500 shadow-md bg-white radius-md overflow-hidden col pc:row">
+        <img class="w-5xl h-12/12 pc:h-5xl pc:w-12/12" src="/static/imgs/build.jpeg"></img>
         <div class="p-lg col">
           <div class="fs-sm c-gray-600 row start-center items-center">
             <svg class="fill-current c-gray-500 w-md h-md mr-sm" xmlns="http://www.w3.org/2000/svg"

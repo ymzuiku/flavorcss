@@ -1,6 +1,6 @@
 import CodeEditor from "components/CodeEditor";
 import Layout from "./Layout";
-import doc from "components/Doc";
+import doc from "components/doc";
 import Link from "next/link";
 import Code from "components/Code";
 
@@ -41,11 +41,11 @@ export default () => {
           <code className={doc.code}>bootstrap</code>
           <code className={doc.code}>bulma</code>
         </p>
-        <p className={doc.p}>
+        <div className={doc.p}>
           另一类是<code className={doc.code}>Atomic CSS</code>
           风格的，其中最广为人喜爱的是
           <code className={doc.code}>Tailwind CSS</code>.
-        </p>
+        </div>
         <p className={doc.p}>
           本文档有着一个极简的交互编程工具，在下面的尝试中，你可以体会到原子类编写样式的高效，在面向开发者的体验方面，它是有一定价值的。
         </p>
@@ -66,11 +66,11 @@ export default () => {
 >hello</button>
         `}</CodeEditor>
         <div className="h-lg"></div>
-        <p className={doc.p}>
+        <div className={doc.p}>
           我们可以看到我们很随意的就创建了一个性感的按钮，并且可以很轻松的把它移动到任何项目中，我们只需要引入
           <code className={doc.code}>flavorcss.js</code>
           ，然后拷贝这行 html 代码，使用在任何前端项目中即可
-        </p>
+        </div>
         <p className={doc.p}>
           刚开始有部分人会对这种写法感到困惑，我们这么多css类是什么意思？我们是回到了编写内联样式的时代么？我们不应该遵守关注点分离原则么？
         </p>
@@ -100,7 +100,7 @@ export default () => {
           面临的一个关键问题：<b>我们如何确定原子类个数的边界？</b>
         </p>
         <p className={doc.p}>我们详细分析这个问题：</p>
-        <p className={doc.p}>
+        <div className={doc.p}>
           <div className={doc.section}>
             <span className={doc.sectionSpan}>1.</span>
             若预先定义的原子类太少，我们在编写样式过程中，还需要不断去定义基础的css对象，或者创建一个
@@ -124,7 +124,7 @@ export default () => {
             就无法在编译期间通过正则找到我们使用过的此类
             css。并且我们携带着庞大的 css 体积，在编译期间增加了不少开销。
           </div>
-        </p>
+        </div>
         <div className={doc.p}>
           相信如果你真正长时间使用 Tailwind CSS
           就会遇到以上问题，并且会非常痛苦：

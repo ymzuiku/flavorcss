@@ -1,7 +1,7 @@
 export default {
   page: "p-lg max-w-12/12 pc:max-w-9/12 mx-auto c-teal-900",
   code: "bg-teal-100 mx-sm my-md radius-sm py-px p-xs",
-  h1: "fs-3xl py-lg pt-lg fw-500",
+  h1: "fs-3xl py-lg pt-lg fw-500 bb-px b-teal-300 mb-md",
   h2: "fs-2xl py-lg pt-lg fw-500",
   h3: "fs-xl py-lg pt-lg fw-500",
   p: "line-3xl py-sm",

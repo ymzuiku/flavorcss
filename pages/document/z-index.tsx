@@ -1,4 +1,4 @@
-import doc from "components/Doc";
+import doc from "components/doc";
 import Layout from "./Layout";
 import DocumentTry from "pages/components/DocumentTry";
 

@@ -1,4 +1,4 @@
-import doc from "components/Doc";
+import doc from "components/doc";
 import getUnitList, { getUnitLiList } from "utils/getUnitList";
 
 export default ({

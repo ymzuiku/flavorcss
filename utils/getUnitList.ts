@@ -16,6 +16,7 @@ export default (n: string, v:string) => {
     [`.${n}-6xl`, `${v}: var(--pt-6xl);`],
     [`.${n}-vw`, `${v}: var(--vw);`],
     [`.${n}-vh`, `${v}: var(--vh);`],
+    [`.${n}-screen-xs`, `${v}: var(--screen-xs);`],
     [`.${n}-screen-sm`, `${v}: var(--screen-sm);`],
     [`.${n}-screen-md`, `${v}: var(--screen-md);`],
     [`.${n}-screen-lg`, `${v}: var(--screen-lg);`],

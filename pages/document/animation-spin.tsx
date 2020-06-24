@@ -1,6 +1,6 @@
 import DocumentThinPage from "pages/components/DocumentThinPage";
 import CodeEditor from "components/CodeEditor";
-import doc from "components/Doc";
+import doc from "components/doc";
 
 const CodeTry = () => {
   return (

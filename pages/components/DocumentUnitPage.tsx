@@ -1,4 +1,4 @@
-import doc from "components/Doc";
+import doc from "components/doc";
 import Layout from "pages/document/Layout";
 import DocumentTry from "pages/components/DocumentTry";
 import Link from "next/link";
