@@ -998,37 +998,6 @@ const mkListLength = mkList.length;
 
 let mi = 0;
 
-// const times = [
-//   "mknow",
-//   "mkhover",
-//   // "mkchild",
-//   // "mkchildMd",
-//   "mkfocus",
-//   "mkfocusGroup",
-//   "mkactive",
-//   "mkactiveGroup",
-//   // "mkimport",
-//   // "mkimportActive",
-// ];
-
-// let len = 0;
-// console.time("end");
-// function timoutRun() {
-//   console.time(times[mi]);
-//   render(mkList[mi]);
-//   len += css.length;
-//   len += md.length;
-//   mkEle();
-//   console.timeEnd(times[mi]);
-//   mi++;
-//   console.log(len);
-//   if (mi < mkListLength) {
-//     setTimeout(timoutRun, 50);
-//   } else {
-//     console.timeEnd("end");
-//   }
-// }
-
 function timoutRun() {
   render(mkList[mi]);
   mkEle();

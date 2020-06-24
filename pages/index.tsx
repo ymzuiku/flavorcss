@@ -7,19 +7,15 @@ export default () => {
   return (
     <div className="h-vh max-w-screen-lg mx-auto">
       <Nav />
-      <div className="mt-3xl max-w-middle bg-white mx-auto col center-center b-px b-primary-300 radius-sm m-xl p-xl">
-        <h1 className="fs-xxl c-primary-300">
-          <b className="c-primary-800">f</b>ull{" "}
-          <b className="c-primary-800">b</b>uild{" "}
-          <b className="c-primary-800">c</b>ss
-        </h1>
-        <h4 className="fs-sm p-sm c-primary-600">
-          提交编译好你所需要的所有CSS
-        </h4>
+      <div className="h-3xl"></div>
+      <div className={doc.h1}>Example</div>
+      <div className={doc.p}>
+        以下所有示例均使用 flavorcss，您可以编辑代码以实时更新渲染的组件
       </div>
+      <div className={doc.h2}>响应式卡片</div>
       <CodeEditor
-        className={[doc.edit].join(' ')}
-        codeClassName={[doc.editCode, 'max-h-5xl'].join(' ')}
+        className={[doc.edit].join(" ")}
+        codeClassName={[doc.editCode, "max-h-5xl"].join(" ")}
       >
         {base}
       </CodeEditor>
@@ -33,7 +29,7 @@ const base = `
 <section class="bg-gray-500 p-xl">
       <div
         class="pc:max-w-screen-md mx-auto w-full max-w-12/12 b-0 b-primary-500 shadow-md bg-white radius-md overflow-hidden col pc:row">
-        <img class="w-5xl h-12/12 pc:h-5xl pc:w-12/12" src="/static/imgs/build.jpeg"></img>
+        <img class="w-12/12 h-5xl  pc:w-5xl pc:h-12/12" src="/static/imgs/build.jpeg"></img>
         <div class="p-lg col">
           <div class="fs-sm c-gray-600 row start-center items-center">
             <svg class="fill-current c-gray-500 w-md h-md mr-sm" xmlns="http://www.w3.org/2000/svg"
@@ -50,8 +46,7 @@ const base = `
             原子风格非常好，但是原子的边界在哪里？定义多少原子，才能完全摆脱编写 css 类？
           </p>
           <p class="fs-md c-primary-800 c-opacity-70 line-2xl pt-md">
-            对于
-            TailwindCSS 的方案，唯一美中不足的就是无法满足所有CSS功能的前提下确保足够小的体积。flavorcss 的出现就是为了解决此问题。
+            对于预编译的方案，唯一美中不足的就是无法满足海量CSS功能的前提下确保足够小的体积。flavorcss 的出现就是为了解决此问题。
           </p>
           <div class="flex-1"></div>
           <div class="row start-center pt-md">
