@@ -3,7 +3,7 @@ import useScript from "hooks/useScript";
 import "./_app.css";
 
 export default function MyApp({ Component, pageProps }: any) {
-  const fbc = useScript("/static/fbc.js");
+  const flavorcss = useScript("/static/flavorcss.js");
   const font = useScript("//at.alicdn.com/t/font_1872911_kd304mu78oj.js");
 
   return (
@@ -22,8 +22,7 @@ export default function MyApp({ Component, pageProps }: any) {
             overflow: hidden;
           }`}
       </style>
-      {/* <div id="fbc" use-child="true"></div> */}
-      {fbc}
+      {flavorcss}
 
       <div className="full">
         <Component {...pageProps} />

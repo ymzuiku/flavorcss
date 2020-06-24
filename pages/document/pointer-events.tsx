@@ -1,13 +1,12 @@
-import { DocH1, DocP, DocPage } from "components/Doc/comp";
-import Layout from "./Layout";
+import DocumentThinPage from "pages/components/DocumentThinPage";
 
 export default () => {
   return (
-    <Layout>
-      <DocPage>
-        <DocH1>float</DocH1>
-        <DocP>page</DocP>
-      </DocPage>
-    </Layout>
+    <DocumentThinPage
+      title="Pointer Events"
+      list={["none", "auto"].map((v) => {
+        return [`.events-${v}`, `pointer-events:${v}`];
+      })}
+    />
   );
 };

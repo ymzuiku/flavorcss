@@ -7,7 +7,7 @@ export default () => {
       list={[
         "auto",
         "fixed",
-      ].map((v) => [`table-${v}`, `table-layout: ${v}`])}
+      ].map((v) => [`.table-${v}`, `table-layout: ${v}`])}
     />
   );
 };

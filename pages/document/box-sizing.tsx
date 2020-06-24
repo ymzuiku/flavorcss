@@ -10,7 +10,7 @@ export default () => {
       <main className={doc.page}>
         <h1 className={doc.h1}>Box Sizing</h1>
         <p className={doc.p}>
-          fbc 在默认的 use-effect 设定中，将所有元素默认设置为：box-sizing:
+          flavorcss 在默认的 use-effect 设定中，将所有元素默认设置为：box-sizing:
           border-box。这个做法是参考 bootstrap，实际工作中证明，它的确可以带来很多便利。取消这类预设，可以参考：
           <Link href="/document/config">
             <a>自定义配置</a>

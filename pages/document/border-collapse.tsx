@@ -7,7 +7,7 @@ export default () => {
       list={[
         "collapse",
         "separate",
-      ].map((v) => [`border-${v}`, `border-collapse: ${v}`])}
+      ].map((v) => [`.border-${v}`, `border-collapse: ${v}`])}
     />
   );
 };

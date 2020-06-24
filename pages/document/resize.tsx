@@ -1,13 +1,17 @@
-import { DocH1, DocP, DocPage } from "components/Doc/comp";
-import Layout from "./Layout";
+import DocumentThinPage from "pages/components/DocumentThinPage";
 
 export default () => {
   return (
-    <Layout>
-      <DocPage>
-        <DocH1>float</DocH1>
-        <DocP>page</DocP>
-      </DocPage>
-    </Layout>
+    <DocumentThinPage
+      title="Resize"
+      list={[
+        ["none", "none"],
+        ["both", "both"],
+        ["x", "vertical"],
+        ["y", "horizontal"],
+      ].map((v) => {
+        return [`.resize-${v[0]}`, `resize:${v[1]}`];
+      })}
+    />
   );
 };

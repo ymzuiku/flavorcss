@@ -13,8 +13,8 @@ export default function Nav() {
 
   return (
     <nav className="px-sm h-2xl bg-white fixed w-12/12 top-0 left-0 bb-px b-gray-300 row start-center z-20">
-      <img className="w-xl h-xl mr-md" src="/static/imgs/fbc-logo.svg"></img>
-      <h1 className="fs-2xl c-black fw-700 mr-lg" >fbc</h1>
+      <img className="w-xl h-xl mr-md" src="/static/imgs/flavorcss-logo.svg"></img>
+      <h1 className="fs-2xl c-black fw-700 mr-lg" >flavorcss</h1>
       {list.map((v) => {
         const match =
         v.url === "/" ? pathname === v.url : pathname.indexOf(v.url) > -1;

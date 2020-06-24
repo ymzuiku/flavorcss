@@ -9,10 +9,11 @@ interface Props {
   isScreen?: boolean;
   info?: string[];
   CodeTry?: any;
+  code?: string;
   list?: [string, string?][];
 }
 
-export default ({ title, isScreen, info, list, CodeTry }: Props) => {
+export default ({ title, isScreen, info, list, CodeTry, code }: Props) => {
   return (
     <Layout>
       <main className={doc.page}>
@@ -54,7 +55,7 @@ export default ({ title, isScreen, info, list, CodeTry }: Props) => {
           )}
           的遍历
         </p>
-        {CodeTry ? <CodeTry /> : <DocumentTry />}
+        {CodeTry ? <CodeTry /> : <DocumentTry code={code} />}
         {list &&
           list.map((item) => {
             return (

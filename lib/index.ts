@@ -1,6 +1,6 @@
-console.time("fbc-base");
+console.time("flavorcss-base");
 let css = "";
-const sc = ["\\@sm", "\\@md", "\\@lg", "\\@xl", "vw", "vh"];
+const sc = ["screen-sm", "screen-md", "screen-lg", "screen-xl", "vw", "vh"];
 const pt = [
   "auto",
   "0",
@@ -19,19 +19,8 @@ const pt = [
 
 const mini = "mini-scrollbar";
 const hidden = "mini-scrollbar-hidden";
-const miniHidden = mini + " " + hidden;
-const fbc = document.getElementById("fbc");
-const mediaSm = (fbc && fbc.getAttribute("media-sm")) || "640px";
-const mediaMd = (fbc && fbc.getAttribute("media-md")) || "720px";
-const mediaLg = (fbc && fbc.getAttribute("media-lg")) || "1024px";
-const mediaXl = (fbc && fbc.getAttribute("media-xl")) || "1280px";
-
-const isUseChild = fbc && fbc.getAttribute("use-child");
-const isNotUseEffect = fbc && fbc.getAttribute("not-effect");
-const isUseMediaSm = fbc && fbc.getAttribute("use-media-sm");
-const isUseMediaMd = fbc && fbc.getAttribute("use-media-md");
-const isUseMediaLg = fbc && fbc.getAttribute("use-media-lg");
-const isUseMediaXl = fbc && fbc.getAttribute("use-media-xl");
+const flavorcss = document.getElementById("flavorcss");
+const isNotUseEffect = flavorcss && flavorcss.getAttribute("not-effect");
 
 const scrollbar = `
 :root {
@@ -74,11 +63,10 @@ font-size: 16px;
 --px: 0.5px;
 --vw: 100vw;
 --vh: 100vh;
---\\@sm: ${mediaSm};
---\\@md: ${mediaMd};
---\\@lg: ${mediaLg};
---\\@xl: ${mediaXl};
---\\@container: 75%;
+--screen-sm: 640px;
+--screen-md: 720px;
+--screen-lg: 1024px;
+--screen-xl: 1280px;
 --fs-0: 0rem;
 --fs-auto: auto;
 --fs-px: 0.5em;
@@ -231,18 +219,18 @@ font-size: 16px;
 }
 `;
 
+const tr =
+  "--move-x: 0; --move-y: 0; --rotate: 0; --skew-x: 0; --skew-y: 0; --scale-x: 1; --scale-y: 1; transform: translateX(var(--move-x)) translateY(var(--move-y)) rotate(var(--rotate)) skewX(var(--skew-x)) skewY(var(--skew-y)) scaleX(var(--scale-x)) scaleY(var(--scale-y));";
+
 css += `
 .sans	{font-family: var(--sans)}
 .serif {font-family: var(--serif)}
 .mono	{font-family: var(--mono)}
-.transform {
-  --translate-x: 0; --translate-y: 0; --rotate: 0; --skew-x: 0; --skew-y: 0; --scale-x: 1; --scale-y: 1;
-  transform: translateX(var(--translate-x)) translateY(var(--translate-y)) rotate(var(--rotate)) skewX(var(--skew-x)) skewY(var(--skew-y)) scaleX(var(--scale-x)) scaleY(var(--scale-y));
-}
+.transform {${tr}}
 .smoothing { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 .smoothing-auto { -webkit-font-smoothing: auto; -moz-osx-font-smoothing: auto; }
 .outline-none {outline:none}
-@keyframes fbc-spin { 0% {transform: rotate(0deg);} 100% {transform: rotate(359deg);}}
+@keyframes flavorcss-spin { 0% {transform: rotate(0deg);} 100% {transform: rotate(359deg);}}
 ${scrollbar}
 `;
 
@@ -318,92 +306,61 @@ const colors = [
 ];
 
 let root = "";
-root += `--fbc-0: 0%`;
+root += `--rate-0: 0%`;
 for (let i = 1; i <= 12; i++) {
-  root += `--fbc-${i}: ${((100 * i) / 12).toFixed(6)}%; `;
+  root += `--rate-${i}: ${((100 * i) / 12).toFixed(6)}%; `;
 }
 
 css += `:root{${root}}`;
 
-let sm = "";
 let md = "";
-let lg = "";
-let xl = "";
 
 const mknow = (n: string, v: string) => {
-  css += `.${n}{${v}}`;
-  md += `.pc\\:${n}{${v}}`;
-  if (isUseMediaSm) {
-    sm += `.sm\\:${n}{${v}}`;
-  }
-  if (isUseMediaMd) {
-    md += `.md\\:${n}{${v}}`;
-  }
-  if (isUseMediaLg) {
-    lg += `.lg\\:${n}{${v}}`;
-  }
-  if (isUseMediaXl) {
-    xl += `.xl\\:${n}{${v}}`;
-  }
-};
-
-const mkimport = (n: string, v: string) => {
-  css += `.${n}\\!{${v}}`;
-  md += `.pc\\:${n}\\!{${v}}`;
-  if (isUseMediaSm) {
-    sm += `.sm\\:${n}\\!{${v}}`;
-  }
-  if (isUseMediaMd) {
-    md += `.md\\:${n}\\!{${v}}`;
-  }
-  if (isUseMediaLg) {
-    lg += `.lg\\:${n}\\!{${v}}`;
-  }
-  if (isUseMediaXl) {
-    xl += `.xl\\:${n}\\!{${v}}`;
-  }
-
-  md += `.hover\\:${n}:hover\\!{${v}}`;
-  ["focus", "active"].forEach((h) => {
-    css += `.${h}\\:${n}:${h}\\!{${v}} `;
-    md += `.pc\\:${h}\\:${n}:${h}\\!{${v}}`;
-    if (isUseMediaSm) {
-      sm += `.sm\\:${h}\\:${n}:${h}\\!{${v}}`;
-    }
-    if (isUseMediaMd) {
-      md += `.md\\:${h}\\:${n}:${h}\\!{${v}}`;
-    }
-    if (isUseMediaLg) {
-      lg += `.lg\\:${h}\\:${n}:${h}\\!{${v}}`;
-    }
-    if (isUseMediaXl) {
-      xl += `.xl\\:${h}\\:${n}:${h}\\!{${v}}`;
-    }
-  });
+  css += `.${n}{${v}} `;
+  md += `.pc\\:${n}{${v}} `;
 };
 
 const mkhover = (n: string, v: string) => {
-  md += `.hover\\:${n}:hover{${v}}`;
-  md += `.group:hover .group\\:hover\\:${n}{${v}}`;
+  md += `.hover\\:${n}:hover{${v}} `;
+  md += `.group:hover .group\\:hover\\:${n}{${v}} `;
+};
+
+const mkfocus = (n: string, v: string) => {
+  ["focus"].forEach((h) => {
+    css += `.${h}\\:${n}:${h}{${v}} `;
+  });
+};
+
+const mkfocusGroup = (n: string, v: string) => {
+  ["focus"].forEach((h) => {
+    css += `.group:${h} .group\\:${h}\\:${n}{${v}} `;
+    md += `.pc\\:${h}\\:${n}:${h}{${v}} `;
+  });
 };
 
 const mkactive = (n: string, v: string) => {
-  ["focus", "active"].forEach((h) => {
+  ["active"].forEach((h) => {
     css += `.${h}\\:${n}:${h}{${v}} `;
+  });
+};
+
+const mkactiveGroup = (n: string, v: string) => {
+  ["active"].forEach((h) => {
     css += `.group:${h} .group\\:${h}\\:${n}{${v}} `;
-    md += `.pc\\:${h}\\:${n}:${h}{${v}}`;
-    if (isUseMediaSm) {
-      sm += `.sm\\:${h}\\:${n}:${h}{${v}}`;
-    }
-    if (isUseMediaMd) {
-      md += `.md\\:${h}\\:${n}:${h}{${v}}`;
-    }
-    if (isUseMediaLg) {
-      lg += `.lg\\:${h}\\:${n}:${h}{${v}}`;
-    }
-    if (isUseMediaXl) {
-      xl += `.xl\\:${h}\\:${n}:${h}{${v}}`;
-    }
+    md += `.pc\\:${h}\\:${n}:${h}{${v}} `;
+  });
+};
+
+const mkimport = (n: string, v: string) => {
+  css += `.${n}\\!{${v}} `;
+  md += `.pc\\:${n}\\!{${v}} `;
+  md += `.hover\\:${n}:hover\\!{${v}} `;
+};
+
+const mkimportActive = (n: string, v: string) => {
+  ["focus", "active"].forEach((h) => {
+    css += `.${h}\\:${n}:${h}\\!{${v}} `;
+    md += `.pc\\:${h}\\:${n}:${h}\\!{${v}} `;
   });
 };
 
@@ -414,57 +371,49 @@ const mkchild = (n: string, v: string) => {
     ["odd", "nth-child(odd)"],
   ].forEach(([h, h2]) => {
     css += `.${h}\\:${n}:${h2}{${v}} `;
-    md += `.pc\\:${h}\\:${n}:${h2}{${v}}`;
-    if (isUseMediaSm) {
-      sm += `.sm\\:${h}\\:${n}:${h2}{${v}}`;
-    }
-    if (isUseMediaMd) {
-      md += `.md\\:${h}\\:${n}:${h2}{${v}}`;
-    }
-    if (isUseMediaLg) {
-      lg += `.lg\\:${h}\\:${n}:${h2}{${v}}`;
-    }
-    if (isUseMediaXl) {
-      xl += `.xl\\:${h}\\:${n}:${h2}{${v}}`;
-    }
+  });
+};
+
+const mkchildMd = (n: string, v: string) => {
+  [
+    ["first", "first-child"],
+    ["last", "last-child"],
+    ["odd", "nth-child(odd)"],
+  ].forEach(([h, h2]) => {
+    md += `.pc\\:${h}\\:${n}:${h2}{${v}} `;
   });
 };
 
 function mkEle() {
   const el = document.createElement("style");
   el.type = "text/css";
-  css +=
-    `@media (min-width:${mediaSm}){${sm}}` +
-    `@media (min-width:${mediaMd}){${md}}` +
-    `@media (min-width:${mediaLg}){${lg}}` +
-    `@media (min-width:${mediaXl}){${xl}}`;
+  css += `@media (min-width: 720px){${md}}`;
 
   el.innerText = css;
   document.head.appendChild(el);
   css = "";
   md = "";
-  sm = "";
 }
 
-function start(mk: any) {
+function render(mk: any) {
   sc.forEach((i) => {
-    mk(`translate-x-${i}`, `--translate-x:var(--${i})`);
-    mk(`translate-y-${i}`, `--translate-y:var(--${i})`);
-    mk(`translate-x--${i}`, `--translate-x:calc(0px - var(--${i}))`);
-    mk(`translate-y--${i}`, `--translate-y:calc(0px - var(--${i}))`);
+    mk(`move-x-${i}`, `--move-x:var(--${i})`);
+    mk(`move-y-${i}`, `--move-y:var(--${i})`);
+    mk(`move-x--${i}`, `--move-x:calc(0px - var(--${i}))`);
+    mk(`move-y--${i}`, `--move-y:calc(0px - var(--${i}))`);
   });
   pt.forEach((i) => {
-    mk(`translate-x-${i}`, `--translate-x:var(--pt-${i})`);
-    mk(`translate-y-${i}`, `--translate-y:var(--pt-${i})`);
-    mk(`translate-x--${i}`, `--translate-x:calc(0px - var(--pt-${i}))`);
-    mk(`translate-y--${i}`, `--translate-y:calc(0px - var(--pt-${i}))`);
+    mk(`move-x-${i}`, `--move-x:var(--pt-${i})`);
+    mk(`move-y-${i}`, `--move-y:var(--pt-${i})`);
+    mk(`move-x--${i}`, `--move-x:calc(0px - var(--pt-${i}))`);
+    mk(`move-y--${i}`, `--move-y:calc(0px - var(--pt-${i}))`);
   });
 
   for (let i = 0; i <= 12; i++) {
-    mk(`translate-x-${i}\\/12`, `--translate-x:var(--fbc-${i});`);
-    mk(`translate-y-${i}\\/12`, `--translate-y:var(--fbc-${i})`);
-    mk(`translate-x--${i}\\/12`, `--translate-x:calc(0px - var(--fbc-${i}));`);
-    mk(`translate-y--${i}\\/12`, `--translate-y:calc(0px - var(--fbc-${i}))`);
+    mk(`move-x-${i}\\/12`, `--move-x:var(--rate-${i});`);
+    mk(`move-y-${i}\\/12`, `--move-y:var(--rate-${i})`);
+    mk(`move-x--${i}\\/12`, `--move-x:calc(0px - var(--rate-${i}));`);
+    mk(`move-y--${i}\\/12`, `--move-y:calc(0px - var(--rate-${i}))`);
   }
 
   for (let i = 0; i <= 201; i += 5) {
@@ -497,17 +446,11 @@ function start(mk: any) {
     mk(`object-${v}`, `object-fit: ${v}`);
   });
 
-  [
-    "auto",
-    "default",
-    "pointer",
-    "pointer",
-    "text",
-    "move",
-    "not-allowed",
-  ].forEach((v) => {
-    mk(`cursor-${v}`, `cursor: ${v}`);
-  });
+  ["auto", "default", "pointer", "wait", "text", "move", "not-allowed"].forEach(
+    (v) => {
+      mk(`cursor-${v}`, `cursor: ${v}`);
+    }
+  );
 
   for (let x = 0; x <= 4; x++) {
     for (let y = 0; y <= 4; y++) {
@@ -516,7 +459,6 @@ function start(mk: any) {
       mk(`bg-${x}-${y}`, `background-position:${x}% ${y}%`);
       mk(`object-${x}-${y}`, `object-position:${x}% ${y}%`);
       mk(`orign-${x * 25}-${y * 25}`, `transform-orign:${x * 25}% ${y * 25}%`);
-      // mk(`transform-${x}-${y}`, `transform-position:${x}% ${y}%`);
     }
   }
 
@@ -574,14 +516,12 @@ function start(mk: any) {
     mk(`${v}`, `position: ${v}`);
   });
 
-  // mk("inset-0", "top:0;right:0;bottom:0;left:0;");
-  // mk("inset-x-0", "right:0;left:0;");
-  // mk("inset-y-0", "top:0;bottom:0;");
-
   mk("visible", "visibility:visible");
   mk("hidden", "visibility:hidden");
-  mk("appearance-none", "appearance:none; -moz-appearance:none;-webkit-appearance:none;");
-
+  mk(
+    "appearance-none",
+    "appearance:none; -moz-appearance:none;-webkit-appearance:none;"
+  );
 
   [
     ["row", "row"],
@@ -622,18 +562,19 @@ function start(mk: any) {
   mk(`order-first`, `order: -9999`);
   mk(`order-last`, `order: 9999`);
 
-  for (let x = -2; x <= 13; x++) {
-    for (let y = -2; y <= 13; y++) {
-      if (x === 12) {
+  for (let x = 0; x <= 13; x++) {
+    for (let y = 0; y <= 13; y++) {
+      if (x === 13) {
         x = "auto" as any;
       }
       if (y === 13) {
         y = "auto" as any;
       }
-      mk("row-${x}-${y}", `grid-row-start: ${x};grid-row-end: ${y}`);
-      mk("col-${x}-${y}", `grid-column-start: ${x};grid-column-end: ${y}`);
+      mk(`row-${x}-${y}`, `grid-row-start: ${x}; grid-row-end: ${y}`);
+      mk(`col-${x}-${y}`, `grid-column-start: ${x};grid-column-end: ${y}`);
     }
   }
+
   mk(`grid-cols-none`, `	grid-template-columns:none`);
   mk(`grid-rows-none`, `	grid-template-rows:none`);
 
@@ -656,25 +597,30 @@ function start(mk: any) {
       mk(`${j}-${a}`, `justify-content: ${fm[j]}; align-items:${fm[a]}`);
     });
   });
+  for (let i = 0; i <= 10; i++) {
+    if (i > 0) {
+      mk(
+        `transition-${i * 100}`,
+        `transition: all ${i * 100}ms var(--ease);will-change:transform; ${tr}`
+      );
+    }
 
-  for (let i = 0; i <= 41; i++) {
-    mk(`transition-${i * 50}`, `transition: all ${i * 50}ms var(--ease)`);
-    mk(`spin-${i * 500}`, `animation: fbc-spin ${i * 1}s linear infinite`);
-    mk(`delay-${i * 500}`, `transition-delay: ${i * 50}ms`);
+    mk(`spin-${i * 500}`, `animation: flavorcss-spin ${i * 500}ms linear infinite`);
+    mk(`delay-${i * 500}`, `transition-delay: ${i * 500}ms`);
 
     [
-      ["none", "none"],
       ["opacity", "opacity"],
-      ["bg", "background"],
-      ["shadow", "box-shadow"],
       ["transform", "transform"],
     ].forEach((v) => {
       mk(
-        `transition-${v[0]}-${i * 50}`,
-        `transition: ${v[1]} ${i * 50}ms var(--ease)`
+        `transition-${v[0]}-${i * 100}`,
+        `transition: ${v[1]} ${i * 100}ms var(--ease); will-change:${
+          v[1]
+        }; ${tr}`
       );
     });
   }
+  mk(`transition-0`, tr);
 
   [
     ["ease", "var(--ease)"],
@@ -689,6 +635,16 @@ function start(mk: any) {
   for (let i = 0; i <= 12; i++) {
     mk(`f-${i}`, `flex:${i}`);
   }
+
+  [
+    ["auto", "auto"],
+    ["scroll", "scroll-position"],
+    ["contents", "contents"],
+    ["transform", "transform"],
+    ["left-top", "left, top"],
+  ].forEach((v) => {
+    mk(`will-change-${v[0]}`, `will-change:${v[1]};`);
+  });
 
   for (let i = 0; i <= 100; i++) {
     mk(`z-${i * 10}`, `z-index:${i * 10}`);
@@ -787,8 +743,8 @@ function start(mk: any) {
       mk(`${v[0]}--${i}`, `${v[1]}:calc(0px - var(--pt-${i}))`);
     });
     for (let i = 0; i <= 12; i++) {
-      mk(`${v[0]}-${i}\\/12`, `${v[1]}:var(--fbc-${i})`);
-      mk(`${v[0]}--${i}\\/12`, `${v[1]}:calc(0px - var(--fbc-${i}))`);
+      mk(`${v[0]}-${i}\\/12`, `${v[1]}:var(--rate-${i})`);
+      mk(`${v[0]}--${i}\\/12`, `${v[1]}:calc(0px - var(--rate-${i}))`);
     }
   });
 
@@ -808,12 +764,15 @@ function start(mk: any) {
     });
 
     for (let i = 0; i <= 12; i++) {
-      mk(`${v[0]}-${i}\\/12`, `${v[1]}:var(--fbc-${i})`);
+      mk(`${v[0]}-${i}\\/12`, `${v[1]}:var(--rate-${i})`);
     }
   });
 
+  for (let i = 0; i <= 4; i++) {
+    mk(`stroke-${i}`, `stroke-width: ${i}`);
+  }
+
   [
-    ["stroke", "stroke-width"],
     ["radius", "border-radius"],
     ["radius-q", "border-top-left-radius"],
     ["radius-w", "border-top-right-radius"],
@@ -942,6 +901,17 @@ function start(mk: any) {
     }
   });
 
+  [
+    ["bg", "background-color"],
+    ["b", "border-color"],
+    ["c", "color"],
+    ["placeholder", "color"],
+    ["shadow", "shadow-color"],
+    ["outline", "outline-color"],
+  ].forEach((v) => {
+    mk(`${v[0]}-current`, `${v[1]}:currentColor`);
+  });
+
   for (let i = 0; i <= 100; i += 5) {
     mk(`opacity-${i}`, `opacity: ${i === 0 ? 0 : i / 100}`);
   }
@@ -959,13 +929,24 @@ function start(mk: any) {
   mk("table-fixed", "table-layout: fixed");
   mk("table-auto", "table-layout: auto");
 
+  // ["flex", "inline-flex"].forEach((v) => {
+  //   mk(v, `display: ${v}`);
+  // });
+
+  mk(
+    "flex",
+    `display:-webkit-box;display:-moz-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display: flex;`
+  );
+  mk(
+    "flex",
+    `display:-webkit-box;display:-moz-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display: flex;`
+  );
+
   [
     "none",
     "block",
     "flow-root",
     "inline-block",
-    "flex",
-    "inline-flex",
     "grid",
     "inline-grid",
     "table",
@@ -982,44 +963,53 @@ function start(mk: any) {
   });
 }
 
-start(mknow);
 css += `.clearfix {
-    &::after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-    }`;
-mkEle();
-console.timeEnd("fbc-base");
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  }`;
 
-setTimeout(() => {
-  setTimeout(() => {
-    console.time("fbc-hover");
-    start(mkhover);
-    mkEle();
-    console.timeEnd("fbc-hover");
+const mkList = [
+  mknow,
+  mkhover,
+  mkchild,
+  mkchildMd,
+  mkfocus,
+  mkfocusGroup,
+  mkactive,
+  mkactiveGroup,
+  mkimport,
+  mkimportActive,
+];
+const mkListLength = mkList.length;
 
-    setTimeout(() => {
-      console.time("fbc-active");
-      start(mkactive);
-      mkEle();
-      console.timeEnd("fbc-active");
+const times = [
+  "mknow",
+  "mkhover",
+  "mkchild",
+  "mkchildMd",
+  "mkfocus",
+  "mkfocusGroup",
+  "mkactive",
+  "mkactiveGroup",
+  "mkimport",
+  "mkimportActive",
+];
 
-      setTimeout(() => {
-        console.time("fbc-import");
-        start(mkimport);
-        mkEle();
-        console.timeEnd("fbc-import");
-        if (isUseChild) {
-          setTimeout(() => {
-            console.time("fbc-child");
-            start(mkchild);
-            mkEle();
-            console.timeEnd("fbc-child");
-          });
-        }
-      }, 100);
-    });
-  });
-});
+let mi = 0;
+console.time("end");
+function timoutRun() {
+  console.time(times[mi]);
+  render(mkList[mi]);
+  mkEle();
+  console.timeEnd(times[mi]);
+  mi++;
+  if (mi < mkListLength) {
+    setTimeout(timoutRun, 50);
+  } else {
+    console.timeEnd("end");
+  }
+}
+timoutRun();

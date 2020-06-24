@@ -12,13 +12,13 @@ import DocumentUnitPage from "pages/components/DocumentUnitPage";
 const listb = Array(205 / 5)
   .fill(0)
   .map((_, i) => {
-    return [`translate-x-${i * 5}`, `--translate-x: ${i * 5};`];
+    return [`move-x-${i * 5}`, `--move-x: ${i * 5};`];
   });
 
 const listc = Array(205 / 5)
   .fill(0)
   .map((_, i) => {
-    return [`translate-y-${i * 5}`, `--translate-y: ${i * 5};`];
+    return [`move-y-${i * 5}`, `--move-y: ${i * 5};`];
   });
 
 const CodeTry = () => {
@@ -29,7 +29,7 @@ const CodeTry = () => {
       <CodeEditor className={doc.edit} codeClassName={doc.editCode}>{`
   <div class="row center-center">
   <!-- 注意需要添加 transform 类，translate 才会生效 -->
-  <div class="transform hover:translate-x-lg transition-500 bg-red-400 w-3xl h-3xl m-lg"></div>
+  <div class="hover:move-x-lg transition-500 bg-red-400 w-3xl h-3xl m-lg"></div>
   </div>
       `}</CodeEditor>
     </>
@@ -39,14 +39,14 @@ const CodeTry = () => {
 export default () => {
   return (
     <DocumentUnitPage
-      title="Translate"
+      title="Move"
       isScreen
       info={[
-        "Translate 是用过 css values 进行运作的，所以使用它之前需要确保使用了 transform css 类",
+        "Move 是用过 css values 进行运作的，所以使用它之前需要确保使用了 transition css 类",
       ]}
       list={[
-        ["translate-x", "--translate-x"],
-        ["translate-y", "--translate-y"],
+        ["move-x", "--move-x"],
+        ["move-y", "--move-y"],
       ]}
       CodeTry={CodeTry}
     />

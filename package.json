@@ -1,6 +1,6 @@
 {
-  "name": "fbc",
-  "version": "0.4.2",
+  "name": "flavorcss",
+  "version": "0.0.2",
   "description": "full build css",
   "main": "umd/index.js",
   "types": "umd/index.d.ts",
@@ -29,12 +29,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ymzuiku/fbc.git"
+    "url": "git+https://github.com/ymzuiku/flavorcss.git"
   },
   "bugs": {
-    "url": "git+https://github.com/ymzuiku/fbc.git"
+    "url": "git+https://github.com/ymzuiku/flavorcss.git"
   },
-  "homepage": "git+https://github.com/ymzuiku/fbc.git",
+  "homepage": "git+https://github.com/ymzuiku/flavorcss.git",
   "dependencies": {
     "prism-react-renderer": "^1.1.1"
   }

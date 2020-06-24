@@ -49,7 +49,7 @@ const base = `
           </p>
           <p class="fs-md c-primary-800 c-opacity-70 line-2xl pt-md">
             对于
-            TailwindCSS 的方案，唯一美中不足的就是无法满足所有CSS功能的前提下确保足够小的体积。fbc的出现就是为了解决此问题。
+            TailwindCSS 的方案，唯一美中不足的就是无法满足所有CSS功能的前提下确保足够小的体积。flavorcss 的出现就是为了解决此问题。
           </p>
           <div class="flex-1"></div>
           <div class="row start-center pt-md">

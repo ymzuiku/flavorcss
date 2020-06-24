@@ -7,7 +7,7 @@ export default () => {
       <main className={doc.page}>
         <h1 className={doc.h1}>浏览器支持</h1>
         <p className={doc.p}>
-          <b>fbc</b> 并没有使用任何高级语法，所以浏览器的支持仅根据所使用的 css
+          <b>flavorcss</b> 并没有使用任何高级语法，所以浏览器的支持仅根据所使用的 css
           来进行判断。
         </p>
         <p className={doc.p}>

@@ -11,7 +11,7 @@ export default () => {
         "repeat-y",
         "round",
         "space",
-      ].map((v) => [`bg-${v}`, `background-repeat:${v}`])}
+      ].map((v) => [`.bg-${v}`, `background-repeat:${v}`])}
     />
   );
 };

@@ -5,7 +5,7 @@ export default () => {
     <DocumentThinPage
       title="Background Repeat"
       list={["auto", "cover", "contain"].map((v) => [
-        `bg-${v}`,
+        `.bg-${v}`,
         `background-size:${v}`,
       ])}
     />

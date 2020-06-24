@@ -7,9 +7,10 @@ interface Props {
   info?: string[];
   list?: [string, string][];
   CodeTry?: any;
+  code?:string;
 }
 
-export default ({ title, info, list, CodeTry }: Props) => {
+export default ({ title, info, list, CodeTry, code}: Props) => {
   return (
     <Layout>
       <main className={doc.page}>
@@ -22,7 +23,7 @@ export default ({ title, info, list, CodeTry }: Props) => {
               </p>
             );
           })}
-        {CodeTry ? <CodeTry /> : <DocumentTry />}
+        {CodeTry ? <CodeTry /> : <DocumentTry code={code} />}
 
         <table className="w-12/12 table-fixed">
           <thead>

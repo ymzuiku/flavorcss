@@ -5,7 +5,7 @@ import doc from "components/Doc";
 const lista = Array(37)
   .fill(0)
   .map((_, i) => {
-    return [`rotate-${i * 10}`, `--rotate: ${i * 10}`];
+    return [`.rotate-${i * 10}`, `--rotate: ${i * 10}`];
   });
 
 const CodeTry = () => {

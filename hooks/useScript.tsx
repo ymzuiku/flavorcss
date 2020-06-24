@@ -16,5 +16,5 @@ export default (src: string) => {
     return null;
   }
 
-  return <script src={src}></script>;
+  return <script  src={src}></script>;
 };

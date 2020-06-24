@@ -1,6 +1,6 @@
 import { DocCode, DocH1, DocP, DocPage, DocPre } from "components/Doc/comp";
 import CodeEditor from "components/CodeEditor";
-import Layout from './Layout';
+import Layout from "./Layout";
 
 const cssSec =
   "my-sm bg-indigo-100 p-sm bl-sm br-sm radius-sm b-indigo-200 c-indigo-900 ";
@@ -10,23 +10,27 @@ export default () => {
   return (
     <Layout>
       <DocPage>
-        <DocH1>fbc 是一个CSS库/方案</DocH1>
+        <DocH1>flavorcss 是一个CSS库/方案</DocH1>
         <DocP>
-          fbc是在<b>页面加载时，编译原子类</b>的<DocCode>css</DocCode>方案。
+          flavorcss 是在<b>页面加载时，编译原子类</b>的<DocCode>css</DocCode>
+          方案。
         </DocP>
         <DocP>
-          fbc可以大幅度减少我们项目的css代码量，减小最终样式文件体积，并且可以有效提高
+          flavorcss
+          可以大幅度减少我们项目的css代码量，减小最终样式文件体积，并且可以有效提高
           css 开发效率。
         </DocP>
         <DocP>
-          当前这个网站就是使用 fbc 编写的，并且编写过程中，没有创建
+          当前这个网站就是使用 flavorcss 编写的，并且编写过程中，没有创建
           <DocCode>css/less/sass/styl</DocCode>
           等文件，也没有使用 css-in-js 等内联样式的方案。
         </DocP>
-        <DocP>您需要的仅仅是在html中引用 fbc，它很小，只有6kb(gzip):</DocP>
-        <DocPre>{`<script src="https://unpkg.com/fbc@0.4.2/umd/index.js"></script>`}</DocPre>
+        <DocP>
+          您需要的仅仅是在html中引用 flavorcss，它很小，只有6kb(gzip):
+        </DocP>
+        <DocPre>{`<script src="https://unpkg.com/flavorcss@0.2.0/umd/index.js"></script>`}</DocPre>
         <DocP>或使用 npm :</DocP>
-        <DocPre>{`npm install --save fbc`}</DocPre>
+        <DocPre>{`npm install --save flavorcss`}</DocPre>
         <DocH1>原子类CSS</DocH1>
         <DocP>
           CSS库我们可以分为两类，一类是大家常用的<DocCode>bootstrap</DocCode>
@@ -51,14 +55,14 @@ export default () => {
   px-lg py-sm radius-sm m-lg 
   bg-blue-600 hover:bg-blue-500 active:bg-blue-400 
   shadow hover:shadow-lg 
-  transform hover:move-y--1 active:move-y-0 
-  c-white cursor-pointer an-500"
+  transform hover:move-y--px active:move-y-px 
+  c-white cursor-pointer transition-500"
 >hello</button>
         `}</CodeEditor>
         <div className="h-lg"></div>
         <DocP>
           我们可以看到我们很随意的就创建了一个性感的按钮，并且可以很轻松的把它移动到任何项目中，我们只需要引入
-          <DocCode>fbc.js</DocCode>
+          <DocCode>flavorcss.js</DocCode>
           ，然后拷贝这行 html 代码，使用在任何前端项目中即可
         </DocP>
         <DocP>
@@ -80,12 +84,12 @@ export default () => {
           我对于这类问题有一个非常好的答案，你可以跟着后面的实例试着写一些组件，感受一下，如果你感觉你爱上了它，那么请抛开偏见，享受它。若你并没有特殊的感觉，可以带着自己的意见离开。前端之所以有这么多方案，大部分原因是许多人想用自己更喜欢的方式去工作。
         </DocP>
         <DocH1>
-          为什么使用 <DocCode>fbc</DocCode> ？
+          为什么使用 <DocCode>flavorcss</DocCode> ？
         </DocH1>
         <DocP>
-          <DocCode>fbc</DocCode>
+          <DocCode>flavorcss</DocCode>
           就是因为使用<DocCode>Tailwind CSS</DocCode>
-          <DocCode>fbc</DocCode> 诞生的目的是为了解决
+          <DocCode>flavorcss</DocCode> 诞生的目的是为了解决
           <DocCode>TailwindCSS</DocCode>
           面临的一个关键问题：<b>我们如何确定原子类个数的边界？</b>
         </DocP>
@@ -124,29 +128,31 @@ export default () => {
         </DocP>
         <DocP>
           <div className="py-12 fs-lg fw-700">
-            <DocCode>fbc</DocCode>的含义是 full-build-css, 它的解决方案是：
+            <DocCode>flavorcss</DocCode>的含义是 full-build-css,
+            它的解决方案是：
           </div>
         </DocP>
         <DocP>
           <div className={cssSec}>
-            <span className={cssSpan}>1.</span>在 html 的 head 中加载 fbc
-            (6kb-gzip), fbc 会逐步的编译 css，最终创建绝大部分我们所需的原子类。
+            <span className={cssSpan}>1.</span>在 html 的 head 中加载 flavorcss
+            (6kb-gzip), flavorcss 会逐步的编译
+            css，最终创建绝大部分我们所需的原子类。
           </div>
           <div className={cssSec}>
             <span className={cssSpan}>2.</span>
-            fbc 会阻塞渲染，花费大约 30ms
+            flavorcss 会阻塞渲染，花费大约 30ms
             创建所有布局相关的原子类，包括媒体查询，大约370kb 的 css
             代码；然后常规渲染页面，此时我们不会就好像将 css 文件放在 head
             引入一样，用户不会看到页面有布局闪动的变化
           </div>
           <div className={cssSec}>
             <span className={cssSpan}>3.</span>
-            紧接着 fbc 花费大约 25ms 创建 hover 相关的伪类，大约有330kb的 css
-            代码，用户这时候鼠标交互页面能看到相应的相应。
+            紧接着 flavorcss 花费大约 25ms 创建 hover 相关的伪类，大约有330kb的
+            css 代码，用户这时候鼠标交互页面能看到相应的相应。
           </div>
           <div className={cssSec}>
             <span className={cssSpan}>4.</span>
-            fbc 会延迟 100ms，花费大约 180ms，创建
+            flavorcss 会延迟 100ms，花费大约 180ms，创建
             active、focus、group（跨层级的组合伪类）、结合媒体查询的伪类等复杂原子类，这是非常庞大的原子类，大约有
             1800kb 的 css 代码，用户这时候鼠标点击按钮能看到点击的样式。
           </div>
@@ -159,7 +165,7 @@ export default () => {
           代码，整个过程用户是无感知的。包含了成千上万种颜色、透明度、尺寸、媒体查询、伪类的组合，并且都以
           css values
           的方式运作，我们可以随意的覆盖基础变量，足以满足绝大部分样式的需求，你现在访问的这个网站是完全是用
-          fbc 风格编写的。
+          flavorcss 风格编写的。
         </DocP>
         <DocH1>为什么没有使用 web-worker 来提高编译性能？</DocH1>
         <DocP>
@@ -168,7 +174,7 @@ export default () => {
           并不能提供什么较大的帮助。
         </DocP>
         <DocP>
-          fbc
+          flavorcss
           尝试了许多方案和配置，最终在css覆盖和初始开销上选择了一个相对合适的边界，其实整个css编译过程用户并不能明显感知到。为此，我们放弃了一些
           first-child、last-child、odd-child 等伪类
           的第一时间创建，所以尽量不要在首页使用以上伪类设定变化明显的布局。

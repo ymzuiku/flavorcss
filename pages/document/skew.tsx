@@ -28,7 +28,7 @@ const CodeTry = () => {
       <CodeEditor className={doc.edit} codeClassName={doc.editCode}>{`
   <div class="row center-center">
   <!-- 注意需要添加 transform 类，scale 才会生效 -->
-  <div class="transform hover:skew-x-30 transition-500 bg-red-400 w-3xl h-3xl m-lg"></div>
+  <div class="hover:skew-x-30 transition-500 bg-red-400 w-3xl h-3xl m-lg"></div>
   </div>
       `}</CodeEditor>
     </>
@@ -40,7 +40,7 @@ export default () => {
     <DocumentThinPage
       title="Skew"
       info={[
-        "Skew 是用过 css values 进行运作的，所以使用它之前需要确保使用了 transform css 类",
+        "Skew 是用过 css values 进行运作的，所以使用它之前需要确保使用了 transition css 类",
       ]}
       list={[...listb, ...listc] as any}
       CodeTry={CodeTry}

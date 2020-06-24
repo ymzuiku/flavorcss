@@ -1,13 +1,17 @@
-import { DocH1, DocP, DocPage } from "components/Doc/comp";
-import Layout from "./Layout";
+import DocumentThinPage from "pages/components/DocumentThinPage";
 
 export default () => {
   return (
-    <Layout>
-      <DocPage>
-        <DocH1>float</DocH1>
-        <DocP>page</DocP>
-      </DocPage>
-    </Layout>
+    <DocumentThinPage
+      title="Use Select"
+      list={[
+        ["none", "none"],
+        ["text", "text"],
+        ["all", "all"],
+        ["auto", "auto"],
+      ].map((v) => {
+        return [`.select-${v[0]}`, `	user-select:${v[1]}`];
+      })}
+    />
   );
 };

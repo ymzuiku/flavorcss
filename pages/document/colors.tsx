@@ -14,7 +14,7 @@ function Item({ item, i }: any) {
             <div key={i} className="p-xl col center-center">
               <div
                 className={[
-                  "w-3xl h-3xl radius-lg transform hover:scale-120 an-450  shadow-xl shadow-opacity-5",
+                  "w-3xl h-3xl radius-lg transform hover:scale-120 transition-400  shadow-xl shadow-opacity-5",
                   v[1] === "255,255,255" && "b-px b-primary-200",
                 ].join(" ")}
                 style={{ background: `rgb(${v[1]})` }}
@@ -39,12 +39,10 @@ export default () => {
       <main className={doc.page}>
         <h1 className={doc.h1}>颜色</h1>
         <p className={doc.p}>
-          fbc
+          flavorcss
           对颜色的设定是毫不妥协的，总共预设了92种颜色，每种颜色都可以再次独自设定透明度，透明度的阶层每个颜色共有20层。
         </p>
-        <p className={doc.p}>
-          fbc 对常用设定颜色的属性都做了预设，如下表：
-        </p>
+        <p className={doc.p}>flavorcss 对常用设定颜色的属性都做了预设，如下表：</p>
         <table className="w-12/12">
           <thead>
             <tr>
@@ -60,7 +58,11 @@ export default () => {
               ["color", ".c-red-500", ".c-opacity-50"],
               ["box-shadow-color", ".shadow-red-500", ".shadow-opacity-50"],
               ["outline", ".outline-red-500", ".outline-opacity-50"],
-              ["placeholder", ".placeholder-red-500", ".placeholder-opacity-50"],
+              [
+                "placeholder",
+                ".placeholder-red-500",
+                ".placeholder-opacity-50",
+              ],
             ].map((item, a) => {
               return (
                 <tr key={a}>
@@ -107,6 +109,7 @@ export default () => {
           我们还预留了 primary，使用 primary
           代替指定颜色，可以更加语义化的定制主题色， 默认的 primary 是 blue。
         </p>
+        <p className={doc.p}>current 表示 currentColor</p>
         <h1 className={doc.h1}>所有预定颜色</h1>
         {list.map((item, i) => {
           return <Item item={item} i={i} />;
@@ -118,6 +121,7 @@ export default () => {
 };
 
 const _base = `
+--current: 255,255,255;
 --white: 255,255,255;
 --black: 0,0,0;
 `;

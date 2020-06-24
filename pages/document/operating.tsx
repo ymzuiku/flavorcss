@@ -8,58 +8,40 @@ export default () => {
         <h1 className={doc.h1}>运行机制</h1>
         <p className={doc.p}>
           <span className="fw-700">
-            <span className={doc.code}>fbc</span>的含义是 full-build-css
+            <span className={doc.code}>flavorcss</span>的含义是 full-build-css
           </span>
           , 指在加载过程中，编译获得大量精心设计的原子类样式，从而达到减少大量
           css 代码和更高效编写样式的目的。
         </p>
-        <div className={doc.p}>我们假定我们在 {`<head />`} 中引用了 fbc：</div>
+        <div className={doc.p}>
+          我们假定我们在 {`<head />`} 中引用了 flavorcss：
+        </div>
         <div className={doc.p}>
           <div className={doc.section}>
             <span className={doc.sectionSpan}>1.</span>在 html 的 head 中加载
-            fbc (6kb-gzip), fbc 会逐步的编译
+            flavorcss (6kb-gzip), flavorcss 会逐步的编译
             css，最终创建绝大部分我们所需的原子类。
           </div>
           <div className={doc.section}>
             <span className={doc.sectionSpan}>2.</span>
-            根据浏览器机制，刚开始 fbc 会阻塞渲染，花费大约 30ms
+            根据浏览器机制，刚开始 flavorcss 会阻塞渲染，花费大约 30ms
             创建所有布局相关的原子类，包括媒体查询，大约370kb 的 css
             代码；然后常规渲染页面，这个目的是为了用户不会看到页面有布局闪动的变化
           </div>
           <div className={doc.section}>
             <span className={doc.sectionSpan}>3.</span>
-            fbc 在下一个macrotasks, 花费大约 25ms 创建 hover
-            相关的伪类，大约有330kb的 css
-            代码，用户这时候鼠标交互页面能看到相应的相应。
-          </div>
-          <div className={doc.section}>
-            <span className={doc.sectionSpan}>4.</span>
-            fbc 在下一个macrotasks, fbc 花费大约 90ms 创建
-            active、focus、group（跨层级的组合伪类）、结合媒体查询的伪类等复杂原子类，这是非常庞大的原子类，大约有
-            1800kb 的 css 代码。
-          </div>
-          <div className={doc.section}>
-            <span className={doc.sectionSpan}>5.</span>
-            延迟 100ms 之后，fbc 在下一个macrotasks，然后再花费大约
-            100ms，创建除了group之外的所有原子类的 !important 属性
-          </div>
-          <div className={doc.section}>
-            <span className={doc.sectionSpan}>6.</span>
-            fbc 在下一个macrotasks，若 DOM 中有 id = fbc
-            的元素，会判断其 use-child 属性，若属性指为真，花费大概 70ms 创建 first-child、last-child、odd-child
-            相关伪类。
+            接下来 flavorcss
+            会执行9个宏任务，每个任务持续15-45ms(接近人类延迟感知的16.7ms)、间隔50ms，flavorcss
+            会创建非常庞大的原子类，大约有 4500kb 的 css
+            代码，包含了精心设计的成千上万种颜色、透明度、尺寸、媒体查询、伪类的组合，并且都以
+            css values
+            的方式运作，我们可以随意的覆盖基础变量，足以满足绝大部分样式的需求。
           </div>
         </div>
-
-        <div className="h-24"></div>
         <p className={doc.p}>
-          而用户在第30ms之后就可以立即访问到页面样式和布局；然后在接下来的大约300ms中
-          3500 kb 的 css
-          代码，整个过程用户是无感知的。包含了成千上万种颜色、透明度、尺寸、媒体查询、伪类的组合，并且都以
-          css values
-          的方式运作，我们可以随意的覆盖基础变量，足以满足绝大部分样式的需求，你现在访问的这个网站是完全是用
-          fbc 风格编写的。
+          除去宏任务的间隔时间，flavorcss 所有运行共消耗270ms
         </p>
+        <div className="h-24"></div>
         <p className={doc.p}>
           以上运行耗时，以：
           <span className={doc.code}>
@@ -74,13 +56,30 @@ export default () => {
           并不能操作 DOM，所以并不能提供什么帮助。
         </p>
         <p className={doc.p}>
-          fbc
-          尝试了许多方案和配置，最终在css覆盖和初始开销上选择了一个相对合适的边界，其实整个css编译过程用户并不能明显感知到。为此，我们放弃了一些
-          first-child、last-child、odd-child 等伪类
-          的可选创建，所以尽量不要在首页使用以上伪类设定变化明显的布局。
+          flavorcss
+          尝试了许多方案和配置，最终在css覆盖和初始开销上选择了一个相对合适的边界。
         </p>
-        <div className={doc.footerSpace}></div>
+        <h1 className={doc.h1}>共计270ms，我们应该接受这个开销么？</h1>
+        <p className={doc.p}>
+          首先，这200ms
+          被切割成了共10个宏任务，每次的开销大概是30ms，中间还有50ms的间隔时间，并不会阻塞用户行为。所以用户是无法感知这部分开销的，就好像您浏览这个网站一样，你刷新页面，并无法感知css样式的加载或编译阻塞。
+        </p>
+        <p className={doc.p}>
+          同时在上文提到：
+          <b>
+            其实在整个 css 编译的过程，css
+            代码块的生成仅用了15-20%的时间，绝大部分的时间的开销在css插入上.
+          </b>
+        </p>
+        <p className={doc.p}>
+          也就是说，编译仅仅消耗了50ms，剩下的220ms是css插入和浏览器解析样式的开销；所以只要我们希望使用庞大的原子类，就无法规避浏览器解析大量原子类的开销。
+        </p>
+        <p className={doc.p}>
+          而现实情况是，考虑网络条件，大部分时候 flavorcss 会比传统大型 web
+          应用对样式的加载更快。
+        </p>
       </main>
+      <div className={doc.footerSpace}></div>
     </Layout>
   );
 };

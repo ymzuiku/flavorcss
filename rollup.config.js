@@ -37,7 +37,7 @@ const watchOptions = [
     output: {
       file: './umd/index.js',
       format: 'umd',
-      name: 'stayjs',
+      name: 'flavorcss',
       sourcemap: true,
       // globals: {
       //   keyframesSpring: 'keyframes-spring',
@@ -74,6 +74,6 @@ watcher.on('event', event => {
       watcher.close();
     }
 
-    fs.copyFileSync('./umd/index.js', 'static/fbc.js')
+    fs.copyFileSync('./umd/index.js', 'static/flavorcss.js')
   }
 });

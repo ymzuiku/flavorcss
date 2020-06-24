@@ -21,14 +21,14 @@ export default () => {
     <DocumentThinPage
       title="Animation Spin"
       info={[
-        "无限旋转是常用的动画，一般用于loading等地方， fbc 默认添加了一个可制定速度的 spin 动画",
+        "无限旋转是常用的动画，一般用于loading等地方， flavorcss 默认添加了一个可制定速度的 spin 动画",
       ]}
-      list={Array(41)
+      list={Array(11)
         .fill(0)
         .map((_, i) => {
           return [
-            `spin-${i * 50}`,
-            `animation: fbc-spin ${i}s linear infinite`,
+            `.spin-${i * 500}`,
+            `animation: flavorcss-spin ${i *500}ms linear infinite`,
           ];
         })}
       CodeTry={CodeTry}

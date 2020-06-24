@@ -1,12 +1,8 @@
-# fbc
+# flavorcss
 
-full build css
+Runtime Build Atomic Class
 
 
 ## Install
 
-Add script in html
-
-```html
-<script src="https://unpkg.com/fbc@0.2.0/umd/index.js"></script>
-```
+Document: [http://flavorcss.writeflowy.com](http://flavorcss.writeflowy.com)

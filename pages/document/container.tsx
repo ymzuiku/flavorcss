@@ -8,8 +8,9 @@ export default () => {
       <main className={doc.page}>
         <h1 className={doc.h1}>Container</h1>
         <p className={doc.p}>
-          fbc 的一个设计理念是尽可能少的添加新的关键词，所以 fbc 没有提供默认的
-          Container 类，但是我们可以根据自己的需要，很轻松的实现一个。
+          flavorcss 的一个设计理念是尽可能少的添加新的关键词，所以 flavorcss
+          没有提供默认的 Container
+          类，但是我们可以根据自己的需要，很轻松的实现一个。
         </p>
         <p>
           我们使用 mx-auto 让卡片居中，使用 pc:max-w-@sm
