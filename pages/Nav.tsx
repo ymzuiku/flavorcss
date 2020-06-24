@@ -3,8 +3,8 @@ import Link from "next/link";
 import usePathname from "components/usePathname";
 
 const list = [
-  { title: "Example", url: "/" },
-  { title: "Document", url: "/document" },
+  { title: "Document", url: "/" },
+  { title: "Example", url: "/example" },
   // { title: "Example", url: "/example" },
 ];
 

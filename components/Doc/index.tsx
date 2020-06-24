@@ -4,6 +4,7 @@ export default {
   h1: "fs-3xl py-lg pt-lg fw-500 bb-px b-teal-300 mb-md",
   h2: "fs-2xl py-lg pt-lg fw-500",
   h3: "fs-xl py-lg pt-lg fw-500",
+  info: 'fs-sm c-teal-700 py-md',
   p: "line-3xl py-sm",
   editCode: "bg-gray-900 p-md bl-sm br-sm b-gray-700 mini-scrollbar",
   edit: "b-px b-teal-900 b-opacity-10 radius-sm overflow-hidden",
@@ -14,4 +15,5 @@ export default {
   footerSpace: "h-4xl",
   th: "p-md bb-px bt-px wrap b-teal-200 bg-teal-100 text-start",
   td: "p-md bb-px wrap b-teal-200 b-opacity-50 c-blue-700 text-start",
+  li: "py-sm px-md c-teal-800",
 };

@@ -9,7 +9,7 @@ export default ({ children }: DocumentlayoutProps) => {
 
 const list = [
   { head: "Document" },
-  { title: "Why flavorcss?", url: "/document" },
+  { title: "Why flavorcss?", url: "/" },
   { title: "对比其他原子类CSS库", url: "/document/vs-other" },
   { head: "入门" },
   { title: "安装", url: "/document/install" },
@@ -19,7 +19,7 @@ const list = [
   { title: "运行机制", url: "/document/operating" },
   { title: "原子类", url: "/document/atomic-class" },
   { title: "响应式设计", url: "/document/responsive-design" },
-  { title: "Pseudo-Class Variants", url: "/document/pseudo-class" },
+  { title: "伪类", url: "/document/pseudo-class" },
   { title: "提取组件", url: "/document/use-components" },
   { head: "Config" },
   { title: "Units", url: "/document/util" },
