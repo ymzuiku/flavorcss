@@ -26,7 +26,7 @@ export default () => {
           等文件，也没有使用 css-in-js 等内联样式的方案。
         </p>
         <p className={doc.p}>
-          您需要的仅仅是在html中引用 Flavorcss，它很小，只有6kb(gzip):
+          您需要的仅仅是在html中引用 Flavorcss，它很小，只有 7kb(gzip):
         </p>
         <Code
           className={[doc.pre, "mini-scrollbar"].join(" ")}

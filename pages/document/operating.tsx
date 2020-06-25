@@ -19,7 +19,7 @@ export default () => {
         <div className={doc.p}>
           <div className={doc.section}>
             <span className={doc.sectionSpan}>1.</span>在 html 的 head 中加载
-            Flavorcss (6kb-gzip), Flavorcss 会逐步的编译
+            Flavorcss (7kb-gzip), Flavorcss 会逐步的编译
             css，最终创建绝大部分我们所需的原子类。
           </div>
           <div className={doc.section}>

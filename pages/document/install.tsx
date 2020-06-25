@@ -8,7 +8,7 @@ export default () => {
     <Layout>
       <main className={doc.page}>
         <h1 className={doc.h1}>Install</h1>
-        <p className={doc.p}>Flavorcss 很小，只有6kb(gzip)</p>
+        <p className={doc.p}>Flavorcss 很小，只有 7kb(gzip)</p>
         <h2 className={doc.h2}>使用CDN</h2>
         <p className={doc.p}>在html {`<head />`}中引用 Flavorcss:</p>
         <CodeEditor
