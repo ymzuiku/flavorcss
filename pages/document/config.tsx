@@ -220,7 +220,7 @@ body {
           加入一部分全局样式，这对现有项目可能会有影响，所以默认是关闭的：
         </p>
         <p className={doc.p}>
-          我们可以在脚本运行时能查找到的标签添加 id="flavorcss" 和
+          我们可以在脚本运行时能查找到的标签添加
           flavorcss-effect="true", 添加运行时插入全局样式：
         </p>
         <CodeEditor notRender className={doc.pre}>{`

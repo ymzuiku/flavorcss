@@ -14,7 +14,7 @@ export default () => {
         <CodeEditor
           notRender
         >{`
-<!-- flavorcss-effect="true" 指创建有全局影响的样式 -->
+<!-- 可选创建全局样式: flavorcss-effect="true" -->
 <script flavorcss-effect="true" src="https://unpkg.com/flavorcss@${pkg.version}/umd/index.js"></script>
         `}</CodeEditor>
         <p className={doc.p}>

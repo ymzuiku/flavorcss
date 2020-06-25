@@ -31,7 +31,7 @@ export default () => {
         <Code
           className={[doc.pre, "mini-scrollbar"].join(" ")}
         >{`
-<!-- flavorcss-effect="true" 指创建有全局影响的样式 -->
+<!-- 可选创建全局样式: flavorcss-effect="true" -->
 <script flavorcss-effect="true" src="https://unpkg.com/flavorcss@${pkg.version}/umd/index.js"></script>
         `}</Code>
         <p className={doc.p}>之后就可以在项目中使用成千上万个 Atomic Class</p>
