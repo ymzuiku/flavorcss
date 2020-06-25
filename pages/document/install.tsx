@@ -13,7 +13,10 @@ export default () => {
         <p className={doc.p}>在html {`<head />`}中引用 Flavorcss:</p>
         <CodeEditor
           notRender
-        >{`<script src="https://unpkg.com/flavorcss@${pkg.version}/umd/index.js"></script>`}</CodeEditor>
+        >{`
+<!-- flavorcss-effect="true" 指创建有全局影响的样式 -->
+<script flavorcss-effect="true" src="https://unpkg.com/flavorcss@${pkg.version}/umd/index.js"></script>
+        `}</CodeEditor>
         <p className={doc.p}>
           注意，建议在body渲染之前引用 Flavorcss 脚本，所以把 引用脚本放在 head
           中而不是 body 的底部，Flavorcss
