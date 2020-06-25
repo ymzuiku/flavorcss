@@ -3,6 +3,7 @@ import Layout from "./document/Layout";
 import doc from "components/doc";
 import Link from "next/link";
 import Code from "components/Code";
+import pkg from "package.json";
 
 const cssSec =
   "my-sm bg-indigo-100 p-sm bl-sm br-sm radius-sm b-indigo-200 c-indigo-900 ";
@@ -33,7 +34,7 @@ export default () => {
         </p>
         <Code
           className={[doc.pre, "mini-scrollbar"].join(" ")}
-        >{`<script src="https://unpkg.com/flavorcss@0.2.0/umd/index.js"></script>`}</Code>
+        >{`<script src="https://unpkg.com/flavorcss@${pkg.version}/umd/index.js"></script>`}</Code>
         <p className={doc.p}>之后就可以在项目中使用成千上万个 Atomic Class</p>
         <h1 className={doc.h1}>原子类CSS</h1>
         <p className={doc.p}>
@@ -49,7 +50,9 @@ export default () => {
         <p className={doc.p}>
           本文档有着一个极简的交互编程工具，在下面的尝试中，你可以体会到原子类编写样式的高效，在面向开发者的体验方面，它是有一定价值的。
         </p>
-        <p className={doc.p}>这是一个带一点点性感的按钮, 当然你可以尝试编辑下面的代码改变这个按钮：</p>
+        <p className={doc.p}>
+          这是一个带一点点性感的按钮, 当然你可以尝试编辑下面的代码改变这个按钮：
+        </p>
         <CodeEditor
           theme="dark"
           className={doc.edit}
