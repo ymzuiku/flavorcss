@@ -15,7 +15,7 @@ interface Props {
 export default ({
   theme = "nightOwl",
   children,
-  codeClassName = "bg-gray-900 p-md bl-sm br-sm b-gray-700 mini-scrollbar",
+  codeClassName = "bg-gray-900 p-md pt-lg bl-sm br-sm b-gray-700 mini-scrollbar",
   className = "mt-sm mb-md b-px b-teal-900 b-opacity-10 radius-sm overflow-hidden",
   language = "html",
   wrap,
@@ -47,7 +47,7 @@ export default ({
         {children}
       </Code>
       <div
-        className="absolute top-0 right-0 c-white c-opacity-30 py-sm px-sm bg-gray-700 hover:bg-gray-600 active:bg-gray-500 fs-sm radius-a-md cursor-pointer fw-700"
+        className="absolute top-0 right-0 c-white c-opacity-30 py-xs px-sm bg-gray-700 hover:bg-gray-600 active:bg-gray-500 fs-xs radius-a-md cursor-pointer fw-700"
         onClick={handleChangeWrap}
       >
         {isWrap ? "UnWrap" : "Wrap"}
