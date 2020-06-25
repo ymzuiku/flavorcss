@@ -37,7 +37,7 @@ export default function DocumentSide({ list }: DocumentSideProps) {
             <Link key={v.url} href={v.url}>
               <a
                 className={[
-                  "block cursor-pointer c-primary-800 hover:bg-primary-100 active:bg-primary-600 active:c-white p-sm pl-lg fs-sm w-12/12 last:mb-lg bl-0",
+                  "block cursor-pointer c-primary-800 hover:bg-primary-100 active:bg-primary-200 p-sm pl-lg fs-sm w-12/12 last:mb-lg bl-0",
                   pathname === v.url && "bl-md b-primary-700 fw-700 bg-primary-100",
                 ].join(" ")}
               >
