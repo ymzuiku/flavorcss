@@ -404,6 +404,34 @@ function mkEle() {
 }
 
 function render(mk: any) {
+  for (let i = 0; i <= 10; i++) {
+    if (i > 0) {
+      mk(
+        `transition-${i * 100}`,
+        `transition: all ${i * 100}ms var(--ease);will-change:transform; ${tr}`
+      );
+    }
+
+    mk(
+      `spin-${i * 500}`,
+      `animation: flavorcss-spin ${i * 500}ms linear infinite`
+    );
+    mk(`delay-${i * 500}`, `transition-delay: ${i * 500}ms`);
+
+    [
+      ["opacity", "opacity"],
+      ["transform", "transform"],
+    ].forEach((v) => {
+      mk(
+        `transition-${v[0]}-${i * 100}`,
+        `transition: ${v[1]} ${i * 100}ms var(--ease); will-change:${
+          v[1]
+        }; ${tr}`
+      );
+    });
+  }
+  mk(`transition-0`, tr);
+  
   sc.forEach((i) => {
     mk(`move-x-${i}`, `--move-x:var(--${i})`);
     mk(`move-y-${i}`, `--move-y:var(--${i})`);
@@ -424,13 +452,11 @@ function render(mk: any) {
     mk(`move-y--${i}\\/12`, `--move-y:calc(0px - var(--rate-${i}))`);
   }
 
-  for (let i = 0; i <= 201; i += 10) {
+  for (let i = -100; i <= 201; i += 10) {
     const a = i ? i / 100 : 0;
     mk(`scale-${i}`, `--scale-x:${a};--scale-y:${a}`);
     mk(`scale-x-${i}`, `--scale-x: ${a}`);
     mk(`scale-y-${i}`, `--scale-y: ${a}`);
-    mk(`scale-x--${i}`, `--scale-x: -${a}`);
-    mk(`scale-y--${i}`, `--scale-y: -${a}`);
   }
 
   for (let i = 0; i <= 36; i++) {
@@ -605,33 +631,6 @@ function render(mk: any) {
       mk(`${j}-${a}`, `justify-content: ${fm[j]}; align-items:${fm[a]}`);
     });
   });
-  for (let i = 0; i <= 10; i++) {
-    if (i > 0) {
-      mk(
-        `transition-${i * 100}`,
-        `transition: all ${i * 100}ms var(--ease);will-change:transform; ${tr}`
-      );
-    }
-
-    mk(
-      `spin-${i * 500}`,
-      `animation: flavorcss-spin ${i * 500}ms linear infinite`
-    );
-    mk(`delay-${i * 500}`, `transition-delay: ${i * 500}ms`);
-
-    [
-      ["opacity", "opacity"],
-      ["transform", "transform"],
-    ].forEach((v) => {
-      mk(
-        `transition-${v[0]}-${i * 100}`,
-        `transition: ${v[1]} ${i * 100}ms var(--ease); will-change:${
-          v[1]
-        }; ${tr}`
-      );
-    });
-  }
-  mk(`transition-0`, tr);
 
   [
     ["ease", "var(--ease)"],
