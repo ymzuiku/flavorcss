@@ -49,7 +49,7 @@ export default () => {
         <p className={doc.p}>
           本文档有着一个极简的交互编程工具，在下面的尝试中，你可以体会到原子类编写样式的高效，在面向开发者的体验方面，它是有一定价值的。
         </p>
-        <p className={doc.p}>这是一个带一点点性感的按钮：</p>
+        <p className={doc.p}>这是一个带一点点性感的按钮, 当然你可以尝试编辑下面的代码改变这个按钮：</p>
         <CodeEditor
           wrap
           theme="dark"
