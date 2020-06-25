@@ -22,6 +22,7 @@ export default function MyApp({ Component, pageProps }: any) {
             overflow: hidden;
           }`}
       </style>
+      <div flavorcss-effect="true" />
       {flavorcss}
 
       <div className="full">

@@ -218,12 +218,19 @@ body {
 </div>
 `}
         </CodeEditor>
-        <h2 className={doc.h1}>取消全局样式</h2>
+        <h2 className={doc.h1}>清除浏览器默认样式</h2>
         <p className={doc.p}>
-          Flavorcss 在 Normalize.css
-          的基础上为了常规更好的编写代码，加入一部分全局样式，这对现有项目可能会有影响：
+          Flavorcss 提供了一个全局样式，在 Normalize.css 的基础
+          加入一部分全局样式，这对现有项目可能会有影响，所以默认是关闭的：
         </p>
-        <p className={doc.p}>这是默认的全局样式:</p>
+        <p className={doc.p}>
+          我们可以在脚本运行时能查找到的标签添加 id="flavorcss" 和
+          flavorcss-effect="true", 添加运行时插入全局样式：
+        </p>
+        <Code className={doc.pre}>{`
+<div flavorcss-effect="true" />
+`}</Code>
+        <p className={doc.p}>配置之后 Flavorcss 执行会插入以下样式:</p>
         <Code language="css" className={doc.pre}>{`
 html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}
 
@@ -240,13 +247,6 @@ img,svg,video,canvas,audio,iframe,embed,object { display: block; vertical-align:
 table { border-collapse: collapse}
 body { padding:0px;margin:0px;font-family: var(--sans);}
 * { box-sizing: border-box;  outline:0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-`}</Code>
-        <p className={doc.p}>
-          我们可以在脚本运行时能查找到的标签添加 id="flavorcss" 和 not-effect="true",
-          取消运行时插入全局样式：
-        </p>
-        <Code className={doc.pre}>{`
-<script id="flavorcss" not-effect="true" src="...flavorcss.js"></script>
 `}</Code>
       </main>
       <div className={doc.footerSpace}></div>
