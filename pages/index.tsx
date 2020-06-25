@@ -111,14 +111,14 @@ export default () => {
             (在gzip之前),
             哪怕我们仅用5种颜色，去除大部分媒体查询，仅用一小部分伪类和一小部分样式组合伪类，我们也会有
             600kb 的css体积。要知道，多少项目费时费力移除 lodash
-            也仅仅是为了节约150kb(gzip之前)的体积。通过尝试，如果我们要满足绝大部分样式常见，不编写95%的样式，使用原子类的方式我们大概需要
+            也仅仅是为了节约 69kb(gzip之前) 的体积。通过尝试，如果我们要满足绝大部分样式常见，不编写 95% 的样式，使用原子类的方式我们大概需要
             2500kb 的 css，这显然是不可接受的。
           </div>
           <div className={doc.section}>
             <span className={doc.sectionSpan}>3.</span>
             还有一种使用 Purgecss 去清理未使用 CSS 的方案,
             这也是有代价的，我们需要注意 class
-            的书写方式，如果我们使用变量的方式动态创建className， Purgecss
+            的书写方式，如果我们使用变量的方式动态创建 className， Purgecss
             就无法在编译期间通过正则找到我们使用过的此类 css。
           </div>
         </div>
