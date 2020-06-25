@@ -359,39 +359,6 @@ const mkactiveGroup = (n: string, v: string) => {
   });
 };
 
-// const mkimport = (n: string, v: string) => {
-//   css += `.${n}\\!{${v}} `;
-//   md += `.pc\\:${n}\\!{${v}} `;
-//   md += `.hover\\:${n}:hover\\!{${v}} `;
-// };
-
-// const mkimportActive = (n: string, v: string) => {
-//   ["focus", "active"].forEach((h) => {
-//     css += `.${h}\\:${n}:${h}\\!{${v}} `;
-//     md += `.pc\\:${h}\\:${n}:${h}\\!{${v}} `;
-//   });
-// };
-
-// const mkchild = (n: string, v: string) => {
-//   [
-//     ["first", "first-child"],
-//     ["last", "last-child"],
-//     // ["odd", "nth-child(odd)"],
-//   ].forEach(([h, h2]) => {
-//     css += `.${h}\\:${n}:${h2}{${v}} `;
-//   });
-// };
-
-// const mkchildMd = (n: string, v: string) => {
-//   [
-//     ["first", "first-child"],
-//     ["last", "last-child"],
-//     // ["odd", "nth-child(odd)"],
-//   ].forEach(([h, h2]) => {
-//     md += `.pc\\:${h}\\:${n}:${h2}{${v}} `;
-//   });
-// };
-
 function mkEle() {
   const el = document.createElement("style");
   el.type = "text/css";
@@ -997,14 +964,10 @@ css += `.clearfix {
 const mkList = [
   mknow,
   mkhover,
-  // mkchild,
-  // mkchildMd,
   mkfocus,
   mkfocusGroup,
   mkactive,
   mkactiveGroup,
-  // mkimport,
-  // mkimportActive,
 ];
 const mkListLength = mkList.length;
 

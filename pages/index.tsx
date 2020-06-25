@@ -5,10 +5,6 @@ import Link from "next/link";
 import Code from "components/Code";
 import pkg from "package.json";
 
-const cssSec =
-  "my-sm bg-indigo-100 p-sm bl-sm br-sm radius-sm b-indigo-200 c-indigo-900 ";
-const cssSpan = "fs-2xl px-sm mx-xs";
-
 export default () => {
   return (
     <Layout>
