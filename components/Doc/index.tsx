@@ -13,7 +13,7 @@ export default {
     "my-sm bg-indigo-100 p-sm bl-sm br-sm radius-sm b-indigo-200 c-indigo-900",
   sectionSpan: "fs-2xl px-sm mx-xs",
   footerSpace: "h-4xl",
-  th: "p-md bb-px bt-px wrap b-teal-200 bg-teal-100 text-start",
-  td: "p-md bb-px wrap b-teal-200 b-opacity-50 c-blue-700 text-start",
+  th: "p-md min-w-4xl bb-px bt-px wrap b-teal-200 bg-teal-100 text-left",
+  td: "p-md min-w-4xl bb-px wrap b-teal-200 b-opacity-50 c-blue-700 text-start",
   li: "py-sm px-md c-teal-800",
 };

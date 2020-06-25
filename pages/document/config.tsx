@@ -236,7 +236,7 @@ img,svg,video,canvas,audio,iframe,embed,object { display: block; vertical-align:
 
 *,
 *::before,
-*::after { border-width: 0; border-style: solid; border-color: currentColor; }
+*::after { border-width: 0; border-style: solid; border-color: currentColor; -webkit-tap-highlight-color: transparent;}
 table { border-collapse: collapse}
 body { padding:0px;margin:0px;font-family: var(--sans);}
 * { box-sizing: border-box;  outline:0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }

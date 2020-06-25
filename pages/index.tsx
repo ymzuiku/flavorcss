@@ -130,7 +130,7 @@ export default () => {
             明明遇到真爱，却不能在一起。
           </span>
         </div>
-        <div className="h-24"></div>
+        <div className="h-lg"></div>
         <p className={doc.p}>
           而 Flavorcss 的方案很好的规避了<b>如何确定原子类个数的边界</b>
           这个问题，Flavorcss 是在运行时逐步编译绝大部分 Atomic Class,

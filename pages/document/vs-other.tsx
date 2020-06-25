@@ -18,7 +18,9 @@ export default () => {
         <p className={doc.p}>
           本文档的大部分文案、设计也都是参考 tailwindcss。
         </p>
-        <p className={doc.p}>可以说 Flavorcss 和 tailwindcss 较大的区别仅如下：</p>
+        <p className={doc.p}>
+          可以说 Flavorcss 和 tailwindcss 较大的区别仅如下：
+        </p>
         <ul>
           <li className="p-md c-teal-700">
             1. Flavorcss 是运行时编译，固定拥有海量原子类；
@@ -30,46 +32,48 @@ export default () => {
         <p className={doc.h2}>Atomic Class 特性对比介绍</p>
 
         <h2 className={doc.h2}>基本模块对比</h2>
-        <table className="w-12/12 table-fixed">
-          <thead>
-            <tr>
-              <th className={doc.th}>项目名</th>
-              <th className={doc.th}>体积(Not Gzip)</th>
-              <th className={doc.th}>All CSS Values</th>
-              <th className={doc.th}>All Css Pseudo</th>
-              <th className={doc.th}>All Css Media</th>
-              <th className={doc.th}>Dynamic allocation</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ["tachyons.io", "138kb", "true", "", "", ""],
-              ["basscss.com", "3kb", "true", "", "", ""],
-              ["turretcss.com", "94kb", "true", "", "", ""],
-              [
-                "tailwindcss.com",
-                "200kb ~ 3000kb",
-                "Not all",
-                "true",
-                "true",
-                "",
-              ],
-              ["flavorcss", "20kb", "true", "true", "true", "true"],
-            ].map((item, a) => {
-              return (
-                <tr key={a}>
-                  {item.map((v, i) => {
-                    return (
-                      <td key={i} className={doc.td}>
-                        {v}
-                      </td>
-                    );
-                  })}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <div className="max-w-vw overflow-auto">
+          <table>
+            <thead>
+              <tr>
+                <th className={doc.th}>项目名</th>
+                <th className={doc.th}>体积(Not Gzip)</th>
+                <th className={doc.th}>All CSS Values</th>
+                <th className={doc.th}>All Css Pseudo</th>
+                <th className={doc.th}>All Css Media</th>
+                <th className={doc.th}>Dynamic allocation</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["tachyons.io", "138kb", "true", "", "", ""],
+                ["basscss.com", "3kb", "true", "", "", ""],
+                ["turretcss.com", "94kb", "true", "", "", ""],
+                [
+                  "tailwindcss.com",
+                  "200kb ~ 3000kb",
+                  "Not all",
+                  "true",
+                  "true",
+                  "",
+                ],
+                ["flavorcss", "20kb", "true", "true", "true", "true"],
+              ].map((item, a) => {
+                return (
+                  <tr key={a}>
+                    {item.map((v, i) => {
+                      return (
+                        <td key={i} className={doc.td}>
+                          {v}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
         <p className={doc.p}>
           tailwindcss 是一个发布前编译，所以它的功能相对于其他 Atomic Class
           数十倍丰富，但是每增加一项功能，就会带来相应的体积。即便我们使用
@@ -77,7 +81,7 @@ export default () => {
           Atomic Class，体积还是会逐步接近 Purgecss 之前的体积。
         </p>
         <p className={doc.p}>
-        Flavorcss 的特点是运行时编译，所以可以不妥协css体积的前提下，提供和
+          Flavorcss 的特点是运行时编译，所以可以不妥协css体积的前提下，提供和
           tailwindcss 一样丰富的 Atomic Class, Flavorcss 默认提供的数量相当于
           tailwindcss 需要加载 2500kb 的css的数量
         </p>
@@ -117,9 +121,9 @@ export default () => {
         <h2 className={doc.h3}>Important</h2>
         <p className={doc.p}>指 Atomic Class 否可以相互覆盖。</p>
         <p className={doc.p}>
-          Flavorcss 的样式加载顺序了非常好的设计，并且在此基础上
-          Flavorcss 对非 Pseudo 组合有两层样式，可以进行覆盖。这并没有使用 !important
-          特性, 为内联样式保留了最高权限，也为定制化 !important 预留了空间
+          Flavorcss 的样式加载顺序了非常好的设计，并且在此基础上 Flavorcss 对非
+          Pseudo 组合有两层样式，可以进行覆盖。这并没有使用 !important 特性,
+          为内联样式保留了最高权限，也为定制化 !important 预留了空间
         </p>
         <div className={doc.footerSpace}></div>
       </main>
