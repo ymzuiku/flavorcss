@@ -1,6 +1,6 @@
 import React from "react";
 import CodeEditor from "components/CodeEditor";
-import Nav from "pages/Nav";
+import Nav from "pages/components/Nav";
 import doc from "components/doc";
 
 export default () => {
@@ -19,6 +19,7 @@ export default () => {
       >
         {base}
       </CodeEditor>
+      <div className={doc.h2}>其他 Example 待补充</div>
       <div className="h-4xl"></div>
     </div>
   );

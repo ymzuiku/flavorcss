@@ -23,7 +23,7 @@ export default function Nav() {
           <Link key={v.url} href={v.url}>
             <a
               className={[
-                "mx-sm px-md c-primary-600 hover:c-primary-900 hover:bg-primary-200 h-12/12 row center-center",
+                "none pc:flex mx-sm px-md c-primary-600 hover:c-primary-900 hover:bg-primary-200 h-12/12 row center-center",
                 match && "bg-primary-100 c-primary-999",
               ].join(" ")}
             >

@@ -1,6 +1,7 @@
 declare let css: string;
 declare const sc: string[];
 declare const pt: string[];
+declare const colors: string[];
 declare const mini = "mini-scrollbar";
 declare const hidden = "mini-scrollbar-hidden";
 declare const flavorcss: HTMLElement | null;
@@ -8,7 +9,6 @@ declare const isNotUseEffect: string | null;
 declare const scrollbar: string;
 declare const tr = "--move-x: 0; --move-y: 0; --rotate: 0; --skew-x: 0; --skew-y: 0; --scale-x: 1; --scale-y: 1; transform: translateX(var(--move-x)) translateY(var(--move-y)) rotate(var(--rotate)) skewX(var(--skew-x)) skewY(var(--skew-y)) scaleX(var(--scale-x)) scaleY(var(--scale-y));";
 declare const fm: any;
-declare const colors: string[];
 declare let root: string;
 declare let md: string;
 declare const mknow: (n: string, v: string) => void;

@@ -24,6 +24,23 @@ const pt = [
   "6xl",
 ];
 
+const colors = [
+  "primary",
+  "white",
+  "black",
+  "gray",
+  "red",
+  "orange",
+  "yellow",
+  "green",
+  "teal",
+  "blue",
+  "indigo",
+  "purple",
+  "pink",
+];
+
+
 const mini = "mini-scrollbar";
 const hidden = "mini-scrollbar-hidden";
 const flavorcss = document.getElementById("flavorcss");
@@ -297,21 +314,6 @@ const fm = {
   stretch: "stretch",
 } as any;
 
-const colors = [
-  "primary",
-  "white",
-  "black",
-  "gray",
-  "red",
-  "orange",
-  "yellow",
-  "green",
-  "teal",
-  "blue",
-  "indigo",
-  "purple",
-  "pink",
-];
 
 let root = "";
 root += `--rate-0: 0%`;

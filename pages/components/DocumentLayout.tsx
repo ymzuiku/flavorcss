@@ -1,4 +1,4 @@
-import Nav from "pages/Nav";
+import Nav from "pages/components/Nav";
 import { ReactNode, useState } from "react";
 import DocumentSide, { DocumentSideProps } from "./DocumentSide";
 
@@ -13,16 +13,13 @@ function ToggleSideBar({ list }: any) {
 
   return (
     <div className="pc:none">
-      <div
+     <div
         className={[
-          "fixed left-0 z-30 top-0 h-vh row transition-400",
-          showSide?"events-auto":"events-none",
+          "fixed left-0 z-30 top-0 h-vh row transition-400 bg-white",
+          showSide?"events-auto move-x-0":"events-none move-x--5xl",
         ].join(" ")}
       >
-        <div className={["bg-white transition-400",
-        showSide ? "move-0": "move-x--12/12"].join(' ')}>
-          <DocumentSide list={list} />
-        </div>
+        <DocumentSide list={list} />
       </div>
       <div
           className={["bg-gray-800 w-vw h-vh z-20 fixed top-0 left-0 transition-500", showSide?"events-auto bg-opacity-50":"events-none bg-opacity-0"].join(' ')}
@@ -45,7 +42,6 @@ function ToggleSideBar({ list }: any) {
             p-id="8343"
           ></path>
         </svg>
-        {/* <span>Toggle Sidebar</span> */}
       </div>
     </div>
   );
