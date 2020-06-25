@@ -40,7 +40,6 @@ const colors = [
   "pink",
 ];
 
-
 const mini = "mini-scrollbar";
 const hidden = "mini-scrollbar-hidden";
 const isUseEffect = document.querySelector("[flavorcss-effect]");
@@ -314,7 +313,6 @@ const fm = {
   stretch: "stretch",
 } as any;
 
-
 let root = "";
 root += `--rate-0: 0%`;
 for (let i = 1; i <= 12; i++) {
@@ -433,7 +431,7 @@ function render(mk: any) {
     });
   }
   mk(`transition-0`, tr);
-  
+
   sc.forEach((i) => {
     mk(`move-x-${i}`, `--move-x:var(--${i})`);
     mk(`move-y-${i}`, `--move-y:var(--${i})`);
@@ -529,25 +527,37 @@ function render(mk: any) {
     mk(`resize-${v[0]}`, `resize:${v[1]}`);
   });
 
-  ["auto", "hidden", "visible", "scroll", "auto"].forEach((v) => {
+  ["hidden", "visible"].forEach((v) => {
     mk(`overflow-${v}`, `overflow:${v}`);
+  });
+
+  ["scroll", "auto"].forEach((v) => {
+    mk(`overflow-${v}`, `-webkit-overflow-scrolling:touch; overflow:${v}`);
+  });
+
+  [
+    ["x", "hidden"],
+    ["y", "hidden"],
+    ["x", "visible"],
+    ["y", "visible"],
+  ].forEach((v) => {
+    mk(`overflow-${v[0]}-${v[1]}`, `overflow-${v[0]}:${v[1]}`);
   });
 
   [
     ["x", "auto"],
     ["y", "auto"],
-    ["x", "hidden"],
-    ["y", "hidden"],
-    ["x", "visible"],
-    ["y", "visible"],
     ["x", "scroll"],
     ["y", "scroll"],
   ].forEach((v) => {
-    mk(`overflow-${v[0]}-${v[1]}`, `overflow-${v[0]}:${v[1]}`);
+    mk(
+      `overflow-${v[0]}-${v[1]}`,
+      `-webkit-overflow-scrolling:touch; overflow-${v[0]}:${v[1]}`
+    );
   });
 
-  mk("scrolling-touch", "	-webkit-overflow-scrolling:touch");
-  mk("scrolling-auto", "	-webkit-overflow-scrolling:auto");
+  mk("scrolling-touch", "-webkit-overflow-scrolling:touch");
+  mk("scrolling-auto", "-webkit-overflow-scrolling:auto");
 
   ["static", "fixed", "absolute", "relative", "sticky"].forEach((v) => {
     mk(`${v}`, `position: ${v}`);
