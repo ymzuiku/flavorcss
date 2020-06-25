@@ -7,7 +7,7 @@ const CodeTry = () => {
     <>
       <div className="h-xl"></div>
       <p className={doc.p}>您可以在下面的代码尝试以上属性</p>
-      <CodeEditor className={doc.edit} codeClassName={doc.editCode}>{`
+      <CodeEditor>{`
 <div class="row center-center">
 <div class="bg-red-400 w-3xl h-3xl m-lg spin-2000"></div>
 </div>
@@ -28,7 +28,7 @@ export default () => {
         .map((_, i) => {
           return [
             `.spin-${i * 500}`,
-            `animation: flavorcss-spin ${i *500}ms linear infinite`,
+            `animation: flavorcss-spin ${i * 500}ms linear infinite`,
           ];
         })}
       CodeTry={CodeTry}

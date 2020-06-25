@@ -42,7 +42,9 @@ export default () => {
           flavorcss
           对颜色的设定是毫不妥协的，总共预设了92种颜色，每种颜色都可以再次独自设定透明度，透明度的阶层每个颜色共有20层。
         </p>
-        <p className={doc.p}>Flavorcss 对常用设定颜色的属性都做了预设，如下表：</p>
+        <p className={doc.p}>
+          Flavorcss 对常用设定颜色的属性都做了预设，如下表：
+        </p>
         <table className="w-12/12">
           <thead>
             <tr>
@@ -79,7 +81,7 @@ export default () => {
           </tbody>
         </table>
         <h1 className={doc.h1}>颜色使用示例</h1>
-        <CodeEditor className={doc.edit} codeClassName={doc.editCode}>
+        <CodeEditor>
           {`
 <div class="p-2xl row">
   <!-- 背景色 -->

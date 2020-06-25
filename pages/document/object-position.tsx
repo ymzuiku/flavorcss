@@ -8,7 +8,7 @@ export default () => {
       <main className={doc.page}>
         <h1 className={doc.h1}>Object Position</h1>
         <p className={doc.h3}>在下面的代码使用相关的 css 类</p>
-        <CodeEditor className={doc.edit} codeClassName={doc.editCode}>{`
+        <CodeEditor>{`
 <div class="block p-md border-box mx-auto bg-white">
 <img class="object-cover object-0-0 bg-gray-400 m-md w-4xl h-4xl mx-auto" src="/static/imgs/building.jpeg">
 <img class="object-contain object-50-50 bg-gray-400 m-md w-4xl h-4xl mx-auto" src="/static/imgs/building.jpeg">

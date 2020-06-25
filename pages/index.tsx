@@ -51,7 +51,6 @@ export default () => {
         </p>
         <p className={doc.p}>这是一个带一点点性感的按钮, 当然你可以尝试编辑下面的代码改变这个按钮：</p>
         <CodeEditor
-          wrap
           theme="dark"
           className={doc.edit}
           codeClassName={doc.editCode}

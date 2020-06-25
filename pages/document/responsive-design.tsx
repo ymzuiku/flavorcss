@@ -18,7 +18,7 @@ export default () => {
           但是适用所有样式、所有伪类，它表示在非手持设备的样式。
         </div>
         <div className={doc.info}>您可编辑下面代码，实时更新样式查看</div>
-        <CodeEditor className={doc.edit} codeClassName={doc.editCode}>
+        <CodeEditor>
           {`
 <div class="bg-teal-100 p-2xl">
   <!-- 下面这行 row 表示在所有设备中，以 flex、row 进行排列 -->

@@ -7,7 +7,7 @@ const CodeTry = () => {
     <>
       <div className="h-xl"></div>
       <p className={Doc.p}>您可以在下面的代码尝试以上属性</p>
-      <CodeEditor className={Doc.edit} codeClassName={Doc.editCode}>{`
+      <CodeEditor>{`
 <div class="p-xl row center-center">
 <select class="mr-xl">
   <option>Yes</option>

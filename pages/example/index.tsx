@@ -13,12 +13,7 @@ export default () => {
         以下所有示例均使用 Flavorcss，您可以编辑代码以实时更新渲染的组件
       </div>
       <div className={doc.h2}>响应式卡片</div>
-      <CodeEditor
-        className={[doc.edit].join(" ")}
-        codeClassName={[doc.editCode, "max-h-5xl"].join(" ")}
-      >
-        {base}
-      </CodeEditor>
+      <CodeEditor>{base}</CodeEditor>
       <div className={doc.h2}>其他 Example 待补充</div>
       <div className="h-4xl"></div>
     </div>

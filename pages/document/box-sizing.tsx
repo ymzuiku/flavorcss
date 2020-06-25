@@ -10,8 +10,9 @@ export default () => {
       <main className={doc.page}>
         <h1 className={doc.h1}>Box Sizing</h1>
         <p className={doc.p}>
-          Flavorcss 在默认的 use-effect 设定中，将所有元素默认设置为：box-sizing:
-          border-box。这个做法是参考 bootstrap，实际工作中证明，它的确可以带来很多便利。取消这类预设，可以参考：
+          Flavorcss 在默认的 use-effect
+          设定中，将所有元素默认设置为：box-sizing: border-box。这个做法是参考
+          bootstrap，实际工作中证明，它的确可以带来很多便利。取消这类预设，可以参考：
           <Link href="/document/config">
             <a>自定义配置</a>
           </Link>
@@ -48,7 +49,7 @@ export default () => {
             })}
           </tbody>
         </table>
-        <CodeEditor className={doc.edit} codeClassName={doc.editCode}>{`
+        <CodeEditor>{`
 <div class="bg-gray-100 p-xl">
   <div class="border-box mx-auto h-3xl w-4xl  b-sm b-gray-400 bg-white"></div>
 </div>

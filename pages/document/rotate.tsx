@@ -13,7 +13,7 @@ const CodeTry = () => {
     <>
       <div className="h-xl"></div>
       <p className={doc.p}>鼠标 hover 查看效果</p>
-      <CodeEditor className={doc.edit} codeClassName={doc.editCode}>{`
+      <CodeEditor>{`
   <div class="row center-center">
   <!-- 注意需要添加 transform 类，scale 才会生效 -->
   <div class="transform hover:rotate-150 transition-500 bg-red-400 w-3xl h-3xl m-lg"></div>
