@@ -28,9 +28,7 @@ export default () => {
         <p className={doc.p}>
           您需要的仅仅是在html中引用 Flavorcss，它很小，只有 7kb(gzip):
         </p>
-        <Code
-          className={[doc.pre, "mini-scrollbar"].join(" ")}
-        >{`
+        <Code className={[doc.pre, "mini-scrollbar"].join(" ")}>{`
 <!-- 可选创建全局样式: flavorcss-effect="true" -->
 <script flavorcss-effect="true" src="https://unpkg.com/flavorcss@${pkg.version}/umd/index.js"></script>
         `}</Code>
@@ -94,8 +92,8 @@ export default () => {
           为什么使用 <code className={doc.code}>Flavorcss</code> ？
         </h1>
         <p className={doc.p}>
-          <code className={doc.code}>Flavorcss</code> 诞生的目的是为了解决
-          <code className={doc.code}>大部分 Atomic Class 库均会</code>
+          <code className={doc.code}>Flavorcss</code> 诞生的目的是为了解决大部分
+          <code className={doc.code}>Atomic Class</code>库均会
           面临的一个关键问题：<b>我们如何确定原子类个数的边界？</b>
         </p>
         <p className={doc.p}>我们详细分析这个问题：</p>
