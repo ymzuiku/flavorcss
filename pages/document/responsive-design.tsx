@@ -10,11 +10,11 @@ export default () => {
         <h1 className={doc.h1}>响应式设计</h1>
         <div className={doc.h2}>移动优先原则</div>
         <div className={doc.p}>
-          flavorcss
+          Flavorcss
           使用移动优先原则，即所有的属性默认应该是移动端的样式，如果我们需要为桌面端调整样式，再使用媒体查询
         </div>
         <div className={doc.p}>
-          flavorcss 的媒体查询只有一个指令 pc: ,
+          Flavorcss 的媒体查询只有一个指令 pc: ,
           但是适用所有样式、所有伪类，它表示在非手持设备的样式。
         </div>
         <div className={doc.info}>您可编辑下面代码，实时更新样式查看</div>
@@ -45,7 +45,7 @@ export default () => {
           2. 点击消息图标，桌面端会缩放并且旋转20度，移动端仅仅会缩放
         </div>
         <div className={doc.p}>
-          flavorcss 仅有一种媒体查询，没有 sm、md、lg、xl
+          Flavorcss 仅有一种媒体查询，没有 sm、md、lg、xl
           多种尺寸的媒体查询，这是为了减少编译体积而做的妥协,
         </div>
         <div className={doc.p}>

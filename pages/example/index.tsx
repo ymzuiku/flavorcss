@@ -10,7 +10,7 @@ export default () => {
       <div className="h-3xl"></div>
       <div className={doc.h1}>Example</div>
       <div className={doc.p}>
-        以下所有示例均使用 flavorcss，您可以编辑代码以实时更新渲染的组件
+        以下所有示例均使用 Flavorcss，您可以编辑代码以实时更新渲染的组件
       </div>
       <div className={doc.h2}>响应式卡片</div>
       <CodeEditor
@@ -47,7 +47,7 @@ const base = `
             原子风格非常好，但是原子的边界在哪里？定义多少原子，才能完全摆脱编写 css 类？
           </p>
           <p class="fs-md c-primary-800 c-opacity-70 line-2xl pt-md">
-            对于预编译的方案，唯一美中不足的就是无法满足海量CSS功能的前提下确保足够小的体积。flavorcss 的出现就是为了解决此问题。
+            对于预编译的方案，唯一美中不足的就是无法满足海量CSS功能的前提下确保足够小的体积。Flavorcss 的出现就是为了解决此问题。
           </p>
           <div class="flex-1"></div>
           <div class="row start-center pt-md">

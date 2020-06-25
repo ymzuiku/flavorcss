@@ -18,13 +18,13 @@ export default () => {
         <p className={doc.p}>
           本文档的大部分文案、设计也都是参考 tailwindcss。
         </p>
-        <p className={doc.p}>可以说 flavorcss 和 tailwindcss 较大的区别仅如下：</p>
+        <p className={doc.p}>可以说 Flavorcss 和 tailwindcss 较大的区别仅如下：</p>
         <ul>
           <li className="p-md c-teal-700">
-            1. flavorcss 是运行时编译，固定拥有海量原子类；
+            1. Flavorcss 是运行时编译，固定拥有海量原子类；
           </li>
           <li className="p-md c-teal-700">
-            2. flavorcss 通过 css values 进行动态配置
+            2. Flavorcss 通过 css values 进行动态配置
           </li>
         </ul>
         <p className={doc.h2}>Atomic Class 特性对比介绍</p>
@@ -77,8 +77,8 @@ export default () => {
           Atomic Class，体积还是会逐步接近 Purgecss 之前的体积。
         </p>
         <p className={doc.p}>
-        flavorcss 的特点是运行时编译，所以可以不妥协css体积的前提下，提供和
-          tailwindcss 一样丰富的 Atomic Class, flavorcss 默认提供的数量相当于
+        Flavorcss 的特点是运行时编译，所以可以不妥协css体积的前提下，提供和
+          tailwindcss 一样丰富的 Atomic Class, Flavorcss 默认提供的数量相当于
           tailwindcss 需要加载 2500kb 的css的数量
         </p>
         <p className={doc.p}>
@@ -117,8 +117,8 @@ export default () => {
         <h2 className={doc.h3}>Important</h2>
         <p className={doc.p}>指 Atomic Class 否可以相互覆盖。</p>
         <p className={doc.p}>
-          这个是 flavorcss flavorcss 的样式加载顺序了非常好的设计，并且在此基础上
-          flavorcss 对非 Pseudo 组合有两层样式，可以进行覆盖。这并没有使用 !important
+          Flavorcss 的样式加载顺序了非常好的设计，并且在此基础上
+          Flavorcss 对非 Pseudo 组合有两层样式，可以进行覆盖。这并没有使用 !important
           特性, 为内联样式保留了最高权限，也为定制化 !important 预留了空间
         </p>
         <div className={doc.footerSpace}></div>

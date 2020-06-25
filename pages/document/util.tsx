@@ -6,6 +6,9 @@ export default () => {
     <Layout>
       <main className={doc.page}>
         <h1 className={doc.h1}>单位</h1>
+        <div>所有单位都有负数值，如 left-xl指单位为 var(--xl); left--xl指单位为 calc(0px - var(--xl))</div>
+        <div>但是如width、radius 等属性理论上不会出现负值，所以这些不会有负值的属性，Flavorcss 就没有生成负值的 Atomic Class，而 margin-left、padding-left、scale、move、rotate、left、top 等等会有负值场景的，Flavorcss就生成了负值的 Atomic Class，为了方便文档的可阅读性，负值在整个文档的样式列表中并没有显示列出。</div>
+        <div>Flavorcss 整体单位分为三类：通用单位、屏幕单位、特殊单位。</div>
         <h2 className={doc.h2}>通用单位：</h2>
         <p className={doc.p}>
           大部分都会拥有以下单位，如：width、height、move、padding、margin、border-width、border-radius、
@@ -142,6 +145,10 @@ export default () => {
             })}
           </tbody>
         </table>
+        <h2 className={doc.h2}>特殊单位：</h2>
+        <p className={doc.p}>
+          有很多属性不太并不太适合使用以上单位，如 opacity、rotate、scale 等等，他们一般来说是比率关系，还有 transition、delay 是时间长短，他们都属于特殊单位，Flavorcss 对这类单位的设定有着他们自身的规律，使用的时候可以查阅该属性的文档进行理解。
+        </p>
         <div className={doc.footerSpace}></div>
       </main>
     </Layout>

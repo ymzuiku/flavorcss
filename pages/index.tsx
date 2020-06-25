@@ -12,27 +12,27 @@ export default () => {
   return (
     <Layout>
       <main className={doc.page}>
-        <h1 className={doc.h1}>flavorcss 是一个CSS库/方案</h1>
+        <h1 className={doc.h1}>Flavorcss 是一个CSS库/方案</h1>
         <p className={doc.p}>
-          flavorcss 是在<b>页面加载时，编译原子类</b>的
+          Flavorcss 是在<b>页面加载时，编译原子类</b>的
           <code className={doc.code}>css</code>
           方案。
         </p>
         <p className={doc.p}>
-          flavorcss
+          Flavorcss
           可以大幅度减少我们项目的css代码量，减小最终样式文件体积，并且可以有效提高
           css 开发效率。
         </p>
         <p className={doc.p}>
-          当前这个网站就是使用 flavorcss 编写的，并且编写过程中，没有创建
+          当前这个网站就是使用 Flavorcss 编写的，并且编写过程中，没有创建
           <code className={doc.code}>css/less/sass/styl</code>
           等文件，也没有使用 css-in-js 等内联样式的方案。
         </p>
         <p className={doc.p}>
-          您需要的仅仅是在html中引用 flavorcss，它很小，只有6kb(gzip):
+          您需要的仅仅是在html中引用 Flavorcss，它很小，只有6kb(gzip):
         </p>
         <Code
-          className={[doc.pre, 'mini-scrollbar'].join(' ')}
+          className={[doc.pre, "mini-scrollbar"].join(" ")}
         >{`<script src="https://unpkg.com/flavorcss@0.2.0/umd/index.js"></script>`}</Code>
         <p className={doc.p}>之后就可以在项目中使用成千上万个 Atomic Class</p>
         <h1 className={doc.h1}>原子类CSS</h1>
@@ -90,13 +90,11 @@ export default () => {
           我对于这类问题有一个非常好的答案，你可以跟着后面的实例试着写一些组件，感受一下，如果你感觉你爱上了它，那么请抛开偏见，享受它。若你并没有特殊的感觉，可以带着自己的意见离开。前端之所以有这么多方案，大部分原因是许多人想用自己更喜欢的方式去工作。
         </p>
         <h1 className={doc.h1}>
-          为什么使用 <code className={doc.code}>flavorcss</code> ？
+          为什么使用 <code className={doc.code}>Flavorcss</code> ？
         </h1>
         <p className={doc.p}>
-          <code className={doc.code}>flavorcss</code>
-          就是因为使用<code className={doc.code}>Tailwind CSS</code>
-          <code className={doc.code}>flavorcss</code> 诞生的目的是为了解决
-          <code className={doc.code}>TailwindCSS</code>
+          <code className={doc.code}>Flavorcss</code> 诞生的目的是为了解决
+          <code className={doc.code}>大部分 Atomic Class 库均会</code>
           面临的一个关键问题：<b>我们如何确定原子类个数的边界？</b>
         </p>
         <p className={doc.p}>我们详细分析这个问题：</p>
@@ -119,23 +117,23 @@ export default () => {
           </div>
           <div className={doc.section}>
             <span className={doc.sectionSpan}>3.</span>
-            使用 Purgecss 去清理未使用的 CSS, 这也是有代价的，我们需要注意 class
+            还有一种使用 Purgecss 去清理未使用 CSS 的方案,
+            这也是有代价的，我们需要注意 class
             的书写方式，如果我们使用变量的方式动态创建className， Purgecss
-            就无法在编译期间通过正则找到我们使用过的此类
-            css。并且我们携带着庞大的 css 体积，在编译期间增加了不少开销。
+            就无法在编译期间通过正则找到我们使用过的此类 css。
           </div>
         </div>
         <div className={doc.p}>
-          相信如果你真正长时间使用 Tailwind CSS
-          就会遇到以上问题，并且会非常痛苦：
+          作者之前一直在使用 Tailwind
+          CSS，它非常棒，但是真正长时间使用就会遇到以上问题，最终对这类方式表示遗憾：
           <span className="bg-pink-500 c-white p-4 radius-4">
             明明遇到真爱，却不能在一起。
           </span>
         </div>
         <div className="h-24"></div>
         <p className={doc.p}>
-          而 flavorcss 的方案很好的规避了<b>如何确定原子类个数的边界</b>
-          这个问题，flavorcss 是在运行时逐步编译绝大部分 Atomic Class,
+          而 Flavorcss 的方案很好的规避了<b>如何确定原子类个数的边界</b>
+          这个问题，Flavorcss 是在运行时逐步编译绝大部分 Atomic Class,
           并且整个编译和插入过程做了很好的分段编译，让用户无感知，整个页面加载也不会有明显的从无样式至有样式的可见布局变化。具体可以查看
           <Link href="/document/operating">
             <a>运行机制</a>

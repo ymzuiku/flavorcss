@@ -8,7 +8,7 @@ export default () => {
       <main className={doc.page}>
         <h1 className={doc.h1}>Container</h1>
         <p className={doc.p}>
-          flavorcss 的一个设计理念是尽可能少的添加新的关键词，所以 flavorcss
+          Flavorcss 的一个设计理念是尽可能少的添加新的关键词，所以 Flavorcss
           没有提供默认的 Container
           类，但是我们可以根据自己的需要，很轻松的实现一个。
         </p>

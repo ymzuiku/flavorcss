@@ -9,7 +9,7 @@ export default ({ children }: DocumentlayoutProps) => {
 
 const list = [
   { head: "Document" },
-  { title: "Why flavorcss?", url: "/" },
+  { title: "Why Flavorcss?", url: "/" },
   { title: "对比其他原子类CSS库", url: "/document/vs-other" },
   { head: "入门" },
   { title: "安装", url: "/document/install" },

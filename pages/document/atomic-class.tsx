@@ -98,7 +98,7 @@ export default () => {
         </CodeEditor>
         <div className={doc.p}>在上面的示例中，我们使用了：</div>
         <div className="px-md pt-md">
-          1. flavorcss 的 max-w-screen-xs 来设置最大宽度, mx-auto 来设置 margin:
+          1. Flavorcss 的 max-w-screen-xs 来设置最大宽度, mx-auto 来设置 margin:
           auto 0, row 来设置 flex row, p-xl 来控制 padding
         </div>
         <div className="px-md pt-md">

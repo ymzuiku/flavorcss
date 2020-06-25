@@ -9,9 +9,9 @@ export default () => {
       <main className={doc.page}>
         <h1 className={doc.h1}>自定义配置</h1>
         <p className={doc.p}>
-          flavorcss 99% 的属性，都会读取 css values
+          Flavorcss 99% 的属性，都会读取 css values
           进行组合，所以我们仅需要在项目中覆盖 css values，就可以自定义整个
-          flavorcss 配置。
+          Flavorcss 配置。
         </p>
         <h2 className={doc.h2}>所有默认 css values：</h2>
         <Code language="css" className={doc.pre}>{`
@@ -179,7 +179,7 @@ export default () => {
   `}</Code>
         <h2 className={doc.h2}>样式覆盖示例</h2>
         <p className={doc.p}>
-          由于 flavorcss
+          由于 Flavorcss
           是异步编译css样式，所以根据css覆盖原则，我们建议将覆盖默认样式放在body上:
         </p>
         <Code language="css" className={doc.pre}>{`
@@ -220,7 +220,7 @@ body {
         </CodeEditor>
         <h2 className={doc.h1}>取消全局样式</h2>
         <p className={doc.p}>
-          flavorcss 在 Normalize.css
+          Flavorcss 在 Normalize.css
           的基础上为了常规更好的编写代码，加入一部分全局样式，这对现有项目可能会有影响：
         </p>
         <p className={doc.p}>这是默认的全局样式:</p>
