@@ -56,7 +56,7 @@ export default () => {
           className={doc.edit}
           codeClassName={doc.editCode}
         >{`
-<!-- 我们随意修改下面的样式, 实时更新这个按钮，例如，我们把 px-16 改为 px-32-->
+<!-- 我们随意修改下面的样式, 实时更新这个按钮，例如，我们把 px-lg 改为 px-xl-->
 <button class="
   px-lg py-sm radius-sm m-lg 
   bg-blue-600 hover:bg-blue-500 active:bg-blue-400 
