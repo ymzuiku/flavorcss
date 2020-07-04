@@ -79,7 +79,7 @@ const scrollbar = `
 css += `
 :root {
 font-size: 16px;
---media: 720px;
+--media: 640px;
 --none: none;
 --auto: auto;
 --px: 0.5px;
@@ -359,13 +359,16 @@ const mkactiveGroup = (n: string, v: string) => {
   });
 };
 
-function mkEle() {
+function addEl(str: string) {
   const el = document.createElement("style");
   el.type = "text/css";
-  css += `@media (min-width: 720px){${md}}`;
-
-  el.innerText = css;
+  el.innerText = str;
   document.head.appendChild(el);
+}
+
+function mkEle() {
+  addEl(css);
+  addEl(`@media (min-width: 640px){${md}}`);
   css = "";
   md = "";
 }
@@ -961,24 +964,21 @@ css += `.clearfix {
   }
   }`;
 
-const mkList = [
-  mknow,
-  mkhover,
-  mkfocus,
-  mkfocusGroup,
-  mkactive,
-  mkactiveGroup,
-];
+const mkList = [mknow, mkhover, mkfocus, mkfocusGroup, mkactive, mkactiveGroup];
 const mkListLength = mkList.length;
 
 let mi = 0;
 
 function timoutRun() {
+  // console.time(("a" + mi) as any);
   render(mkList[mi]);
+  // console.timeEnd(("a" + mi) as any);
+  // console.time(("b" + mi) as any);
   mkEle();
+  // console.timeEnd(("b" + mi) as any);
   mi++;
   if (mi < mkListLength) {
-    setTimeout(timoutRun, 50);
+    setTimeout(timoutRun, 20);
   }
 }
 
