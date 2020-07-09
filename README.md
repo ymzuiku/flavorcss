@@ -4,7 +4,6 @@ Runtime Build Atomic Class
 
 Document: [http://flavorcss.writeflowy.com](http://flavorcss.writeflowy.com)
 
-
 ## 初见
 
 > 市面上有一种CSS方案叫做 `Atomic CSS`，如果你用过它；有的人会觉得非常荒唐，重新回到他习惯的BEM风格怀抱中。
@@ -145,7 +144,7 @@ Document: [http://flavorcss.writeflowy.com](http://flavorcss.writeflowy.com)
 
 而 `Flavorcss` 的方案很好的规避了如何确定原子类个数的边界这个问题，Flavorcss 是在运行时逐步编译绝大部分 Atomic Class, 并且整个编译和插入过程做了很好的分段编译，让用户无感知。
 
-我们只需要引入：
+Flavorcss 是零配置开箱即用的，我们只需要引入：
 
 ```html
 <script src="https://unpkg.com/flavorcss@0.1.3/umd/index.js"></script>
