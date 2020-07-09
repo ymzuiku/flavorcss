@@ -1,6 +1,6 @@
 export default function Github() {
   return (
-   <a target="_blank" href="https://github.com/ymzuiku/flavorcss.git" className="row center-center group hover:bg-primary-100 h-12/12 px-sm">
+   <a target="_blank" href="https://github.com/ymzuiku/flavorcss" className="row center-center group hover:bg-primary-100 h-12/12 px-sm">
     <svg
       className="c-primary-600 group:hover:c-primary-900  fill-current w-lg h-lg"
       xmlns="http://www.w3.org/2000/svg"
