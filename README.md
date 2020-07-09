@@ -3,7 +3,6 @@
 Runtime Build Atomic Class
 
 Document: [http://flavorcss.writeflowy.com](http://flavorcss.writeflowy.com)
-
 ## 初见
 
 > 市面上有一种CSS方案叫做 `Atomic CSS`，如果你用过它；有的人会觉得非常荒唐，重新回到他习惯的BEM风格怀抱中。
@@ -114,17 +113,13 @@ Document: [http://flavorcss.writeflowy.com](http://flavorcss.writeflowy.com)
 这就是作者爱上 `Atomic CSS` 风格的原因, 一套好的 `Atomic CSS` 相当于 css 的 `vim`.
 
 
-以上样式是否需要配置？根据不同库不同，作者最后卖的货：`FlavorCSS` 是不需要，我们完全可以零配置直接使用 `Atomic CSS`, 等到需要针对性调整的时候，覆盖 `css values` 即可。
-
-
 ## 快乐
 
  - 用了 `Atomic CSS` 之后，我们就不需要再去苦思冥想一堆 BEM 名称了
- - 我们甚至可以直接复制其他项目的`Atomic CSS`风格的 `html` 代码，上面已经有了组件应该有的样式，我们改改逻辑就可以继续用到新项目中。
  - 我们可以用非常有简短、有描述性的class类直接描述我们的UI，绘制界面的效率得到一个大的提升。
  - 我们可以非常容易的修改整个项目的风格
- - 我们的项目仅仅省下 Javascript/Typescript 文件
- - 还可以继续编其他吹牛皮的话，来继续享受快乐
+ - 我们的项目仅仅剩下下 Javascript/Typescript 文件
+ - 由于规范统一，我们甚至可以直接复制其他项目的`Atomic CSS`风格的 `className`
 
 ## 痛苦
 
