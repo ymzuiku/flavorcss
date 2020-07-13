@@ -53,6 +53,27 @@ const watchOptions = [
       }),
     ],
   },
+  {
+    input: './lib/css.ts',
+    output: {
+      file: './umd/css.js',
+      format: 'umd',
+      name: 'flavorcss',
+      sourcemap: true,
+      // globals: {
+      //   keyframesSpring: 'keyframes-spring',
+      // },
+    },
+    plugins: [
+      rollupTypescript({
+      tsconfig: './rollup.tsconfig.json',
+        useTsconfigDeclarationDir: false,
+      }),
+      uglify({
+        sourcemap: true,
+      }),
+    ],
+  },
 ];
 const watcher = rollup.watch(watchOptions);
 

@@ -1,10 +1,13 @@
-import useLink from "hooks/useLink";
 import useScript from "hooks/useScript";
 import "./_app.css";
+import useSSRLayoutEffect from "components/useSSRLayoutEffect";
 
 export default function MyApp({ Component, pageProps }: any) {
   const flavorcss = useScript("/static/flavorcss.js");
   const font = useScript("//at.alicdn.com/t/font_1872911_kd304mu78oj.js");
+  // useSSRLayoutEffect(() => {
+  //   (window as any).flavorcssLoad()
+  // }, [])
 
   return (
     <>
@@ -13,6 +16,7 @@ export default function MyApp({ Component, pageProps }: any) {
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui, viewport-fit=cover"
       />
+      <template flavorcss-effect="true" flavorcss-obs="true" ></template>
       {/* <link rel="icon" href="/poet.ico" /> */}
       <style type="text/css">
         {`.icon {
@@ -22,10 +26,9 @@ export default function MyApp({ Component, pageProps }: any) {
             overflow: hidden;
           }`}
       </style>
-      <div flavorcss-effect="true" />
       {flavorcss}
 
-      <div className="full">
+      <div>
         <Component {...pageProps} />
       </div>
       {font}

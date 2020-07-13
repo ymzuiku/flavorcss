@@ -58,7 +58,7 @@ export default function MyApp({ Component, pageProps }: any) {
       <!-- 可选创建全局样式:  -->
       <div flavorcss-effect="true"></div>
       {flavorcss}
-      <div className="full">
+      <div>
         <Component {...pageProps} />
       </div>
     </head>

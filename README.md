@@ -137,7 +137,7 @@ Document: [http://flavorcss.writeflowy.com](http://flavorcss.writeflowy.com)
 
 并且由于一般情况我们不合适在开发环境做这个动作，不然我们每添编一写一个组件就得编译一次才能看到效果，而我们若只在编译生产代码时才做这个动作其实是有风险的，若有正则未匹配到的对象，可能会导致不可预知的生产bug，例如一个模块无法呈现。
 
-而 `Flavorcss` 的方案很好的规避了如何确定原子类个数的边界这个问题，Flavorcss 是在运行时逐步编译绝大部分 Atomic Class, 并且整个编译和插入过程做了很好的分段编译，让用户无感知。
+而 `Flavorcss` 的方案很好的规避了如何确定原子类个数的边界这个问题，Flavorcss 是在运行时编译所需 Atomic Class, 并且只编译用到的 css，并且做了精细的缓存，让用户无感知。
 
 Flavorcss 是零配置开箱即用的，我们只需要引入：
 
@@ -169,7 +169,7 @@ import 'flavorcss'
 ```
 
 
-`Flavorcss` 会在页面刚加载的20ms内阻塞渲染，编译并插入所有和视觉有关的 `Atomic CSS` 样式，接下来会逐步插入伪类、媒体查询等其他 `Atomic CSS`。
+`Flavorcss` 会编译并插入有关的 `Atomic CSS` 样式
 
 
 ## 踌躇

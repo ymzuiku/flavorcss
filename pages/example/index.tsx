@@ -24,7 +24,7 @@ const base = `
 <!-- 您可实时编辑此代码 -->
 <section class="bg-gray-500 p-xl">
       <div
-        class="pc:max-w-screen-md mx-auto w-full max-w-12/12 b-0 b-primary-500 shadow-md bg-white radius-md overflow-hidden col pc:row">
+        class="pc:max-w-screen-md mx-auto w-12/12 max-w-12/12 b-0 b-primary-500 shadow-md bg-white radius-md overflow-hidden col pc:row">
         <img class="w-12/12 h-5xl  pc:w-5xl pc:h-12/12" src="/static/imgs/build.jpeg"></img>
         <div class="p-lg col">
           <div class="fs-sm c-gray-600 row start-center items-center">

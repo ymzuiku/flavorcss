@@ -11,7 +11,7 @@ export default () => {
       <main className={doc.page}>
         <h1 className={doc.h1}>Flavorcss 是一个CSS库/方案</h1>
         <p className={doc.p}>
-          Flavorcss 是在<b>页面加载时，编译原子类</b>的
+          Flavorcss 是在<b>运行时，编译原子类</b>的
           <code className={doc.code}>css</code>
           方案。
         </p>
@@ -132,8 +132,7 @@ export default () => {
         <div className="h-lg"></div>
         <p className={doc.p}>
           而 Flavorcss 的方案很好的规避了<b>如何确定原子类个数的边界</b>
-          这个问题，Flavorcss 是在运行时逐步编译绝大部分 Atomic Class,
-          并且整个编译和插入过程做了很好的分段编译，让用户无感知，整个页面加载也不会有明显的从无样式至有样式的可见布局变化。具体可以查看
+          这个问题，Flavorcss 是在运行时，编译 Atomic Class, 有两种编译方案：动态编译 / 提前编译。直接解决了海量 Atomic Class 的 css 体积问题。具体可以了解：
           <Link href="/document/operating">
             <a>运行机制</a>
           </Link>
