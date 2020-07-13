@@ -948,24 +948,6 @@ if (document.querySelector('[flavorcss-effect]')) {
 
 const cacheCss = {} as any;
 
-const getTemplate = (...args: any[]) => {
-  const [template, ...param] = args;
-
-  let text = "";
-  if (typeof template === "string") {
-    text = template;
-  } else if (template) {
-    template.forEach((v: any, i: number) => {
-      text += v;
-      if (param[i]) {
-        text += param[i];
-      }
-    });
-  }
-  return text;
-};
-
-
 export default function css(...args: any[]) {
   const [template, ...param] = args;
 
@@ -980,7 +962,10 @@ export default function css(...args: any[]) {
       }
     });
   }
+  buildCss(code)
+}
 
+export function buildCss(code: string) {
   if (cacheCss[code]) return;
 
   code.split(' ').forEach(name => {
@@ -1008,45 +993,53 @@ export default function css(...args: any[]) {
   cacheCss[code] = true;
 }
 
+const setAttribute = HTMLElement.prototype.setAttribute;
 
-// if (typeof MutationObserver !== 'undefined' && document.querySelector('[flavorcss-obs]')) {
-//   const observerOptions = {
-//     childList: true,
-//     attributes: true,
-//     subtree: true,
-//     attributeFilter: ['class']
-//   }
+(HTMLElement as any).prototype.setAttribute = function (n: string, v: string){
+  if (n === 'class')  {
+    buildCss(v)
+  }
+  setAttribute.call(this, n, v);
+}
 
-//   const observer = new MutationObserver((mutations) => {
-//     for (let i = 0; i < mutations.length; i++) {
-//       const mut = mutations[i];
-//       // return;
-//       if ((mut as any).target && (mut as any).target.className) {
-//         css((mut as any).target.className)
-//       }
-
-//       if (mut.addedNodes.length > 0) {
-//         // if (mutations[i].type !== 'attributes') return;
-//         mut.addedNodes.forEach((node: any) => {
-//           // if (node.nodeType !== 1) return
-//           if (node.className) {
-//             css(node.className)
-//           }
-//         })
-//       }
-//     }
-//   })
-//   observer.observe(document, observerOptions)
-// }
-
-export function flavorcssLoad() {
+export function flavorcssReBuild() {
   document.querySelectorAll('[class]').forEach(node => {
     css(node.className)
   })
 }
 
-(window as any).flavorcssLoad = flavorcssLoad;
+(window as any).flavorcssReBuild = flavorcssReBuild;
 
 window.addEventListener('load', function () {
-  flavorcssLoad()
+  flavorcssReBuild()
 })
+
+
+if (typeof MutationObserver !== 'undefined' && document.querySelector('[flavorcss-obs]')) {
+  const observerOptions = {
+    childList: true,
+    attributes: true,
+  }
+
+  const observer = new MutationObserver((mutations) => {
+    flavorcssReBuild()
+    // for (let i = 0; i < mutations.length; i++) {
+    //   const mut = mutations[i];
+    //   // return;
+    //   if ((mut as any).target && (mut as any).target.className) {
+    //     css((mut as any).target.className)
+    //   }
+
+    //   if (mut.addedNodes.length > 0) {
+    //     // if (mutations[i].type !== 'attributes') return;
+    //     mut.addedNodes.forEach((node: any) => {
+    //       // if (node.nodeType !== 1) return
+    //       if (node.className) {
+    //         css(node.className)
+    //       }
+    //     })
+    //   }
+    // }
+  })
+  observer.observe(document, observerOptions)
+}

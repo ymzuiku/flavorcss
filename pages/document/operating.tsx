@@ -55,9 +55,9 @@ export default () => {
           而现实情况是，考虑网络条件，大部分时候 Flavorcss 会比传统大型 web
           应用对样式的加载更快。
         </p>
-        <h1 className={doc.h1}>动态编译方案</h1>
+        <h1 className={doc.h1}>动态编译方案 (实验)</h1>
         <p className={doc.p}>
-          如果我们使用前端框架如 React，我们可以在所有 className 上包裹一层运算方法，若运算方法中包含 flavorcss 约定的 class，并且样式表中并无此样式，就会动态创建该样式。
+          flavorcss 会进行监听整个项目，当有样式新增或变化时，若样式中包含 flavorcss 约定的 class，并且样式表中并无此样式，就会动态创建该样式。
         </p>
         <div className={doc.p}>
           动态创建该样式的开销是非常低的，此文档一共的开销是 17ms ，平均每创建10组样式的开销应该 1ms 内，并且规避了重复样式的创建，足够满足我们对性能的要求。对初始化性能有严格要求的推荐使用此方案。
@@ -66,14 +66,7 @@ export default () => {
           动态编译例子：
         </p>
         <Code className={[doc.pre, "mini-scrollbar"].join(" ")}>{`
-import React from 'react';
-import css from 'flavorcss/umd/css';
-
-export default ()=>{
-  return <div className={css\`bg-red-500 fs-xl\`}>
-    Hello Flavorcss
-  </div>
-}
+import 'flavorcss/umd/css';
         `}</Code>
       </main>
       <div className={doc.footerSpace}></div>
