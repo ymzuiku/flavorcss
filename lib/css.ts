@@ -52,7 +52,7 @@ function mkCss(n: string, v: string) {
   md += `[class] .hover\\:${n}:hover{${v}} `;
   md += `[class] .group:hover .group\\:hover\\:${n}{${v}} `;
 
-  ["focus", "active"].forEach((h) => {
+  ["focus", "active", "checked", "disable", "required"].forEach((h) => {
     css += `.${h}\\:${n}:${h}{${v}} `;
     css += `.group:${h} .group\\:${h}\\:${n}{${v}} `;
     md += `[class] .pc\\:${h}\\:${n}:${h}{${v}} `;
@@ -80,7 +80,7 @@ const scrollbar = `
   --mini-scrollbar-color-opacity:.45;
   --mini-scrollbar-hover: 150,151,155;
   --mini-scrollbar-hover-opacity:.65;
-  --mini-scrollbar-size: 6px;
+  --mini-scrollbar-size: 7px;
 }
 .${mini} {
   -webkit-overflow-scrolling: touch;
@@ -294,34 +294,34 @@ ${scrollbar}
 `;
 
 const effect = `
-html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}
+html{-webkit-text-size-adjust:100%} main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}
 
-blockquote,dl,dd,h1,h2,h3,h4,h5,h6,figure,p,pre {
+.flavor blockquote,dl,dd,h1,h2,h3,h4,h5,h6,figure,p,pre {
   margin: 0;
   font-size: 1em;
 }
-h1,h2,h3,h4,h5,h6 {
+.flavor h1,h2,h3,h4,h5,h6 {
   font-size: inherit;
   font-weight: inherit;
 }
-a {
+.flavor a {
   text-decoration:none;
 }
-ol,ul {
+.flavor ol,ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-img, image {
+.flavor img, image {
   object-fit: cover;
   object-position: 50% 50%;
 }
-img,svg,video,canvas,audio,iframe,embed,object {
+.flavor img,svg,video,canvas,audio,iframe,embed,object {
   display: block;
   vertical-align: middle;
 }
 
-*,
+.flavor *,
 *::before,
 *::after {
   border-width: 0;
@@ -329,9 +329,9 @@ img,svg,video,canvas,audio,iframe,embed,object {
   border-color: currentColor;
   -webkit-tap-highlight-color: transparent;
 }
-table {border-collapse: collapse}
-body {padding:0px;margin:0px;font-family: var(--sans);}
-* {box-sizing: border-box; outline:0;-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;}
+.flavor table {border-collapse: collapse}
+.flavor body {line-height:1.15;padding:0px;margin:0px;}
+.flavor * {box-sizing: border-box; outline:0;-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;font-family: var(--sans);}
 `;
 
 const fm = {
@@ -354,7 +354,7 @@ for (let i = 0; i <= 10; i++) {
   if (i > 0) {
     mk(
       `transition-${i * 100}`,
-      `transition: all ${i * 100}ms var(--ease);will-change:transform; ${tr}`
+      `transition: all ${i * 100}ms var(--ease);will-change:transform; ${tr};`
     );
   }
 
@@ -941,29 +941,9 @@ export function mkStyle(str: string, id: string) {
 
 mkStyle(baseCss, 'flavorcss-base-css')
 
-if (document.querySelector('[flavorcss-effect]')) {
-  mkStyle(effect, 'flavorcss-effect-css')
-}
-
+mkStyle(effect, 'flavorcss-effect-css')
 
 const cacheCss = {} as any;
-
-export default function css(...args: any[]) {
-  const [template, ...param] = args;
-
-  let code = "";
-  if (typeof template === 'string') {
-    code = template;
-  } else if (template && template.forEach) {
-    template.forEach((v: any, i: number) => {
-      code += v;
-      if (param[i]) {
-        code += param[i];
-      }
-    });
-  }
-  buildCss(code)
-}
 
 export function buildCss(code: string) {
   if (cacheCss[code]) return;
@@ -993,53 +973,8 @@ export function buildCss(code: string) {
   cacheCss[code] = true;
 }
 
-const setAttribute = HTMLElement.prototype.setAttribute;
-
-(HTMLElement as any).prototype.setAttribute = function (n: string, v: string){
-  if (n === 'class')  {
-    buildCss(v)
-  }
-  setAttribute.call(this, n, v);
-}
-
 export function flavorcssReBuild() {
   document.querySelectorAll('[class]').forEach(node => {
-    css(node.className)
+    buildCss(node.className)
   })
-}
-
-(window as any).flavorcssReBuild = flavorcssReBuild;
-
-window.addEventListener('load', function () {
-  flavorcssReBuild()
-})
-
-
-if (typeof MutationObserver !== 'undefined' && document.querySelector('[flavorcss-obs]')) {
-  const observerOptions = {
-    childList: true,
-    attributes: true,
-  }
-
-  const observer = new MutationObserver((mutations) => {
-    flavorcssReBuild()
-    // for (let i = 0; i < mutations.length; i++) {
-    //   const mut = mutations[i];
-    //   // return;
-    //   if ((mut as any).target && (mut as any).target.className) {
-    //     css((mut as any).target.className)
-    //   }
-
-    //   if (mut.addedNodes.length > 0) {
-    //     // if (mutations[i].type !== 'attributes') return;
-    //     mut.addedNodes.forEach((node: any) => {
-    //       // if (node.nodeType !== 1) return
-    //       if (node.className) {
-    //         css(node.className)
-    //       }
-    //     })
-    //   }
-    // }
-  })
-  observer.observe(document, observerOptions)
 }

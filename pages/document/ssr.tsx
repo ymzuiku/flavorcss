@@ -55,10 +55,9 @@ export default function MyApp({ Component, pageProps }: any) {
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui, viewport-fit=cover"
       />
-      <!-- 可选创建全局样式:  -->
-      <div flavorcss-effect="true"></div>
       {flavorcss}
-      <div>
+      <!-- 可选创建全局样式:  -->
+      <div className="flavor">
         <Component {...pageProps} />
       </div>
     </head>

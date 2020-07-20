@@ -29,8 +29,7 @@ export default () => {
           您需要的仅仅是在html中引用 Flavorcss，它很小，只有 7kb(gzip):
         </p>
         <Code className={[doc.pre, "mini-scrollbar"].join(" ")}>{`
-<!-- 可选创建全局样式: flavorcss-effect="true" -->
-<script flavorcss-effect="true" src="https://unpkg.com/flavorcss@${pkg.version}/umd/index.js"></script>
+<script src="https://unpkg.com/flavorcss@${pkg.version}/umd/index.js"></script>
         `}</Code>
         <p className={doc.p}>之后就可以在项目中使用成千上万个 Atomic Class</p>
         <h1 className={doc.h1}>原子类CSS</h1>

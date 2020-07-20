@@ -220,11 +220,10 @@ body {
           加入一部分全局样式，这对现有项目可能会有影响，所以默认是关闭的：
         </p>
         <p className={doc.p}>
-          我们可以在脚本运行时能查找到的标签添加
-          flavorcss-effect="true", 添加运行时插入全局样式：
+          我们可以在body或局部元素上添加 flavor 样式，开启磨平浏览器差异的样式：
         </p>
         <CodeEditor notRender className={doc.pre}>{`
-<div flavorcss-effect="true" />
+<body class="flavor" />
 `}</CodeEditor>
         <p className={doc.p}>配置之后 Flavorcss 执行会插入以下样式:</p>
         <CodeEditor notRender language="css" className={doc.pre}>{`

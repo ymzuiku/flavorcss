@@ -14,8 +14,7 @@ export default () => {
         <CodeEditor
           notRender
         >{`
-<!-- 可选创建全局样式: flavorcss-effect="true" -->
-<script flavorcss-effect="true" src="https://unpkg.com/flavorcss@${pkg.version}/umd/index.js"></script>
+<script src="https://unpkg.com/flavorcss@${pkg.version}/umd/index.js"></script>
         `}</CodeEditor>
         <p className={doc.p}>
           注意，建议在body渲染之前引用 Flavorcss 脚本，所以把 引用脚本放在 head
