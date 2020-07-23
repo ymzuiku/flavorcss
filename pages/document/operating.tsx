@@ -55,7 +55,7 @@ export default () => {
           而现实情况是，考虑网络条件，大部分时候 Flavorcss 会比传统大型 web
           应用对样式的加载更快。
         </p>
-        <h1 className={doc.h1}>动态编译方案 (实验)</h1>
+        {/* <h1 className={doc.h1}>动态编译方案 (实验)</h1>
         <p className={doc.p}>
           flavorcss 会进行监听整个项目，当有样式新增或变化时，若样式中包含 flavorcss 约定的 class，并且样式表中并无此样式，就会动态创建该样式。
         </p>
@@ -67,7 +67,7 @@ export default () => {
         </p>
         <Code className={[doc.pre, "mini-scrollbar"].join(" ")}>{`
 import 'flavorcss/umd/css';
-        `}</Code>
+        `}</Code> */}
       </main>
       <div className={doc.footerSpace}></div>
     </Layout>
