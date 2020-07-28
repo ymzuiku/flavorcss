@@ -280,6 +280,18 @@ img.flavor,svg.flavor,video.flavor,canvas.flavor,audio.flavor,iframe.flavor,embe
   vertical-align: middle;
 }
 
+.layout-col {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  position: relative;
+}
+
+.layout-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  position: relative;
+}
+
 *.flavor,
 *::before,
 *::after {
@@ -634,6 +646,9 @@ function render(mk: any) {
 
   for (let i = 0; i <= 100; i++) {
     mk(`z-${i * 10}`, `z-index:${i * 10}`);
+  }
+  for (let i = 0; i <= 100; i++) {
+    mk(`z-${i * 100}`, `z-index:${i * 100}`);
   }
   mk(`z-auto`, `z-index:zuto`);
 
