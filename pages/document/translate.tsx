@@ -1,6 +1,6 @@
 import DocumentThinPage from "pages/components/DocumentThinPage";
 import CodeEditor from "components/CodeEditor";
-import doc from "components/doc";
+import doc from "components/Doc";
 import DocumentUnitPage from "pages/components/DocumentUnitPage";
 
 // const lista = Array(205 / 5)

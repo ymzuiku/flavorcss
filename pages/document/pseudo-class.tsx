@@ -1,4 +1,4 @@
-import doc from "components/doc";
+import doc from "components/Doc";
 import Layout from "./Layout";
 import CodeEditor from "components/CodeEditor";
 import Code from "components/Code";
@@ -15,7 +15,7 @@ function Hover() {
       <CodeEditor>
         {`
 <div class="bg-teal-100 p-2xl">
-<button class="hover:bg-indigo-500 shadow hover:shadow-lg flex-0-0 pc:mb-lg p-xl py-md bg-indigo-400 c-white radius-md cursor-pointer transition-700">
+<button class="def hover:bg-indigo-500 shadow hover:shadow-lg flex-0-0 pc:mb-lg p-xl py-md bg-indigo-400 c-white radius-md cursor-pointer transition-700">
 Hover Me
 </button>
 </div>
@@ -67,7 +67,7 @@ function Focus() {
         {`
 <div class="bg-teal-100 p-2xl">
 <div class="row pc:col mx-auto max-w-5xl p-xl bg-white radius-lg shadow-xl shadow-indigo-900 shadow-opacity-5 row center-center">
-<input class="px-sm b-px b-teal-200 radius-sm h-2xl hover:b-indigo-300 active:b-red-600 focus:b-xs focus:b-indigo-500 focus:shadow-xl transition-400 placeholder-teal-300" placeholder="Place focus" />
+<input class="def px-sm b-px b-teal-200 radius-sm h-2xl hover:b-indigo-300 active:b-red-600 focus:b-xs focus:b-indigo-500 focus:shadow-xl transition-400 placeholder-teal-300" placeholder="Place focus" />
 </div>
 </div>
     `}

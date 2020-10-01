@@ -26,7 +26,7 @@ export default function MyApp({ Component, pageProps }: any) {
       </style>
       {flavorcss}
 
-      <div className="flavor">
+      <div className="def">
         <Component {...pageProps} />
       </div>
       {font}

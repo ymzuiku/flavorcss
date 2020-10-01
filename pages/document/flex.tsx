@@ -1,4 +1,4 @@
-import doc from "components/doc";
+import doc from "components/Doc";
 import Layout from "./Layout";
 import DocumentTry from "pages/components/DocumentTry";
 
@@ -13,10 +13,10 @@ export default () => {
           剩余的都是排列组合：
         </p>
         <p className={doc.p}>
-          其中 flex-grow 是从 0-12 分为12份，flex-shrink 是0-1，flex-basis 是 0% 和
-          auto。
+          其中 flex-grow 是从 0-12 分为12份，flex-shrink 是0-1，flex-basis 是 0%
+          和 auto。
         </p>
-        <table className="w-12/12 table-fixed">
+        <table className="def w-12/12 table-fixed">
           <thead>
             <tr>
               {["Class", "Properties"].map((v) => {

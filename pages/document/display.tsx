@@ -1,4 +1,4 @@
-import doc from "components/doc";
+import doc from "components/Doc";
 import Layout from "./Layout";
 import CodeEditor from "components/CodeEditor";
 
@@ -15,7 +15,7 @@ export default () => {
     <div class="b-px p-sm b-gray-400 bt-0 first:bt-px">Display</div>
 </div>
           `}</CodeEditor>
-        <table className="w-12/12 table-fixed">
+        <table className="def w-12/12 table-fixed">
           <thead>
             <tr>
               {["Class", "Properties"].map((v) => {

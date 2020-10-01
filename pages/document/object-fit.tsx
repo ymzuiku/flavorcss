@@ -1,4 +1,4 @@
-import doc from "components/doc";
+import doc from "components/Doc";
 import Layout from "./Layout";
 import CodeEditor from "components/CodeEditor";
 
@@ -14,7 +14,7 @@ export default () => {
 <img class="object-contain object-50-50 bg-gray-400 m-md w-4xl h-4xl mx-auto" src="/static/imgs/building.jpeg">
 </div>
           `}</CodeEditor>
-        <table className="w-12/12 table-fixed">
+        <table className="def w-12/12 table-fixed">
           <thead>
             <tr>
               {["Class", "Properties"].map((v) => {

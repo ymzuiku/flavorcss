@@ -1,4 +1,4 @@
-import doc from "components/doc";
+import doc from "components/Doc";
 import Layout from "./Layout";
 import CodeEditor from "components/CodeEditor";
 

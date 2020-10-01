@@ -1,4 +1,4 @@
-import doc from "components/doc";
+import doc from "components/Doc";
 import Layout from "./Layout";
 import Code from "components/Code";
 import CodeEditor from "components/CodeEditor";
@@ -18,7 +18,7 @@ export default () => {
           </Link>
         </p>
 
-        <table className="w-12/12 table-fixed">
+        <table className="def w-12/12 table-fixed">
           <thead>
             <tr>
               {["Class", "Properties"].map((v) => {

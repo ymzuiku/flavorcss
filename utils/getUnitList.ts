@@ -1,9 +1,10 @@
-export default (n: string, v:string) => {
+export default (n: string, v: string) => {
   return [
     [`.${n}-0`, `${v}: 0;`],
     [`.${n}-px`, `${v}: var(--pt-px);`],
     [`.${n}-none`, `${v}: var(--pt-none);`],
     [`.${n}-auto`, `${v}: var(--pt-auto);`],
+    [`.${n}-2xs`, `${v}: var(--pt-2xs);`],
     [`.${n}-xs`, `${v}: var(--pt-xs);`],
     [`.${n}-sm`, `${v}: var(--pt-sm);`],
     [`.${n}-md`, `${v}: var(--pt-md);`],
@@ -70,7 +71,7 @@ export default (n: string, v:string) => {
   ];
 };
 
-export const getUnitLiList = (n: string, v:string) => {
+export const getUnitLiList = (n: string, v: string) => {
   return [
     [`.${n}-0`, `${v}: 0;`],
     [`.${n}-px`, `${v}: var(--pt-px);`],

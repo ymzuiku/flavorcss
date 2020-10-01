@@ -1,4 +1,5 @@
 let css = "";
+
 const sc = [
   "screen-xs",
   "screen-sm",
@@ -12,7 +13,6 @@ const pt = [
   "auto",
   "0",
   "px",
-  "xxs",
   "xs",
   "sm",
   "md",
@@ -39,6 +39,8 @@ const colors = [
   "indigo",
   "purple",
   "pink",
+  "light",
+  "dark",
 ];
 
 const mini = "mini-scrollbar";
@@ -93,7 +95,6 @@ font-size: 16px;
 --fs-0: 0rem;
 --fs-auto: auto;
 --fs-px: 0.3em;
---fs-xxs: .5em;
 --fs-xs: .75em;
 --fs-sm: .875em;
 --fs-md: 1em;
@@ -107,7 +108,6 @@ font-size: 16px;
 --pt-0: 0px;
 --pt-auto: auto;
 --pt-px: 1px;
---pt-xxs: 2px;
 --pt-xs: 4px;
 --pt-sm: 8px;
 --pt-md: 16px;
@@ -121,9 +121,8 @@ font-size: 16px;
 --li-0: 0px;
 --li-auto: auto;
 --li-px: 0.5px;
---li-xxs: 1px;
---li-xs: 2px;
---li-sm: 4px;
+--li-xs: 1px;
+--li-sm: 2px;
 --li-md: 6px;
 --li-lg: 8px;
 --li-xl: 12px;
@@ -233,6 +232,24 @@ font-size: 16px;
 --pink-700: 184,50,128;
 --pink-800: 151,39,109;
 --pink-900: 112,35,89;
+--light-100: 255,255,255;
+--light-200: 250,250,250;
+--light-300: 245,245,245;
+--light-400: 240,240,240;
+--light-500: 233,233,233;
+--light-600: 227,227,227;
+--light-700: 220,220,220;
+--light-800: 215,215,215;
+--light-900: 209,209,209;
+--dark-100: 0,0,0;
+--dark-200: 31,31,31;
+--dark-300: 48,48,48;
+--dark-400: 60,60,60;
+--dark-500: 75,75,75;
+--dark-600: 92,92,92;
+--dark-700: 108,108,108;
+--dark-800: 122,122,122;
+--dark-900: 133,133,133;
 --shadow-color: 0,0,0;
 --shadow-opacity: 0.13;
 --ease: cubic-bezier(0.23, 1, 0.32, 1);
@@ -263,26 +280,37 @@ ${scrollbar}
 css += `
 html{-webkit-text-size-adjust:100%} main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}
 .full { width:100%; height:100%; }
-blockquote.flavor,dl.flavor,dd.flavor,h1.flavor,h2.flavor,h3.flavor,h4.flavor,h5.flavor,h6.flavor,figure.flavor,p.flavor,pre.flavor {
+.def {
   margin: 0;
   font-size: 1em;
+  border-width: 0;
+  border-style: solid;
+  border-color: currentColor;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box; 
+  outline:0;
+  -webkit-font-smoothing: antialiased; 
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--sans);
 }
-a.flavor {
+a.def {
   text-decoration:none;
 }
-ol.flavor,ul.flavor {
+ol.def,ul.def {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-img.flavor, image.flavor {
+img.def, image.def {
   object-fit: cover;
   object-position: 50% 50%;
 }
-img.flavor,svg.flavor,video.flavor,canvas.flavor,audio.flavor,iframe.flavor,embed.flavor,object.flavor {
+img.def,svg.def,video.def,canvas.def,audio.def,iframe.def,embed.def,object.def {
   display: block;
   vertical-align: middle;
 }
+table.def {border-collapse: collapse}
+body.def {line-height:1.15;padding:0px;margin:0px;}
 
 .layout-col {
   display: grid;
@@ -295,22 +323,9 @@ img.flavor,svg.flavor,video.flavor,canvas.flavor,audio.flavor,iframe.flavor,embe
   grid-template-columns: auto 1fr auto;
   position: relative;
 }
-
-*.flavor,
-*::before,
-*::after {
-  border-width: 0;
-  border-style: solid;
-  border-color: currentColor;
-  -webkit-tap-highlight-color: transparent;
-}
-table.flavor {border-collapse: collapse}
-body.flavor {line-height:1.15;padding:0px;margin:0px;}
-*.flavor {box-sizing: border-box; outline:0;-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;font-family: var(--sans);}
 `;
 
 // details
-
 const fm = {
   center: "center",
   start: "flex-start",
@@ -345,6 +360,17 @@ const mkhover = (n: string, v: string) => {
 const mkfocus = (n: string, v: string) => {
   ["focus"].forEach((h) => {
     css += `.${h}\\:${n}:${h}{${v}} `;
+  });
+};
+
+const mkchild = (n: string, v: string) => {
+  [
+    ["last", "last-child"],
+    ["first", "first-child"],
+    ["even", "nth-child(even)"],
+  ].forEach((h) => {
+    css += `.${h[0]}\\:${n}:${h[1]}{${v}} `;
+    md += `.pc\\:${h[0]}\\:${n}:${h[1]}{${v}} `;
   });
 };
 
@@ -845,8 +871,9 @@ function render(mk: any) {
   );
 
   [
-    ["xs", "0 0 0 1px", "0 0 0 0"],
-    ["sm", "0 1px 2px 0", "0 0 0 0"],
+    ["xxs", "0 0 0 1px", "0 0 0 0"],
+    ["xs", "0 1px 2px 0", "0 0 0 0"],
+    ["sm", "0 2px 4px 0", "0 0 0 0"],
     ["md", "0 4px 6px -1px", "0 2px 4px -1px"],
     ["lg", "0 10px 15px -3px", "0 4px 6px -2px"],
     ["xl", "0 20px 25px -5px", "0 10px 10px -5px"],
@@ -976,7 +1003,15 @@ css += `.clearfix {
   }
   }`;
 
-const mkList = [mknow, mkhover, mkfocus, mkfocusGroup, mkactive, mkactiveGroup];
+const mkList = [
+  mknow,
+  mkhover,
+  mkfocus,
+  mkchild,
+  mkfocusGroup,
+  mkactive,
+  mkactiveGroup,
+];
 const mkListLength = mkList.length;
 
 let mi = 0;
@@ -995,3 +1030,40 @@ function timoutRun() {
 }
 
 timoutRun();
+
+setTimeout(() => {
+  if (document.querySelector("flavor-def")) {
+    addEl(`
+blockquote,dl,dd,h1,h2,h3,h4,h5,h6,figure,p,pre {
+  {
+  margin: 0;
+  font-size: 1em;
+  border-width: 0;
+  border-style: solid;
+  border-color: currentColor;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box; 
+  outline:0;
+}
+a {
+  text-decoration:none;
+}
+ol,ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+img, image {
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+img,svg,video,canvas,audio,iframe,embed,object {
+  display: block;
+  vertical-align: middle;
+}
+table {border-collapse: collapse}
+body {line-height:1.15;padding:0px;margin:0px;font-family: var(--sans);  -webkit-font-smoothing: antialiased; 
+  -moz-osx-font-smoothing: grayscale;}
+    `);
+  }
+}, 100);

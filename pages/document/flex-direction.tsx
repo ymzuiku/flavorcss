@@ -1,4 +1,4 @@
-import doc from "components/doc";
+import doc from "components/Doc";
 import Layout from "./Layout";
 import DocumentTry from "pages/components/DocumentTry";
 
@@ -7,7 +7,7 @@ export default () => {
     <Layout>
       <main className={doc.page}>
         <h1 className={doc.h1}>Flex Direction</h1>
-        <table className="w-12/12 table-fixed">
+        <table className="def w-12/12 table-fixed">
           <thead>
             <tr>
               {["Class", "Properties"].map((v) => {
@@ -24,7 +24,7 @@ export default () => {
               [".row", "display: flex; flex-direction: row;"],
               [".row-r", "display: flex; flex-direction: row-reverse;"],
               [".col", "display: flex; flex-direction: column;"],
-              [".col-r", "display: flex; flex-direction: column-reverse;"],  
+              [".col-r", "display: flex; flex-direction: column-reverse;"],
             ].map((item, a) => {
               return (
                 <tr key={a}>

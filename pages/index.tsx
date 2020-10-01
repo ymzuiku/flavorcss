@@ -1,6 +1,6 @@
 import CodeEditor from "components/CodeEditor";
 import Layout from "./document/Layout";
-import doc from "components/doc";
+import doc from "components/Doc";
 import Link from "next/link";
 import Code from "components/Code";
 import pkg from "package.json";
@@ -56,7 +56,7 @@ export default () => {
         >{`
 <!-- 我们随意修改下面的样式, 实时更新这个按钮，例如，我们把 px-lg 改为 px-xl-->
 <button class="
-  px-lg py-sm radius-sm m-lg 
+  def px-lg py-sm radius-sm m-lg 
   bg-blue-600 hover:bg-blue-500 active:bg-blue-400 
   shadow hover:shadow-lg 
   transform hover:move-y--px active:move-y-px 
@@ -110,8 +110,10 @@ export default () => {
             (在gzip之前),
             哪怕我们仅用5种颜色，去除大部分媒体查询，仅用一小部分伪类和一小部分样式组合伪类，我们也会有
             600kb 的css体积。要知道，多少项目费时费力移除 lodash
-            也仅仅是为了节约 69kb(gzip之前) 的体积。通过尝试，如果我们要满足绝大部分样式常见，不编写 95% 的样式，使用原子类的方式我们大概需要
-            2500kb 的 css，这显然是不可接受的。
+            也仅仅是为了节约 69kb(gzip之前)
+            的体积。通过尝试，如果我们要满足绝大部分样式常见，不编写 95%
+            的样式，使用原子类的方式我们大概需要 2500kb 的
+            css，这显然是不可接受的。
           </div>
           <div className={doc.section}>
             <span className={doc.sectionSpan}>3.</span>
@@ -131,7 +133,9 @@ export default () => {
         <div className="h-lg"></div>
         <p className={doc.p}>
           而 Flavorcss 的方案很好的规避了<b>如何确定原子类个数的边界</b>
-          这个问题，Flavorcss 是在运行时，编译 Atomic Class, 有两种编译方案：动态编译 / 提前编译。直接解决了海量 Atomic Class 的 css 体积问题。具体可以了解：
+          这个问题，Flavorcss 是在运行时，编译 Atomic Class,
+          有两种编译方案：动态编译 / 提前编译。直接解决了海量 Atomic Class 的
+          css 体积问题。具体可以了解：
           <Link href="/document/operating">
             <a>运行机制</a>
           </Link>

@@ -12,6 +12,7 @@ declare let md: string;
 declare const mknow: (n: string, v: string) => void;
 declare const mkhover: (n: string, v: string) => void;
 declare const mkfocus: (n: string, v: string) => void;
+declare const mkchild: (n: string, v: string) => void;
 declare const mkfocusGroup: (n: string, v: string) => void;
 declare const mkactive: (n: string, v: string) => void;
 declare const mkactiveGroup: (n: string, v: string) => void;

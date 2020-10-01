@@ -1,4 +1,4 @@
-import doc from "components/doc";
+import doc from "components/Doc";
 import Layout from "./Layout";
 import CodeEditor from "components/CodeEditor";
 import DocumentTry from "pages/components/DocumentTry";
@@ -8,7 +8,7 @@ export default () => {
     <Layout>
       <main className={doc.page}>
         <h1 className={doc.h1}>Background Position</h1>
-        <table className="w-12/12 table-fixed">
+        <table className="def w-12/12 table-fixed">
           <thead>
             <tr>
               {["Class", "Properties"].map((v) => {
@@ -56,4 +56,3 @@ export default () => {
     </Layout>
   );
 };
-

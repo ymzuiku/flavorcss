@@ -1,4 +1,4 @@
-import doc from "components/doc";
+import doc from "components/Doc";
 import Layout from "./Layout";
 import DocumentTry from "pages/components/DocumentTry";
 
@@ -7,8 +7,11 @@ export default () => {
     <Layout>
       <main className={doc.page}>
         <h1 className={doc.h1}>Grid Row Start / End</h1>
-        <p className={doc.p}>grid-row 是一个组合，我们支持 -2~12 的复合，如：col-5-6, col--2-12, col-12--2 </p>
-        <table className="w-12/12 table-fixed">
+        <p className={doc.p}>
+          grid-row 是一个组合，我们支持 -2~12 的复合，如：col-5-6, col--2-12,
+          col-12--2{" "}
+        </p>
+        <table className="def w-12/12 table-fixed">
           <thead>
             <tr>
               {["Class", "Properties"].map((v) => {
@@ -24,7 +27,7 @@ export default () => {
             {[
               [`row-auto`, `grid-row: auto`],
               [`row-none`, `grid-row: none`],
-              ['下列参数 ? 指 -2 至 12', ''],
+              ["下列参数 ? 指 -2 至 12", ""],
               [`row-?-?`, `grid-row: span ? / span ?;`],
               [`row-auto-?`, `grid-row: span auto / span ?;`],
               [`row-?-auto`, `grid-row: span ? / span auto;`],

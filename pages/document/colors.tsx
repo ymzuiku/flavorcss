@@ -1,4 +1,4 @@
-import doc from "components/doc";
+import doc from "components/Doc";
 import Layout from "./Layout";
 import useSSRLayoutEffect from "components/useSSRLayoutEffect";
 import Link from "next/link";
@@ -45,7 +45,7 @@ export default () => {
         <p className={doc.p}>
           Flavorcss 对常用设定颜色的属性都做了预设，如下表：
         </p>
-        <table className="w-12/12">
+        <table className="def w-12/12">
           <thead>
             <tr>
               <th className={doc.th}>可以设定颜色的属性</th>
@@ -242,6 +242,31 @@ const _pink = `
 --pink-900: 112,35,89;
 `;
 
+const _light = `
+--light-100: 255,255,255;
+--light-200: 250,250,250;
+--light-300: 245,245,245;
+--light-400: 240,240,240;
+--light-500: 233,233,233;
+--light-600: 227,227,227;
+--light-700: 220,220,220;
+--light-800: 215,215,215;
+--light-900: 209,209,209;
+`;
+
+const _dark = `
+--pink-100: 255,245,247;
+--dark-100: 0,0,0;
+--dark-200: 31,31,31;
+--dark-300: 48,48,48;
+--dark-400: 60,60,60;
+--dark-500: 75,75,75;
+--dark-600: 92,92,92;
+--dark-700: 108,108,108;
+--dark-800: 122,122,122;
+--dark-900: 133,133,133;
+`;
+
 function getList(str: string) {
   return str
     .split("\n")
@@ -269,4 +294,6 @@ const list = [
   ["indigo", getList(_indigo)],
   ["purple", getList(_purple)],
   ["pink", getList(_pink)],
+  ["light", getList(_light)],
+  ["dark", getList(_dark)],
 ];

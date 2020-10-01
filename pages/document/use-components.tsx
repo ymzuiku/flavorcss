@@ -1,4 +1,4 @@
-import doc from "components/doc";
+import doc from "components/Doc";
 import Layout from "./Layout";
 import CodeEditor from "components/CodeEditor";
 import Code from "components/Code";
@@ -9,9 +9,13 @@ export default () => {
       <main className={doc.page}>
         <h1 className={doc.h1}>提取组件</h1>
         <div className={doc.p}>
-          使用 BEM 风格的css，可以天生的做好样式的封装, 但是 Atomic Class 风格的 css 就不好处理这种情况。
+          使用 BEM 风格的css，可以天生的做好样式的封装, 但是 Atomic Class 风格的
+          css 就不好处理这种情况。
         </div>
-        <div className={doc.p}>Flavorcss 并未对此做任何设计，但是我们建议您可以使用以下两种样式封装的方式:</div>
+        <div className={doc.p}>
+          Flavorcss
+          并未对此做任何设计，但是我们建议您可以使用以下两种样式封装的方式:
+        </div>
         <h1 className={doc.h2}>使用字符串变量封装样式</h1>
         <Code language="jsx" className={doc.editCode}>
           {`

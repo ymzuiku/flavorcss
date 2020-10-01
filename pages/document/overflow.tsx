@@ -1,4 +1,4 @@
-import doc from "components/doc";
+import doc from "components/Doc";
 import Layout from "./Layout";
 import CodeEditor from "components/CodeEditor";
 
@@ -14,7 +14,7 @@ export default () => {
 <img class="object-contain object-50-50 bg-gray-400 m-md w-4xl h-4xl mx-auto" src="/static/imgs/building.jpeg">
 </div>
           `}</CodeEditor>
-        <table className="w-12/12 table-fixed">
+        <table className="def w-12/12 table-fixed">
           <thead>
             <tr>
               {["Class", "Properties"].map((v) => {
@@ -28,18 +28,36 @@ export default () => {
           </thead>
           <tbody>
             {[
-              [".overflow-auto", "-webkit-overflow-scrolling:touch; overflow: auto;"],
+              [
+                ".overflow-auto",
+                "-webkit-overflow-scrolling:touch; overflow: auto;",
+              ],
               [".overflow-hidden", "overflow: hidden;"],
               [".overflow-visible", "overflow: visible;"],
-              [".overflow-scroll", "-webkit-overflow-scrolling:touch; overflow: scroll;"],
-              [".overflow-x-auto", "-webkit-overflow-scrolling:touch; overflow-x: auto;"],
-              [".overflow-y-auto", "-webkit-overflow-scrolling:touch; overflow-y: auto;"],
+              [
+                ".overflow-scroll",
+                "-webkit-overflow-scrolling:touch; overflow: scroll;",
+              ],
+              [
+                ".overflow-x-auto",
+                "-webkit-overflow-scrolling:touch; overflow-x: auto;",
+              ],
+              [
+                ".overflow-y-auto",
+                "-webkit-overflow-scrolling:touch; overflow-y: auto;",
+              ],
               [".overflow-x-hidden", "overflow-x: hidden;"],
               [".overflow-y-hidden", "overflow-y: hidden;"],
               [".overflow-x-visible", "overflow-x: visible;"],
               [".overflow-y-visible", "overflow-y: visible;"],
-              [".overflow-x-scroll", "-webkit-overflow-scrolling:touch; overflow-x: scroll;"],
-              [".overflow-y-scroll", "-webkit-overflow-scrolling:touch; overflow-y: scroll;"],
+              [
+                ".overflow-x-scroll",
+                "-webkit-overflow-scrolling:touch; overflow-x: scroll;",
+              ],
+              [
+                ".overflow-y-scroll",
+                "-webkit-overflow-scrolling:touch; overflow-y: scroll;",
+              ],
               [".scrolling-touch", "-webkit-overflow-scrolling: touch;"],
               [".scrolling-auto", "-webkit-overflow-scrolling: auto;"],
               [".mini-scrollbar", ".mini-scrollbar::-webkit-scrollbar {...}"],

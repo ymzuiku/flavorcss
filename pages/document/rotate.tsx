@@ -1,6 +1,6 @@
 import DocumentThinPage from "pages/components/DocumentThinPage";
 import CodeEditor from "components/CodeEditor";
-import doc from "components/doc";
+import doc from "components/Doc";
 
 const lista = Array(37)
   .fill(0)

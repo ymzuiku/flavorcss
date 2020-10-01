@@ -1,4 +1,4 @@
-import doc from "components/doc";
+import doc from "components/Doc";
 import CodeEditor from "components/CodeEditor";
 
 export default ({ code }: any) => {

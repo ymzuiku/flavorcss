@@ -1,8 +1,7 @@
-import doc from "components/doc";
+import doc from "components/Doc";
 import Layout from "./Layout";
 import pkg from "package.json";
 import Code from "components/Code";
-
 
 export default () => {
   return (
@@ -10,8 +9,9 @@ export default () => {
       <main className={doc.page}>
         <h1 className={doc.h1}>提前编译方案</h1>
         <p className={doc.p}>
-          flavorcss 默认使用的是提前编译方案，提前编译指在 flavorcss 脚本加载时，进行分段编译，总共会编译大约 3.5MB 的 css。
-          </p>
+          flavorcss 默认使用的是提前编译方案，提前编译指在 flavorcss
+          脚本加载时，进行分段编译，总共会编译大约 3.5MB 的 css。
+        </p>
         <div className={doc.p}>
           我们假定我们在 {`<head />`} 中引用了 Flavorcss：
         </div>
@@ -35,7 +35,9 @@ export default () => {
           尝试了许多方案和配置，最终在css覆盖和初始开销上选择了一个相对合适的边界。
         </p>
         <h1 className={doc.h2}>我们应该接受这个编译开销么？</h1>
-        <p className={doc.p}>首先，我们推荐使用动态编译方案，它直接规避了这些开销。若我们要更面向开发者才使用提前编译方案</p>
+        <p className={doc.p}>
+          首先，我们推荐使用动态编译方案，它直接规避了这些开销。若我们要更面向开发者才使用提前编译方案
+        </p>
         <p className={doc.p}>
           整个编译过程共计 170ms， 被切割成了共 6
           个宏任务，并不会阻塞用户行为。所以用户是无法感知这部分开销的，就好像您浏览这个网站一样，你刷新页面，并无法感知css样式的加载或编译阻塞。

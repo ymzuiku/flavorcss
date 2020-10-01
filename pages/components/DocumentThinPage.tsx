@@ -1,4 +1,4 @@
-import doc from "components/doc";
+import doc from "components/Doc";
 import Layout from "pages/document/Layout";
 import DocumentTry from "pages/components/DocumentTry";
 
@@ -7,10 +7,10 @@ interface Props {
   info?: string[];
   list?: [string, string][];
   CodeTry?: any;
-  code?:string;
+  code?: string;
 }
 
-export default ({ title, info, list, CodeTry, code}: Props) => {
+export default ({ title, info, list, CodeTry, code }: Props) => {
   return (
     <Layout>
       <main className={doc.page}>
@@ -25,7 +25,7 @@ export default ({ title, info, list, CodeTry, code}: Props) => {
           })}
         {CodeTry ? <CodeTry /> : <DocumentTry code={code} />}
 
-        <table className="w-12/12 table-fixed">
+        <table className="def w-12/12 table-fixed">
           <thead>
             <tr>
               {["Class", "Properties"].map((v) => {

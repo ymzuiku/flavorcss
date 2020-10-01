@@ -1,4 +1,4 @@
-import doc from "components/doc";
+import doc from "components/Doc";
 import Layout from "./Layout";
 import CodeEditor from "components/CodeEditor";
 import pkg from "package.json";
@@ -11,9 +11,7 @@ export default () => {
         <p className={doc.p}>Flavorcss 很小，只有 7kb(gzip)</p>
         <h2 className={doc.h2}>使用CDN</h2>
         <p className={doc.p}>在html {`<head />`}中引用 Flavorcss:</p>
-        <CodeEditor
-          notRender
-        >{`
+        <CodeEditor notRender>{`
 <script src="https://unpkg.com/flavorcss@${pkg.version}/umd/index.js"></script>
         `}</CodeEditor>
         <p className={doc.p}>

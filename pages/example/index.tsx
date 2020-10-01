@@ -1,7 +1,7 @@
 import React from "react";
 import CodeEditor from "components/CodeEditor";
 import Nav from "pages/components/Nav";
-import doc from "components/doc";
+import doc from "components/Doc";
 
 export default () => {
   return (

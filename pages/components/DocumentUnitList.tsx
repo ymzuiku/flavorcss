@@ -1,4 +1,4 @@
-import doc from "components/doc";
+import doc from "components/Doc";
 import getUnitList, { getUnitLiList } from "utils/getUnitList";
 
 export default ({
@@ -13,7 +13,7 @@ export default ({
   const getList = isScreen ? getUnitList : getUnitLiList;
   return (
     <div className="max-w-vw overflow-auto">
-      <table className="w-12/12 table-fixed mb-xl">
+      <table className="def w-12/12 table-fixed mb-xl">
         <thead>
           <tr>
             {["Class", "Properties"].map((v) => {
