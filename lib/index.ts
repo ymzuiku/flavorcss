@@ -12,6 +12,7 @@ const pt = [
   "auto",
   "0",
   "px",
+  "xxs",
   "xs",
   "sm",
   "md",
@@ -91,7 +92,8 @@ font-size: 16px;
 --screen-xl: 1280px;
 --fs-0: 0rem;
 --fs-auto: auto;
---fs-px: 0.5em;
+--fs-px: 0.3em;
+--fs-xxs: .5em;
 --fs-xs: .75em;
 --fs-sm: .875em;
 --fs-md: 1em;
@@ -105,6 +107,7 @@ font-size: 16px;
 --pt-0: 0px;
 --pt-auto: auto;
 --pt-px: 1px;
+--pt-xxs: 2px;
 --pt-xs: 4px;
 --pt-sm: 8px;
 --pt-md: 16px;
@@ -117,7 +120,8 @@ font-size: 16px;
 --pt-6xl: 340px;
 --li-0: 0px;
 --li-auto: auto;
---li-px: 1px;
+--li-px: 0.5px;
+--li-xxs: 1px;
 --li-xs: 2px;
 --li-sm: 4px;
 --li-md: 6px;

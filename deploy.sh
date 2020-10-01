@@ -1,0 +1,1 @@
+rsync -av out/* $txyun:~/db/static/flavorcss
