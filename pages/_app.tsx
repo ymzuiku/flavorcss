@@ -24,9 +24,10 @@ export default function MyApp({ Component, pageProps }: any) {
             overflow: hidden;
           }`}
       </style>
+      <style flavor-def="true" />
       {flavorcss}
 
-      <div className="def">
+      <div className="">
         <Component {...pageProps} />
       </div>
       {font}

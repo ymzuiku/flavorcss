@@ -16,7 +16,7 @@ declare const mkchild: (n: string, v: string) => void;
 declare const mkfocusGroup: (n: string, v: string) => void;
 declare const mkactive: (n: string, v: string) => void;
 declare const mkactiveGroup: (n: string, v: string) => void;
-declare function addEl(str: string): void;
+declare function addEl(str: string): HTMLStyleElement;
 declare function mkEle(): void;
 declare function render(mk: any): void;
 declare const mkList: ((n: string, v: string) => void)[];

@@ -397,8 +397,9 @@ const mkactiveGroup = (n: string, v: string) => {
 function addEl(str: string) {
   const el = document.createElement("style");
   el.type = "text/css";
-  el.innerText = str;
+  el.innerHTML = str;
   document.head.appendChild(el);
+  return el;
 }
 
 function mkEle() {
@@ -1030,40 +1031,3 @@ function timoutRun() {
 }
 
 timoutRun();
-
-setTimeout(() => {
-  if (document.querySelector("flavor-def")) {
-    addEl(`
-blockquote,dl,dd,h1,h2,h3,h4,h5,h6,figure,p,pre {
-  {
-  margin: 0;
-  font-size: 1em;
-  border-width: 0;
-  border-style: solid;
-  border-color: currentColor;
-  -webkit-tap-highlight-color: transparent;
-  box-sizing: border-box; 
-  outline:0;
-}
-a {
-  text-decoration:none;
-}
-ol,ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-img, image {
-  object-fit: cover;
-  object-position: 50% 50%;
-}
-img,svg,video,canvas,audio,iframe,embed,object {
-  display: block;
-  vertical-align: middle;
-}
-table {border-collapse: collapse}
-body {line-height:1.15;padding:0px;margin:0px;font-family: var(--sans);  -webkit-font-smoothing: antialiased; 
-  -moz-osx-font-smoothing: grayscale;}
-    `);
-  }
-}, 100);

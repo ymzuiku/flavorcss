@@ -75,5 +75,10 @@ watcher.on("event", (event) => {
     }
 
     fs.copyFileSync("./umd/index.js", "static/flavorcss.js");
+
+    fs.copyFileSync(
+      "./umd/index.js",
+      "/Users/pillar/Documents/work/writeflowy/writeflowy-client/public/static/flavorcss.js"
+    );
   }
 });
