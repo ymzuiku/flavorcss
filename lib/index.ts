@@ -291,7 +291,20 @@ html{-webkit-text-size-adjust:100%} main{display:block}h1{font-size:2em;margin:.
   outline:0;
   -webkit-font-smoothing: antialiased; 
   -moz-osx-font-smoothing: grayscale;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   font-family: var(--sans);
+}
+select.def {
+  border: none;
+  outline: none;
+  background: none;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  text-align: right;
+  text-align-last: right;
 }
 a.def {
   text-decoration:none;
