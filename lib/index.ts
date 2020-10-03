@@ -419,7 +419,7 @@ function render(mk: any) {
   for (let i = 0; i <= 10; i++) {
     if (i > 0) {
       mk(
-        `anima-${i * 100}`,
+        `anime-${i * 100}`,
         `transition: all ${i * 100}ms var(--ease);will-change:transform; ${tr}`
       );
     }
@@ -435,14 +435,14 @@ function render(mk: any) {
     //   ["transform", "transform"],
     // ].forEach((v) => {
     //   mk(
-    //     `anima-${v[0]}-${i * 100}`,
+    //     `anime-${v[0]}-${i * 100}`,
     //     `transition: ${v[1]} ${i * 100}ms var(--ease); will-change:${
     //       v[1]
     //     }; ${tr}`
     //   );
     // });
   }
-  mk(`anima-0`, tr);
+  mk(`anime-0`, tr);
 
   sc.forEach((i) => {
     mk(`move-x-${i}`, `--move-x:var(--${i})`);

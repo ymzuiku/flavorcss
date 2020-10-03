@@ -1,22 +1,11 @@
 import DocumentThinPage from "pages/components/DocumentThinPage";
 
-// const list = ["opacity", "transform"].map((v) => [
-//   `.anima-${v}-?`,
-//   `transition:${v} ? var(--ease)`,
-// ]);
-
-// const lista = Array(11)
-//   .fill(0)
-//   .map((_, i) => {
-//     return [`.anima-${i * 100}`, `.transtion: all ${i * 100}ms var(--ease)`];
-//   });
-
 function mkList(n: string, v: string) {
   return Array(11)
     .fill(0)
     .map((_, i) => {
       return [
-        `.anima${n}${i * 100}`,
+        `.anime${n}${i * 100}`,
         `.transtion: ${v} ${i * 100}ms var(--ease)`,
       ];
     });
