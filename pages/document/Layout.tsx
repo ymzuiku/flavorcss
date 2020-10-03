@@ -93,7 +93,7 @@ const list = [
   { title: "Box Shadow", url: "/document/box-shadow" },
   { title: "Opacity", url: "/document/opacity" },
   { head: "Transition" },
-  { title: "Transition Property", url: "/document/transition-property" },
+  { title: "Anima", url: "/document/anima" },
   {
     title: "Transition Timing Function",
     url: "/document/transition-timing-function",

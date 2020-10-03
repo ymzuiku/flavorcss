@@ -367,13 +367,12 @@ const mknow = (n: string, v: string) => {
 
 const mkhover = (n: string, v: string) => {
   md += `.hover\\:${n}:hover{${v}} `;
+  // md += `.before\\:hover\\:${n}:hover::before{${v}} `;
   md += `.group:hover .group\\:hover\\:${n}{${v}} `;
 };
 
 const mkfocus = (n: string, v: string) => {
-  ["focus"].forEach((h) => {
-    css += `.${h}\\:${n}:${h}{${v}} `;
-  });
+  css += `.focus\\:${n}:focus{${v}} `;
 };
 
 const mkchild = (n: string, v: string) => {
@@ -387,24 +386,18 @@ const mkchild = (n: string, v: string) => {
   });
 };
 
-const mkfocusGroup = (n: string, v: string) => {
-  ["focus"].forEach((h) => {
-    css += `.group:${h} .group\\:${h}\\:${n}{${v}} `;
-    md += `.pc\\:${h}\\:${n}:${h}{${v}} `;
-  });
+const mkactive = (n: string, v: string) => {
+  css += `.active\\:${n}:active{${v}} `;
 };
 
-const mkactive = (n: string, v: string) => {
-  ["active"].forEach((h) => {
-    css += `.${h}\\:${n}:${h}{${v}} `;
-  });
+const mkfocusGroup = (n: string, v: string) => {
+  css += `.group:focus .group\\:focus\\:${n}{${v}} `;
+  md += `.pc\\:focus\\:${n}:focus{${v}} `;
 };
 
 const mkactiveGroup = (n: string, v: string) => {
-  ["active"].forEach((h) => {
-    css += `.group:${h} .group\\:${h}\\:${n}{${v}} `;
-    md += `.pc\\:${h}\\:${n}:${h}{${v}} `;
-  });
+  css += `.group:active .group\\:active\\:${n}{${v}} `;
+  md += `.pc\\:active\\:${n}:active{${v}} `;
 };
 
 function addEl(str: string) {
@@ -426,7 +419,7 @@ function render(mk: any) {
   for (let i = 0; i <= 10; i++) {
     if (i > 0) {
       mk(
-        `transition-${i * 100}`,
+        `anima-${i * 100}`,
         `transition: all ${i * 100}ms var(--ease);will-change:transform; ${tr}`
       );
     }
@@ -437,19 +430,19 @@ function render(mk: any) {
     );
     mk(`delay-${i * 500}`, `transition-delay: ${i * 500}ms`);
 
-    [
-      ["opacity", "opacity"],
-      ["transform", "transform"],
-    ].forEach((v) => {
-      mk(
-        `transition-${v[0]}-${i * 100}`,
-        `transition: ${v[1]} ${i * 100}ms var(--ease); will-change:${
-          v[1]
-        }; ${tr}`
-      );
-    });
+    // [
+    //   ["opacity", "opacity"],
+    //   ["transform", "transform"],
+    // ].forEach((v) => {
+    //   mk(
+    //     `anima-${v[0]}-${i * 100}`,
+    //     `transition: ${v[1]} ${i * 100}ms var(--ease); will-change:${
+    //       v[1]
+    //     }; ${tr}`
+    //   );
+    // });
   }
-  mk(`transition-0`, tr);
+  mk(`anima-0`, tr);
 
   sc.forEach((i) => {
     mk(`move-x-${i}`, `--move-x:var(--${i})`);
@@ -885,7 +878,10 @@ function render(mk: any) {
   );
 
   [
-    ["xxs", "0 0 0 1px", "0 0 0 0"],
+    ["0px", "0 0 0 0", "0 0 0 0"],
+    ["3px", "0 0 0 3px", "0 0 0 0"],
+    ["2px", "0 0 0 2px", "0 0 0 0"],
+    ["1px", "0 0 0 1px", "0 0 0 0"],
     ["xs", "0 1px 2px 0", "0 0 0 0"],
     ["sm", "0 2px 4px 0", "0 0 0 0"],
     ["md", "0 4px 6px -1px", "0 2px 4px -1px"],
