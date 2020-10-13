@@ -325,6 +325,12 @@ img.def,svg.def,video.def,canvas.def,audio.def,iframe.def,embed.def,object.def {
 table.def {border-collapse: collapse}
 body.def {line-height:1.15;padding:0px;margin:0px;}
 
+.nowrap {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .layout-col {
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -362,7 +368,9 @@ let md = "";
 
 const mknow = (n: string, v: string) => {
   css += `.${n}{${v}} `;
+  css += `body .${n}\\!{${v}} `;
   md += `.pc\\:${n}{${v}} `;
+  md += `body .pc\\:${n}\\!{${v}} `;
 };
 
 const mkhover = (n: string, v: string) => {
@@ -879,9 +887,9 @@ function render(mk: any) {
 
   [
     ["0px", "0 0 0 0", "0 0 0 0"],
-    ["3px", "0 0 0 3px", "0 0 0 0"],
-    ["2px", "0 0 0 2px", "0 0 0 0"],
     ["1px", "0 0 0 1px", "0 0 0 0"],
+    ["2px", "0 0 0 2px", "0 0 0 0"],
+    ["3px", "0 0 0 3px", "0 0 0 0"],
     ["xs", "0 1px 2px 0", "0 0 0 0"],
     ["sm", "0 2px 4px 0", "0 0 0 0"],
     ["md", "0 4px 6px -1px", "0 2px 4px -1px"],
