@@ -23,6 +23,4 @@ declare function render(mk: any): void;
 declare const mkList: ((n: string, v: string) => void)[];
 declare const mkListLength: number;
 declare let mi: number;
-declare const t: number;
-declare let useTime: number;
 declare function timoutRun(): void;

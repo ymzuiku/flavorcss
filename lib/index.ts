@@ -325,19 +325,19 @@ img.def,svg.def,video.def,canvas.def,audio.def,iframe.def,embed.def,object.def {
 table.def {border-collapse: collapse}
 body.def {line-height:1.15;padding:0px;margin:0px;}
 
-.nowrap, .nowrap? .nowrap! {
+.nowrap {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
-.layout-col, .layout-col?, .layout-col! {
+.layout-col {
   display: grid;
   grid-template-rows: auto 1fr auto;
   position: relative;
 }
 
-.layout-row .layout-row? .layout-row! {
+.layout-row {
   display: grid;
   grid-template-columns: auto 1fr auto;
   position: relative;
@@ -368,27 +368,27 @@ let md = "";
 let minMd = "";
 
 const mknow = (n: string, v: string) => {
-  css += `.${n}\\?{${v}} `;
-  css += `body .${n}{${v}} `;
-  css += `html body .${n}\\!{${v}} `;
-  md += `.pc\\:${n}\\?{${v}} `;
-  md += `body .pc\\:${n}{${v}} `;
-  md += `html body .pc\\:${n}\\!{${v}} `;
+  css += `.${n}{${v}} `;
+  css += `body .${n}\\!{${v}} `;
+  css += `html body .${n}\\!\\!{${v}} `;
+
+  md += `.pc\\:${n}{${v}} `;
+  md += `body .pc\\:${n}\\!{${v}} `;
+  md += `html body .pc\\:${n}\\!\\!{${v}} `;
 };
 
 const mkhover = (n: string, v: string) => {
-  minMd += `body .hover\\:${n}:hover{${v}} `;
-  minMd += `.hover\\:${n}\\?:hover{${v}} `;
-  minMd += `html body .hover\\:${n}\\!:hover{${v}} `;
+  minMd += `.hover\\:${n}:hover{${v}} `;
+  minMd += `body .hover\\:${n}\\!:hover{${v}} `;
+  minMd += `html body .hover\\:${n}\\!\\!:hover{${v}} `;
 
   minMd += `.group:hover .group\\:hover\\:${n}{${v}} `;
 };
 
 const mkfocus = (n: string, v: string) => {
-  css += `body .focus\\:${n}\\?:focus{${v}} `;
-
-  css += `.focus\\:${n}\\?:focus{${v}} `;
-  css += `html body .focus\\:${n}\\!:focus{${v}} `;
+  css += `.focus\\:${n}:focus{${v}} `;
+  css += `body .focus\\:${n}\\!:focus{${v}} `;
+  css += `html body .focus\\:${n}\\!\\!:focus{${v}} `;
 };
 
 const mkchild = (n: string, v: string) => {
@@ -403,9 +403,9 @@ const mkchild = (n: string, v: string) => {
 };
 
 const mkactive = (n: string, v: string) => {
-  css += `body .active\\:${n}:active{${v}} `;
-  css += `.active\\:${n}\\?:active{${v}} `;
-  css += `html body .active\\:${n}\\!:active{${v}} `;
+  css += `.active\\:${n}:active{${v}} `;
+  css += `body .active\\:${n}\\!:active{${v}} `;
+  css += `html body .active\\:${n}\\!\\!:active{${v}} `;
 };
 
 const mkfocusGroup = (n: string, v: string) => {
@@ -1044,18 +1044,18 @@ const mkList = [
 const mkListLength = mkList.length;
 
 let mi = 0;
-const t = Date.now();
-let useTime = 0;
+// let useTime = 0;
 
 function timoutRun() {
-  const _t = Date.now();
+  // const _t = Date.now();
   render(mkList[mi]);
   mkEle();
-  useTime += Date.now() - _t;
-  console.log(useTime);
+  // useTime += Date.now() - _t;
   mi++;
   if (mi < mkListLength) {
     setTimeout(timoutRun, 20);
+  } else {
+    // console.log("flavor use time:", useTime);
   }
 }
 timoutRun();
