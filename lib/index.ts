@@ -325,19 +325,19 @@ img.def,svg.def,video.def,canvas.def,audio.def,iframe.def,embed.def,object.def {
 table.def {border-collapse: collapse}
 body.def {line-height:1.15;padding:0px;margin:0px;}
 
-.nowrap {
+.nowrap, .nowrap? .nowrap! {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
-.layout-col {
+.layout-col, .layout-col?, .layout-col! {
   display: grid;
   grid-template-rows: auto 1fr auto;
   position: relative;
 }
 
-.layout-row {
+.layout-row .layout-row? .layout-row! {
   display: grid;
   grid-template-columns: auto 1fr auto;
   position: relative;
@@ -365,22 +365,35 @@ for (let i = 1; i <= 12; i++) {
 css += `:root{${root}}`;
 
 let md = "";
+let minMd = "";
+const isUsePseudoLevel = true;
 
 const mknow = (n: string, v: string) => {
-  css += `.${n}{${v}} `;
-  css += `body .${n}\\!{${v}} `;
-  md += `.pc\\:${n}{${v}} `;
-  md += `body .pc\\:${n}\\!{${v}} `;
+  css += `.${n}\\?{${v}} `;
+  css += `body .${n}{${v}} `;
+  css += `html body .${n}\\!{${v}} `;
+  md += `.pc\\:${n}\\?{${v}} `;
+  md += `body .pc\\:${n}{${v}} `;
+  md += `html body .pc\\:${n}\\!{${v}} `;
 };
 
 const mkhover = (n: string, v: string) => {
-  md += `.hover\\:${n}:hover{${v}} `;
-  // md += `.before\\:hover\\:${n}:hover::before{${v}} `;
-  md += `.group:hover .group\\:hover\\:${n}{${v}} `;
+  minMd += `body .hover\\:${n}:hover{${v}} `;
+  if (isUsePseudoLevel) {
+    minMd += `.hover\\:${n}\\?:hover{${v}} `;
+    minMd += `html body .hover\\:${n}\\!:hover{${v}} `;
+  }
+
+  minMd += `.group:hover .group\\:hover\\:${n}{${v}} `;
 };
 
 const mkfocus = (n: string, v: string) => {
-  css += `.focus\\:${n}:focus{${v}} `;
+  css += `body .focus\\:${n}\\?:focus{${v}} `;
+
+  if (isUsePseudoLevel) {
+    css += `.focus\\:${n}\\?:focus{${v}} `;
+    css += `html body .focus\\:${n}\\!:focus{${v}} `;
+  }
 };
 
 const mkchild = (n: string, v: string) => {
@@ -395,7 +408,11 @@ const mkchild = (n: string, v: string) => {
 };
 
 const mkactive = (n: string, v: string) => {
-  css += `.active\\:${n}:active{${v}} `;
+  css += `body .active\\:${n}:active{${v}} `;
+  if (isUsePseudoLevel) {
+    css += `.active\\:${n}\\?:active{${v}} `;
+    css += `html body .active\\:${n}\\!:active{${v}} `;
+  }
 };
 
 const mkfocusGroup = (n: string, v: string) => {
@@ -418,6 +435,7 @@ function addEl(str: string) {
 
 function mkEle() {
   addEl(css);
+  addEl(`@media (max-width: 640px){${minMd}}`);
   addEl(`@media (min-width: 640px){${md}}`);
   css = "";
   md = "";
@@ -1033,18 +1051,18 @@ const mkList = [
 const mkListLength = mkList.length;
 
 let mi = 0;
+const t = Date.now();
+let useTime = 0;
 
 function timoutRun() {
-  // console.time(("a" + mi) as any);
+  const _t = Date.now();
   render(mkList[mi]);
-  // console.timeEnd(("a" + mi) as any);
-  // console.time(("b" + mi) as any);
   mkEle();
-  // console.timeEnd(("b" + mi) as any);
+  useTime += Date.now() - _t;
+  console.log(useTime);
   mi++;
   if (mi < mkListLength) {
     setTimeout(timoutRun, 20);
   }
 }
-
 timoutRun();

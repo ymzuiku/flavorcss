@@ -9,6 +9,8 @@ declare const tr = "--move-x: 0; --move-y: 0; --rotate: 0; --skew-x: 0; --skew-y
 declare const fm: any;
 declare let root: string;
 declare let md: string;
+declare let minMd: string;
+declare const isUsePseudoLevel = true;
 declare const mknow: (n: string, v: string) => void;
 declare const mkhover: (n: string, v: string) => void;
 declare const mkfocus: (n: string, v: string) => void;
@@ -22,4 +24,6 @@ declare function render(mk: any): void;
 declare const mkList: ((n: string, v: string) => void)[];
 declare const mkListLength: number;
 declare let mi: number;
+declare const t: number;
+declare let useTime: number;
 declare function timoutRun(): void;
