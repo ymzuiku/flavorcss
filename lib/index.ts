@@ -1043,9 +1043,9 @@ css += `.clearfix {
 
 const mkList = [
   mknow,
+  mkchild,
   mkhover,
   mkfocus,
-  mkchild,
   mkfocusGroup,
   mkactive,
   mkactiveGroup,
