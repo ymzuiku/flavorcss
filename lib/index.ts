@@ -420,18 +420,27 @@ const mkactiveGroup = (n: string, v: string) => {
 
 function addEl(str: string) {
   const el = document.createElement("style");
-  el.type = "text/css";
+  el.setAttribute("type", "text/css");
+  el.setAttribute("flavor-css", "");
   el.innerHTML = str;
   document.head.appendChild(el);
   return el;
 }
 
 function mkEle() {
-  addEl(css);
-  addEl(`@media (max-width: 640px){${minMd}}`);
-  addEl(`@media (min-width: 640px){${md}}`);
+  if (css) {
+    addEl(css);
+  }
+  if (minMd) {
+    addEl(`@media (max-width: 640px){${minMd}}`);
+  }
+  if (md) {
+    addEl(`@media (min-width: 640px){${md}}`);
+  }
+
   css = "";
   md = "";
+  minMd = "";
 }
 
 function render(mk: any) {
