@@ -10,7 +10,6 @@ declare const fm: any;
 declare let root: string;
 declare let md: string;
 declare let minMd: string;
-declare const isUsePseudoLevel = true;
 declare const mknow: (n: string, v: string) => void;
 declare const mkhover: (n: string, v: string) => void;
 declare const mkfocus: (n: string, v: string) => void;

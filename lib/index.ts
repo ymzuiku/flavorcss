@@ -366,7 +366,6 @@ css += `:root{${root}}`;
 
 let md = "";
 let minMd = "";
-const isUsePseudoLevel = true;
 
 const mknow = (n: string, v: string) => {
   css += `.${n}\\?{${v}} `;
@@ -379,10 +378,8 @@ const mknow = (n: string, v: string) => {
 
 const mkhover = (n: string, v: string) => {
   minMd += `body .hover\\:${n}:hover{${v}} `;
-  if (isUsePseudoLevel) {
-    minMd += `.hover\\:${n}\\?:hover{${v}} `;
-    minMd += `html body .hover\\:${n}\\!:hover{${v}} `;
-  }
+  minMd += `.hover\\:${n}\\?:hover{${v}} `;
+  minMd += `html body .hover\\:${n}\\!:hover{${v}} `;
 
   minMd += `.group:hover .group\\:hover\\:${n}{${v}} `;
 };
@@ -390,10 +387,8 @@ const mkhover = (n: string, v: string) => {
 const mkfocus = (n: string, v: string) => {
   css += `body .focus\\:${n}\\?:focus{${v}} `;
 
-  if (isUsePseudoLevel) {
-    css += `.focus\\:${n}\\?:focus{${v}} `;
-    css += `html body .focus\\:${n}\\!:focus{${v}} `;
-  }
+  css += `.focus\\:${n}\\?:focus{${v}} `;
+  css += `html body .focus\\:${n}\\!:focus{${v}} `;
 };
 
 const mkchild = (n: string, v: string) => {
@@ -409,10 +404,8 @@ const mkchild = (n: string, v: string) => {
 
 const mkactive = (n: string, v: string) => {
   css += `body .active\\:${n}:active{${v}} `;
-  if (isUsePseudoLevel) {
-    css += `.active\\:${n}\\?:active{${v}} `;
-    css += `html body .active\\:${n}\\!:active{${v}} `;
-  }
+  css += `.active\\:${n}\\?:active{${v}} `;
+  css += `html body .active\\:${n}\\!:active{${v}} `;
 };
 
 const mkfocusGroup = (n: string, v: string) => {
