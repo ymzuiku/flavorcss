@@ -370,17 +370,17 @@ let minMd = "";
 const mknow = (n: string, v: string) => {
   css += `.${n}{${v}} `;
   css += `body .${n}\\!{${v}} `;
-  css += `html body .${n}\\!\\!{${v}} `;
+  // css += `html body .${n}\\!\\!{${v}} `;
 
   md += `.pc\\:${n}{${v}} `;
   md += `body .pc\\:${n}\\!{${v}} `;
-  md += `html body .pc\\:${n}\\!\\!{${v}} `;
+  // md += `html body .pc\\:${n}\\!\\!{${v}} `;
 };
 
 const mkhover = (n: string, v: string) => {
   minMd += `.hover\\:${n}:hover{${v}} `;
   minMd += `body .hover\\:${n}\\!:hover{${v}} `;
-  minMd += `html body .hover\\:${n}\\!\\!:hover{${v}} `;
+  // minMd += `html body .hover\\:${n}\\!\\!:hover{${v}} `;
 
   minMd += `.group:hover .group\\:hover\\:${n}{${v}} `;
 };
@@ -388,7 +388,7 @@ const mkhover = (n: string, v: string) => {
 const mkfocus = (n: string, v: string) => {
   css += `.focus\\:${n}:focus{${v}} `;
   css += `body .focus\\:${n}\\!:focus{${v}} `;
-  css += `html body .focus\\:${n}\\!\\!:focus{${v}} `;
+  // css += `html body .focus\\:${n}\\!\\!:focus{${v}} `;
 };
 
 const mkchild = (n: string, v: string) => {
@@ -405,7 +405,7 @@ const mkchild = (n: string, v: string) => {
 const mkactive = (n: string, v: string) => {
   css += `.active\\:${n}:active{${v}} `;
   css += `body .active\\:${n}\\!:active{${v}} `;
-  css += `html body .active\\:${n}\\!\\!:active{${v}} `;
+  // css += `html body .active\\:${n}\\!\\!:active{${v}} `;
 };
 
 const mkfocusGroup = (n: string, v: string) => {

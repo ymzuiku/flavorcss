@@ -1,6 +1,6 @@
 {
   "name": "flavorcss",
-  "version": "0.3.13",
+  "version": "0.3.14",
   "description": "full build css",
   "main": "umd/index.js",
   "types": "umd/index.d.ts",
