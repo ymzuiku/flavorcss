@@ -365,7 +365,6 @@ for (let i = 1; i <= 12; i++) {
 css += `:root{${root}}`;
 
 let md = "";
-let minMd = "";
 
 const mknow = (n: string, v: string) => {
   css += `.${n}{${v}} `;
@@ -378,11 +377,11 @@ const mknow = (n: string, v: string) => {
 };
 
 const mkhover = (n: string, v: string) => {
-  minMd += `.hover\\:${n}:hover{${v}} `;
-  minMd += `body .hover\\:${n}\\!:hover{${v}} `;
-  // minMd += `html body .hover\\:${n}\\!\\!:hover{${v}} `;
+  md += `.hover\\:${n}:hover{${v}} `;
+  md += `body .hover\\:${n}\\!:hover{${v}} `;
+  // md += `html body .hover\\:${n}\\!\\!:hover{${v}} `;
 
-  minMd += `.group:hover .group\\:hover\\:${n}{${v}} `;
+  md += `.group:hover .group\\:hover\\:${n}{${v}} `;
 };
 
 const mkfocus = (n: string, v: string) => {
@@ -431,16 +430,12 @@ function mkEle() {
   if (css) {
     addEl(css);
   }
-  if (minMd) {
-    addEl(`@media (max-width: 640px){${minMd}}`);
-  }
   if (md) {
     addEl(`@media (min-width: 640px){${md}}`);
   }
 
   css = "";
   md = "";
-  minMd = "";
 }
 
 function render(mk: any) {
