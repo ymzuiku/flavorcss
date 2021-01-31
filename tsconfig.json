@@ -21,9 +21,9 @@
   },
   "exclude": [
     "node_modules",
-    "lib"
   ],
   "include": [
+    "lib",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
