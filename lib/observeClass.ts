@@ -1,13 +1,15 @@
 import { classGroup } from "./classGroup";
 import { parser } from "./parser";
 
-function regGroup(ele: HTMLElement) {
-  const groupName = ele.getAttribute("flavor-apply");
+let isHaveFlavor = 0;
 
-  if (groupName && ele.innerHTML) {
-    if (ele.tagName !== "TEMPLATE") {
-      ele.style.display = "none";
-    }
+function regGroup(ele: HTMLElement) {
+  const groupName = ele.getAttribute("flavor-apply") || "";
+
+  if (groupName && isHaveFlavor >= 0) {
+    isHaveFlavor = 1;
+  }
+  if (ele.innerHTML) {
     ele.innerHTML.split("\n").forEach((item) => {
       let [name, ...values] = item.split(":");
       name = name.trim();
@@ -20,6 +22,11 @@ function regGroup(ele: HTMLElement) {
 
 function regElement(ele: HTMLElement) {
   if (!ele) {
+    return;
+  }
+
+  if (isHaveFlavor <= 0) {
+    parser(ele.className, "");
     return;
   }
 
@@ -80,15 +87,18 @@ export const observeClass = () => {
     return;
   }
   if (!document.body) {
-    window.addEventListener("load", () => {
-      observeClass();
-    });
+    requestAnimationFrame(observeClass);
     return;
   }
 
-  document.body.querySelectorAll("[flavor-apply]").forEach(regGroup as any);
+  if (!document.body.closest) {
+    isHaveFlavor = -1;
+  }
+
+  document.querySelectorAll("[flavor-apply]").forEach(regGroup as any);
   document.body.querySelectorAll("[class]").forEach(regElement as any);
   _observer();
+
   lock = true;
 };
 
