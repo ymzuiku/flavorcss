@@ -1,14 +1,9 @@
 import { classGroup } from "./classGroup";
 import { parser } from "./parser";
 
-let isHaveFlavor = 0;
-
 function regGroup(ele: HTMLElement) {
-  const groupName = ele.getAttribute("flavor-apply") || "";
+  const groupName = ele.getAttribute("flavor-group") || "";
 
-  if (groupName && isHaveFlavor >= 0) {
-    isHaveFlavor = 1;
-  }
   if (ele.innerHTML) {
     ele.innerHTML.split("\n").forEach((item) => {
       let [name, ...values] = item.split(":");
@@ -25,24 +20,7 @@ function regElement(ele: HTMLElement) {
     return;
   }
 
-  if (isHaveFlavor <= 0) {
-    parser(ele.className, "");
-    return;
-  }
-
-  if ((ele as any).__flavor_group !== void 0) {
-    parser(ele.className, (ele as any).__flavor_group);
-    return;
-  }
-  const group = ele.closest("[flavor]");
-  if (group) {
-    const attr = group.getAttribute("flavor") || "";
-    (ele as any).__flavor_group = attr;
-    ele.setAttribute("flavor-sub", attr);
-    parser(ele.className, attr);
-  } else {
-    parser(ele.className, "");
-  }
+  parser(ele.className);
 }
 
 const _observer = () => {
@@ -52,7 +30,7 @@ const _observer = () => {
       if (mutation.type === "childList") {
         regGroup(mutation.target);
         regElement(mutation.target);
-        mutation.target.querySelectorAll("[flavor-apply]").forEach(regGroup);
+        mutation.target.querySelectorAll("[flavor-group]").forEach(regGroup);
         mutation.target.querySelectorAll("[class]").forEach(regElement);
       } else if (mutation.type === "attributes") {
         const ele = mutation.target;
@@ -91,11 +69,7 @@ export const observeClass = () => {
     return;
   }
 
-  if (!document.body.closest) {
-    isHaveFlavor = -1;
-  }
-
-  document.querySelectorAll("[flavor-apply]").forEach(regGroup as any);
+  document.querySelectorAll("[flavor-group]").forEach(regGroup as any);
   document.body.querySelectorAll("[class]").forEach(regElement as any);
   _observer();
 

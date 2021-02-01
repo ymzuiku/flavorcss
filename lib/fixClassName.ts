@@ -44,7 +44,7 @@ interface FixClassName {
 }
 
 export function fixClassName(group: string, css: string): FixClassName {
-  const _key = group + "_&&_" + css;
+  const _key = group + "_$$_" + css;
   const old = fixCache[_key];
   if (old) {
     return old;
@@ -64,8 +64,10 @@ export function fixClassName(group: string, css: string): FixClassName {
     return out;
   }
 
+  let compList = compMap[group];
+
   const list = css.split(":");
-  const compList = compMap[group];
+
   list.forEach((v, i) => {
     if (pesudoList[v]) {
       out.pesudo = pesudoList[v];

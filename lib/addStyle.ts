@@ -74,11 +74,15 @@ export const addStyle = ({
   );
 
   const ele = document.createElement("style");
-  const prop = group ? `[flavor-sub="${group}"]` : "";
-  if (media) {
-    ele.textContent = `${media} {.${key}${prop}${pesudo} ${query}{${fix.name}:${val}}}`;
-  } else {
-    ele.textContent = `.${key}${prop}${pesudo} ${query}{${fix.name}:${val}}`;
+  const groupKey = group ? `.\\[${group}\\]` : "";
+
+  if (val) {
+    if (media) {
+      ele.textContent = `${media} {.${key}${groupKey}${pesudo} ${query}{${fix.name}:${val}}}`;
+    } else {
+      ele.textContent = `.${key}${groupKey}${pesudo} ${query}{${fix.name}:${val}}`;
+    }
   }
+
   document.head.append(ele);
 };

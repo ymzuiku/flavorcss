@@ -33,7 +33,7 @@
       --areas: display:grid grid-template-grids:$1;
     }
   </style>
-  <template flavor-apply="dog">
+  <template flavor-group="dog">
     areas: display:grid grid-template-areas:$1
     area: grid-area:$1
     rows: display:grid grid-template-rows:$1
@@ -51,62 +51,32 @@
     p: padding:$1
     fs: font-size:$1
   </template>
-  <template flavor-apply="bg">
-    bg: background:$1
+  <template flavor-group="bg">
+    b: background:$1
   </template>
-  <template flavor-apply="border">
-    bg: border:4px|solid|$1
+  <template flavor-group="border">
+    b: border:4px|solid|$1
+  </template>
+  <template flavor-group="m">
+    m: margin:$1
   </template>
 </head>
 
-<body flavor="dog" class="app">
-  <template id="aa">
-    <div flavor="border">
-      <div class="sm:hover:bg:#00f:p">
-        <p class="font-size:00px">
-          hello
-        </p>
-        <label>no-hello</label>
-      </div>
-      <div flavor="bg">
-        <div class="sm:hover:bg:#f00:p">
-          <p>
-            pppp
-          </p>
-          <label>no-hello</label>
-        </div>
-      </div>
-    </div>
-    <div flavor="bg">
-      <div class="sm:hover:bg:#00f:p">
-        <p>
-          pppp
-        </p>
-        <label>no-hello</label>
-      </div>
-      <div flavor="border">
-        <div class="sm:hover:bg:#f00:p">
-          <p>
-            pppp
-          </p>
-          <label>no-hello</label>
-        </div>
-      </div>
-    </div>
-  </template>
+<body class="app">
   <div id="root"></div>
+  <div class="[bg] hover:sm:b:#f00 [border] b:#00f [m] sm:m:40px">hello</div>
   <script>
-    const temp = document.getElementById('aa')
-    const root = document.getElementById('root')
-    let out = ""
-    for (let i = 0; i < 100; i++) {
-      const html = temp.innerHTML;
-      const v = ~~(Math.random() * 100);
-      out += html.replace(/00/g, v < 10 ? 10 : v);
-    }
-    console.time('a')
-    root.innerHTML = out
-    console.timeEnd('a')
+    // const temp = document.getElementById('aa')
+    // const root = document.getElementById('root')
+    // let out = ""
+    // for (let i = 0; i < 2; i++) {
+    //   const html = temp.innerHTML;
+    //   const v = ~~(Math.random() * 100);
+    //   out += html.replace(/00/g, v < 10 ? 10 : v);
+    // }
+    // console.time('a')
+    // root.innerHTML = out
+    // console.timeEnd('a')
   </script>
 
 
