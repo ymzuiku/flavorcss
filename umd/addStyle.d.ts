@@ -3,8 +3,7 @@ interface AddStyle {
     name?: string;
     media?: string;
     pesudo?: string;
-    query?: string;
     group?: string;
 }
-export declare const addStyle: ({ css, name, media, pesudo, query, group, }: AddStyle) => void;
+export declare const addStyle: ({ css, name, media, pesudo, group, }: AddStyle) => void;
 export {};

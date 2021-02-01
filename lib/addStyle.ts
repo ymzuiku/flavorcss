@@ -6,7 +6,6 @@ interface AddStyle {
   name?: string;
   media?: string;
   pesudo?: string;
-  query?: string;
   group?: string;
 }
 
@@ -15,7 +14,6 @@ export const addStyle = ({
   name = "",
   media = "",
   pesudo = "",
-  query = "",
   group = "",
 }: AddStyle) => {
   if (!css) {
@@ -37,9 +35,9 @@ export const addStyle = ({
   if (fix.pesudo) {
     pesudo = fix.pesudo;
   }
-  if (fix.query) {
-    query = fix.query;
-  }
+  // if (fix.query) {
+  //   query = fix.query;
+  // }
 
   // 内容使用移除了伪类的字符串
   let val = fix.value;
@@ -78,11 +76,10 @@ export const addStyle = ({
 
   if (val) {
     if (media) {
-      ele.textContent = `${media} {.${key}${groupKey}${pesudo} ${query}{${fix.name}:${val}}}`;
+      ele.textContent = `${media} {.${key}${groupKey}${pesudo} ${fix.query}{${fix.name}:${val}}}`;
     } else {
-      ele.textContent = `.${key}${groupKey}${pesudo} ${query}{${fix.name}:${val}}`;
+      ele.textContent = `.${key}${groupKey}${pesudo} ${fix.query}{${fix.name}:${val}}`;
     }
+    document.head.append(ele);
   }
-
-  document.head.append(ele);
 };

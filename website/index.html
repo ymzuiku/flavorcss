@@ -29,11 +29,9 @@
       --white: hsl(var(--primary), 50%, 100%);
       --gray: hsl(var(--primary), 0%, 85%);
       --black: hsl(var(--primary), 50%, 0%);
-      --bg: background:$1;
-      --areas: display:grid grid-template-grids:$1;
     }
   </style>
-  <template flavor-group="dog">
+  <template flavor-group="fl">
     areas: display:grid grid-template-areas:$1
     area: grid-area:$1
     rows: display:grid grid-template-rows:$1
@@ -50,35 +48,19 @@
     m: margin:$1
     p: padding:$1
     fs: font-size:$1
-  </template>
-  <template flavor-group="bg">
-    b: background:$1
-  </template>
-  <template flavor-group="border">
-    b: border:4px|solid|$1
-  </template>
-  <template flavor-group="m">
-    m: margin:$1
+    hover-button: sm:hover:background:#f00:>.dog
   </template>
 </head>
 
 <body class="app">
   <div id="root"></div>
-  <div class="[bg] hover:sm:b:#f00 [border] b:#00f [m] sm:m:40px">hello</div>
+  <div class="[fl] hover-button">
+    <p>the-p</p>
+    <label class="dog">the-label</label>
+  </div>
+  <div class="[fl] bg:#f00">2222</div>
   <script>
-    // const temp = document.getElementById('aa')
-    // const root = document.getElementById('root')
-    // let out = ""
-    // for (let i = 0; i < 2; i++) {
-    //   const html = temp.innerHTML;
-    //   const v = ~~(Math.random() * 100);
-    //   out += html.replace(/00/g, v < 10 ? 10 : v);
-    // }
-    // console.time('a')
-    // root.innerHTML = out
-    // console.timeEnd('a')
   </script>
-
 
 </body>
 

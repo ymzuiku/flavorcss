@@ -1,17 +1,29 @@
 import { classGroup } from "./classGroup";
 import { parser } from "./parser";
 
-function regGroup(ele: HTMLElement) {
+function regGroup(ele: HTMLTemplateElement) {
   const groupName = ele.getAttribute("flavor-group") || "";
+  let html = "";
+  if (ele.tagName === "TEMPLATE") {
+    const content = ele.content.cloneNode(true);
+    if (content) {
+      html = content.textContent!;
+    }
+  } else {
+    html = ele.textContent!;
+  }
 
-  if (ele.innerHTML) {
-    ele.innerHTML.split("\n").forEach((item) => {
-      let [name, ...values] = item.split(":");
-      name = name.trim();
-      if (name) {
-        classGroup(groupName, name, values.join(":").trim());
-      }
-    });
+  if (html) {
+    html
+      .trim()
+      .split("\n")
+      .forEach((item) => {
+        let [name, ...values] = item.split(":");
+        name = name.trim();
+        if (name) {
+          classGroup(groupName, name, values.join(":").trim());
+        }
+      });
   }
 }
 
