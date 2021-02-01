@@ -48,13 +48,14 @@
     m: margin:$1
     p: padding:$1
     fs: font-size:$1
-    hover-button: sm:hover:background:#f00:>.dog
+    bb: background:$1 color:#fff
+    hover-button: hover:bb:$1
   </template>
 </head>
 
 <body class="app">
   <div id="root"></div>
-  <div class="[fl] hover-button">
+  <div class="[fl] hover-button:#33f">
     <p>the-p</p>
     <label class="dog">the-label</label>
   </div>

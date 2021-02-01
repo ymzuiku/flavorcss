@@ -35,11 +35,14 @@ const fixCache = {} as any;
 
 interface FixClassName {
   comp: (params: string[]) => string;
+  compName: string;
   pesudo: string;
+  pesudoName: string;
   media: string;
+  mediaName: string;
   name: string;
-  realName: string;
   query: string;
+  queryName: string;
   value: string;
 }
 
@@ -51,12 +54,15 @@ export function fixClassName(group: string, css: string): FixClassName {
   }
   const out: FixClassName = {
     comp: void 0 as any,
+    compName: "",
     pesudo: "",
+    pesudoName: "",
     media: "",
+    mediaName: "",
     name: "",
-    realName: "",
     value: "",
     query: "",
+    queryName: "",
   };
 
   if (!css) {
@@ -68,17 +74,25 @@ export function fixClassName(group: string, css: string): FixClassName {
 
   const list = css.split(":");
 
+  // sm:hover:bg:#f00
+  // hover:sm:bg:#f00
+
   list.forEach((v, i) => {
+    if (i === 0) {
+      if (mediaList[v]) {
+        out.media = `@media screen and (min-width: ${mediaList[v]})`;
+      } else if ((device() as any)[v] !== void 0) {
+        out.media = `@media screen and (min-width: ${
+          (device() as any)[v] ? "0px" : "9999px"
+        })`;
+      }
+    }
+
     if (pesudoList[v]) {
       out.pesudo = pesudoList[v];
     } else if (compList && compList[v]) {
       out.comp = compList[v];
-    } else if (mediaList[v]) {
-      out.media = `@media screen and (min-width: ${mediaList[v]})`;
-    } else if ((device() as any)[v] !== void 0) {
-      out.media = `@media screen and (min-width: ${
-        (device() as any)[v] ? "0px" : "9999px"
-      })`;
+      out.compName = v;
     } else if (!out.comp && !out.name) {
       out.name = v;
     } else if (!out.value) {
