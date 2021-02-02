@@ -65,21 +65,28 @@ export const addStyle = ({
     val = val.replace(/\^\^\^/g, ",");
   }
 
-  // 常用标点符号解析
+  // 常用标点符号转译
   const key = (name || css).replaceAll(
     /(\:|#|!|,|\.|>|<|@|~|%|\||\$|\{|\}|\[|\]|\(|\)|\+|\*|\/)/g,
     (v) => "\\" + v
   );
 
-  const ele = document.createElement("style");
   const groupKey = group ? `.\\[${group}\\]` : "";
 
   if (val) {
+    const ele = document.createElement("style");
     if (media) {
       ele.textContent = `${media} {.${key}${groupKey}${pesudo} ${fix.query}{${fix.name}:${val}}}`;
     } else {
       ele.textContent = `.${key}${groupKey}${pesudo} ${fix.query}{${fix.name}:${val}}`;
     }
     document.head.append(ele);
+    if (/dark/.test(media)) {
+      console.log("222222");
+      const eleDark = document.createElement("style");
+      eleDark.textContent = `.dark .${key}${groupKey}${pesudo} ${fix.query}{${fix.name}:${val}}`;
+      console.log("aaaaaa", eleDark.textContent);
+      document.head.append(eleDark);
+    }
   }
 };

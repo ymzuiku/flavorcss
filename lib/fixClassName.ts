@@ -79,12 +79,17 @@ export function fixClassName(group: string, css: string): FixClassName {
 
   list.forEach((v, i) => {
     if (i === 0) {
-      if (mediaList[v]) {
+      if (v === "dark") {
+        out.media = `@media (prefers-color-scheme: dark)`;
+        out.mediaName = v;
+      } else if (mediaList[v]) {
         out.media = `@media screen and (min-width: ${mediaList[v]})`;
+        out.mediaName = v;
       } else if ((device() as any)[v] !== void 0) {
         out.media = `@media screen and (min-width: ${
           (device() as any)[v] ? "0px" : "9999px"
         })`;
+        out.mediaName = v;
       }
     }
 

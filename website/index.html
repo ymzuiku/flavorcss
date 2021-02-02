@@ -3,23 +3,8 @@
 
 <body class="app">
   <script type="module">
-    import "./js/flavorcss.js";
-    import { loadHTML } from "./js/loadHTML.js";
-    import { createDivLoadHTML } from "./js/createDivByHTML.js";
-
-    async function start() {
-      const [head, style] = await Promise.all([
-        loadHTML("./head.html"),
-        createDivLoadHTML(loadHTML("./style.html")),
-      ]);
-      document.head.innerHTML = head;
-      style.style.display = "none";
-      document.body.append(style);
-
-      const home = await createDivLoadHTML(loadHTML("./pages/home.html"));
-      document.body.append(home);
-    }
-    start();
+    import { loadPage } from "./js/loadPage.js";
+    loadPage('./pages/index.html')
   </script>
 </body>
 
