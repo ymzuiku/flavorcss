@@ -7,11 +7,14 @@ export const pesudoList = {
   active: ":active",
   "first-child": ":first-child",
   "last-child": ":last-child",
+  first: ":first-child",
+  last: ":last-child",
   blank: ":blank",
   checked: ":checked",
   current: ":current",
   disabled: ":disabled",
   "focus-within": ":focus-within",
+  focusin: ":focus-within",
   "in-range": ":in-range",
   visited: ":visited",
   even: ":nth-child(even)",
@@ -93,7 +96,7 @@ export function fixClassName(group: string, css: string): FixClassName {
       }
     }
 
-    if (pesudoList[v]) {
+    if (i < 2 && pesudoList[v]) {
       out.pesudo = pesudoList[v];
     } else if (compList && compList[v]) {
       out.comp = compList[v];
@@ -108,7 +111,7 @@ export function fixClassName(group: string, css: string): FixClassName {
         });
       }
       out.value = v;
-    } else if (!out.query) {
+    } else {
       out.query = v;
     }
   });

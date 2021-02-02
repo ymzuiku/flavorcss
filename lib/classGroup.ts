@@ -27,16 +27,13 @@ export const classGroup = (group: any, name: string, value: string) => {
         // 若内部有分组，优先使用 g， 否则使用外部分组
         const fix = fixClassName(g || group, v);
         if (fix.comp as any) {
-          const _list = [] as string[];
-          v.split(":").forEach((_v) => {
-            if (_v === fix.compName) {
-              _list.push(fix.comp(fix.value.split(",")));
-            } else if (_v === fix.value) {
-            } else {
-              _list.push(_v);
-            }
+          const _v = fix.comp(fix.value.split(","));
+          _v.split(" ").forEach((__v) => {
+            out +=
+              [fix.mediaName, fix.pesudoName, __v, fix.query]
+                .filter(Boolean)
+                .join(":") + " ";
           });
-          out += _list.join(":") + " ";
         } else {
           out += v + " ";
         }

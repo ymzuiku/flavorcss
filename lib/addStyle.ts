@@ -76,6 +76,7 @@ export const addStyle = ({
   const groupKey = group ? `.\\[${group}\\]` : "";
 
   const ele = document.createElement("style");
+
   if (media) {
     ele.textContent = `${media} {.${key}${groupKey}${pesudo} ${fix.query}{${fix.name}:${val}}}`;
   } else {
