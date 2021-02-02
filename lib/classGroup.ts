@@ -1,6 +1,4 @@
 import { compMap } from "./cache";
-import { fixClassName } from "./fixClassName";
-import { parser } from "./parser";
 export const groupList = {} as { [key: string]: string };
 
 const lock = {} as any;
@@ -35,14 +33,12 @@ export const classGroup = (group: any, name: string, value: string) => {
       //       _list.push(_v);
       //     }
       //   });
-      //   // console.log(_list, "2222");
       //   out += _list.join(":") + " ";
       // } else {
       //   out += v + " ";
       // }
       out += v + " ";
     });
-    console.log(out);
     return out;
   };
 };

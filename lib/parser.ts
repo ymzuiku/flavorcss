@@ -1,4 +1,4 @@
-import { classNameCache, compMap } from "./cache";
+import { classNameCache } from "./cache";
 import { addStyle } from "./addStyle";
 import { fixClassName } from "./fixClassName";
 

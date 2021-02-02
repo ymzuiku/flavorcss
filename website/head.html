@@ -19,9 +19,15 @@
     --white: hsl(var(--primary), 50%, 100%);
     --gray: hsl(var(--primary), 0%, 85%);
     --black: hsl(var(--primary), 50%, 0%);
+    --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 </style>
 <div style="display:none" flavor-group="fl">
+  sans: font-family:--sans
+  serif: font-family:--serif
+  mono: font-family:--mono
   areas: display:grid grid-template-areas:$1
   area: grid-area:$1
   rows: display:grid grid-template-rows:$1
