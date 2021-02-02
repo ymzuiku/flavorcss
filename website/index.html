@@ -1,68 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="./base.css">
-  <script src="./flavorcss.js"></script>
-  <style>
-    .app {
-      --xs: 2px;
-      --sm: 4px;
-      --md: 8px;
-      --lg: 12px;
-      --xl: 16px;
-      --h1: 12px;
-      --h2: 14px;
-      --h3: 18px;
-      --h4: 22px;
-      --h5: 28px;
-      --h6: 36px;
-      --bar-height: 54px;
-      --form-weight: 190px;
-      --menu-weight: 220px;
-      --primary: 200;
-      --error: 255;
-      --white: hsl(var(--primary), 50%, 100%);
-      --gray: hsl(var(--primary), 0%, 85%);
-      --black: hsl(var(--primary), 50%, 0%);
-    }
-  </style>
-  <template flavor-group="fl">
-    areas: display:grid grid-template-areas:$1
-    area: grid-area:$1
-    rows: display:grid grid-template-rows:$1
-    cols: display:grid grid-template-columns:$1
-    row: display:flex flex-direction:row justify-content:$1 align-items:$2
-    col: display:flex flex-direction:column justify-content:$1 align-items:$2
-    bg: background:$1
-    h: height:$1
-    min-h: min-height:$1
-    max-h: max-height:$1
-    w: width:$1
-    min-w: min-width:$1
-    max-w: max-width:$1
-    m: margin:$1
-    p: padding:$1
-    fs: font-size:$1
-    bb: background:$1 color:$2
-    hover-button: hover:background:$1:>p
-  </template>
-</head>
-
 <body class="app">
-  <div id="root"></div>
-  <div class="[fl] hover-button:#33f,#fff">
-    <p>the-p</p>
-    <label class="dog">the-label</label>
-  </div>
-  <div class="[fl] bg:#f00">2222</div>
-  <script>
-  </script>
+  <script type="module">
+    import "./js/flavorcss.js";
+    import { loadHTML } from "./js/loadHTML.js";
+    import { createDivLoadHTML } from "./js/createDivByHTML.js";
 
+    async function start() {
+      const [head, style] = await Promise.all([
+        loadHTML("./head.html"),
+        createDivLoadHTML(loadHTML("./style.html")),
+      ]);
+      document.head.innerHTML = head;
+      style.style.display = "none";
+      document.body.append(style);
+
+      const home = await createDivLoadHTML(loadHTML("./pages/home.html"));
+      document.body.append(home);
+    }
+    start();
+  </script>
 </body>
 
 </html>

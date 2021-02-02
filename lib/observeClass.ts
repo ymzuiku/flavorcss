@@ -53,10 +53,13 @@ const _observer = () => {
 
   const observer = new MutationObserver(onMutations);
   observer.observe(document.body, {
-    attributes: true,
     childList: true,
     subtree: true,
+    attributes: true,
     attributeFilter: ["class"],
+    // characterData: false,
+    // attributeOldValue: false,
+    // characterDataOldValue: false,
   });
 };
 
