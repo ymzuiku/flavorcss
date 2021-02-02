@@ -2,7 +2,7 @@ import { classGroup } from "./classGroup";
 import { parser } from "./parser";
 
 function regGroup(ele: HTMLTemplateElement) {
-  const groupName = ele.getAttribute("flavor-group") || "";
+  const groupName = ele.getAttribute("flavor") || "";
   let html = "";
   if (ele.tagName === "TEMPLATE") {
     const content = ele.content.cloneNode(true);
@@ -14,9 +14,10 @@ function regGroup(ele: HTMLTemplateElement) {
   }
 
   if (html) {
+    html = html.replace("\n", "");
     html
       .trim()
-      .split("\n")
+      .split(";")
       .forEach((item) => {
         let [name, ...values] = item.split(":");
         name = name.trim();
@@ -42,7 +43,7 @@ const _observer = () => {
       if (mutation.type === "childList") {
         regGroup(mutation.target);
         regElement(mutation.target);
-        mutation.target.querySelectorAll("[flavor-group]").forEach(regGroup);
+        mutation.target.querySelectorAll("[flavor]").forEach(regGroup);
         mutation.target.querySelectorAll("[class]").forEach(regElement);
       } else if (mutation.type === "attributes") {
         const ele = mutation.target;
@@ -84,7 +85,7 @@ export const observeClass = () => {
     return;
   }
 
-  document.querySelectorAll("[flavor-group]").forEach(regGroup as any);
+  document.querySelectorAll("[flavor]").forEach(regGroup as any);
   document.body.querySelectorAll("[class]").forEach(regElement as any);
   _observer();
 
