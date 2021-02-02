@@ -9,7 +9,6 @@ interface FixClassName {
     mediaName: string;
     name: string;
     query: string;
-    queryName: string;
     value: string;
 }
 export declare function fixClassName(group: string, css: string): FixClassName;

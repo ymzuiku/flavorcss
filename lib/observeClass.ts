@@ -33,7 +33,9 @@ function regElement(ele: HTMLElement) {
     return;
   }
 
-  parser(ele.className);
+  if (typeof ele.className === "string") {
+    parser(ele.className);
+  }
 }
 
 const _observer = () => {

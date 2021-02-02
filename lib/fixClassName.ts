@@ -5,8 +5,6 @@ export const pesudoList = {
   hover: ":hover",
   focus: ":focus",
   active: ":active",
-  "first-child": ":first-child",
-  "last-child": ":last-child",
   first: ":first-child",
   last: ":last-child",
   blank: ":blank",
@@ -14,7 +12,7 @@ export const pesudoList = {
   current: ":current",
   disabled: ":disabled",
   "focus-within": ":focus-within",
-  focusin: ":focus-within",
+  "focus-visible": ":focus-visible",
   "in-range": ":in-range",
   visited: ":visited",
   even: ":nth-child(even)",
@@ -26,12 +24,21 @@ export const pesudoList = {
 } as any;
 
 export const mediaList = {
-  xs: "480px",
-  sm: "640px",
-  md: "768px",
-  lg: "1024px",
-  xl: "1280px",
-  xxl: "1536px",
+  dark: "@media (prefers-color-scheme: dark)",
+  xxs: "@media screen and (min-width: 375px)",
+  xs: "@media screen and (min-width: 480px)",
+  sm: "@media screen and (min-width: 640px)",
+  md: "@media screen and (min-width: 768px)",
+  lg: "@media screen and (min-width: 1024px)",
+  xl: "@media screen and (min-width: 1280px)",
+  xxl: "@media screen and (min-width: 1536px)",
+  "xxs-max": "@media screen and (max-width: 375px)",
+  "xs-max": "@media screen and (max-width: 480px)",
+  "sm-max": "@media screen and (max-width: 640px)",
+  "md-max": "@media screen and (max-width: 768px)",
+  "lg-max": "@media screen and (max-width: 1024px)",
+  "xl-max": "@media screen and (max-width: 1280px)",
+  "xxl-max": "@media screen and (max-width: 1536px)",
 } as any;
 
 const fixCache = {} as any;
@@ -45,7 +52,6 @@ interface FixClassName {
   mediaName: string;
   name: string;
   query: string;
-  queryName: string;
   value: string;
 }
 
@@ -65,7 +71,6 @@ export function fixClassName(group: string, css: string): FixClassName {
     name: "",
     value: "",
     query: "",
-    queryName: "",
   };
 
   if (!css) {
@@ -82,17 +87,16 @@ export function fixClassName(group: string, css: string): FixClassName {
 
   list.forEach((v, i) => {
     if (i === 0) {
-      if (v === "dark") {
-        out.media = `@media (prefers-color-scheme: dark)`;
+      if (mediaList[v]) {
+        out.media = mediaList[v];
         out.mediaName = v;
-      } else if (mediaList[v]) {
-        out.media = `@media screen and (min-width: ${mediaList[v]})`;
-        out.mediaName = v;
+        return;
       } else if ((device() as any)[v] !== void 0) {
         out.media = `@media screen and (min-width: ${
           (device() as any)[v] ? "0px" : "9999px"
         })`;
         out.mediaName = v;
+        return;
       }
     }
 
@@ -111,7 +115,7 @@ export function fixClassName(group: string, css: string): FixClassName {
         });
       }
       out.value = v;
-    } else {
+    } else if (!out.query) {
       out.query = v;
     }
   });

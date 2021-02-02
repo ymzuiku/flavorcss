@@ -5,6 +5,7 @@ interface AddStyle {
   css: string;
   name?: string;
   media?: string;
+  mediaName?: string;
   pesudo?: string;
   group?: string;
 }
@@ -13,6 +14,7 @@ export const addStyle = ({
   css,
   name = "",
   media = "",
+  mediaName = "",
   pesudo = "",
   group = "",
 }: AddStyle) => {
@@ -40,6 +42,9 @@ export const addStyle = ({
 
   if (fix.media) {
     media = fix.media;
+  }
+  if (fix.mediaName) {
+    mediaName = fix.mediaName;
   }
   if (fix.pesudo) {
     pesudo = fix.pesudo;
@@ -84,9 +89,9 @@ export const addStyle = ({
   }
   document.head.append(ele);
 
-  if (/dark/.test(media)) {
-    const eleDark = document.createElement("style");
-    eleDark.textContent = `.dark .${key}${groupKey}${pesudo} ${fix.query}{${fix.name}:${val}}`;
-    document.head.append(eleDark);
+  if (mediaName) {
+    const mediaEle = document.createElement("style");
+    mediaEle.textContent = `.media-${mediaName} .${key}${groupKey}${pesudo} ${fix.query}{${fix.name}:${val}}`;
+    document.head.append(mediaEle);
   }
 };
