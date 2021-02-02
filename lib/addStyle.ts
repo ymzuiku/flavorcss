@@ -82,10 +82,8 @@ export const addStyle = ({
     }
     document.head.append(ele);
     if (/dark/.test(media)) {
-      console.log("222222");
       const eleDark = document.createElement("style");
       eleDark.textContent = `.dark .${key}${groupKey}${pesudo} ${fix.query}{${fix.name}:${val}}`;
-      console.log("aaaaaa", eleDark.textContent);
       document.head.append(eleDark);
     }
   }
