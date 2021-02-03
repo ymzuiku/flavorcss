@@ -74,6 +74,6 @@ watcher.on("event", (event) => {
       watcher.close();
     }
 
-    fs.copyFileSync("./umd/index.js", "website/js/flavorcss.js");
+    fs.copyFileSync("./umd/index.js", "document/public/flavorcss.js");
   }
 });

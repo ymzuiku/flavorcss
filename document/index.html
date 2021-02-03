@@ -3,9 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Vite App</title>
   <style>
     :root {
       --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -95,18 +94,14 @@
     ease: transition:0.2s|all|--ease;
     time: transition:$1|all|$2;
   </template>
-  <link rel="stylesheet" href="./base.css">
-  <script src="/js/flavorcss.js"></script>
+  <link rel="stylesheet" href="/base.css">
+  <script src="/flavorcss.js"></script>
 </head>
 
 <body>
-  <script type="module">
-    import { loadHTML } from "./js/loadHTML.js";
-    (async () => {
-      const home = await loadHTML('./pages/index.html')
-      document.body.innerHTML = home;
-    })()
-  </script>
+  <div id="app"></div>
+  <!-- <script type="text/javascript" src="/vs/loader.js"></script> -->
+  <script type="module" src="/src/main.tsx"></script>
 </body>
 
 </html>
