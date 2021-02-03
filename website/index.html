@@ -11,34 +11,46 @@
       --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
       --serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --xs: 2px;
-      --sm: 4px;
-      --md: 8px;
-      --lg: 12px;
-      --xl: 16px;
-      --xxl: 24px;
-      --h1: 36px;
+      --ease: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in: cubic-bezier(0.4, 0, 1, 1);
+      --ease-out: cubic-bezier(0, 0, 0.2, 1);
+      --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+      --xxs: 2px;
+      --xs: 4px;
+      --sm: 8px;
+      --md: 12px;
+      --lg: 16px;
+      --xl: 24px;
+      --xxl: 32px;
+      --h1: 34px;
       --h2: 28px;
       --h3: 22px;
       --h4: 18px;
-      --h5: 14px;
-      --h6: 12px;
+      --h5: 16px;
+      --h6: 14px;
+      --h: 200;
+      --primary: hsl(var(--h), 50%, 50%);
+      --tip: hsl(128, 80%, 35%);
+      --error: hsl(255, 50%, 50%);
+      --weak: hsl(var(--h), 40%, 60%);
+      --dark: hsl(var(--h), 50%, 30%);
+      --deep-dark: hsl(var(--h), 40%, 25%);
+      --white: hsl(var(--h), 50%, 100%);
+      --gray: hsl(var(--h), 0%, 92%);
+      --black: hsl(var(--h), 50%, 0%);
+      --opa: hsl(var(--h), 50%, 50%, 0);
       --bar-height: 54px;
+      --button-height: 46px;
       --form-weight: 190px;
       --menu-weight: 220px;
-      --base-color: 200;
-      --error: hsl(255, 50%, 50%);
-      --primary: hsl(var(--base-color), 50%, 50%);
-      --white: hsl(var(--base-color), 50%, 100%);
-      --gray: hsl(var(--base-color), 0%, 92%);
-      --black: hsl(var(--base-color), 50%, 0%);
-      --opa: hsl(var(--base-color), 50%, 50%, 0);
+      --big-head: 44px;
     }
   </style>
   <template flavor>
     sans: font-family:--sans;
     serif: font-family:--serif;
     mono: font-family:--mono;
+    pointer: cursor:pointer;
     d: display:$1;
     area: grid-area:$1;
     areas: display:grid grid-template-areas:$1;
@@ -58,7 +70,19 @@
     min-w: min-width:$1;
     max-w: max-width:$1;
     m: margin:$1;
+    mt: margin-top:$1;
+    mr: margin-right:$1;
+    ml: margin-left:$1;
+    mb: margin-bottom:$1;
+    mx: margin-bottom:0|$1;
+    my: margin-bottom:$1|0;
     p: padding:$1;
+    pt: padding-top:$1;
+    pr: padding-right:$1;
+    pl: padding-left:$1;
+    pb: padding-bottom:$1;
+    px: padding-bottom:0|$1;
+    py: padding-bottom:$1|0;
     fs: font-size:$1;
     fw: font-weight:$1;
     br: border-right:$1;
@@ -67,9 +91,11 @@
     bb: border-bottom:$1;
     b: border:$1;
     radius: border-radius:$1;
+    shadow: box-shadow:$1;
+    ease: transition:0.2s|all|--ease;
+    time: transition:$1|all|$2;
   </template>
-
-  <link rel="stylesheet" href="/base.css">
+  <link rel="stylesheet" href="./base.css">
   <script src="/js/flavorcss.js"></script>
 </head>
 

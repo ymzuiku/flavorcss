@@ -102,7 +102,9 @@ export function fixClassName(group: string, css: string): FixClassName {
 
     if (i < 2 && pesudoList[v]) {
       out.pesudo = pesudoList[v];
-    } else if (compList && compList[v]) {
+      out.pesudoName = v;
+    } else if (!out.name && compList && compList[v]) {
+      // out.name 必须为空的原因是 有了 name，那么不应该将 value 作为 comp
       out.comp = compList[v];
       out.compName = v;
     } else if (!out.comp && !out.name) {

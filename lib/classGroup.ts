@@ -36,9 +36,13 @@ export const classGroup = (group: any, name: string, value: string) => {
         // 若css中还有其他 comp，则递归查找，拼接到 out 中
         // 兼容组件名称中带有参数
         // 若内部有分组，优先使用 g， 否则使用外部分组
-        let fix = fixClassName(g, v);
-        if (!fix.comp) {
-          fix = fixClassName(group, v);
+
+        let fix = fixClassName("", v);
+        if (!fix.comp && g !== "") {
+          fix = fixClassName(g, v);
+          if (!fix.comp && g !== group) {
+            fix = fixClassName(group, v);
+          }
         }
         if (fix.comp as any) {
           const _v = fix.comp(fix.value.split(","));
