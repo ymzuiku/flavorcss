@@ -33,7 +33,7 @@ function regElement(ele: HTMLElement) {
     return;
   }
 
-  if (typeof ele.className === "string") {
+  if (ele.className && typeof ele.className === "string") {
     parser(ele.className);
   }
 }
@@ -66,6 +66,8 @@ const _observer = () => {
   });
 };
 
+// window.MutationObserver = null;
+
 let lock = false;
 export const observeClass = () => {
   if (
@@ -78,7 +80,12 @@ export const observeClass = () => {
   if (lock) {
     return;
   }
+
   if (!window.MutationObserver) {
+    import("./MutationObserver").then(() => {
+      console.log(window.MutationObserver, "222");
+      observeClass();
+    });
     console.error("[flavorcss] Your Browser not supported MutationObserver");
     return;
   }
@@ -86,7 +93,6 @@ export const observeClass = () => {
     requestAnimationFrame(observeClass);
     return;
   }
-
   document.querySelectorAll("[flavor]").forEach(regGroup as any);
   document.body.querySelectorAll("[class]").forEach(regElement as any);
   _observer();

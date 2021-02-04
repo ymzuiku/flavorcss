@@ -1,11 +1,15 @@
 import Monaco from "../Monaco";
 
-export const EditorPlan = ({ code }: any) => {
+export const EditorPlan = ({ code }: { code: string }) => {
+  code = code.replace(
+    '<script type="module" src="/@vite/client"></script>',
+    ""
+  );
   const render = <div innerHTML={code}></div>;
   const editorEle = (
     <div
       id="editor"
-      class="min-h:200px position:relative bg:#1e1e1e radius:--md overflow:hidden"
+      class="min-h:300px sm:min-h:400px position:relative bg:#1e1e1e radius:--md overflow:hidden"
     >
       <span class="m:--xl">loading editor...</span>
     </div>
@@ -19,6 +23,7 @@ export const EditorPlan = ({ code }: any) => {
         language: "html",
         theme: "vs-dark",
         wordWrap: "on",
+        fontSize: 15,
         minimap: { enabled: false },
       });
       const model = editor.getModel();
@@ -32,20 +37,21 @@ export const EditorPlan = ({ code }: any) => {
   };
 
   let timer: any;
-  window.addEventListener("resize", () => {
-    if (!document.body.contains(editorEle)) {
-      return;
-    }
-    if (timer) {
-      clearTimeout(timer);
-      timer = null;
-    }
-    timer = setTimeout(initEdit, 500);
-  });
-  initEdit();
+  // window.addEventListener("resize", () => {
+  //   if (!document.body.contains(editorEle)) {
+  //     return;
+  //   }
+  //   if (timer) {
+  //     clearTimeout(timer);
+  //     timer = null;
+  //   }
+  //   timer = setTimeout(initEdit, 500);
+  // });
+
+  // aoife.waitAppend(editorEle).then(initEdit);
 
   return (
-    <div class="mt:--xxl p:--xxl sm:cols:1fr|500px grid-gap:--md">
+    <div class="mt:--xxl p:--xxl rows:auto|350px sm:rows:auto sm:cols:1fr|600px grid-gap:--lg">
       {render}
       {editorEle}
     </div>

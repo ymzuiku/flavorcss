@@ -2,13 +2,16 @@
   "name": "flavorcss",
   "version": "0.1.3",
   "description": "full build css",
-  "main": "umd/index.js",
-  "types": "umd/index.d.ts",
+  "main": "es/index.js",
+  "types": "lib/index.d.ts",
   "private": false,
   "scripts": {
+    "esbuild": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=es --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag --minify --splitting",
+    "build":"yarn esbuild && cp -rf es document/public/",
     "lib": "node rollup.config.js"
   },
   "devDependencies": {
+    "esbuild": "^0.8.40",
     "fs-extra": "^9.0.0",
     "rollup": "^1.24.0",
     "rollup-plugin-typescript2": "^0.24.3",
@@ -22,5 +25,8 @@
   "bugs": {
     "url": "git+https://github.com/ymzuiku/flavorcss.git"
   },
-  "homepage": "git+https://github.com/ymzuiku/flavorcss.git"
+  "homepage": "git+https://github.com/ymzuiku/flavorcss.git",
+  "dependencies": {
+    "mutationobserver-shim": "^0.3.7"
+  }
 }

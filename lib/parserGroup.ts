@@ -1,5 +1,6 @@
 export const parserGroup = (css: string) => {
   const list = [] as { cssItem: string; group: string }[];
+  css = css.replace(/\n/g, " ");
 
   const groups = [] as string[];
   const _groups = css.match(/\[(.*?)\]/g);

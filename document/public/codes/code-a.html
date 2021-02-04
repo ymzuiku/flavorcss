@@ -1,0 +1,48 @@
+<div>
+  <!-- use base css -->
+  <h1 class="font-size:40px font-weight:800 line-height:1">
+    Getting started
+  </h1>
+  <!-- use flavor="md" create flavor alias -->
+  <template flavor="md">
+    info:
+    margin:10px|0 font-size:18px font-weight:300
+    color:hsl(200,20%,40%);
+
+    code:
+    mono font-size:18px font-weight:300 line-height:1
+    border-radius:6px background:hsl(200,30%,45%)
+    color:#fff padding:12px
+    margin:10px|0;
+  </template>
+  <p class="[md] info">
+    Install flavorcss in your project:
+  </p>
+  <p class="[md] code">
+    npm i --save flavorcss
+  </p>
+  <p class="[md] info">
+    Before your Element render:
+  </p>
+  <p class="[md] code">
+    import "flavorcss"
+  </p>
+  <p class="[md] info">
+    Flavor don't neet hundreds and thousands of css class list, replace by a grammatical rule. Sample code:
+  </p>
+  <p class="[md] code">
+    class="background:#00f"
+  </p>
+  <p class="[md] info">
+    The full rule example:
+  </p>
+  <p class="[md] code">
+    class="sm:hover:background:--blue:div"
+  </p>
+  <p class="[md] info">
+    If use flavor alias:
+  </p>
+  <p class="[md] code">
+    class="btn"
+  </p>
+</div>

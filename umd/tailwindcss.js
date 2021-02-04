@@ -1,2 +1,0 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t((e=e||self).flavorTailwindcss={})}(this,function(e){"use strict";function t(){var e=document.createElement("template");e.setAttribute("flavor",""),e.innerHTML="",document.head.appendChild(e)}t(),e.initTailwindCss=t,Object.defineProperty(e,"__esModule",{value:!0})});
-//# sourceMappingURL=tailwindcss.js.map

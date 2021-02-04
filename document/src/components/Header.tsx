@@ -3,7 +3,7 @@ export const Header = () => {
     <div class="w:1px h:--bar-height">
       <div class="position:fixed w:100% bg:--white z-index:9999 top:0px left:0px shadow:0px|1px|4px|hsla(0,0%,0%,0.05) h:--bar-height">
         <div class="h:100% margin:0|auto max-width:1300px d:grid content:start,center p:0px|--md cols:1fr|auto|auto self:auto,center:>label">
-          <span class="mono fw:900 fs:--h3 text-gradient:45deg,--primary,--black line-height:2">
+          <span class="mono fw:900 fs:20px text-gradient:120deg,hsl(200,50%,50%),hsl(120,50%,50%) line-height:2">
             flavorcss
           </span>
           <div
@@ -12,7 +12,7 @@ export const Header = () => {
               window.open("https://github.com/ymzuiku/flavorcss");
             }}
           >
-            <div class="fw:400">We need your Star</div>
+            <div class="fw:400">flavorcss need your Star</div>
             <div>
               <svg
                 t="1612405330114"

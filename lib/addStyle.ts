@@ -74,24 +74,24 @@ export const addStyle = ({
 
   // 常用标点符号转译
   const key = (name || css).replaceAll(
-    /(\:|#|!|,|\.|>|<|@|~|%|\||\$|\{|\}|\[|\]|\(|\)|\+|\*|\/)/g,
+    /(\:|#|\*|!|,|\.|>|<|@|~|%|\||\$|\{|\}|\[|\]|\(|\)|\+|\*|\/)/g,
     (v) => "\\" + v
   );
 
   const groupKey = group ? `.\\[${group}\\]` : "";
 
   const ele = document.createElement("style");
-
+  const _name = fix.name.replace("*", "--");
   if (media) {
-    ele.textContent = `${media} {.${key}${groupKey}${pesudo} ${fix.query}{${fix.name}:${val}}}`;
+    ele.textContent = `${media} {.${key}${groupKey}${pesudo} ${fix.query}{${_name}:${val}}}`;
   } else {
-    ele.textContent = `.${key}${groupKey}${pesudo} ${fix.query}{${fix.name}:${val}}`;
+    ele.textContent = `.${key}${groupKey}${pesudo} ${fix.query}{${_name}:${val}}`;
   }
   document.head.append(ele);
 
   if (mediaName) {
     const mediaEle = document.createElement("style");
-    mediaEle.textContent = `.media-${mediaName} .${key}${groupKey}${pesudo} ${fix.query}{${fix.name}:${val}}`;
+    mediaEle.textContent = `.media-${mediaName} .${key}${groupKey}${pesudo} ${fix.query}{${_name}:${val}}`;
     document.head.append(mediaEle);
   }
 };
