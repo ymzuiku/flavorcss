@@ -10,6 +10,7 @@ const list = [
   "css-selector",
   "custom",
   "custom-group",
+  "place-media",
   // "code-h",
   // "code-i",
   // "code-j",

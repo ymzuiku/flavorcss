@@ -90,10 +90,10 @@ source-map@^0.6.1:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
-vanilla-route@^0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/vanilla-route/-/vanilla-route-0.6.2.tgz#2db1e0f71808526ebc62e1a311061aae8ca58017"
-  integrity sha512-E7Y1RnL9ak/dZgyE7Nx5WjUkwpNi4d0bSsuHFH+xOqKUp7Fu/bhKPC95rjuZXpSXosQMlvqZFRv0ejlpHUm07Q==
+vanilla-route@^0.6.5:
+  version "0.6.5"
+  resolved "https://registry.yarnpkg.com/vanilla-route/-/vanilla-route-0.6.5.tgz#ef8c8495da9837ce3e6611b7a23ef5a38478af9b"
+  integrity sha512-VsXvq/9/0qSgPBmUSIexWFuTbhJaSXdqgT7qQP9CXybe+yijGKnKFXeQMnXa1z06NUNsr2ibfiU75Wey8bWrgQ==
   dependencies:
     querystring-number "^1.0.8"
 
