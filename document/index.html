@@ -28,16 +28,11 @@
       --h5: 16px;
       --h6: 14px;
       --h: 200;
-      --primary: hsl(var(--h), 50%, 50%);
-      --tip: hsl(128, 80%, 35%);
-      --error: hsl(255, 50%, 50%);
-      --weak: hsl(var(--h), 40%, 60%);
-      --dark: hsl(var(--h), 50%, 30%);
-      --deep-dark: hsl(var(--h), 40%, 25%);
       --white: hsl(var(--h), 50%, 100%);
-      --gray: hsl(var(--h), 0%, 92%);
       --black: hsl(var(--h), 50%, 0%);
+      --gray: hsl(var(--h), 0%, 92%);
       --opa: hsl(var(--h), 50%, 50%, 0);
+      --primary: hsl(var(--h), 50%, 50%);
       --bar-height: 54px;
       --button-height: 46px;
       --form-weight: 190px;
@@ -46,6 +41,8 @@
     }
   </style>
   <template flavor>
+    ease: transition:$1|all|--ease;
+    time: transition:$1|all|$2;
     sans: font-family:--sans;
     serif: font-family:--serif;
     mono: font-family:--mono;
@@ -91,11 +88,16 @@
     b: border:$1;
     radius: border-radius:$1;
     shadow: box-shadow:$1;
-    ease: transition:0.2s|all|--ease;
-    time: transition:$1|all|$2;
   </template>
   <link rel="stylesheet" href="/base.css">
   <script src="/flavorcss.js"></script>
+  <style>
+    .monaco-editor {
+      padding: 10px 0px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+  </style>
 </head>
 
 <body>

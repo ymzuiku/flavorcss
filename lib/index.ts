@@ -13,3 +13,13 @@ export {
   mediaList,
   pesudoList,
 };
+
+(window as any).flavorcss = {
+  device,
+  parser,
+  observeClass,
+  classGroup,
+  groupList,
+  mediaList,
+  pesudoList,
+};

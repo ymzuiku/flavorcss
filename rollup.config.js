@@ -39,9 +39,6 @@ const watchOptions = [
       format: "umd",
       name: "flavorcss",
       sourcemap: true,
-      // globals: {
-      //   keyframesSpring: 'keyframes-spring',
-      // },
     },
     plugins: [
       rollupTypescript({

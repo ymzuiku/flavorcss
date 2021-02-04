@@ -25,20 +25,19 @@ export const pesudoList = {
 
 export const mediaList = {
   dark: "@media (prefers-color-scheme: dark)",
-  xxs: "@media screen and (min-width: 375px)",
+  def: "@media screen and (max-width: 479px)",
   xs: "@media screen and (min-width: 480px)",
   sm: "@media screen and (min-width: 640px)",
   md: "@media screen and (min-width: 768px)",
   lg: "@media screen and (min-width: 1024px)",
   xl: "@media screen and (min-width: 1280px)",
   xxl: "@media screen and (min-width: 1536px)",
-  "xxs-max": "@media screen and (max-width: 375px)",
-  "xs-max": "@media screen and (max-width: 480px)",
-  "sm-max": "@media screen and (max-width: 640px)",
-  "md-max": "@media screen and (max-width: 768px)",
-  "lg-max": "@media screen and (max-width: 1024px)",
-  "xl-max": "@media screen and (max-width: 1280px)",
-  "xxl-max": "@media screen and (max-width: 1536px)",
+  "xs-max": "@media screen and (max-width: 479px)",
+  "sm-max": "@media screen and (max-width: 639px)",
+  "md-max": "@media screen and (max-width: 767px)",
+  "lg-max": "@media screen and (max-width: 1023px)",
+  "xl-max": "@media screen and (max-width: 1279px)",
+  "xxl-max": "@media screen and (max-width: 1535px)",
 } as any;
 
 const fixCache = {} as any;
