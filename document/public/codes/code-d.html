@@ -1,25 +1,125 @@
-<h1 class="*title:60px font-size:40px font-weight:800 line-height:1">
+<h1 class="font-size:40px font-weight:800 line-height:1">
   Rule 2: Pseudo class
 </h1>
 <button class="
-    hover:box-shadow:0px|4px|8px|hsla(200,50%,10%,0.3)
+    hover:box-shadow:0px|4px|8px|hsla(200,50%,10%,0.15)
     hover:background:hsl(200,50%,45%)
+    active:background:hsl(210,50%,40%)
     background:hsl(200,50%,50%)
     color:#fff
     padding:8px|16px
     margin:40px
-    border-radius:6px">
-  Hover me
+    border-radius:6px
+    transition:0.15s|all|ease-out
+    ">
+  Click me
 </button>
-<p>Try change right code, you can use any values:</p>
+<p>Add Pseduo before background:</p>
 <p class="[md] code">
-  font-size:40px -> font-size:50px
+  hover:background:hsl(200,50%,45%)
 </p>
-<p>And you can use css variables:</p>
-<p class="[md] code">
-  font-size:50px -> font-size:var(--title)
+<p class="[md] info">
+  All Pseudo list:
 </p>
-<p>Use sort css variables, ignore var(...):</p>
-<p class="[md] code">
-  font-size:var(--title) -> font-size:--title
-</p>
+<table class="border:1px|solid|hsl(0,0%,80%) border:1px|solid|hsl(0,0%,80%):* padding:8px:*">
+  <tr>
+    <th>key</th>
+    <th>css value</th>
+  </tr>
+  <tr>
+    <td>hover</td>
+    <td>:hover</td>
+  </tr>
+  <tr>
+    <td>focus</td>
+    <td>:focus</td>
+  </tr>
+  <tr>
+    <td>active</td>
+    <td>:active</td>
+  </tr>
+  <tr>
+    <td>first</td>
+    <td>:first-child</td>
+  </tr>
+  <tr>
+    <td>last</td>
+    <td>:last-child</td>
+  </tr>
+  <tr>
+    <td>blank</td>
+    <td>:blank</td>
+  </tr>
+  <tr>
+    <td>checked</td>
+    <td>:checked</td>
+  </tr>
+  <tr>
+    <td>current</td>
+    <td>:current</td>
+  </tr>
+  <tr>
+    <td>disabled</td>
+    <td>:disabled</td>
+  </tr>
+  <tr>
+    <td>focus-within</td>
+    <td>:focus-within</td>
+  </tr>
+  <tr>
+    <td>focus-visible</td>
+    <td>:focus-visible</td>
+  </tr>
+  <tr>
+    <td>in-range</td>
+    <td>:in-range</td>
+  </tr>
+  <tr>
+    <td>visited</td>
+    <td>:visited</td>
+  </tr>
+  <tr>
+    <td>even</td>
+    <td>:nth-child(even)</td>
+  </tr>
+  <tr>
+    <td>odd</td>
+    <td>:nth-child(odd)</td>
+  </tr>
+  <tr>
+    <td>placeholder-shown</td>
+    <td>:placeholder-shown</td>
+  </tr>
+  <tr>
+    <td>after</td>
+    <td>::after</td>
+  </tr>
+  <tr>
+    <td>before</td>
+    <td>::before</td>
+  </tr>
+  <tr>
+    <td>placeholder</td>
+    <td>::-webkit-input-placeholder</td>
+  </tr>
+  <tr>
+    <td>scrollbar</td>
+    <td>::-webkit-scrollbar</td>
+  </tr>
+  <tr>
+    <td>scrollbar-thumb</td>
+    <td>::-webkit-scrollbar-thumb</td>
+  </tr>
+  <tr>
+    <td>scrollbar-track</td>
+    <td>::-webkit-scrollbar-track</td>
+  </tr>
+  <tr>
+    <td>scrollbar-button</td>
+    <td>::-webkit-scrollbar-button</td>
+  </tr>
+  <tr>
+    <td>scrollbar-corner</td>
+    <td>::-webkit-scrollbar-corner</td>
+  </tr>
+</table>

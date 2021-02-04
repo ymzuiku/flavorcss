@@ -21,23 +21,27 @@ export const pesudoList = {
   after: "::after",
   before: "::before",
   placeholder: "::-webkit-input-placeholder",
+  scrollbar: "::-webkit-scrollbar",
+  "scrollbar-thumb": "::-webkit-scrollbar-thumb",
+  "scrollbar-track": "::-webkit-scrollbar-track",
+  "scrollbar-button": "::-webkit-scrollbar-button",
+  "scrollbar-corner": "::-webkit-scrollbar-corner",
 } as any;
 
 export const mediaList = {
   dark: "@media (prefers-color-scheme: dark)",
-  def: "@media screen and (max-width: 479px)",
   xs: "@media screen and (min-width: 480px)",
   sm: "@media screen and (min-width: 640px)",
   md: "@media screen and (min-width: 768px)",
   lg: "@media screen and (min-width: 1024px)",
   xl: "@media screen and (min-width: 1280px)",
   xxl: "@media screen and (min-width: 1536px)",
-  "xs-max": "@media screen and (max-width: 479px)",
-  "sm-max": "@media screen and (max-width: 639px)",
-  "md-max": "@media screen and (max-width: 767px)",
-  "lg-max": "@media screen and (max-width: 1023px)",
-  "xl-max": "@media screen and (max-width: 1279px)",
-  "xxl-max": "@media screen and (max-width: 1535px)",
+  "in-xs": "@media screen (max-width:479px) and (min-width: 0px)",
+  "in-sm": "@media screen (max-width:767px) and (min-width: 479px)",
+  "in-md": "@media screen (max-width:1023px) and (min-width: 767px)",
+  "in-lg": "@media screen (max-width:1279px) and (min-width: 1023px)",
+  "in-xl": "@media screen (max-width:1535px) and (min-width: 1279px)",
+  "in-xxl": "@media screen (max-width:9999px) and (min-width: 1535px)",
 } as any;
 
 const fixCache = {} as any;
@@ -111,7 +115,7 @@ export function fixClassName(group: string, css: string): FixClassName {
     } else if (!out.value) {
       // 若是组件的参数，将逗号替换成^^^
       if ((out as any).comp) {
-        v = v.replaceAll(/\((.*?)\)/g, (v) => {
+        v = v.replace(/\((.*?)\)/g, (v) => {
           return v.replace(/\,/g, "^^^");
         });
       }

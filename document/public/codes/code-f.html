@@ -1,13 +1,107 @@
 <h1 class="font-size:40px font-weight:800 line-height:1">
-  Infinite atomic class in
-  <span class="color:hsl(150,50%,50%)">RUNTIME.</span>
+  Rule 4: Use CSS Query
 </h1>
-<button
-  class="font-size:14px font-weight:300 line-height:1 border-radius:6px background:hsl(200,40%,60%) color:#fff padding:6px margin:10px">
-  Editing right codes
-</button>
-<p class="margin:10px|0 font-size:18px font-weight:300 color:hsl(200,20%,40%)">
-  An runtime library with parameters; it's easy to customize hundreds
-  of atomic classes; it's easy to implement media query and pseudo
-  class, and it's perfect with CSS variables.
+<p class="[md] code">
+  background:#f66:
 </p>
+<p>Add media before background:</p>
+<p class="[md] code">
+  sm:background:hsl(200,50%,45%)
+</p>
+<p>Use media and pseudo, only works in PC(desktop) and hover:</p>
+<p class="[md] code">
+  pc:hover:background:hsl(125,50%,45%)
+</p>
+<p class="[md] info">
+  All Media list:
+</p>
+<table class="border:1px|solid|hsl(0,0%,80%) border:1px|solid|hsl(0,0%,80%):* padding:8px:*">
+  <tr>
+    <th>key</th>
+    <th>media value</th>
+  </tr>
+  <tr>
+    <td>dark</td>
+    <td>@media (prefers-color-scheme: dark)</td>
+  </tr>
+  <tr>
+    <td>xs</td>
+    <td>@media screen and (min-width: 480px)</td>
+  </tr>
+  <tr>
+    <td>sm</td>
+    <td>@media screen and (min-width: 640px)</td>
+  </tr>
+  <tr>
+    <td>md</td>
+    <td>@media screen and (min-width: 768px)</td>
+  </tr>
+  <tr>
+    <td>lg</td>
+    <td>@media screen and (min-width: 1024px)</td>
+  </tr>
+  <tr>
+    <td>xl</td>
+    <td>@media screen and (min-width: 1280px)</td>
+  </tr>
+  <tr>
+    <td>xxl</td>
+    <td>@media screen and (min-width: 1536px)</td>
+  </tr>
+  <tr>
+    <td>in-xs</td>
+    <td>@media screen (max-width:479px) and (min-width: 0px)</td>
+  </tr>
+  <tr>
+    <td>in-sm</td>
+    <td>@media screen (max-width:767px) and (min-width: 479px)</td>
+  </tr>
+  <tr>
+    <td>in-md</td>
+    <td>@media screen (max-width:1023px) and (min-width: 767px)</td>
+  </tr>
+  <tr>
+    <td>in-lg</td>
+    <td>@media screen (max-width:1279px) and (min-width: 1023px)</td>
+  </tr>
+  <tr>
+    <td>in-xl</td>
+    <td>@media screen (max-width:1535px) and (min-width: 1279px)</td>
+  </tr>
+  <tr>
+    <td>in-xxl</td>
+    <td>@media screen (max-width:9999px) and (min-width: 1535px)</td>
+  </tr>
+  <tr>
+    <td>android</td>
+    <td>@media screen and (min-width: ${(android ? "0px" : "9999px"})</td>
+  </tr>
+  <tr>
+    <td>ios</td>
+    <td>@media screen and (min-width: ${(ios ? "0px" : "9999px"})</td>
+  </tr>
+  <tr>
+    <td>pc</td>
+    <td>@media screen and (min-width: ${(pc ? "0px" : "9999px"})</td>
+  </tr>
+  <tr>
+    <td>phone</td>
+    <td>@media screen and (min-width: ${(phone ? "0px" : "9999px"})</td>
+  </tr>
+  <tr>
+    <td>safari</td>
+    <td>@media screen and (min-width: ${(safari ? "0px" : "9999px"})</td>
+  </tr>
+  <tr>
+    <td>chrome</td>
+    <td>@media screen and (min-width: ${(chrome ? "0px" : "9999px"})</td>
+  </tr>
+  <tr>
+    <td>firefox</td>
+    <td>@media screen and (min-width: ${(firefox ? "0px" : "9999px"})</td>
+  </tr>
+  <tr>
+    <td>wechat</td>
+    <td>@media screen and (min-width: ${(wechat ? "0px" : "9999px"})</td>
+  </tr>
+</table>

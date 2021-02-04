@@ -82,10 +82,10 @@ export const observeClass = () => {
   }
 
   if (!window.MutationObserver) {
-    import("./MutationObserver").then(() => {
-      console.log(window.MutationObserver, "222");
-      observeClass();
-    });
+    // import("./MutationObserver").then(() => {
+    //   console.log(window.MutationObserver, "222");
+    //   observeClass();
+    // });
     console.error("[flavorcss] Your Browser not supported MutationObserver");
     return;
   }

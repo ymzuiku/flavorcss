@@ -56,24 +56,24 @@ export const addStyle = ({
     val = " " + _list.map((v) => `"${v}"`).join(" ");
     val += ";";
   }
-  val = val.replaceAll(/calc\((.*?)\)/g, (item) => {
-    item = item.replaceAll(/(-|\+|\*|\/)/g, (v) => " " + v + " ");
+  val = val.replace(/calc\((.*?)\)/g, (item) => {
+    item = item.replace(/(-|\+|\*|\/)/g, (v) => " " + v + " ");
     return item;
   });
   // | 转译成空格
   val = val.replace(/\|/g, " ");
 
   // 目的兼容 var() 的写法
-  val = val.replaceAll(/var\((.*?)\)/g, (v) => {
+  val = val.replace(/var\((.*?)\)/g, (v) => {
     return v.replace(/(var\(|\))/g, "");
   });
   // --dog 转译成 var(--dog)
-  val = val.replaceAll(/--([a-zA-Z0-9_-]*)/g, (v) => `var(${v})`);
+  val = val.replace(/--([a-zA-Z0-9_-]*)/g, (v) => `var(${v})`);
   // ^^^ 转译成 , 兼容组件参数的逗号问题
   val = val.replace(/\^\^\^/g, ",");
 
   // 常用标点符号转译
-  const key = (name || css).replaceAll(
+  const key = (name || css).replace(
     /(\:|#|\*|!|,|\.|>|<|@|~|%|\||\$|\{|\}|\[|\]|\(|\)|\+|\*|\/)/g,
     (v) => "\\" + v
   );
