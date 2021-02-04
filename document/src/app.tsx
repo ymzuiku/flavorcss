@@ -33,28 +33,8 @@ export function App() {
           />
         </div>
       </div>
-      {/* <div class="max-width:800px d:grid place-content:center margin:40px|auto">
-        <div class="sm:cols:1fr|1fr sm:grid-gap:40px">
-          <div>
-            <p class="margin:10px|0 font-size:18px font-weight:300 color:hsl(200,20%,40%)">
-              [1] Install flavorcss:
-            </p>
-            <p class="mono font-size:18px font-weight:300 line-height:1 border-radius:6px background:hsl(200,30%,45%) color:#fff padding:12px margin:10px|0">
-              npm i --save flavorcss
-            </p>
-          </div>
-          <div>
-            <p class="margin:10px|0 font-size:18px font-weight:300 color:hsl(200,20%,40%)">
-              [2] Import in your project:
-            </p>
-            <p class="mono font-size:18px font-weight:300 line-height:1 border-radius:6px background:hsl(200,30%,45%) color:#fff padding:12px margin:10px|0">
-              import "flavorcss"
-            </p>
-          </div>
-        </div>
-      </div> */}
       <div class="mt:50px max-w:1300px margin:0|auto">
-        <p class="sm:text-align:center mt:--xl fs:--h3 fw:300 color:hsl(--h,20%,40%)">
+        <p class="d:none sm:d:block sm:text-align:center mt:--xl fs:--h3 fw:300 color:hsl(--h,20%,40%)">
           Change Right codes to learn Flavor CSS:
         </p>
       </div>

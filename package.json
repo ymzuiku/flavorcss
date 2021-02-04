@@ -7,7 +7,7 @@
   "private": false,
   "scripts": {
     "esbuild": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=es --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag --minify --splitting",
-    "build":"yarn esbuild && cp -rf es document/public/",
+    "build": "yarn esbuild && cp -rf es document/public/",
     "lib": "node rollup.config.js"
   },
   "devDependencies": {
@@ -16,6 +16,7 @@
     "rollup": "^1.24.0",
     "rollup-plugin-typescript2": "^0.24.3",
     "rollup-plugin-uglify": "^6.0.3",
+    "string.prototype.replaceall": "^1.0.4",
     "typescript": "^4.1.3"
   },
   "repository": {

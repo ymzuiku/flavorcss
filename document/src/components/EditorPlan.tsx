@@ -9,13 +9,16 @@ export const EditorPlan = ({ code }: { code: string }) => {
   const editorEle = (
     <div
       id="editor"
-      class="min-h:300px sm:min-h:400px position:relative bg:#1e1e1e radius:--md overflow:hidden"
+      class="d:none sm:d:block min-h:300px sm:min-h:400px position:relative bg:#1e1e1e radius:--md overflow:hidden"
     >
       <span class="m:--xl">loading editor...</span>
     </div>
   ) as HTMLElement;
   let editor: any;
   const initEdit = () => {
+    if (window.innerWidth < 640) {
+      return;
+    }
     Monaco().then((monaco) => {
       editorEle.textContent = "";
       const editor = monaco.editor.create(editorEle, {
@@ -37,21 +40,25 @@ export const EditorPlan = ({ code }: { code: string }) => {
   };
 
   let timer: any;
-  // window.addEventListener("resize", () => {
-  //   if (!document.body.contains(editorEle)) {
-  //     return;
-  //   }
-  //   if (timer) {
-  //     clearTimeout(timer);
-  //     timer = null;
-  //   }
-  //   timer = setTimeout(initEdit, 500);
-  // });
+  window.addEventListener("resize", () => {
+    if (!document.body.contains(editorEle)) {
+      return;
+    }
+    if (timer) {
+      clearTimeout(timer);
+      timer = null;
+    }
+    timer = setTimeout(initEdit, 500);
+  });
 
-  // aoife.waitAppend(editorEle).then(initEdit);
+  aoife.waitAppend(editorEle).then(initEdit);
+
+  if (window.innerWidth < 640) {
+    <div class="mt:--xxl p:--xxl">{render}</div>;
+  }
 
   return (
-    <div class="mt:--xxl p:--xxl rows:auto|350px sm:rows:auto sm:cols:1fr|600px grid-gap:--lg">
+    <div class="mt:--xxl p:--xxl rows:auto|0 sm:rows:auto sm:cols:1fr|600px grid-gap:--lg">
       {render}
       {editorEle}
     </div>
