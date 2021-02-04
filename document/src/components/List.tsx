@@ -18,9 +18,8 @@ const list = [
 ];
 export const List = async () => {
   const pList = [] as Promise<string>[];
-  const root = window.location.origin.indexOf(":") ? "/public" : "";
   list.forEach((v) => {
-    pList.push(fetch(`${root}/codes/${v}.html`).then((v) => v.text()));
+    pList.push(fetch(`/codes/${v}.pug`).then((v) => v.text()));
   });
   const datas = await Promise.all(pList);
 
