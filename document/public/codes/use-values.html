@@ -1,0 +1,20 @@
+<h1 class="font-size:40px font-weight:800 line-height:1">
+  Rule 3: Use values
+</h1>
+<p class="[md] info">Use sort css variables, ignore var(...):</p>
+<p class="[md] code">
+  background:hsl(200,50%,50%) -> background:--primary
+</p>
+<div class="mb:30px"></div>
+<!-- edit-code -->
+<style>
+  :root {
+    --primary: hsl(200, 50%, 50%);
+    --white: #fff;
+    --a: 12px;
+    --b: 24px;
+  }
+</style>
+<div class="background:--primary color:--white margin:--a padding:--b border-radius:--a">
+  Use CSS variables example
+</div>

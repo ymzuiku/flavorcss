@@ -1,8 +1,11 @@
 import { classGroup } from "./classGroup";
 import { parser } from "./parser";
 
-function regGroup(ele: HTMLTemplateElement) {
-  const groupName = ele.getAttribute("flavor") || "";
+export function regGroup(ele: HTMLTemplateElement) {
+  const groupName = ele.getAttribute("flavor");
+  if (groupName === void 0 || groupName === null) {
+    return;
+  }
   let html = "";
   if (ele.tagName === "TEMPLATE") {
     const content = ele.content.cloneNode(true);
@@ -28,7 +31,7 @@ function regGroup(ele: HTMLTemplateElement) {
   }
 }
 
-function regElement(ele: HTMLElement) {
+export function regElement(ele: HTMLElement) {
   if (!ele) {
     return;
   }
@@ -83,7 +86,6 @@ export const observeClass = () => {
 
   if (!window.MutationObserver) {
     // import("./MutationObserver").then(() => {
-    //   console.log(window.MutationObserver, "222");
     //   observeClass();
     // });
     console.error("[flavorcss] Your Browser not supported MutationObserver");

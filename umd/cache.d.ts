@@ -1,7 +1,9 @@
-export declare const compMap: {
-    [key: string]: {
-        [key: string]: (params: string[]) => string;
+export declare const cache: {
+    compMap: {
+        [key: string]: {
+            [key: string]: (params: string[]) => string;
+        };
     };
+    classNameCache: any;
 };
-export declare const namesMap: any;
-export declare const classNameCache: any;
+export declare const reset: () => void;

@@ -1,24 +1,28 @@
 import Monaco from "../Monaco";
 
-export const EditorPlan = ({ code }: { code: string }) => {
+export const EditorPlan = ({
+  title,
+  code,
+}: {
+  title: string;
+  code: string;
+}) => {
   code = code.replace(
     '<script type="module" src="/@vite/client"></script>',
     ""
   );
+  const titleEl = <div innerHTML={title}></div>;
   const render = <div innerHTML={code}></div>;
   const editorEle = (
     <div
       id="editor"
-      class="d:none max-h:500px sm:d:block min-h:300px sm:min-h:400px position:relative bg:#1e1e1e radius:--md overflow:hidden"
+      class="d:none max-h:500px sm:d:block min-h:330px position:relative bg:#1e1e1e radius:--md overflow:hidden"
     >
       <span class="m:--xl">loading editor...</span>
     </div>
   ) as HTMLElement;
   let editor: any;
   const initEdit = () => {
-    // if (window.innerWidth < 640) {
-    //   return;
-    // }
     Monaco().then((monaco) => {
       editorEle.textContent = "";
       const editor = monaco.editor.create(editorEle, {
@@ -31,9 +35,17 @@ export const EditorPlan = ({ code }: { code: string }) => {
       });
       const model = editor.getModel();
       if (model) {
+        let timer: any;
         model.onDidChangeContent((e) => {
-          const code = model.getValue();
-          render.innerHTML = code;
+          if (timer) {
+            clearTimeout(timer);
+            timer = null;
+          }
+          timer = setTimeout(() => {
+            const code = model.getValue();
+            render.innerHTML = code;
+            (window as any).flavorcss.reset();
+          }, 100);
         });
       }
     });
@@ -58,9 +70,12 @@ export const EditorPlan = ({ code }: { code: string }) => {
   // }
 
   return (
-    <div class="mt:--xxl p:--xxl rows:auto|auto lg:rows:auto lg:cols:600px|500px grid-gap:20px">
+    <div class="margin:20px margin-top:100px rows:auto|auto lg:rows:auto lg:cols:3fr|2fr grid-gap:20px">
+      <div>
+        {titleEl}
+        {editorEle}
+      </div>
       {render}
-      {editorEle}
     </div>
   );
 };

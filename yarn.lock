@@ -342,6 +342,11 @@ pkg-dir@^4.1.0:
   dependencies:
     find-up "^4.0.0"
 
+querystring-number@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/querystring-number/-/querystring-number-1.0.8.tgz#f8c4a4ca1cca128fbb7ff2346a001ca20ec0f650"
+  integrity sha512-2aoUEkmBizS9Zcx1Rf9tIm42Uifw4WtvankOak+1fewWXWs8tJO09vsa1bDID3QIl1L+T6BoPxIJBqGf6JRK0w==
+
 resolve@1.12.0:
   version "1.12.0"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.12.0.tgz#3fc644a35c84a48554609ff26ec52b66fa577df6"
@@ -467,3 +472,10 @@ universalify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/universalify/-/universalify-1.0.0.tgz#b61a1da173e8435b2fe3c67d29b9adf8594bd16d"
   integrity sha512-rb6X1W158d7pRQBg5gkR8uPaSfiids68LTJQYOtEUhoJUWBdaQHsuT/EUduxXYxcrt4r5PJ4fuHW1MHT6p0qug==
+
+vanilla-route@^0.5.5:
+  version "0.5.5"
+  resolved "https://registry.yarnpkg.com/vanilla-route/-/vanilla-route-0.5.5.tgz#135c1ae20260c84d8f426d97b97bd12a488410ab"
+  integrity sha512-EBzMATse4IVi7E7wiWxPhHTHn+f6A4PZy9VLmzmFZKX9AoVyHF0ShdJe5Sg5FTljbOZhTtfhyG76nzmPoJtrrA==
+  dependencies:
+    querystring-number "^1.0.8"

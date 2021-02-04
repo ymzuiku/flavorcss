@@ -1,13 +1,16 @@
+import { route } from "vanilla-route";
 export function Card({
   h,
   info,
   title,
   button,
+  url,
 }: {
   h: number;
   title: string;
   info: string;
   button: string;
+  url: string;
 }) {
   return (
     <div
@@ -21,6 +24,9 @@ export function Card({
         class={`time:0.2s,--ease bg:hsl(${
           h + 10
         },50%,40%) radius:--md mt:--md hover:bg:hsl(${h + 10},50%,35%) fw:500`}
+        onclick={() => {
+          route.push(url);
+        }}
       >
         {button}
       </button>

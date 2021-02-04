@@ -1,5 +1,5 @@
 let _device: any;
-interface Device {
+export interface Device {
   android: boolean;
   firefox: boolean;
   chrome: boolean;

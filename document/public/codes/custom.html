@@ -1,0 +1,42 @@
+<h1 class="font-size:40px font-weight:800 line-height:1">
+  Rule 7: Custom Atomic class
+</h1>
+<p class="[md] info">
+  You can custom any atomic class, use template and set attribute: flavor:
+</p>
+<p class="[md] code">
+  bg:#f66 fs:30px
+</p>
+<div class="mb:30px"></div>
+<!-- edit-code -->
+<template flavor>
+  bg: background:$1;
+  fs: font-size:$1;
+  pd: padding:$1;
+  mg: margin:$1;
+
+  btn:
+  hover:box-shadow:0px|8px|0px|hsla($1,50%,20%,0.15)
+  hover:background:hsl($1,50%,45%)
+  active:background:hsl($1,50%,40%)
+  active:transform:translateY(2px)
+  active:box-shadow:0px|2px|0px|hsla($1,50%,20%,0.15)
+  background:hsl($1,50%,50%)
+  color:#fff
+  padding:8px|16px
+  border-radius:6px
+  transition:0.15s|all|ease-out
+  cursor:pointer;
+</template>
+<div class="bg:#f66 fs:30px pd:10px mg:10px">
+  Example
+</div>
+<div class="btn:200 mg:20px|10px">
+  Example Button 1
+</div>
+<div class="btn:125 mg:20px|10px">
+  Example Button 2
+</div>
+<div class="btn:340 mg:20px|10px">
+  Example Button 3
+</div>

@@ -1,4 +1,4 @@
-import { compMap } from "./cache";
+import { cache } from "./cache";
 import { device } from "./device";
 
 export const pesudoList = {
@@ -81,12 +81,9 @@ export function fixClassName(group: string, css: string): FixClassName {
     return out;
   }
 
-  let compList = compMap[group];
+  let compList = cache.compMap[group];
 
   const list = css.split(":");
-
-  // sm:hover:bg:#f00
-  // hover:sm:bg:#f00
 
   list.forEach((v, i) => {
     if (i === 0) {
@@ -106,7 +103,7 @@ export function fixClassName(group: string, css: string): FixClassName {
     if (i < 2 && pesudoList[v]) {
       out.pesudo = pesudoList[v];
       out.pesudoName = v;
-    } else if (!out.name && compList && compList[v]) {
+    } else if (!out.comp && !out.name && compList && compList[v]) {
       // out.name 必须为空的原因是 有了 name，那么不应该将 value 作为 comp
       out.comp = compList[v];
       out.compName = v;

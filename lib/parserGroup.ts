@@ -1,4 +1,10 @@
+const groupCache = {} as any;
+
 export const parserGroup = (css: string) => {
+  const old = groupCache[css];
+  if (old) {
+    return old as { cssItem: string; group: string }[];
+  }
   const list = [] as { cssItem: string; group: string }[];
   css = css.replace(/\n/g, " ");
 
@@ -32,6 +38,8 @@ export const parserGroup = (css: string) => {
       }
     }
   });
+
+  groupCache[css] = list;
 
   return list;
 };

@@ -1,6 +1,9 @@
-import { parser } from "./parser";
-import { device } from "./device";
-import { observeClass } from "./observeClass";
-import { classGroup, groupList } from "./classGroup";
-import { mediaList, pesudoList } from "./fixClassName";
-export { device, parser, observeClass, classGroup, groupList, mediaList, pesudoList, };
+export declare const flavorcss: {
+    device: () => import("./device").Device;
+    parser: (css: string, name?: string, media?: string, mediaName?: string, pesudo?: string, group?: string) => string;
+    observeClass: () => void;
+    classGroup: (group: any, name: string, value: string) => void;
+    mediaList: any;
+    pesudoList: any;
+    reset: () => void;
+};

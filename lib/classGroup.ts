@@ -1,7 +1,6 @@
-import { compMap } from "./cache";
+import { cache } from "./cache";
 import { fixClassName } from "./fixClassName";
 import { parserGroup } from "./parserGroup";
-export const groupList = {} as { [key: string]: string };
 
 const lock = {} as any;
 
@@ -10,11 +9,12 @@ export const classGroup = (group: any, name: string, value: string) => {
   if (lock[key]) {
     return;
   }
+
   lock[key] = true;
-  if (!compMap[group]) {
-    compMap[group] = {};
+  if (!cache.compMap[group]) {
+    cache.compMap[group] = {};
   }
-  compMap[group][name] = (values: string[]) => {
+  cache.compMap[group][name] = (values: string[]) => {
     let css = value;
 
     values.forEach((v, i) => {
@@ -37,11 +37,11 @@ export const classGroup = (group: any, name: string, value: string) => {
         // 兼容组件名称中带有参数
         // 若内部有分组，优先使用 g， 否则使用外部分组
 
-        let fix = fixClassName("", v);
-        if (!fix.comp && g !== "") {
-          fix = fixClassName(g, v);
-          if (!fix.comp && g !== group) {
-            fix = fixClassName(group, v);
+        let fix = fixClassName(g, v);
+        if (!fix.comp) {
+          fix = fixClassName(group, v);
+          if (!fix.comp && group !== "" && g !== "") {
+            fix = fixClassName("", v);
           }
         }
         if (fix.comp as any) {
@@ -59,4 +59,5 @@ export const classGroup = (group: any, name: string, value: string) => {
     });
     return out;
   };
+  // console.log(cache.compMap);
 };

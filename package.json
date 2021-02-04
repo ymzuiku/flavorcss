@@ -6,7 +6,8 @@
   "types": "lib/index.d.ts",
   "private": false,
   "scripts": {
-    "esbuild": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=es --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag --minify --splitting",
+    "dev":"nodemon yarn es",
+    "es": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=es --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag --minify --splitting",
     "build": "yarn esbuild && cp -rf es document/public/",
     "lib": "node rollup.config.js"
   },
@@ -26,8 +27,5 @@
   "bugs": {
     "url": "git+https://github.com/ymzuiku/flavorcss.git"
   },
-  "homepage": "git+https://github.com/ymzuiku/flavorcss.git",
-  "dependencies": {
-    "mutationobserver-shim": "^0.3.7"
-  }
+  "homepage": "git+https://github.com/ymzuiku/flavorcss.git"
 }

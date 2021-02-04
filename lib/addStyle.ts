@@ -1,4 +1,4 @@
-import { classNameCache } from "./cache";
+import { cache } from "./cache";
 import { fixClassName } from "./fixClassName";
 
 interface AddStyle {
@@ -23,10 +23,10 @@ export const addStyle = ({
   }
   // debugger;
   const _key = `^sty_${css}_${name}_${media}_${pesudo}_${group}`;
-  if (classNameCache[_key]) {
+  if (cache.classNameCache[_key]) {
     return;
   }
-  classNameCache[_key] = true;
+  cache.classNameCache[_key] = true;
 
   // 计算伪类
   // const list = css.split(":");
@@ -39,6 +39,13 @@ export const addStyle = ({
   if (!val) {
     return;
   }
+  // | 转译成空格
+  // if (val === "-" || val === "--") {
+  //   return;
+  // }
+  // if (/\(/.test(val) && !/\)/.test(val)) {
+  //   return;
+  // }
 
   if (fix.media) {
     media = fix.media;
@@ -60,7 +67,6 @@ export const addStyle = ({
     item = item.replace(/(-|\+|\*|\/)/g, (v) => " " + v + " ");
     return item;
   });
-  // | 转译成空格
   val = val.replace(/\|/g, " ");
 
   // 目的兼容 var() 的写法
@@ -87,11 +93,13 @@ export const addStyle = ({
   } else {
     ele.textContent = `.${key}${groupKey}${pesudo} ${fix.query}{${_name}:${val}}`;
   }
+  ele.setAttribute("flavor-css", "");
   document.head.append(ele);
 
   if (mediaName) {
     const mediaEle = document.createElement("style");
     mediaEle.textContent = `.media-${mediaName} .${key}${groupKey}${pesudo} ${fix.query}{${_name}:${val}}`;
+    mediaEle.setAttribute("flavor-css", "");
     document.head.append(mediaEle);
   }
 };

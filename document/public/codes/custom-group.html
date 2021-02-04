@@ -1,0 +1,27 @@
+<h1 class="font-size:40px font-weight:800 line-height:1">
+  Rule 8: Custom group, Prevention of CSS pollution
+</h1>
+<p class="[md] info">
+  You can custom any atomic class, use template and set attribute: flavor:
+</p>
+<p class="[md] code">
+  [case-a] b:#f66
+</p>
+<div class="mb:30px"></div>
+<!-- edit-code -->
+<!-- flavor="" is global -->
+<template flavor>
+  card: border-radius:8px padding:16px margin:8px;
+</template>
+<template flavor="case-a">
+  b: background:$1;
+</template>
+<template flavor="case-b">
+  b: border:$1|solid|#000;
+</template>
+<div class="[case-a] b:#f66 card">
+  Example use case-a
+</div>
+<div class="[case-b] b:2px card">
+  Example use case-b
+</div>

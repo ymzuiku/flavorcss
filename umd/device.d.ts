@@ -1,4 +1,4 @@
-interface Device {
+export interface Device {
     android: boolean;
     firefox: boolean;
     chrome: boolean;
@@ -11,4 +11,3 @@ interface Device {
     safari: boolean;
 }
 export declare const device: () => Device;
-export {};

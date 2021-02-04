@@ -65,6 +65,11 @@ postcss@^8.2.1:
     nanoid "^3.1.20"
     source-map "^0.6.1"
 
+querystring-number@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/querystring-number/-/querystring-number-1.0.8.tgz#f8c4a4ca1cca128fbb7ff2346a001ca20ec0f650"
+  integrity sha512-2aoUEkmBizS9Zcx1Rf9tIm42Uifw4WtvankOak+1fewWXWs8tJO09vsa1bDID3QIl1L+T6BoPxIJBqGf6JRK0w==
+
 resolve@^1.19.0:
   version "1.19.0"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.19.0.tgz#1af5bf630409734a067cae29318aac7fa29a267c"
@@ -84,6 +89,13 @@ source-map@^0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
+
+vanilla-route@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/vanilla-route/-/vanilla-route-0.6.2.tgz#2db1e0f71808526ebc62e1a311061aae8ca58017"
+  integrity sha512-E7Y1RnL9ak/dZgyE7Nx5WjUkwpNi4d0bSsuHFH+xOqKUp7Fu/bhKPC95rjuZXpSXosQMlvqZFRv0ejlpHUm07Q==
+  dependencies:
+    querystring-number "^1.0.8"
 
 vite@^2.0.0-beta.12:
   version "2.0.0-beta.30"
