@@ -1,9 +1,9 @@
 {
   "name": "flavorcss",
-  "version": "0.1.3",
+  "version": "0.3.0",
   "description": "full build css",
   "main": "es/index.js",
-  "types": "lib/index.d.ts",
+  "types": "lib/index.ts",
   "private": false,
   "scripts": {
     "dev":"nodemon yarn es",
