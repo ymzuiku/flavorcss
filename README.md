@@ -2,6 +2,8 @@
 
 Runtime Build Atomic Class
 
+## Document: [https://flavor.writeflowy.com](https://flavor.writeflowy.com)
+
 ## Install
 
 Use unpkg:
@@ -21,7 +23,5 @@ Import in your project
 ```js
 import "flavorcss";
 ```
-
-## Document: [https://flavor.writeflowy.com](https://flavor.writeflowy.com)
 
 ![](./document/public/imgs/website.png)
