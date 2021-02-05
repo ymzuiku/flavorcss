@@ -24,4 +24,6 @@ Import in your project
 import "flavorcss";
 ```
 
-![](./document/public/imgs/website.png)
+<link href="https://flavor.writeflowy.com">
+  <img src="./document/public/imgs/website.png" />
+</link>
