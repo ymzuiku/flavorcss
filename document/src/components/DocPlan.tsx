@@ -1,12 +1,6 @@
 import Monaco from "../Monaco";
 
-export const EditorPlan = ({
-  title,
-  code,
-}: {
-  title: string;
-  code: string;
-}) => {
+export const DocPlan = ({ title, code }: { title: string; code: string }) => {
   code = code.replace(
     '<script type="module" src="/@vite/client"></script>',
     ""
@@ -16,7 +10,7 @@ export const EditorPlan = ({
   const editorEle = (
     <div
       id="editor"
-      class="d:none max-h:500px sm:d:block min-h:330px position:relative bg:#1e1e1e radius:--md overflow:hidden"
+      class="max-h:500px sm:d:block min-h:330px position:relative bg:#1e1e1e radius:--md overflow:hidden"
     >
       <span class="m:--xl">loading editor...</span>
     </div>
@@ -71,7 +65,7 @@ export const EditorPlan = ({
 
   return (
     <div class="margin:20px margin-top:100px rows:auto|auto lg:rows:auto lg:cols:3fr|2fr grid-gap:20px">
-      <div>
+      <div class="box-sizing:border-box max-width:100% overflow-x:auto">
         {titleEl}
         {editorEle}
       </div>

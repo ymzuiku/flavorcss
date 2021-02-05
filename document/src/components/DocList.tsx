@@ -1,22 +1,17 @@
-import { EditorPlan } from "./EditorPlan";
+import { DocPlan } from "./DocPlan";
 
 const list = [
-  // "code-a",
-  "like-style",
-  "no-spaces",
-  "use-values",
-  "pseudo",
-  "media",
-  "css-selector",
-  "custom",
-  "custom-group",
-  "place-media",
-  // "code-h",
-  // "code-i",
-  // "code-j",
-  // "code-k",
+  "doc-like-style",
+  "doc-no-spaces",
+  "doc-use-values",
+  "doc-pseudo",
+  "doc-media",
+  "doc-css-selector",
+  "doc-custom",
+  "doc-custom-group",
+  "doc-place-media",
 ];
-export const List = async () => {
+export const DocList = async () => {
   const pList = [] as Promise<string>[];
   list.forEach((v) => {
     pList.push(fetch(`/codes/${v}.pug`).then((v) => v.text()));
@@ -27,7 +22,7 @@ export const List = async () => {
     <div class="margin:0|auto max-width:1100px">
       {datas.map((code) => {
         const [_title, _code] = code.split("<!-- edit-code -->");
-        return <EditorPlan title={_title || ""} code={_code || ""} />;
+        return <DocPlan title={_title || ""} code={_code || ""} />;
       })}
     </div>
   );

@@ -25,7 +25,7 @@ export function Card({
           h + 10
         },50%,40%) radius:--md mt:--md hover:bg:hsl(${h + 10},50%,35%) fw:500`}
         onclick={() => {
-          route.push(url);
+          route.push(url, true);
         }}
       >
         {button}

@@ -1,0 +1,71 @@
+Form
+<!-- edit-code -->
+<style>
+  :root {
+    --hue: 210;
+    --gray: hsl(0, 0%, 95%);
+    --white: hsl(0, 0%, 100%);
+    --text: hsl(var(--hue), 40%, 20%);
+    --line: hsl(var(--hue), 0%, 87%);
+    --primary: hsl(var(--hue), 50%, 50%);
+    --title: 28px;
+    --info: 18px;
+    --r1: 4px;
+    --a1: 10px;
+    --a2: 20px;
+    --a3: 30px;
+  }
+</style>
+<template flavor>
+  w:width:$1;
+  h:height:$1;
+  rows: display:grid grid-template-rows:$1;
+  cols: display:grid grid-template-columns:$1;
+  bg:background:$1;
+  fs:font-size:$1;
+  fw:font-weight:$1;
+  full:width:100% height:100%;
+  m:margin:$1;
+  p:padding:$1;
+  radius:border-radius:$1;
+
+  input: transition:0.2s|all|ease-out outline:none border:1px|solid|--line p:--a1 radius:--r1
+  placeholder:color:hsl(0,0%,0%,0.3)
+  sm:hover:border:1px|solid|--primary
+  sm:focus:border:1px|solid|--primary
+  sm:focus:box-shadow:0px|0px|0px|3px|hsl(--hue,50%,90%)
+  ;
+</template>
+<div class="bg:--gray full radius:--a1 p:--a2">
+  <div
+    class="bg:--white p:--a3 color:--text max-width:500px box-shadow:0px|3px|6px|hsl(0,0%,85%) radius:--a1 margin:0|auto">
+    <div class="cols:auto|40px align-items:center">
+      <h2 class="fs:--title fw:700">Login with Flavor CSS</h2>
+      <img class="w:30px h:30px" src="/imgs/login.svg" />
+    </div>
+    <h3 class="fs:16px fw:400 color:hsl(--hue,20%,50%)">A better way to use atomic class</h3>
+    <div class="m:--a2|0 rows:auto|auto grid-gap:--a1">
+      <label class="fs:--info fw:500">Account</label>
+      <input class="input" placeholder="Please input account" />
+    </div>
+    <div class="m:--a2|0 rows:auto|auto grid-gap:--a1">
+      <label class="fs:--info fw:500">Password</label>
+      <input class="input" placeholder="Please input account" type="password" />
+    </div>
+    <div class="m:--a2|0 rows:auto|auto grid-gap:--a1">
+      <button class="
+          transition:0.1s|all|ease-out
+          fs:--info fw:500 bg:hsl(--hue,50%,50%)
+          color:--white p:--a1 m:--a1|0
+          radius:--r1
+          sm:hover:bg:hsl(--hue,50%,45%)
+          sm:hover:box-shadow:0px|2px|4px|hsla(--hue,40%,45%,0.2)
+          active:bg:hsl(--hue,50%,40%)
+          ">Login</button>
+      <div class="cols:30px|auto align-items:center">
+        <input class="w:--a2 h:--a2" type="checkbox" />
+        <label>I read and agree to the Ordinance</label>
+      </div>
+    </div>
+  </div>
+</div>

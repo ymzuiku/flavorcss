@@ -2,4 +2,4 @@
 
 Runtime Build Atomic Class
 
-Document: [http://flavorcss.writeflowy.com](http://flavorcss.writeflowy.com)
+Document: [https://flavor.writeflowy.com](https://flavor.writeflowy.com)
