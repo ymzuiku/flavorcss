@@ -11,3 +11,6 @@ tslint.json
 yarn.lock
 components
 hooks
+document
+.vscode
+.cache
