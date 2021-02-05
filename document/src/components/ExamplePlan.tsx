@@ -74,7 +74,7 @@ export const ExamplePlan = ({
   return (
     <div
       id={uuid}
-      class="margin:20px margin-top:100px  border:1px|solid|hsl(200,0%,90%) border-radius:12px overflow:hidden"
+      class="margin:20px margin-top:50px sm:margin-top:100px  border:1px|solid|hsl(200,0%,90%) border-radius:12px overflow:hidden"
     >
       {/* {titleEl} */}
       <div class="border-bottom:1px|solid|hsl(200,0%,90%) display:grid grid-template-columns:1fr|repeat(3,auto) padding:12px|0">

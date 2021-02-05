@@ -26,9 +26,9 @@ const details = [
 
 export function App() {
   return (
-    <div class="max-w:1100px margin:0|auto">
+    <div class="max-w:100vw overflow:hidden md:max-w:1100px margin:0|auto">
       <Header />
-      <div class="mt:100px p:--lg lg:p:--xl grid-gap:--xxl d:grid place-content:center">
+      <div class="mt:40px sm:mt:100px p:--lg lg:p:--xl grid-gap:--xxl d:grid place-content:center">
         <div class="max-w:900px">
           <h1 class="lg:text-align:center fs:46px lg:fs:56px xl:fs:60px font-weight:800 line-height:1">
             Don't need to memorize new words'{" "}
@@ -115,7 +115,7 @@ export function App() {
           })}
         </main>
       </div>
-      <div class="margin:20px|auto max-width:1000px">
+      <div class="margin:20px|auto max-width:1000px padding:20px">
         <h1 class="mt:40px font-size:40px font-weight:800 line-height:1">
           Getting started
         </h1>

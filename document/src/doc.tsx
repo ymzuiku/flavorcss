@@ -7,7 +7,7 @@ export default () => {
     <div class="max-w:1100px margin:0|auto">
       <Header />
       <div class="margin:20px">
-        <h1 class="mt:100px lg:text-align:center fs:46px lg:fs:56px xl:fs:60px font-weight:800 line-height:1">
+        <h1 class="mt:40px sm:mt:100px lg:text-align:center fs:46px lg:fs:56px xl:fs:60px font-weight:800 line-height:1">
           Learn <span class="color:hsl(150,50%,50%)">9 rule</span> and for
           forget hundreds and thousands of library key words.
         </h1>
