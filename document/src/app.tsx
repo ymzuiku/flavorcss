@@ -31,7 +31,7 @@ export function App() {
       <div class="mt:40px sm:mt:100px p:--lg lg:p:--xl grid-gap:--xxl d:grid place-content:center">
         <div class="max-w:900px">
           <h1 class="lg:text-align:center fs:46px lg:fs:56px xl:fs:60px font-weight:800 line-height:1">
-            Don't need to memorize new words'{" "}
+            Don't need to memorize key words'{" "}
             <span class="color:hsl(150,50%,50%)">Runtime</span> atomic class CSS
             library
           </h1>
