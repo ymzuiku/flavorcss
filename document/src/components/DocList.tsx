@@ -10,6 +10,7 @@ const list = [
   "doc-custom",
   "doc-custom-group",
   "doc-place-media",
+  "doc-ignore",
 ];
 export const DocList = async () => {
   const pList = [] as Promise<string>[];

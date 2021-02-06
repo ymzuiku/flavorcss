@@ -9,6 +9,7 @@ export const DocPlan = ({ title, code }: { title: string; code: string }) => {
   const render = <div innerHTML={code}></div>;
   const editorEle = (
     <div
+      flavor-ignore
       id="editor"
       class="max-h:500px sm:d:block min-h:330px position:relative bg:#1e1e1e radius:--md overflow:hidden"
     >

@@ -16,6 +16,7 @@ export const ExamplePlan = ({
   const editorEle = (
     <div
       id="editor"
+      flavor-ignore
       class="h:100% max-h:600px sm:d:block min-h:330px md:min-h:500px position:relative bg:#1e1e1e radius:--md overflow:hidden"
     >
       <span class="m:--xl">loading editor...</span>

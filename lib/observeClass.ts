@@ -2,6 +2,8 @@ import { classGroup } from "./classGroup";
 import { parser } from "./parser";
 import { cache } from "./cache";
 
+const classSelector = "[class]";
+
 export const reset = () => {
   document.head.querySelectorAll("style[flavor-css]").forEach((e) => {
     e.remove();
@@ -9,17 +11,17 @@ export const reset = () => {
   cache.compMap = {};
   cache.classNameCache = {};
   document.querySelectorAll("[flavor]").forEach(regGroup as any);
-  document.body.querySelectorAll("[class]").forEach(regElement as any);
+  document.body.querySelectorAll(classSelector).forEach(regElement as any);
 };
 
-function regGroup(ele: HTMLTemplateElement) {
+function regGroup(ele: HTMLElement) {
   const groupName = ele.getAttribute("flavor");
   if (groupName === void 0 || groupName === null) {
     return;
   }
   let html = "";
   if (ele.tagName === "TEMPLATE") {
-    const content = ele.content.cloneNode(true);
+    const content = (ele as HTMLTemplateElement).content.cloneNode(true);
     if (content) {
       html = content.textContent!;
     }
@@ -52,18 +54,31 @@ function regElement(ele: HTMLElement) {
   }
 }
 
+// let weakCache: WeakSet<any>;
+
 const _observer = () => {
   // 页面内容变更监听 recordSetAttr
-  const onMutations = (mutationsList: any) => {
-    for (const mutation of mutationsList) {
+  const onMutations = (mutationsList: any, ...args: any[]) => {
+    const len = mutationsList.length;
+    for (let i = 0; i < len; i++) {
+      const mutation = mutationsList[i];
       if (mutation.type === "childList") {
-        regGroup(mutation.target);
-        regElement(mutation.target);
-        mutation.target.querySelectorAll("[flavor]").forEach(regGroup);
-        mutation.target.querySelectorAll("[class]").forEach(regElement);
-      } else if (mutation.type === "attributes") {
-        const ele = mutation.target;
+        const ele = mutation.target as HTMLElement;
+        if ((ele as any).__flavorIgnore && ele.closest("[flavor-ignore]")) {
+          if (!ele.getAttribute("flavor-ignore")) {
+            (ele as any).__flavorIgnore = true;
+            return;
+          }
+        }
+        regGroup(ele);
         regElement(ele);
+
+        if (mutation.addedNodes.length) {
+          ele.querySelectorAll("[flavor]").forEach(regGroup);
+          ele.querySelectorAll(classSelector).forEach(regElement);
+        }
+      } else if (mutation.type === "attributes") {
+        regElement(mutation.target);
       }
     }
   };
@@ -74,9 +89,9 @@ const _observer = () => {
     subtree: true,
     attributes: true,
     attributeFilter: ["class"],
-    // characterData: false,
-    // attributeOldValue: false,
-    // characterDataOldValue: false,
+    characterData: false,
+    attributeOldValue: false,
+    characterDataOldValue: false,
   });
 };
 
@@ -96,6 +111,7 @@ export const observeClass = () => {
   }
 
   if (!window.MutationObserver) {
+    // polyfill
     // import("./MutationObserver").then(() => {
     //   observeClass();
     // });
@@ -107,7 +123,12 @@ export const observeClass = () => {
     return;
   }
   document.querySelectorAll("[flavor]").forEach(regGroup as any);
-  document.body.querySelectorAll("[class]").forEach(regElement as any);
+  document.body.querySelectorAll(classSelector).forEach((ele) => {
+    regElement(ele as any);
+  });
+  // if (window.WeakSet) {
+  //   weakCache = new WeakSet();
+  // }
   _observer();
 
   lock = true;
