@@ -1,6 +1,6 @@
 {
   "name": "flavorcss",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "full build css",
   "keywords": ["ui", "css", "atmoic css"],
   "main": "es/index.js",
