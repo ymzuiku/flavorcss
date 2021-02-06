@@ -1,12 +1,13 @@
 {
   "name": "flavorcss",
-  "version": "0.4.5",
+  "version": "0.4.8",
   "description": "full build css",
-  "keywords": ["css", "atmoic css"],
+  "keywords": ["ui", "css", "atmoic css"],
   "main": "es/index.js",
-  "module": "./es/index.js",
+  "module": "es/index.js",
   "types": "lib/index.ts",
   "exports":{"import":"./es/index.js"},
+  "license": "MIT",
   "private": false,
   "scripts": {
     "build": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=es --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag --minify --splitting",
@@ -29,5 +30,5 @@
   "bugs": {
     "url": "git+https://github.com/ymzuiku/flavorcss.git"
   },
-  "homepage": "git+https://github.com/ymzuiku/flavorcss.git"
+  "homepage": "https://flavor.writeflowy.com"
 }

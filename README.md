@@ -9,7 +9,10 @@ Runtime Build Atomic Class
 Use unpkg:
 
 ```html
-<script src="https://unpkg.com/flavorcss@0.4.0/umd/index.js"></script>
+<script
+  type="module"
+  src="https://unpkg.com/flavorcss@0.4.8/es/index.js"
+></script>
 ```
 
 Use npm:

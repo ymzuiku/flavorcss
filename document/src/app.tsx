@@ -1,4 +1,3 @@
-// import "flavorcss";
 import { Header } from "./components/Header";
 import { Card } from "./components/Card";
 
@@ -129,8 +128,8 @@ export function App() {
         </h1>
         <p class="[md] info">Use unpkg modules:</p>
         <p class="[md] code">
-          &lt;script
-          src=&quot;https://unpkg.com/flavorcss@0.4.0/umd/index.js&quot;&gt;&lt;/script&gt;
+          &lt;script type=&quot;module&quot;
+          src=&quot;https://unpkg.com/flavorcss@0.4.8/es/index.js&quot;&gt;&lt;/script&gt;
         </p>
         <h1 class="mt:20px font-size:30px font-weight:800 line-height:1">
           Case 2:
