@@ -1,7 +1,18 @@
 import { classGroup } from "./classGroup";
 import { parser } from "./parser";
+import { cache } from "./cache";
 
-export function regGroup(ele: HTMLTemplateElement) {
+export const reset = () => {
+  document.head.querySelectorAll("style[flavor-css]").forEach((e) => {
+    e.remove();
+  });
+  cache.compMap = {};
+  cache.classNameCache = {};
+  document.querySelectorAll("[flavor]").forEach(regGroup as any);
+  document.body.querySelectorAll("[class]").forEach(regElement as any);
+};
+
+function regGroup(ele: HTMLTemplateElement) {
   const groupName = ele.getAttribute("flavor");
   if (groupName === void 0 || groupName === null) {
     return;
@@ -31,7 +42,7 @@ export function regGroup(ele: HTMLTemplateElement) {
   }
 }
 
-export function regElement(ele: HTMLElement) {
+function regElement(ele: HTMLElement) {
   if (!ele) {
     return;
   }

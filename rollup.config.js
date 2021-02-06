@@ -50,6 +50,24 @@ const watchOptions = [
       }),
     ],
   },
+  {
+    input: "./lib/index.ts",
+    output: {
+      file: "./es/index.js",
+      format: "esm",
+      name: "flavorcss",
+      sourcemap: true,
+    },
+    plugins: [
+      rollupTypescript({
+        tsconfig: "./rollup.tsconfig.json",
+        useTsconfigDeclarationDir: false,
+      }),
+      // uglify({
+      //   sourcemap: true,
+      // }),
+    ],
+  },
 ];
 const watcher = rollup.watch(watchOptions);
 

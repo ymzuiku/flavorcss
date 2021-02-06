@@ -1,14 +1,16 @@
 {
   "name": "flavorcss",
-  "version": "0.4.1",
+  "version": "0.4.5",
   "description": "full build css",
+  "keywords": ["css", "atmoic css"],
   "main": "es/index.js",
+  "module": "./es/index.js",
   "types": "lib/index.ts",
+  "exports":{"import":"./es/index.js"},
   "private": false,
   "scripts": {
-    "dev":"nodemon yarn es",
-    "es": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=es --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag --minify --splitting",
-    "build": "yarn esbuild && cp -rf es document/public/",
+    "build": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=es --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag --minify --splitting",
+    "es": "yarn build && cp -rf es document/public/",
     "lib": "node rollup.config.js"
   },
   "devDependencies": {

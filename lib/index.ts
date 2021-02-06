@@ -1,9 +1,9 @@
+import { cache } from "./cache";
 import { parser } from "./parser";
 import { device } from "./device";
-import { observeClass } from "./observeClass";
+import { observeClass, reset } from "./observeClass";
 import { classGroup } from "./classGroup";
 import { mediaList, pesudoList } from "./fixClassName";
-import { reset } from "./cache";
 
 export const flavorcss = {
   device,
@@ -12,6 +12,7 @@ export const flavorcss = {
   classGroup,
   mediaList,
   pesudoList,
+  cache,
   reset,
 };
 
