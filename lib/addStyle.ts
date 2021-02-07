@@ -1,6 +1,13 @@
 import { cache } from "./cache";
 import { fixClassName } from "./fixClassName";
 
+const lastErrorMap = {
+  "(": 1,
+  ";": 1,
+  ":": 1,
+  "=": 1,
+} as any;
+
 interface AddStyle {
   css: string;
   name?: string;
@@ -39,13 +46,17 @@ export const addStyle = ({
   if (!val) {
     return;
   }
-  // | 转译成空格
-  // if (val === "-" || val === "--") {
-  //   return;
-  // }
-  // if (/\(/.test(val) && !/\)/.test(val)) {
-  //   return;
-  // }
+
+  const last = val[val.length - 1];
+
+  // lastErrorMap 用户校验最后一位，以忽略常见的错误
+  if (lastErrorMap[last]) {
+    return;
+  }
+
+  if (last === "!") {
+    val = val.replace(/(!$)/, "!important");
+  }
 
   if (fix.media) {
     media = fix.media;
@@ -63,6 +74,7 @@ export const addStyle = ({
     val = " " + _list.map((v) => `"${v}"`).join(" ");
     val += ";";
   }
+  // 兼容calc
   val = val.replace(/calc\((.*?)\)/g, (item) => {
     item = item.replace(/(-|\+|\*|\/)/g, (v) => " " + v + " ");
     return item;
@@ -87,18 +99,18 @@ export const addStyle = ({
   const groupKey = group ? `.\\[${group}\\]` : "";
 
   const ele = document.createElement("style");
-  const _name = fix.name.replace("*", "--");
+
   if (media) {
-    ele.textContent = `${media} {.${key}${groupKey}${pesudo} ${fix.query}{${_name}:${val}}}`;
+    ele.textContent = `${media} {.${key}${groupKey}${pesudo} ${fix.query}{${fix.name}:${val}}}`;
   } else {
-    ele.textContent = `.${key}${groupKey}${pesudo} ${fix.query}{${_name}:${val}}`;
+    ele.textContent = `.${key}${groupKey}${pesudo} ${fix.query}{${fix.name}:${val}}`;
   }
   ele.setAttribute("flavor-css", "");
   document.head.append(ele);
 
   if (mediaName) {
     const mediaEle = document.createElement("style");
-    mediaEle.textContent = `.media-${mediaName} .${key}${groupKey}${pesudo} ${fix.query}{${_name}:${val}}`;
+    mediaEle.textContent = `.media-${mediaName} .${key}${groupKey}${pesudo} ${fix.query}{${fix.name}:${val}}`;
     mediaEle.setAttribute("flavor-css", "");
     document.head.append(mediaEle);
   }

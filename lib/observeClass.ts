@@ -1,6 +1,6 @@
-import { classGroup } from "./classGroup";
 import { parser } from "./parser";
 import { cache } from "./cache";
+import { addGroup } from "./addGroup";
 
 const classSelector = "[class]";
 
@@ -29,19 +29,7 @@ function regGroup(ele: HTMLElement) {
     html = ele.textContent!;
   }
 
-  if (html) {
-    html = html.replace("\n", "");
-    html
-      .trim()
-      .split(";")
-      .forEach((item) => {
-        let [name, ...values] = item.split(":");
-        name = name.trim();
-        if (name) {
-          classGroup(groupName, name, values.join(":").trim());
-        }
-      });
-  }
+  addGroup(groupName, html);
 }
 
 function regElement(ele: HTMLElement) {
@@ -78,8 +66,8 @@ const _observer = () => {
         regElement(ele);
 
         if (mutation.addedNodes.length) {
-          ele.querySelectorAll("[flavor]").forEach(regGroup);
-          ele.querySelectorAll(classSelector).forEach(regElement);
+          ele.querySelectorAll("[flavor]").forEach(regGroup as any);
+          ele.querySelectorAll(classSelector).forEach(regElement as any);
         }
       } else if (mutation.type === "attributes") {
         regElement(mutation.target);
