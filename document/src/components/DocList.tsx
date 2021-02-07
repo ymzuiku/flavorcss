@@ -12,6 +12,7 @@ const list = [
   "doc-place-media",
   "doc-ignore",
 ];
+
 export const DocList = async () => {
   const pList = [] as Promise<string>[];
   list.forEach((v) => {

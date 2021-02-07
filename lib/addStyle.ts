@@ -55,7 +55,7 @@ export const addStyle = ({
   }
 
   if (last === "!") {
-    val = val.replace(/(!$)/, "!important");
+    val = val.replace(/(!$)/, " !important");
   }
 
   if (fix.media) {
