@@ -9,19 +9,19 @@ export const parserGroup = (css: string) => {
   css = css.replace(/\n/g, " ");
 
   const groups = [] as string[];
-  const _groups = css.match(/\[(.*?)\]/g);
+  const _groups = css.match(/\*(.*?)\s/g);
   const groupMap = {} as any;
   if (_groups) {
     _groups.forEach((v) => {
       if (v) {
-        const _v = v.replace(/(\[|\])/g, "");
+        const _v = v.replace(/(\*|\s)/g, "");
         groups.push(_v);
         groupMap[_v] = true;
       }
     });
   }
 
-  const reg = /\[(.*?)\]/g;
+  const reg = /\*(.*?)\s/g;
   const groupList = css.split(reg);
   groupList.forEach((v, i) => {
     v = v.trim();

@@ -96,7 +96,7 @@ export const addStyle = ({
     (v) => "\\" + v
   );
 
-  const groupKey = group ? `.\\[${group}\\]` : "";
+  const groupKey = group ? `.\\*${group}` : "";
 
   const ele = document.createElement("style");
 

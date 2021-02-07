@@ -1,17 +1,17 @@
 <h1 class="font-size:40px font-weight:800 line-height:1">
   Rule 8: Custom group, Prevention of CSS pollution
 </h1>
-<p class="[md] info">
+<p class="*md info">
   Use &lt;template&gt; and set attribute: flavor="the-group"
 </p>
-<p class="[md] code">
+<p class="*md code">
   &lt;template flavor="the-group"&gt;&lt;/template&gt;
 </p>
-<p class="[md] info">
-  If b in 'the-group', use the-group.b, elase use global.b
+<p class="*md info">
+  If b in 'the-group', use the-group.b, else use global.b
 </p>
-<p class="[md] code">
-  [the-group] b:#f66 cart:#f00
+<p class="*md code">
+  *the-group b:#f66 cart:#f00
 </p>
 <div class="mb:30px"></div>
 <!-- edit-code -->
@@ -25,10 +25,10 @@
 <template flavor="group-b">
   b: border:$1|solid|#000;
 </template>
-<div class="[group-a] b:#f66 card">
+<div class="*group-a b:#f66 card">
   Example use group-a
 </div>
-<div class="[group-b] b:2px card">
+<div class="*group-b b:2px card">
   Example use group-b
 </div>
 

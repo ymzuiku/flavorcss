@@ -119,25 +119,25 @@ export function App() {
         <h1 class="mt:40px font-size:40px font-weight:800 line-height:1">
           Getting started
         </h1>
-        <p class="[md] info">
+        <p class="*md info">
           Flavor don't neet hundreds and thousands of css class list, replace by
           a grammatical rule.
         </p>
         <h1 class="mt:20px font-size:30px font-weight:800 line-height:1">
           Case 1:
         </h1>
-        <p class="[md] info">Use unpkg modules:</p>
-        <p class="[md] code">
+        <p class="*md info">Use unpkg modules:</p>
+        <p class="*md code">
           &lt;script type=&quot;module&quot;
-          src=&quot;https://unpkg.com/flavorcss@0.5.2/es/index.js&quot;&gt;&lt;/script&gt;
+          src=&quot;https://unpkg.com/flavorcss@0.5.3/es/index.js&quot;&gt;&lt;/script&gt;
         </p>
         <h1 class="mt:20px font-size:30px font-weight:800 line-height:1">
           Case 2:
         </h1>
-        <p class="[md] info">Install flavorcss in your project:</p>
-        <p class="[md] code">npm i --save flavorcss</p>
-        <p class="[md] info">Before your Element render:</p>
-        <p class="[md] code">import "flavorcss"</p>
+        <p class="*md info">Install flavorcss in your project:</p>
+        <p class="*md code">npm i --save flavorcss</p>
+        <p class="*md info">Before your Element render:</p>
+        <p class="*md code">import "flavorcss"</p>
       </div>
       <div class="height:200px"></div>
     </div>
