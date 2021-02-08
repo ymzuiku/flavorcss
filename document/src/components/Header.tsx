@@ -42,7 +42,7 @@ export const Header = () => {
             Example
           </h2>
           <div
-            class="self:end,center pointer radius:6px d:grid place-content:center hover:bg:hsl(--h,55%,40%) bg:hsl(--h,55%,45%) p:8px color:--white hover:box-shadow:0px|6px|10px|hsla(--h,55%,20%,0.2) ease:0.3s grid-gap:14px hover:transform:translateY(-1px)"
+            class="self:end,center cursor:pointer radius:6px d:grid place-content:center :hover:bg:hsl(--h,55%,40%) bg:hsl(--h,55%,45%) p:8px color:--white :hover:box-shadow:0px|6px|10px|hsla(--h,55%,20%,0.2) ease:0.3s grid-gap:14px :hover:transform:translateY(-1px)"
             onclick={() => window.open("https://github.com/ymzuiku/flavorcss")}
           >
             <svg

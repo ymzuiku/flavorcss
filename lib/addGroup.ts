@@ -5,6 +5,8 @@ export const addGroup = (groupName: string, html: string) => {
     return;
   }
   html = html.replace("\n", "");
+  // 兼容注释带空格
+  html = html.replace(/(\/\/\s)/g, "//");
   html
     .trim()
     .split(";")
@@ -15,4 +17,12 @@ export const addGroup = (groupName: string, html: string) => {
         classGroup(groupName, name, values.join(":").trim());
       }
     });
+};
+
+export const easeAddGroup = (groupName: string, html?: string) => {
+  if (!html) {
+    addGroup("", groupName);
+  } else {
+    addGroup(groupName, html);
+  }
 };

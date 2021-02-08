@@ -44,11 +44,12 @@ export const classGroup = (group: any, name: string, value: string) => {
             fix = fixClassName("", v);
           }
         }
-        if (fix.comp as any) {
+        // fix.compName !== name 目的防止 color:red 的值和 compName 一致，导致无限循环
+        if ((fix.comp as any) && fix.compName !== name) {
           const _v = fix.comp(fix.value.split(","));
           _v.split(" ").forEach((__v) => {
             out +=
-              [fix.mediaName, fix.pesudoName, __v, fix.query]
+              [fix.query, fix.mediaName, fix.pesudoName, __v]
                 .filter(Boolean)
                 .join(":") + " ";
           });
@@ -59,5 +60,4 @@ export const classGroup = (group: any, name: string, value: string) => {
     });
     return out;
   };
-  // console.log(cache.compMap);
 };

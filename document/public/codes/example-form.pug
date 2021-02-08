@@ -31,9 +31,9 @@ Form
 
   input: transition:0.2s|all|ease-out outline:none border:1px|solid|--line p:--a1 radius:--r1
   placeholder:color:hsl(0,0%,0%,0.3)
-  sm:hover:border:1px|solid|--primary
-  sm:focus:border:1px|solid|--primary
-  sm:focus:box-shadow:0px|0px|0px|3px|hsl(--hue,50%,90%)
+  sm::hover:border:1px|solid|--primary
+  sm::focus:border:1px|solid|--primary
+  sm::focus:box-shadow:0px|0px|0px|3px|hsl(--hue,50%,90%)
   ;
 </template>
 <div class="bg:--gray full radius:--a1 p:--a2">
@@ -58,9 +58,9 @@ Form
           fs:--info fw:500 bg:hsl(--hue,50%,50%)
           color:--white p:--a1 m:--a1|0
           radius:--r1
-          sm:hover:bg:hsl(--hue,50%,45%)
-          sm:hover:box-shadow:0px|2px|4px|hsla(--hue,40%,45%,0.2)
-          active:bg:hsl(--hue,50%,40%)
+          sm::hover:bg:hsl(--hue,50%,45%)
+          sm::hover:box-shadow:0px|2px|4px|hsla(--hue,40%,45%,0.2)
+          :active:bg:hsl(--hue,50%,40%)
           ">Login</button>
       <div class="cols:30px|auto align-items:center">
         <input class="w:--a2 h:--a2" type="checkbox" />

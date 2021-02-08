@@ -9,16 +9,22 @@ export const parserGroup = (css: string) => {
   css = css.replace(/\n/g, " ");
 
   const groups = [] as string[];
-  const _groups = css.match(/\*(.*?)\s/g);
+  const _match = css.match(/\*(.\w?)\s/g);
   const groupMap = {} as any;
-  if (_groups) {
-    _groups.forEach((v) => {
+  if (_match) {
+    _match.forEach((v) => {
       if (v) {
         const _v = v.replace(/(\*|\s)/g, "");
-        groups.push(_v);
-        groupMap[_v] = true;
+        if (_v) {
+          groups.push(_v);
+          groupMap[_v] = true;
+        }
       }
     });
+  } else {
+    list.push({ group: "", cssItem: css });
+    groupCache[css] = list;
+    return list;
   }
 
   const reg = /\*(.*?)\s/g;

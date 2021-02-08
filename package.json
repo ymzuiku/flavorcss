@@ -1,6 +1,6 @@
 {
   "name": "flavorcss",
-  "version": "0.5.3",
+  "version": "0.5.6",
   "description": "full build css",
   "keywords": ["ui", "css", "atmoic css"],
   "main": "es/index.js",
@@ -10,7 +10,8 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "build": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=es --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag --minify --splitting",
+    "build-mini": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=es --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag --minify --splitting",
+    "build": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=es --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag  --splitting",
     "es": "yarn build && cp -rf es/index.js document/public/flavorcss.js",
     "lib": "node rollup.config.js"
   },

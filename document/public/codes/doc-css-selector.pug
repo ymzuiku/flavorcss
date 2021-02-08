@@ -1,21 +1,24 @@
 <h1 class="font-size:40px font-weight:800 line-height:1">
-  Rule 6: Use CSS Selector
+  Rule 4: Use CSS Selector
 </h1>
 <p class="*md info">CSS Descendant selector:</p>
 <p class="*md code">
-  background:#f66:span
+  span:background:#f66
 </p>
 <p class="*md info">CSS Child selector:</p>
 <p class="*md code">
-  background:#f66:>span
+  >span:background:#f66
 </p>
 <p class="*md info">CSS Adjacent sibling selector:</p>
 <p class="*md code">
-  background:#f66:span+span
+  span+span:background:#f66
+</p>
+<p class="*md code">
+  span:hover:background:#f66
 </p>
 <div class="mb:30px"></div>
 <!-- edit-code -->
-<div class="background:#f66:>div font-size:20px:div+div padding:8px:* border-radius:4px:* margin:10px:*">
+<div class=">div:background:#f66 div+div:font-size:20px *:padding:8px *:border-radius:4px *:margin:10px">
   <section>section</section>
   <div>div</div>
   <section>section</section>

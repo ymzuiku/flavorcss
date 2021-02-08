@@ -1,2 +1,483 @@
-var d={compMap:{"":{}},classNameCache:{}};var $,x=()=>{if($)return $;let e=navigator.userAgent.toLocaleLowerCase(),s=/(?:android)/.test(e),o=/(?:firefox)/.test(e),i=/(?:chrome|crios)/.test(e),a=/(safari)/.test(e),n=/(?:ipad|playbook)/.test(e)||s&&!/(?:mobile)/.test(e)||o&&/(?:tablet)/.test(e),l=/(?:iphone)/.test(e)&&!n,t=!l&&!s,r=!t,c=r&&/(micromessenger|wechat)/.test(e);return $={android:s,firefox:o,chrome:i,tablet:n,ios:l,wechat:c,pc:t,phone:r,safari:a},$};var w={hover:":hover",focus:":focus",active:":active",first:":first-child",last:":last-child",blank:":blank",checked:":checked",current:":current",disabled:":disabled","focus-within":":focus-within","focus-visible":":focus-visible","in-range":":in-range",visited:":visited",even:":nth-child(even)",odd:":nth-child(odd)","placeholder-shown":":placeholder-shown",after:"::after",before:"::before",placeholder:"::-webkit-input-placeholder",scrollbar:"::-webkit-scrollbar","scrollbar-thumb":"::-webkit-scrollbar-thumb","scrollbar-track":"::-webkit-scrollbar-track","scrollbar-button":"::-webkit-scrollbar-button","scrollbar-corner":"::-webkit-scrollbar-corner"},N={dark:"@media (prefers-color-scheme: dark)",xs:"@media screen and (min-width: 480px)",sm:"@media screen and (min-width: 640px)",md:"@media screen and (min-width: 768px)",lg:"@media screen and (min-width: 1024px)",xl:"@media screen and (min-width: 1280px)",xxl:"@media screen and (min-width: 1536px)","in-xs":"@media screen (max-width:479px) and (min-width: 0px)","in-sm":"@media screen (max-width:767px) and (min-width: 479px)","in-md":"@media screen (max-width:1023px) and (min-width: 767px)","in-lg":"@media screen (max-width:1279px) and (min-width: 1023px)","in-xl":"@media screen (max-width:1535px) and (min-width: 1279px)","in-xxl":"@media screen (max-width:9999px) and (min-width: 1535px)"},A={};function h(e,s){let o=e+"_$$_"+s,i=A[o];if(i)return i;let a={comp:void 0,compName:"",pesudo:"",pesudoName:"",media:"",mediaName:"",name:"",value:"",query:""};if(!s)return A[o]=a,a;let n=d.compMap[e];return s.split(":").forEach((t,r)=>{if(r===0){if(N[t]){a.media=N[t],a.mediaName=t;return}else if(x()[t]!==void 0){a.media=`@media screen and (min-width: ${x()[t]?"0px":"9999px"})`,a.mediaName=t;return}}r<2&&w[t]?(a.pesudo=w[t],a.pesudoName=t):!a.comp&&!a.name&&n&&n[t]?(a.comp=n[t],a.compName=t):!a.comp&&!a.name?a.name=t:a.value?a.query||(a.query=t):(a.comp&&(t=t.replace(/\((.*?)\)/g,c=>c.replace(/\,/g,"^^^"))),a.value=t)}),A[o]=a,a}var H={"(":1,";":1,":":1,"=":1},v=({css:e,name:s="",media:o="",mediaName:i="",pesudo:a="",group:n=""})=>{if(!e)return;let l=`^sty_${e}_${s}_${o}_${a}_${n}`;if(d.classNameCache[l])return;d.classNameCache[l]=!0;let t=h(n,e),r=t.value;if(!r)return;let c=r[r.length-1];if(H[c])return;c==="!"&&(r=r.replace(/(!$)/," !important")),t.media&&(o=t.media),t.mediaName&&(i=t.mediaName),t.pesudo&&(a=t.pesudo);let u=r.split("~");u.length>1&&(r=" "+u.map(p=>`"${p}"`).join(" "),r+=";"),r=r.replace(/calc\((.*?)\)/g,p=>(p=p.replace(/(-|\+|\*|\/)/g,F=>" "+F+" "),p)),r=r.replace(/\|/g," "),r=r.replace(/var\((.*?)\)/g,p=>p.replace(/(var\(|\))/g,"")),r=r.replace(/--([a-zA-Z0-9_-]*)/g,p=>`var(${p})`),r=r.replace(/\^\^\^/g,",");let m=(s||e).replace(/(\:|#|\*|!|,|\.|>|<|@|~|%|\||\$|\{|\}|\[|\]|\(|\)|\+|\*|\/)/g,p=>"\\"+p),f=n?`.\\*${n}`:"",g=document.createElement("style");if(o?g.textContent=`${o} {.${m}${f}${a} ${t.query}{${t.name}:${r}}}`:g.textContent=`.${m}${f}${a} ${t.query}{${t.name}:${r}}`,g.setAttribute("flavor-css",""),document.head.append(g),i){let p=document.createElement("style");p.textContent=`.media-${i} .${m}${f}${a} ${t.query}{${t.name}:${r}}`,p.setAttribute("flavor-css",""),document.head.append(p)}};var q={},E=e=>{let s=q[e];if(s)return s;let o=[];e=e.replace(/\n/g," ");let i=[],a=e.match(/\*(.*?)\s/g),n={};a&&a.forEach(r=>{if(r){let c=r.replace(/(\*|\s)/g,"");i.push(c),n[c]=!0}});let l=/\*(.*?)\s/g,t=e.split(l);return t.forEach((r,c)=>{if(r=r.trim(),!r)return;let u=t[c+1];c===0&&!n[r]&&o.push({cssItem:r,group:""}),n[r]&&u&&!n[u]&&o.push({cssItem:u.trim(),group:r})}),q[e]=o,o};var y=(e,s="",o="",i="",a="",n="")=>{let l=`^parser_${e}_${s}_${o}_${i}_${a}`;return d.classNameCache[l]||(d.classNameCache[l]=!0,E(e).forEach(({cssItem:t,group:r})=>{t.split(" ").filter(Boolean).forEach(c=>{let u=r,m=h(r,c);if(m.comp||(m=h("",c),u=""),m.comp){let f=m.comp(m.value.split(","));y(f,c,m.media,m.mediaName,m.pesudo,u)}else v({css:c,name:s,media:o,mediaName:i,pesudo:a,group:n})})})),e};var S={},G=(e,s,o)=>{let i=`^group_${e}_${s}_${o}`;S[i]||(S[i]=!0,d.compMap[e]||(d.compMap[e]={}),d.compMap[e][s]=a=>{let n=o;a.forEach((c,u)=>{n=n.replace(new RegExp(`(\\$${u+1})`,"g"),c)});let l=a[a.length],t=c=>{n.indexOf("$"+c)>-1&&(n=n.replace(new RegExp(`(\\$${c+1})`,"g"),l),t(c+1))};t(o.length+1);let r="";return E(n).forEach(({cssItem:c,group:u})=>{c.split(" ").forEach(m=>{let f=h(u,m);f.comp||(f=h(e,m),!f.comp&&e!==""&&u!==""&&(f=h("",m))),f.comp?f.comp(f.value.split(",")).split(" ").forEach(p=>{r+=[f.mediaName,f.pesudoName,p,f.query].filter(Boolean).join(":")+" "}):r+=m+" "})}),r})};var C=(e,s)=>{!s||(s=s.replace(`
-`,""),s.trim().split(";").forEach(o=>{let[i,...a]=o.split(":");i=i.trim(),i&&G(e,i,a.join(":").trim())}))};var M="[class]",L=()=>{document.head.querySelectorAll("style[flavor-css]").forEach(e=>{e.remove()}),d.compMap={},d.classNameCache={},document.querySelectorAll("[flavor]").forEach(_),document.body.querySelectorAll(M).forEach(b)};function _(e){let s=e.getAttribute("flavor");if(s==null)return;let o="";if(e.tagName==="TEMPLATE"){let i=e.content.cloneNode(!0);i&&(o=i.textContent)}else o=e.textContent;C(s,o)}function b(e){!e||e.className&&typeof e.className=="string"&&y(e.className)}var D=()=>{let e=(o,...i)=>{let a=o.length;for(let n=0;n<a;n++){let l=o[n];if(l.type==="childList"){let t=l.target;if(T&&t.__flavorIgnore&&t.closest("[flavor-ignore]")&&!t.getAttribute("flavor-ignore")){t.__flavorIgnore=!0;return}_(t),b(t),l.addedNodes.length&&(t.querySelectorAll("[flavor]").forEach(_),t.querySelectorAll(M).forEach(b))}else l.type==="attributes"&&b(l.target)}};new MutationObserver(e).observe(document.body,{childList:!0,subtree:!0,attributes:!0,attributeFilter:["class"],characterData:!1,attributeOldValue:!1,characterDataOldValue:!1})},I=!1,T=!1,k=()=>{if(!(typeof window=="undefined"||typeof document=="undefined"||!window.location)&&!I){if(!window.MutationObserver){console.error("[flavorcss] Your Browser not supported MutationObserver");return}if(!document.body){requestAnimationFrame(k);return}document.querySelectorAll("[flavor]").forEach(_),document.body.querySelectorAll(M).forEach(e=>{b(e)}),document.body.closest&&(T=!0),D(),I=!0}};k();var O={addStyle:v,device:x,parser:y,observeClass:k,addGroup:C,mediaList:N,pesudoList:w,cache:d,reset:L};window.flavorcss=O;export{O as flavorcss};
+// lib/cache.ts
+var cache = {
+  compMap: {
+    "": {}
+  },
+  classNameCache: {}
+};
+
+// lib/device.ts
+var _device;
+var device = () => {
+  if (_device) {
+    return _device;
+  }
+  const ua = navigator.userAgent.toLocaleLowerCase();
+  const android = /(?:android)/.test(ua);
+  const firefox = /(?:firefox)/.test(ua);
+  const chrome = /(?:chrome|crios)/.test(ua);
+  const safari = /(safari)/.test(ua);
+  const tablet = /(?:ipad|playbook)/.test(ua) || android && !/(?:mobile)/.test(ua) || firefox && /(?:tablet)/.test(ua);
+  const ios = /(?:iphone)/.test(ua) && !tablet;
+  const pc = !ios && !android;
+  const phone = !pc;
+  const wechat = phone && /(micromessenger|wechat)/.test(ua);
+  _device = {
+    android,
+    firefox,
+    chrome,
+    tablet,
+    ios,
+    wechat,
+    pc,
+    phone,
+    safari
+  };
+  return _device;
+};
+
+// lib/fixClassName.ts
+function setCompAndName(fix, compList, val) {
+  fix.comp = compList[val];
+  if (fix.comp) {
+    fix.compName = val;
+  } else {
+    fix.name = val;
+  }
+}
+function setMedia(fix, val) {
+  if (mediaList[val]) {
+    fix.media = mediaList[val];
+    fix.mediaName = val;
+  } else if (device()[val] !== void 0) {
+    fix.media = `@media screen and (min-width: ${device()[val] ? "0px" : "9999px"})`;
+    fix.mediaName = val;
+  }
+}
+var mediaList = {
+  all: "",
+  print: "@media print",
+  speech: "@media speech",
+  dark: "@media (prefers-color-scheme: dark)",
+  xs: "@media screen and (min-width: 480px)",
+  sm: "@media screen and (min-width: 640px)",
+  md: "@media screen and (min-width: 768px)",
+  lg: "@media screen and (min-width: 1024px)",
+  xl: "@media screen and (min-width: 1280px)",
+  xxl: "@media screen and (min-width: 1536px)",
+  "in-xs": "@media screen (max-width:479px) and (min-width: 0px)",
+  "in-sm": "@media screen (max-width:767px) and (min-width: 479px)",
+  "in-md": "@media screen (max-width:1023px) and (min-width: 767px)",
+  "in-lg": "@media screen (max-width:1279px) and (min-width: 1023px)",
+  "in-xl": "@media screen (max-width:1535px) and (min-width: 1279px)",
+  "in-xxl": "@media screen (max-width:9999px) and (min-width: 1535px)"
+};
+var fixCache = {};
+function setValue(fix, value) {
+  if (!value) {
+    return;
+  }
+  if (fix.comp) {
+    value = value.replace(/\((.*?)\)/g, (v) => {
+      return v.replace(/\,/g, "^^^");
+    });
+  }
+  fix.value = value;
+}
+function fixClassName(group, css) {
+  const _key = group + "_$$_" + css;
+  const old = fixCache[_key];
+  if (old) {
+    return old;
+  }
+  const out = {
+    comp: void 0,
+    compName: "",
+    pesudo: "",
+    pesudoName: "",
+    media: "",
+    mediaName: "",
+    name: "",
+    value: "",
+    query: ""
+  };
+  if (!css || css[0] === "/" && css[1] === "/") {
+    fixCache[_key] = out;
+    return out;
+  }
+  const compList = cache.compMap[group] || {};
+  const list = css.split(":");
+  setMedia(out, list[0]);
+  if (out.mediaName) {
+    list.shift();
+  }
+  const len = list.length;
+  const last = list[len - 1];
+  const sec = len >= 2 ? list[len - 2] : "";
+  const pesudoList = [...list];
+  if (compList[last]) {
+    out.comp = compList[last];
+    out.compName = last;
+    pesudoList.pop();
+  } else if (sec) {
+    setCompAndName(out, compList, sec);
+    setValue(out, last);
+    pesudoList.pop();
+    pesudoList.pop();
+  } else {
+    out.name = last;
+    pesudoList.pop();
+  }
+  out.pesudo = pesudoList.join(":");
+  out.pesudoName = out.pesudo;
+  fixCache[_key] = out;
+  return out;
+}
+
+// lib/addStyle.ts
+var lastErrorMap = {
+  "(": 1,
+  ";": 1,
+  ":": 1,
+  "=": 1
+};
+var addStyle = ({
+  css,
+  name = "",
+  media = "",
+  mediaName = "",
+  pesudo = "",
+  group = ""
+}) => {
+  if (!css) {
+    return;
+  }
+  const _key = `^sty_${css}_${name}_${media}_${pesudo}_${group}`;
+  if (cache.classNameCache[_key]) {
+    return;
+  }
+  cache.classNameCache[_key] = true;
+  const fix = fixClassName(group, css);
+  let val = fix.value;
+  if (!val) {
+    return;
+  }
+  const last = val[val.length - 1];
+  if (lastErrorMap[last]) {
+    return;
+  }
+  if (last === "!") {
+    val = val.replace(/(!$)/, " !important");
+  }
+  if (fix.media) {
+    media = fix.media;
+  }
+  if (fix.mediaName) {
+    mediaName = fix.mediaName;
+  }
+  if (fix.pesudo) {
+    pesudo = fix.pesudo;
+  }
+  const _list = val.split("~");
+  if (_list.length > 1) {
+    val = " " + _list.map((v) => `"${v}"`).join(" ");
+    val += ";";
+  }
+  val = val.replace(/calc\((.*?)\)/g, (item) => {
+    item = item.replace(/(-|\+|\*|\/)/g, (v) => " " + v + " ");
+    return item;
+  });
+  val = val.replace(/\|/g, " ");
+  val = val.replace(/var\((.*?)\)/g, (v) => {
+    return v.replace(/(var\(|\))/g, "");
+  });
+  val = val.replace(/--([a-zA-Z0-9_-]*)/g, (v) => `var(${v})`);
+  val = val.replace(/\^\^\^/g, ",");
+  const key = (name || css).replace(/(\:|#|\*|!|,|\.|>|<|@|~|%|\||\$|\{|\}|\[|\]|\(|\)|\+|\*|\/)/g, (v) => "\\" + v);
+  const groupKey = group ? `.\\*${group}` : "";
+  if (/^(\w|\*)/.test(pesudo)) {
+    pesudo = " " + pesudo;
+  }
+  pesudo = pesudo.replace(/\|/g, " ");
+  const ele = document.createElement("style");
+  if (media) {
+    ele.textContent = `${media} {.${key}${groupKey}${pesudo}{${fix.name}:${val}}}`;
+  } else {
+    ele.textContent = `.${key}${groupKey}${pesudo}{${fix.name}:${val}}`;
+  }
+  ele.setAttribute("flavor-css", "");
+  document.head.append(ele);
+  if (mediaName) {
+    const mediaEle = document.createElement("style");
+    mediaEle.textContent = `.media-${mediaName} .${key}${groupKey}${pesudo}{${fix.name}:${val}}`;
+    mediaEle.setAttribute("flavor-css", "");
+    document.head.append(mediaEle);
+  }
+};
+
+// lib/parserGroup.ts
+var groupCache = {};
+var parserGroup = (css) => {
+  const old = groupCache[css];
+  if (old) {
+    return old;
+  }
+  const list = [];
+  css = css.replace(/\n/g, " ");
+  const groups = [];
+  const _match = css.match(/\*(.\w?)\s/g);
+  const groupMap = {};
+  if (_match) {
+    _match.forEach((v) => {
+      if (v) {
+        const _v = v.replace(/(\*|\s)/g, "");
+        if (_v) {
+          groups.push(_v);
+          groupMap[_v] = true;
+        }
+      }
+    });
+  } else {
+    list.push({group: "", cssItem: css});
+    groupCache[css] = list;
+    return list;
+  }
+  const reg = /\*(.*?)\s/g;
+  const groupList = css.split(reg);
+  groupList.forEach((v, i) => {
+    v = v.trim();
+    if (!v) {
+      return;
+    }
+    const nextValue = groupList[i + 1];
+    if (i === 0 && !groupMap[v]) {
+      list.push({cssItem: v, group: ""});
+    }
+    if (groupMap[v]) {
+      if (nextValue && !groupMap[nextValue]) {
+        list.push({cssItem: nextValue.trim(), group: v});
+      }
+    }
+  });
+  groupCache[css] = list;
+  return list;
+};
+
+// lib/parser.ts
+var parser = (css, name = "", media = "", mediaName = "", pesudo = "", group = "") => {
+  const key = `^parser_${css}_${name}_${media}_${mediaName}_${pesudo}`;
+  if (cache.classNameCache[key]) {
+    return css;
+  }
+  cache.classNameCache[key] = true;
+  parserGroup(css).forEach(({cssItem, group: _group}) => {
+    cssItem.split(" ").filter(Boolean).forEach((item) => {
+      let g = _group;
+      let fix = fixClassName(_group, item);
+      if (!fix.comp) {
+        fix = fixClassName("", item);
+        g = "";
+      }
+      if (fix.comp) {
+        const sub = fix.comp(fix.value.split(","));
+        parser(sub, item, fix.media, fix.mediaName, fix.pesudo, g);
+      } else {
+        addStyle({
+          css: item,
+          name,
+          media,
+          mediaName,
+          pesudo,
+          group
+        });
+      }
+    });
+  });
+  return css;
+};
+
+// lib/classGroup.ts
+var lock = {};
+var classGroup = (group, name, value) => {
+  const key = `^group_${group}_${name}_${value}`;
+  if (lock[key]) {
+    return;
+  }
+  lock[key] = true;
+  if (!cache.compMap[group]) {
+    cache.compMap[group] = {};
+  }
+  cache.compMap[group][name] = (values) => {
+    let css = value;
+    values.forEach((v, i) => {
+      css = css.replace(new RegExp(`(\\$${i + 1})`, "g"), v);
+    });
+    const last = values[values.length];
+    const checkNextNum = (i) => {
+      if (css.indexOf("$" + i) > -1) {
+        css = css.replace(new RegExp(`(\\$${i + 1})`, "g"), last);
+        checkNextNum(i + 1);
+      }
+    };
+    checkNextNum(value.length + 1);
+    let out = "";
+    parserGroup(css).forEach(({cssItem, group: g}) => {
+      cssItem.split(" ").forEach((v) => {
+        let fix = fixClassName(g, v);
+        if (!fix.comp) {
+          fix = fixClassName(group, v);
+          if (!fix.comp && group !== "" && g !== "") {
+            fix = fixClassName("", v);
+          }
+        }
+        if (fix.comp && fix.compName !== name) {
+          const _v = fix.comp(fix.value.split(","));
+          _v.split(" ").forEach((__v) => {
+            out += [fix.query, fix.mediaName, fix.pesudoName, __v].filter(Boolean).join(":") + " ";
+          });
+        } else {
+          out += v + " ";
+        }
+      });
+    });
+    return out;
+  };
+};
+
+// lib/addGroup.ts
+var addGroup = (groupName, html) => {
+  if (!html) {
+    return;
+  }
+  html = html.replace("\n", "");
+  html = html.replace(/(\/\/\s)/g, "//");
+  html.trim().split(";").forEach((item) => {
+    let [name, ...values] = item.split(":");
+    name = name.trim();
+    if (name) {
+      classGroup(groupName, name, values.join(":").trim());
+    }
+  });
+};
+var easeAddGroup = (groupName, html) => {
+  if (!html) {
+    addGroup("", groupName);
+  } else {
+    addGroup(groupName, html);
+  }
+};
+
+// lib/observeClass.ts
+var classSelector = "[class]";
+var reset = () => {
+  document.head.querySelectorAll("style[flavor-css]").forEach((e) => {
+    e.remove();
+  });
+  cache.compMap = {};
+  cache.classNameCache = {};
+  document.querySelectorAll("[flavor]").forEach(regGroup);
+  document.body.querySelectorAll(classSelector).forEach(regElement);
+};
+function regGroup(ele) {
+  const groupName = ele.getAttribute("flavor");
+  if (groupName === void 0 || groupName === null) {
+    return;
+  }
+  let html = "";
+  if (ele.tagName === "TEMPLATE") {
+    const content = ele.content.cloneNode(true);
+    if (content) {
+      html = content.textContent;
+    }
+  } else {
+    html = ele.textContent;
+  }
+  addGroup(groupName, html);
+}
+function regElement(ele) {
+  if (!ele) {
+    return;
+  }
+  if (ele.className && typeof ele.className === "string") {
+    parser(ele.className);
+  }
+}
+var _observer = () => {
+  const onMutations = (mutationsList, ...args) => {
+    const len = mutationsList.length;
+    for (let i = 0; i < len; i++) {
+      const mutation = mutationsList[i];
+      if (mutation.type === "childList") {
+        const ele = mutation.target;
+        if (isHaveClosest && ele.__flavorIgnore && ele.closest("[flavor-ignore]")) {
+          if (!ele.getAttribute("flavor-ignore")) {
+            ele.__flavorIgnore = true;
+            return;
+          }
+        }
+        regGroup(ele);
+        regElement(ele);
+        if (mutation.addedNodes.length) {
+          ele.querySelectorAll("[flavor]").forEach(regGroup);
+          ele.querySelectorAll(classSelector).forEach(regElement);
+        }
+      } else if (mutation.type === "attributes") {
+        regElement(mutation.target);
+      }
+    }
+  };
+  const observer = new MutationObserver(onMutations);
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ["class"],
+    characterData: false,
+    attributeOldValue: false,
+    characterDataOldValue: false
+  });
+};
+var lock2 = false;
+var isHaveClosest = false;
+var observeClass = () => {
+  if (typeof window === "undefined" || typeof document === "undefined" || !window.location) {
+    return;
+  }
+  if (lock2) {
+    return;
+  }
+  if (!window.MutationObserver) {
+    console.error("[flavorcss] Your Browser not supported MutationObserver");
+    return;
+  }
+  if (!document.body) {
+    requestAnimationFrame(observeClass);
+    return;
+  }
+  document.querySelectorAll("[flavor]").forEach(regGroup);
+  document.body.querySelectorAll(classSelector).forEach((ele) => {
+    regElement(ele);
+  });
+  if (document.body.closest) {
+    isHaveClosest = true;
+  }
+  _observer();
+  lock2 = true;
+};
+observeClass();
+
+// lib/index.ts
+var flavorcss = {
+  addStyle,
+  device,
+  parser,
+  observeClass,
+  addGroup: easeAddGroup,
+  mediaList,
+  cache,
+  reset
+};
+window.flavorcss = flavorcss;
+export {
+  flavorcss
+};

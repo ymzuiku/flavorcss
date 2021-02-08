@@ -1,6 +1,6 @@
 import { Header } from "./components/Header";
 import { DocList } from "./components/DocList";
-import { medias, pseudos } from "./components/moreDetail";
+import { medias } from "./components/moreDetail";
 
 export default () => {
   return (
@@ -19,7 +19,6 @@ export default () => {
       <h1 class="margin-top:100px font-size:40px font-weight:800 line-height:1">
         Appendix
       </h1>
-      {pseudos}
       {medias}
     </div>
   );

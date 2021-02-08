@@ -1,34 +1,31 @@
 import { cache } from "./cache";
 import { device } from "./device";
 
-export const pesudoList = {
-  hover: ":hover",
-  focus: ":focus",
-  active: ":active",
-  first: ":first-child",
-  last: ":last-child",
-  blank: ":blank",
-  checked: ":checked",
-  current: ":current",
-  disabled: ":disabled",
-  "focus-within": ":focus-within",
-  "focus-visible": ":focus-visible",
-  "in-range": ":in-range",
-  visited: ":visited",
-  even: ":nth-child(even)",
-  odd: ":nth-child(odd)",
-  "placeholder-shown": ":placeholder-shown",
-  after: "::after",
-  before: "::before",
-  placeholder: "::-webkit-input-placeholder",
-  scrollbar: "::-webkit-scrollbar",
-  "scrollbar-thumb": "::-webkit-scrollbar-thumb",
-  "scrollbar-track": "::-webkit-scrollbar-track",
-  "scrollbar-button": "::-webkit-scrollbar-button",
-  "scrollbar-corner": "::-webkit-scrollbar-corner",
-} as any;
+function setCompAndName(fix: FixClassName, compList: any, val: string) {
+  fix.comp = compList[val];
+  if (fix.comp as any) {
+    fix.compName = val;
+  } else {
+    fix.name = val;
+  }
+}
+
+function setMedia(fix: FixClassName, val: string) {
+  if (mediaList[val]) {
+    fix.media = mediaList[val];
+    fix.mediaName = val;
+  } else if ((device() as any)[val] !== void 0) {
+    fix.media = `@media screen and (min-width: ${
+      (device() as any)[val] ? "0px" : "9999px"
+    })`;
+    fix.mediaName = val;
+  }
+}
 
 export const mediaList = {
+  all: "",
+  print: "@media print",
+  speech: "@media speech",
   dark: "@media (prefers-color-scheme: dark)",
   xs: "@media screen and (min-width: 480px)",
   sm: "@media screen and (min-width: 640px)",
@@ -58,12 +55,26 @@ interface FixClassName {
   value: string;
 }
 
+function setValue(fix: FixClassName, value: string) {
+  if (!value) {
+    return;
+  }
+  // 若是组件的参数，将逗号替换成^^^
+  if ((fix as any).comp) {
+    value = value.replace(/\((.*?)\)/g, (v) => {
+      return v.replace(/\,/g, "^^^");
+    });
+  }
+  fix.value = value;
+}
+
 export function fixClassName(group: string, css: string): FixClassName {
   const _key = group + "_$$_" + css;
   const old = fixCache[_key];
   if (old) {
     return old;
   }
+
   const out: FixClassName = {
     comp: void 0 as any,
     compName: "",
@@ -76,51 +87,46 @@ export function fixClassName(group: string, css: string): FixClassName {
     query: "",
   };
 
-  if (!css) {
+  // 双斜杠可以注释 css
+  if (!css || (css[0] === "/" && css[1] === "/")) {
     fixCache[_key] = out;
     return out;
   }
 
-  let compList = cache.compMap[group];
+  const compList = cache.compMap[group] || {};
 
   const list = css.split(":");
+  // let compIndex = -1;
+  // let queryIndex = -1;
 
-  list.forEach((v, i) => {
-    if (i === 0) {
-      if (mediaList[v]) {
-        out.media = mediaList[v];
-        out.mediaName = v;
-        return;
-      } else if ((device() as any)[v] !== void 0) {
-        out.media = `@media screen and (min-width: ${
-          (device() as any)[v] ? "0px" : "9999px"
-        })`;
-        out.mediaName = v;
-        return;
-      }
-    }
+  // 最后一位为媒体查询
+  setMedia(out, list[0]);
+  if (out.mediaName) {
+    // pesudoList[0] = "";
+    list.shift();
+  }
 
-    if (i < 2 && pesudoList[v]) {
-      out.pesudo = pesudoList[v];
-      out.pesudoName = v;
-    } else if (!out.comp && !out.name && compList && compList[v]) {
-      // out.name 必须为空的原因是 有了 name，那么不应该将 value 作为 comp
-      out.comp = compList[v];
-      out.compName = v;
-    } else if (!out.comp && !out.name) {
-      out.name = v;
-    } else if (!out.value) {
-      // 若是组件的参数，将逗号替换成^^^
-      if ((out as any).comp) {
-        v = v.replace(/\((.*?)\)/g, (v) => {
-          return v.replace(/\,/g, "^^^");
-        });
-      }
-      out.value = v;
-    } else if (!out.query) {
-      out.query = v;
-    }
-  });
+  const len = list.length;
+  const last = list[len - 1];
+  const sec = len >= 2 ? list[len - 2] : "";
+  const pesudoList = [...list];
+  if (compList[last]) {
+    out.comp = compList[last];
+    out.compName = last;
+    pesudoList.pop();
+  } else if (sec) {
+    setCompAndName(out, compList, sec);
+    setValue(out, last);
+    pesudoList.pop();
+    pesudoList.pop();
+  } else {
+    out.name = last;
+    pesudoList.pop();
+  }
+  out.pesudo = pesudoList.join(":");
+  out.pesudoName = out.pesudo;
+
   fixCache[_key] = out;
+
   return out;
 }

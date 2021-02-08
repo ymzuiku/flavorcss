@@ -3,17 +3,17 @@ import { parser } from "./parser";
 import { device } from "./device";
 import { observeClass, reset } from "./observeClass";
 import { addStyle } from "./addStyle";
-import { addGroup } from "./addGroup";
-import { mediaList, pesudoList } from "./fixClassName";
+import { easeAddGroup } from "./addGroup";
+import { mediaList } from "./fixClassName";
 
 export const flavorcss = {
   addStyle,
   device,
   parser,
   observeClass,
-  addGroup,
+  addGroup: easeAddGroup,
   mediaList,
-  pesudoList,
+  // pesudoList,
   cache,
   reset,
 };

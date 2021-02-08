@@ -23,7 +23,7 @@ export function Card({
       <button
         class={`time:0.2s,--ease bg:hsl(${
           h + 10
-        },50%,40%) radius:--md mt:--md hover:bg:hsl(${h + 10},50%,35%) fw:500`}
+        },50%,40%) radius:--md mt:--md :hover:bg:hsl(${h + 10},50%,35%) fw:500`}
         onclick={() => {
           route.push(url, true);
         }}

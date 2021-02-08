@@ -28,6 +28,7 @@ export const addStyle = ({
   if (!css) {
     return;
   }
+
   // debugger;
   const _key = `^sty_${css}_${name}_${media}_${pesudo}_${group}`;
   if (cache.classNameCache[_key]) {
@@ -97,20 +98,24 @@ export const addStyle = ({
   );
 
   const groupKey = group ? `.\\*${group}` : "";
+  if (/^(\w|\*)/.test(pesudo)) {
+    pesudo = " " + pesudo;
+  }
+  pesudo = pesudo.replace(/\|/g, " ");
 
   const ele = document.createElement("style");
 
   if (media) {
-    ele.textContent = `${media} {.${key}${groupKey}${pesudo} ${fix.query}{${fix.name}:${val}}}`;
+    ele.textContent = `${media} {.${key}${groupKey}${pesudo}{${fix.name}:${val}}}`;
   } else {
-    ele.textContent = `.${key}${groupKey}${pesudo} ${fix.query}{${fix.name}:${val}}`;
+    ele.textContent = `.${key}${groupKey}${pesudo}{${fix.name}:${val}}`;
   }
   ele.setAttribute("flavor-css", "");
   document.head.append(ele);
 
   if (mediaName) {
     const mediaEle = document.createElement("style");
-    mediaEle.textContent = `.media-${mediaName} .${key}${groupKey}${pesudo} ${fix.query}{${fix.name}:${val}}`;
+    mediaEle.textContent = `.media-${mediaName} .${key}${groupKey}${pesudo}{${fix.name}:${val}}`;
     mediaEle.setAttribute("flavor-css", "");
     document.head.append(mediaEle);
   }

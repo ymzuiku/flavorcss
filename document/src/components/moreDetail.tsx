@@ -1,130 +1,20 @@
-export const pseudos = (
-  <div class="padding:20px">
-    <p class="font-weight:500 font-size:30px padding:20px|0px">
-      All Pseudo list:
-    </p>
-    <table class="w:100% border:1px|solid|hsl(0,0%,80%) border:1px|solid|hsl(0,0%,80%):* padding:8px:*">
-      <tr class="background:hsl(0,0%,95%) font-size:17px font-weight:500">
-        <td>Key</td>
-        <td>CSS value</td>
-      </tr>
-      <tr class="background:hsl(0,0%,95%) font-size:17px font-weight:500">
-        <td class="border-right:none">There are equal key and pesudo class:</td>
-        <td class="border-left:none"></td>
-      </tr>
-      <tr>
-        <td>hover</td>
-        <td>:hover</td>
-      </tr>
-      <tr>
-        <td>focus</td>
-        <td>:focus</td>
-      </tr>
-      <tr>
-        <td>active</td>
-        <td>:active</td>
-      </tr>
-      <tr>
-        <td>blank</td>
-        <td>:blank</td>
-      </tr>
-      <tr>
-        <td>checked</td>
-        <td>:checked</td>
-      </tr>
-      <tr>
-        <td>current</td>
-        <td>:current</td>
-      </tr>
-      <tr>
-        <td>disabled</td>
-        <td>:disabled</td>
-      </tr>
-      <tr>
-        <td>focus-within</td>
-        <td>:focus-within</td>
-      </tr>
-      <tr>
-        <td>focus-visible</td>
-        <td>:focus-visible</td>
-      </tr>
-      <tr>
-        <td>in-range</td>
-        <td>:in-range</td>
-      </tr>
-      <tr>
-        <td>visited</td>
-        <td>:visited</td>
-      </tr>
-      <tr>
-        <td>placeholder-shown</td>
-        <td>:placeholder-shown</td>
-      </tr>
-      <tr>
-        <td>after</td>
-        <td>::after</td>
-      </tr>
-      <tr>
-        <td>before</td>
-        <td>::before</td>
-      </tr>
-      <tr class="background:hsl(0,0%,95%) font-size:17px font-weight:500">
-        <td class="border-right:none">There are abbreviations:</td>
-        <td class="border-left:none"></td>
-      </tr>
-      <tr>
-        <td>first</td>
-        <td>:first-child</td>
-      </tr>
-      <tr>
-        <td>last</td>
-        <td>:last-child</td>
-      </tr>
-      <tr>
-        <td>even</td>
-        <td>:nth-child(even)</td>
-      </tr>
-      <tr>
-        <td>odd</td>
-        <td>:nth-child(odd)</td>
-      </tr>
-      <tr>
-        <td>placeholder</td>
-        <td>::-webkit-input-placeholder</td>
-      </tr>
-      <tr>
-        <td>scrollbar</td>
-        <td>::-webkit-scrollbar</td>
-      </tr>
-      <tr>
-        <td>scrollbar-thumb</td>
-        <td>::-webkit-scrollbar-thumb</td>
-      </tr>
-      <tr>
-        <td>scrollbar-track</td>
-        <td>::-webkit-scrollbar-track</td>
-      </tr>
-      <tr>
-        <td>scrollbar-button</td>
-        <td>::-webkit-scrollbar-button</td>
-      </tr>
-      <tr>
-        <td>scrollbar-corner</td>
-        <td>::-webkit-scrollbar-corner</td>
-      </tr>
-    </table>
-  </div>
-);
-
 export const medias = (
   <div class="padding:20px">
     <p class="font-weight:500 font-size:30px padding:20px|0px">
       All medias list:
     </p>
-    <table class="w:100% border:1px|solid|hsl(0,0%,80%) border:1px|solid|hsl(0,0%,80%):* padding:8px:*">
+    <table class="w:100% *:border:1px|solid|hsl(0,0%,80%) *:padding:8px">
       <tr class="background:hsl(0,0%,95%) font-size:17px font-weight:500">
         <td>Key</td>
         <td>CSS value</td>
+      </tr>
+      <tr>
+        <td>print</td>
+        <td>@media print</td>
+      </tr>
+      <tr>
+        <td>speech</td>
+        <td>@media speech</td>
       </tr>
       <tr>
         <td>dark</td>

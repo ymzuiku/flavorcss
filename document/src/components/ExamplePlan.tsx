@@ -85,7 +85,7 @@ export const ExamplePlan = ({
         {["Editing", "Preview"].map((v) => {
           return (
             <div
-              class="color:hsl(210,50%,40%) text-align:center sm:hover:color:hsl(210,50%,10%) cursor:pointer margin:0|16px padding:10px border-radius:6px background:--white"
+              class="color:hsl(210,50%,40%) text-align:center sm::hover:color:hsl(210,50%,10%) cursor:pointer margin:0|16px padding:10px border-radius:6px background:--white"
               classPick={() => ({
                 "border:1px|solid|hsla(200,30%,90%,0)": true,
                 "border:1px|solid|hsl(200,30%,80%) box-shadow:0px|2px|2px|hsla(200,0%,10%,0.08)":
