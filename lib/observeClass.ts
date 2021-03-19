@@ -52,11 +52,7 @@ const _observer = () => {
       const mutation = mutationsList[i];
       if (mutation.type === "childList") {
         const ele = mutation.target as HTMLElement;
-        if (
-          isHaveClosest &&
-          (ele as any).__flavorIgnore &&
-          ele.closest("[flavor-ignore]")
-        ) {
+        if ((ele as any).__flavorIgnore && ele.closest("[flavor-ignore]")) {
           if (!ele.getAttribute("flavor-ignore")) {
             (ele as any).__flavorIgnore = true;
             return;
@@ -122,9 +118,6 @@ export const observeClass = () => {
   // if (window.WeakSet) {
   //   weakCache = new WeakSet();
   // }
-  if (document.body.closest) {
-    isHaveClosest = true;
-  }
   _observer();
 
   lock = true;
