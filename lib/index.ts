@@ -5,6 +5,7 @@ import { observeClass, reset } from "./observeClass";
 import { addStyle } from "./addStyle";
 import { easeAddGroup } from "./addGroup";
 import { mediaList } from "./fixClassName";
+import { useBaseFlavor } from "./useBaseFlavor";
 
 export const flavorcss = {
   addStyle,
@@ -13,9 +14,9 @@ export const flavorcss = {
   observeClass,
   addGroup: easeAddGroup,
   mediaList,
-  // pesudoList,
   cache,
   reset,
+  useBaseFlavor,
 };
 
 (window as any).flavorcss = flavorcss;

@@ -10,6 +10,8 @@ export interface Device {
   iphone: boolean;
   phone: boolean;
   safari: boolean;
+  isNeedSafeTop: boolean;
+  isNeedSafeBottom: boolean;
 }
 export const device = (): Device => {
   if (_device) {
@@ -30,10 +32,14 @@ export const device = (): Device => {
   const pc = !ios && !android;
   const phone = !pc;
   const wechat = phone && /(micromessenger|wechat)/.test(ua);
+  const isNeedSafeBottom = ios && window.screen.height >= 812;
+  const isNeedSafeTop = window.location.href.indexOf("native") > -1;
 
   // 获取是否是 ios 或 android
 
   _device = {
+    isNeedSafeBottom,
+    isNeedSafeTop,
     android,
     firefox,
     chrome,
