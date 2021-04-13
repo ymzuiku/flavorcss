@@ -13,16 +13,6 @@ export function useBaseFlavor() {
 --ease-out: cubic-bezier(0, 0, 0.2, 1);
 --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.scroll-x {
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling:touch;
-}
-.scroll-y {
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling:touch;
-}
   `;
   const sty = document.createElement("style");
   sty.textContent = cssVal;
@@ -35,6 +25,7 @@ sans: font-family:--sans;
 serif: font-family:--serif;
 mono: font-family:--mono;
 d: display:$1;
+pe: pointer-events:$1;
 pos: position:$1;
 area: grid-area:$1;
 areas: display:grid grid-template-areas:$1;
@@ -74,6 +65,7 @@ bt: border-top:$1;
 bb: border-bottom:$1;
 b: border:$1;
 z: z-index:$1;
+o: overflow:$1 -webkit-overflow-scrolling:touch;
 ox: overflow-x:$1 -webkit-overflow-scrolling:touch;
 oy: overflow-y:$1 -webkit-overflow-scrolling:touch;
 radius: border-radius:$1;
