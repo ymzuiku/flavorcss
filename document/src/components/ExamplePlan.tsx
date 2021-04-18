@@ -1,4 +1,3 @@
-import { next } from "aoife/lib/state";
 import Monaco from "../Monaco";
 
 export const ExamplePlan = ({
@@ -93,7 +92,7 @@ export const ExamplePlan = ({
               })}
               onclick={() => {
                 viewType = v as any;
-                next("#" + uuid);
+                aoife.next("#" + uuid);
               }}
             >
               {v}

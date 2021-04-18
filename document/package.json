@@ -3,13 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build"
+    "build": "vite build"
   },
   "dependencies": {
-    "aoife": "^1.6.22",
+    "aoife": "^1.7.6",
     "vanilla-route": "^0.6.5"
   },
   "devDependencies": {
-    "vite": "^2.0.0-beta.12"
+    "vite": "^2.1.5"
   }
 }
