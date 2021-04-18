@@ -26,6 +26,7 @@ export const mediaList = {
   all: "",
   print: "@media print",
   speech: "@media speech",
+  fine: "@media (pointer: fine)",
   dark: "@media (prefers-color-scheme: dark)",
   xs: "@media screen and (min-width: 480px)",
   sm: "@media screen and (min-width: 640px)",

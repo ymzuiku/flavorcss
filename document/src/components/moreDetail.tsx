@@ -17,6 +17,10 @@ export const medias = (
         <td>@media speech</td>
       </tr>
       <tr>
+        <td>fine</td>
+        <td>@media (pointer: fine)</td>
+      </tr>
+      <tr>
         <td>dark</td>
         <td>@media (prefers-color-scheme: dark)</td>
       </tr>
