@@ -70,9 +70,17 @@ export const addStyle = ({
   }
 
   // 多行空格 "a b c" "c e f" -> a|b|c~d|e|f
-  const _list = val.split("~");
-  if (_list.length > 1) {
-    val = " " + _list.map((v) => `"${v}"`).join(" ");
+  if (/\~/.test(val)) {
+    const _list = val.split("~");
+    let _subSss = _list
+      .map((v) => {
+        if (!v) {
+          return "";
+        }
+        return `"${v}"`;
+      })
+      .join(" ");
+    val = " " + _subSss;
     val += ";";
   }
   // 兼容calc
