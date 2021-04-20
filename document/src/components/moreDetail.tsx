@@ -81,8 +81,8 @@ export const medias = (
         <td>@media screen and (min-width: (ios ? "0px" : "9999px")</td>
       </tr>
       <tr>
-        <td>pc</td>
-        <td>@media screen and (min-width: (pc ? "0px" : "9999px")</td>
+        <td>desktop</td>
+        <td>@media screen and (min-width: (desktop ? "0px" : "9999px")</td>
       </tr>
       <tr>
         <td>phone</td>

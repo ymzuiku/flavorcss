@@ -6,7 +6,7 @@ export interface Device {
   tablet: boolean;
   ios: boolean;
   wechat: boolean;
-  pc: boolean;
+  desktop: boolean;
   iphone: boolean;
   phone: boolean;
   safari: boolean;
@@ -29,8 +29,8 @@ export const device = (): Device => {
     (android && !/(?:mobile)/.test(ua)) ||
     (firefox && /(?:tablet)/.test(ua));
   const ios = /(?:iphone)/.test(ua) && !tablet;
-  const pc = !ios && !android;
-  const phone = !pc;
+  const desktop = !ios && !android;
+  const phone = !desktop;
   const wechat = phone && /(micromessenger|wechat)/.test(ua);
   const isNeedSafeBottom = ios && window.screen.height >= 812;
   const isNeedSafeTop = window.location.href.indexOf("native") > -1;
@@ -46,7 +46,7 @@ export const device = (): Device => {
     tablet,
     ios,
     wechat,
-    pc,
+    desktop,
     phone,
     safari,
   };
