@@ -12,9 +12,9 @@
   "scripts": {
     "build-mini": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=es --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag --minify --splitting",
     "build-css": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" flavorcss-base/lib/base.ts --outdir=flavorcss-base/es --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag --minify --splitting",
-    "build-css2": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" flavorcss-base/lib/base.ts --outdir=/es --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag --minify --splitting",
+    "cp-base": "cp -rf flavorcss-base/es/base.js es/base.js",
     "build": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=es --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag  --splitting",
-    "es": "yarn build-css && yarn build-css2 && yarn build-mini && cp -rf es/index.js document/public/flavorcss.js"
+    "es": "yarn build-css && yarn cp-base && yarn build-mini && cp -rf es/index.js flavorcss-website/public/flavorcss.js"
   },
   "devDependencies": {
     "fs-extra": "^9.0.0",
