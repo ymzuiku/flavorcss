@@ -332,16 +332,12 @@ mt: margin-top:$1;
 mr: margin-right:$1;
 ml: margin-left:$1;
 mb: margin-bottom:$1;
-mx: margin:0|$1;
-my: margin:$1|0;
 
 p: padding:$1;
 pt: padding-top:$1;
 pr: padding-right:$1;
 pl: padding-left:$1;
 pb: padding-bottom:$1;
-px: padding:0|$1;
-py: padding:$1|0;
 
 fs: font-size:$1;
 fw: font-weight:$1;
