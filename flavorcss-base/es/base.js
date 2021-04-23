@@ -35,9 +35,9 @@ var o="";[["white","255,255,255"],["black","0,0,0"]].forEach(function(s){let[a,t
 --secondary: #5FCC9B;
 --secondary-deep: #50AC83;
 
---active-weak: rgba(196,206,236,0.35);
---active: rgba(73,115,242,0.35);
---active-deep: rgba(73,115,242,0.5);
+--active-weak: rgba(196,206,236,0.1);
+--active: rgba(196,206,236,0.3);
+--active-deep: rgba(196,206,236,0.5);
 
 --warn-weak: #FDF1D0;
 --warn: #d4c396;
@@ -91,9 +91,9 @@ var o="";[["white","255,255,255"],["black","0,0,0"]].forEach(function(s){let[a,t
 --secondary: #5FCC9B;
 --secondary-deep: #50AC83;
 
---active-weak: rgba(196,206,236,0.35);
---active: rgba(73,115,242,0.35);
---active-deep: rgba(73,115,242,0.5);
+--active-weak: rgba(196,206,236,0.1);
+--active: rgba(196,206,236,0.3);
+--active-deep: rgba(196,206,236,0.5);
 
 --warn-weak: #FDF1D0;
 --warn: #d4c396;
@@ -128,7 +128,7 @@ var o="";[["white","255,255,255"],["black","0,0,0"]].forEach(function(s){let[a,t
 --base-fs: 16px;
 --px: 1px;
 --r: 7px;
---h: 48px;
+--h: 44px;
 --w: 240px;
 --a1: 10px;
 --a2: 20px;
@@ -335,7 +335,11 @@ z: z-index:$1;
 o: opacity:$1;
 c: color:$1;
 bs: box-shadow:$1;
+
+f: flex:$1;
+fl: filter:$1;
 bfl: -webkit-backdrop-filter:$1; backdrop-filter:$1;
+
 r: border-radius:$1;
 ol: outline:$1;
 ox: overflow-x:$1 -webkit-overflow-scrolling:touch;
