@@ -285,8 +285,8 @@ document.head.append(sty);
 const flavor = `
 box: width:100% lg:max-width:$1 margin:0|auto;
 
-time: transition:$1;
-form: transform:$1;
+tt: transition:$1;
+tf: transform:$1;
 d: display:$1;
 pe: pointer-events:$1;
 pos: position:$1;
@@ -312,8 +312,8 @@ as: align-self:$1;
 
 bg: background:$1;
 bgm: background-image:url('$1') background-repeat:no-repeat background-position:center|center background-size:cover;
-gradient: background-image:linear-gradient($1,$2,$3);
-text-gradient: -webkit-background-clip:text gradient:$1,$2,$3 color:rgba(0,0,0,0);
+bgg: background-image:linear-gradient($1,$2,$3);
+cg: -webkit-background-clip:text gradient:$1,$2,$3 color:rgba(0,0,0,0);
 
 h: height:$1;
 min-h: min-height:$1;
@@ -359,7 +359,8 @@ bb-px: border-bottom:--px|solid|$1;
 z: z-index:$1;
 o: opacity:$1;
 c: color:$1;
-shadow: box-shadow:$1;
+bs: box-shadow:$1;
+bfl: -webkit-backdrop-filter:$1; backdrop-filter:$1;
 r: border-radius:$1;
 ol: outline:$1;
 ox: overflow-x:$1 -webkit-overflow-scrolling:touch;
