@@ -1,5 +1,5 @@
 import { cache } from "./cache";
-import { device } from "./device";
+import { os } from "./os";
 
 function setCompAndName(fix: FixClassName, compList: any, val: string) {
   fix.comp = compList[val];
@@ -14,9 +14,9 @@ function setMedia(fix: FixClassName, val: string) {
   if (mediaList[val]) {
     fix.media = mediaList[val];
     fix.mediaName = val;
-  } else if ((device() as any)[val] !== void 0) {
+  } else if ((os as any)[val] !== void 0) {
     fix.media = `@media screen and (min-width: ${
-      (device() as any)[val] ? "0px" : "9999px"
+      (os as any)[val] ? "0px" : "9999px"
     })`;
     fix.mediaName = val;
   }
