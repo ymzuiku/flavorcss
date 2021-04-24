@@ -1,3 +1,7 @@
+import { modernNormalize } from "./modernNormalize";
+
+const isNative = /native=1/.test(location.search);
+
 let alphas = "";
 
 [
@@ -133,12 +137,12 @@ const dark = `
 `;
 
 const cssVal = `
+${modernNormalize}
 :root {
---sans: "SF Pro SC","SF Pro Display","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+--sans: system-ui, -apple-system, "SF Pro SC","PingFang SC",'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji';
   "Segoe UI", Roboto, "Noto Sans";
 --serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
---mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-  "Liberation Mono", "Courier New", monospace;
+--mono: ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;
 --ease: cubic-bezier(0.23, 1, 0.32, 1);
 --ease-in: cubic-bezier(0.4, 0, 1, 1);
 --ease-out: cubic-bezier(0, 0, 0.2, 1);
@@ -179,7 +183,8 @@ ${alphas}
 .dark {
   ${dark}
 }
-body.reboot{
+
+body {
   margin: 0px;
   padding: 0px;
   background: var(--bg);
@@ -189,32 +194,26 @@ body.reboot{
   width: 100vw;
 }
 
-.reboot * {
-  margin: 0px;
-  padding: 0px;
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-.tap-none, .reboot button, .reboot input, .reboot a, .reboot select {
+
+button, input, a, select {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-appearance: none;
-  border: none;
   outline: none;
+  border: none;
 }
+
 @media (pointer: fine) {
-  .pointer,
-  .reboot button,
-  .reboot a,
-  .reboot select {
+  .pointer, button, a, select {
     cursor: pointer;
   }
 }
-.border-box {
-  box-sizing: border-box;
-}
-.content-box {
-  box-sizing: content-box;
-}
+
 .g-col {
   display: grid;
   grid-auto-flow: column;
@@ -277,6 +276,22 @@ body.reboot{
   padding-bottom: constant(safe-area-inset-bottom);
   padding-bottom: env(safe-area-inset-bottom);
 }
+.scroll-snap-x {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+.scroll-snap-y {
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+  scroll-snap-type: y mandatory;
+}
+.scroll-snap-x > *, .scroll-snap-y > * {
+  scroll-snap-align: start;
+  flex: 0 0 100%;
+}
   `;
 const sty = document.createElement("style");
 sty.textContent = cssVal;
@@ -291,6 +306,9 @@ d: display:$1;
 pe: pointer-events:$1;
 pos: position:$1;
 ta: text-align:$1;
+
+f-col: display:grid rid-auto-flow:column;
+f-row: display:grid rid-auto-flow:row;
 
 gap: grid-gap:$1;
 g-area: grid-area:$1;
