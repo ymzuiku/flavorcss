@@ -214,38 +214,6 @@ button, input, a, select {
   }
 }
 
-.g-col {
-  display: grid;
-  grid-auto-flow: column;
-}
-.g-row {
-  display: grid;
-  grid-auto-flow: row;
-}
-.g-col-dense {
-  display: grid;
-  grid-auto-flow: column dense;
-}
-.g-row-dense {
-  display: grid;
-  grid-auto-flow: row dense;
-}
-.f-row {
-  display: flex;
-  flex-direction: row;
-}
-.f-col {
-  display: flex;
-  flex-direction: column;
-}
-.f-row-reverse {
-  display: flex;
-  flex-direction: row-reverse;
-}
-.f-col-reverse {
-  display: flex;
-  flex-direction: column-reverse;
-}
 .h-safe-top {
   height: 0;  
   height: constant(safe-area-inset-top);
@@ -307,12 +275,19 @@ pe: pointer-events:$1;
 pos: position:$1;
 ta: text-align:$1;
 
-f-col: display:grid rid-auto-flow:column;
-f-row: display:grid rid-auto-flow:row;
+f-col: display:flex flex-direction:column;
+f-col-r: display:flex flex-direction:column-reverse;
+f-row: display:flex flex-direction:row;
+f-row-r: display:flex flex-direction:row-reverse;
 
 gap: grid-gap:$1;
 g-area: grid-area:$1;
 g-areas: display:grid grid-template-areas:$1;
+
+g-col: display:grid grid-auto-flow:column;
+g-col-d: display:grid grid-auto-flow:column|dense;
+g-row: display:grid grid-auto-flow:row;
+g-row-d: display:grid grid-auto-flow:row|dense;
 
 g-rows: display:grid grid-template-rows:$1;
 g-cols: display:grid grid-template-columns:$1;
