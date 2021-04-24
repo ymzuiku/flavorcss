@@ -360,6 +360,7 @@ bfl: -webkit-backdrop-filter:$1; backdrop-filter:$1;
 
 r: border-radius:$1;
 ol: outline:$1;
+oxy: overflow:$1 -webkit-overflow-scrolling:touch;
 ox: overflow-x:$1 -webkit-overflow-scrolling:touch;
 oy: overflow-y:$1 -webkit-overflow-scrolling:touch;
 `;
