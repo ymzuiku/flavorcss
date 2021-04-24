@@ -350,7 +350,6 @@ bt-px: border-top:--px|solid|$1;
 bb-px: border-bottom:--px|solid|$1;
 
 z: z-index:$1;
-o: opacity:$1;
 c: color:$1;
 bs: box-shadow:$1;
 
@@ -360,9 +359,10 @@ bfl: -webkit-backdrop-filter:$1; backdrop-filter:$1;
 
 r: border-radius:$1;
 ol: outline:$1;
-oxy: overflow:$1 -webkit-overflow-scrolling:touch;
+o: overflow:$1 -webkit-overflow-scrolling:touch;
 ox: overflow-x:$1 -webkit-overflow-scrolling:touch;
 oy: overflow-y:$1 -webkit-overflow-scrolling:touch;
+opa: opacity:$1;
 `;
 
 const flavorEle = document.createElement("mark");
