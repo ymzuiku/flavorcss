@@ -115,8 +115,7 @@ var r=':root{-moz-tab-size:4;tab-size:4}html{line-height:1.15;-webkit-text-size-
 `,p=`
 ${r}
 :root {
---sans: system-ui, -apple-system, "SF Pro SC","PingFang SC",'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji';
-  "Segoe UI", Roboto, "Noto Sans";
+--sans: system-ui, -apple-system, "SF Pro SC","PingFang SC",'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji',"Segoe UI", Roboto, "Noto Sans";
 --serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 --mono: ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;
 --ease: cubic-bezier(0.23, 1, 0.32, 1);

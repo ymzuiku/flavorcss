@@ -1,12 +1,12 @@
 {
   "name": "flavorcss-base",
-  "version": "0.6.11",
+  "version": "0.6.12",
   "description": "full build css",
   "keywords": ["ui", "css", "atmoic css"],
-  "main": "es/base.js",
-  "module": "es/base.js",
-  "types": "lib/base.ts",
-  "exports":{"import":"./lib/base.ts"},
+  "main": "es/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.ts",
+  "exports":{"import":"./lib/index.ts"},
   "license": "MIT",
   "private": false,
   "repository": {
