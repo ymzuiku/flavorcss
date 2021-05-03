@@ -1,20 +1,18 @@
-import { cache } from "./cache";
-import { parser } from "./parser";
+import { addCss } from "./addCss";
 import { os } from "./os";
-import { observeClass, reset } from "./observeClass";
 import { addStyle } from "./addStyle";
-import { easeAddGroup } from "./addGroup";
-import { mediaList } from "./fixClassName";
+import { addComponents } from "./addComponents";
+import { mediaList } from "./parser";
+import "./observeClass";
 
-export const flavorcss = {
+const flavorcss = {
   addStyle,
   os,
-  parser,
-  observeClass,
-  addGroup: easeAddGroup,
+  addCss,
+  addComponents,
   mediaList,
-  cache,
-  reset,
 };
 
 (window as any).flavorcss = flavorcss;
+
+export default flavorcss;

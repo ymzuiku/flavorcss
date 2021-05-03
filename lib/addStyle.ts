@@ -1,5 +1,4 @@
-import { cache } from "./cache";
-import { fixClassName } from "./fixClassName";
+import { parser } from "./parser";
 
 const lastErrorMap = {
   "(": 1,
@@ -14,7 +13,7 @@ interface AddStyle {
   media?: string;
   mediaName?: string;
   pesudo?: string;
-  group?: string;
+  value?: string;
 }
 
 export const addStyle = ({
@@ -23,32 +22,14 @@ export const addStyle = ({
   media = "",
   mediaName = "",
   pesudo = "",
-  group = "",
+  value = "",
 }: AddStyle) => {
-  if (!css) {
-    return;
-  }
-
-  // debugger;
-  const _key = `^sty_${css}_${name}_${media}_${pesudo}_${group}`;
-  if (cache.classNameCache[_key]) {
-    return;
-  }
-  cache.classNameCache[_key] = true;
-
-  // 计算伪类
-  // const list = css.split(":");
-  const fix = fixClassName(group, css);
-
-  // 内容使用移除了伪类的字符串
-  let val = fix.value;
-
   // 若没有内容，为默认 css-class，不进行处理
-  if (!val) {
+  if (!name || !value) {
     return;
   }
 
-  const last = val[val.length - 1];
+  const last = value[value.length - 1];
 
   // lastErrorMap 用户校验最后一位，以忽略常见的错误
   if (lastErrorMap[last]) {
@@ -56,22 +37,12 @@ export const addStyle = ({
   }
 
   if (last === "!") {
-    val = val.replace(/(!$)/, " !important");
-  }
-
-  if (fix.media) {
-    media = fix.media;
-  }
-  if (fix.mediaName) {
-    mediaName = fix.mediaName;
-  }
-  if (fix.pesudo) {
-    pesudo = fix.pesudo;
+    value = value.replace(/(!$)/, " !important");
   }
 
   // 多行空格 "a b c" "c e f" -> a|b|c~d|e|f
-  if (/\~/.test(val)) {
-    const _list = val.split("~");
+  if (/\~/.test(value)) {
+    const _list = value.split("~");
     let _subSss = _list
       .map((v) => {
         if (!v) {
@@ -80,32 +51,31 @@ export const addStyle = ({
         return `"${v}"`;
       })
       .join(" ");
-    val = " " + _subSss;
-    val += ";";
+    value = " " + _subSss;
+    value += ";";
   }
   // 兼容calc
-  val = val.replace(/calc\((.*?)\)/g, (item) => {
+  value = value.replace(/calc\((.*?)\)/g, (item) => {
     item = item.replace(/(-|\+|\*|\/)/g, (v) => " " + v + " ");
     return item;
   });
-  val = val.replace(/\|/g, " ");
+  value = value.replace(/\|/g, " ");
 
   // 目的兼容 var() 的写法
-  val = val.replace(/var\((.*?)\)/g, (v) => {
+  value = value.replace(/var\((.*?)\)/g, (v) => {
     return v.replace(/(var\(|\))/g, "");
   });
   // --dog 转译成 var(--dog)
-  val = val.replace(/--([a-zA-Z0-9_-]*)/g, (v) => `var(${v})`);
+  value = value.replace(/--([a-zA-Z0-9_-]*)/g, (v) => `var(${v})`);
   // ^^^ 转译成 , 兼容组件参数的逗号问题
-  val = val.replace(/\^\^\^/g, ",");
+  value = value.replace(/\^\^\^/g, ",");
 
   // 常用标点符号转译
-  const key = (name || css).replace(
+  const key = css.replace(
     /(\:|#|\*|!|,|\.|>|<|@|~|%|\||\$|\{|\}|\[|\]|\(|\)|\+|\*|\/)/g,
     (v) => "\\" + v
   );
 
-  const groupKey = group ? `.\\*${group}` : "";
   if (/^(\w|\*)/.test(pesudo)) {
     pesudo = " " + pesudo;
   }
@@ -114,16 +84,16 @@ export const addStyle = ({
   const ele = document.createElement("style");
 
   if (media) {
-    ele.textContent = `${media} {.${key}${groupKey}${pesudo}{${fix.name}:${val}}}`;
+    ele.textContent = `${media} {.${key}${pesudo}{${name}:${value}}}`;
   } else {
-    ele.textContent = `.${key}${groupKey}${pesudo}{${fix.name}:${val}}`;
+    ele.textContent = `.${key}${pesudo}{${name}:${value}}`;
   }
   ele.setAttribute("flavor-css", "");
   document.head.append(ele);
 
   if (mediaName) {
     const mediaEle = document.createElement("style");
-    mediaEle.textContent = `.media-${mediaName} .${key}${groupKey}${pesudo}{${fix.name}:${val}}`;
+    mediaEle.textContent = `.media-${mediaName} .${key}${pesudo}{${name}:${value}}`;
     mediaEle.setAttribute("flavor-css", "");
     document.head.append(mediaEle);
   }

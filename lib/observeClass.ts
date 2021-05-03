@@ -1,24 +1,9 @@
-import { parser } from "./parser";
-import { cache } from "./cache";
-import { addGroup } from "./addGroup";
+import { addCss } from "./addCss";
+import { addComponents } from "./addComponents";
 
 const classSelector = "[class]";
 
-export const reset = () => {
-  document.head.querySelectorAll("style[flavor-css]").forEach((e) => {
-    e.remove();
-  });
-  cache.compMap = {};
-  cache.classNameCache = {};
-  document.querySelectorAll("[flavor]").forEach(regGroup as any);
-  document.body.querySelectorAll(classSelector).forEach(regElement as any);
-};
-
-function regGroup(ele: HTMLElement) {
-  const groupName = ele.getAttribute("flavor");
-  if (groupName === void 0 || groupName === null) {
-    return;
-  }
+function regComponents(ele: HTMLElement) {
   let html = "";
   if (ele.tagName === "TEMPLATE") {
     const content = (ele as HTMLTemplateElement).content.cloneNode(true);
@@ -29,7 +14,7 @@ function regGroup(ele: HTMLElement) {
     html = ele.textContent!;
   }
 
-  addGroup(groupName, html);
+  addComponents(html);
 }
 
 function regElement(ele: HTMLElement) {
@@ -38,7 +23,7 @@ function regElement(ele: HTMLElement) {
   }
 
   if (ele.className && typeof ele.className === "string") {
-    parser(ele.className);
+    addCss(ele.className);
   }
 }
 
@@ -58,11 +43,9 @@ const _observer = () => {
             return;
           }
         }
-        regGroup(ele);
         regElement(ele);
 
         if (mutation.addedNodes.length) {
-          ele.querySelectorAll("[flavor]").forEach(regGroup as any);
           ele.querySelectorAll(classSelector).forEach(regElement as any);
         }
       } else if (mutation.type === "attributes") {
@@ -83,44 +66,11 @@ const _observer = () => {
   });
 };
 
-// window.MutationObserver = null;
-
-let lock = false;
-let isHaveClosest = false;
-export const observeClass = () => {
-  if (
-    typeof window === "undefined" ||
-    typeof document === "undefined" ||
-    !window.location
-  ) {
-    return;
-  }
-  if (lock) {
-    return;
-  }
-
-  if (!window.MutationObserver) {
-    // polyfill
-    // import("./MutationObserver").then(() => {
-    //   observeClass();
-    // });
-    console.error("[flavorcss] Your Browser not supported MutationObserver");
-    return;
-  }
-  if (!document.body) {
-    requestAnimationFrame(observeClass);
-    return;
-  }
-  document.querySelectorAll("[flavor]").forEach(regGroup as any);
+window.addEventListener("load", () => {
+  document.querySelectorAll("[flavor]").forEach(regComponents as any);
   document.body.querySelectorAll(classSelector).forEach((ele) => {
     regElement(ele as any);
   });
-  // if (window.WeakSet) {
-  //   weakCache = new WeakSet();
-  // }
+
   _observer();
-
-  lock = true;
-};
-
-observeClass();
+});

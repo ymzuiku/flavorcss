@@ -6,10 +6,7 @@
     "build": "vite build"
   },
   "dependencies": {
-    "aoife": "^1.7.6",
-    "vanilla-route": "^0.6.5"
-  },
-  "devDependencies": {
-    "vite": "^2.1.5"
+    "vanilla-route": "^1.0.2",
+    "vite": "^2.2.4"
   }
 }

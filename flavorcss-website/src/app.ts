@@ -25,6 +25,14 @@ const details = [
 ];
 
 export function App() {
+  const content = document.createElement("div");
+  content.className =
+    "mt:40px sm:mt:100px p:--lg lg:p:--xl grid-gap:--xxl d:grid place-content:center";
+
+  const out = document.createElement("div");
+  out.className = "max-w:100vw overflow:hidden md:max-w:1100px margin:0|auto";
+  out.append(Header(), content);
+
   return (
     <div class="max-w:100vw overflow:hidden md:max-w:1100px margin:0|auto">
       <Header />

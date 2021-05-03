@@ -364,10 +364,9 @@ oy: overflow-y:$1 -webkit-overflow-scrolling:touch;
 opa: opacity:$1;
 `;
 
-const flavorEle = document.createElement("mark");
-flavorEle.style.display = "none";
+const flavorEle = document.createElement("template");
 flavorEle.setAttribute("flavor", "");
-flavorEle.textContent = flavor;
+flavorEle.innerHTML = flavor;
 document.body.append(flavorEle);
 
 export const a = 0;
