@@ -28,11 +28,13 @@ export const addCss = (css: string) => {
             .split(spaceReg)
             .filter(Boolean)
             .forEach((v) => {
+              const obj = parser(v, item);
+
               addStyle({
-                pesudo: fix.pesudo,
-                media: fix.media,
-                mediaName: fix.mediaName,
-                ...parser(v, item),
+                ...obj,
+                pesudo: obj.pesudo || fix.pesudo,
+                media: obj.media || fix.media,
+                mediaName: obj.mediaName || fix.mediaName,
               });
             })
         );
