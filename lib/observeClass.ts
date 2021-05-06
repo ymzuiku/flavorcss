@@ -1,9 +1,10 @@
 import { addCss } from "./addCss";
 import { addComponents } from "./addComponents";
 
-const classSelector = "[class]";
-
 function regComponents(ele: HTMLElement) {
+  if (!ele.hasAttribute("flavor-css")) {
+    return;
+  }
   let html = "";
   if (ele.tagName === "TEMPLATE") {
     const content = (ele as HTMLTemplateElement).content.cloneNode(true);
@@ -44,9 +45,10 @@ const _observer = () => {
           }
         }
         regElement(ele);
-
+        regComponents(ele);
         if (mutation.addedNodes.length) {
-          ele.querySelectorAll(classSelector).forEach(regElement as any);
+          ele.querySelectorAll("[flavor-css]").forEach(regComponents);
+          ele.querySelectorAll("[class]").forEach(regElement);
         }
       } else if (mutation.type === "attributes") {
         regElement(mutation.target);
@@ -67,10 +69,8 @@ const _observer = () => {
 };
 
 window.addEventListener("load", () => {
-  document.querySelectorAll("[data-flavor]").forEach(regComponents as any);
-  document.body.querySelectorAll(classSelector).forEach((ele) => {
-    regElement(ele as any);
-  });
+  document.querySelectorAll("[flavor-css]").forEach(regComponents);
+  document.querySelectorAll("[class]").forEach(regElement);
 
   _observer();
 });

@@ -1,5 +1,6 @@
 import { addStyle } from "./addStyle";
 import { parser } from "./parser";
+import { spaceReg } from "./regs";
 
 const classNameCache = {} as any;
 
@@ -10,11 +11,9 @@ export const addCss = (css: string) => {
   }
 
   classNameCache[key] = true;
-  if (!/:/.test(css)) {
-    return;
-  }
+
   css
-    .split(" ")
+    .split(spaceReg)
     .filter(Boolean)
     .forEach((item) => {
       if (classNameCache[item]) {
@@ -26,10 +25,15 @@ export const addCss = (css: string) => {
       if (fix.comp) {
         fix.comp.forEach((fn) =>
           fn(fix.value)
-            .split(" ")
+            .split(spaceReg)
             .filter(Boolean)
             .forEach((v) => {
-              addStyle(parser(v, item));
+              addStyle({
+                pesudo: fix.pesudo,
+                media: fix.media,
+                mediaName: fix.mediaName,
+                ...parser(v, item),
+              });
             })
         );
       } else {

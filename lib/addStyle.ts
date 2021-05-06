@@ -59,6 +59,7 @@ export const addStyle = ({
     item = item.replace(/(-|\+|\*|\/)/g, (v) => " " + v + " ");
     return item;
   });
+  // 转化 | 至空格
   value = value.replace(/\|/g, " ");
 
   // 目的兼容 var() 的写法
@@ -88,6 +89,7 @@ export const addStyle = ({
   } else {
     ele.textContent = `.${key}${pesudo}{${name}:${value}}`;
   }
+  console.log(ele.textContent);
   ele.setAttribute("flavor-css", "");
   document.head.append(ele);
 

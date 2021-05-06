@@ -1,3 +1,5 @@
+import { spaceReg } from "./regs";
+
 export const compList = {} as {
   [key: string]: ((param: string) => string)[];
 };
@@ -18,15 +20,11 @@ export const addComponents = (html: string) => {
       name = name.trim();
 
       if (name) {
-        const list = itemStr.split(" ");
+        const list = itemStr.split(spaceReg);
         list.filter(Boolean).forEach((item) => {
           _fixComp(name, item);
         });
       }
-      // line
-      //   .split(" ")
-      //   .filter(Boolean)
-      //   .forEach((item) => {});
     });
 };
 

@@ -1,8 +1,8 @@
 import { Route } from "vanilla-route";
 
 export const Header = () => {
-  const isDoc = /doc/.test(window.location.hash);
-  const isExample = /example/.test(window.location.hash);
+  const isDoc = /doc/.test(window.location.pathname);
+  const isExample = /example/.test(window.location.pathname);
   const isHome = !isDoc && !isExample;
   return (
     <div class="w:1px h:--bar-height">
