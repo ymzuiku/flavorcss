@@ -67,7 +67,7 @@ const _observer = () => {
 };
 
 window.addEventListener("load", () => {
-  document.querySelectorAll("[flavor]").forEach(regComponents as any);
+  document.querySelectorAll("[data-flavor]").forEach(regComponents as any);
   document.body.querySelectorAll(classSelector).forEach((ele) => {
     regElement(ele as any);
   });

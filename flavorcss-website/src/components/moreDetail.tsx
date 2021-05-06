@@ -1,8 +1,6 @@
-export const medias = document.createElement("out");
-
-medias.className = "padding:20px";
-medias.innerHTML = `
-<p class="font-weight:500 font-size:30px padding:20px|0px">
+export const medias = (
+  <div class="padding:20px">
+    <p class="font-weight:500 font-size:30px padding:20px|0px">
       All medias list:
     </p>
     <table class="w:100% *:border:1px|solid|hsl(0,0%,80%) *:padding:8px">
@@ -107,4 +105,5 @@ medias.innerHTML = `
         <td>@media screen and (min-width: (wechat ? "0px" : "9999px")</td>
       </tr>
     </table>
-`;
+  </div>
+);

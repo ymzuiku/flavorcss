@@ -333,4 +333,4 @@ o: overflow:$1 -webkit-overflow-scrolling:touch;
 ox: overflow-x:$1 -webkit-overflow-scrolling:touch;
 oy: overflow-y:$1 -webkit-overflow-scrolling:touch;
 opa: opacity:$1;
-`,i=document.createElement("template");i.setAttribute("flavor","");i.innerHTML=b;document.body.append(i);var g=0;export{g as a};
+`,i=document.createElement("template");i.setAttribute("data-flavor","");i.innerHTML=b;document.body.append(i);var g=0;export{g as a};
