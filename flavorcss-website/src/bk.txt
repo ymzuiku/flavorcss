@@ -1,0 +1,66 @@
+import { Route } from "vanilla-route";
+import { githubSvg } from "../svgs";
+
+const headTitleCss =
+  "cursor:pointer d:none sm:d:grid content:center,center width:80px ";
+
+export const Header = () => {
+  const isDoc = /doc/.test(window.location.hash);
+  const isExample = /example/.test(window.location.hash);
+  const isHome = !isDoc && !isExample;
+
+  const out = document.createElement("div");
+
+  out.className = "w:1px h:--h";
+
+  const content = document.createElement("section");
+  content.className =
+    "pos:fixed w:100% bg:--white z:9999 top:0px left:0px shadow:0px|1px|4px|hsla(0,0%,0%,0.05) h:--h";
+
+  const contentBox = document.createElement("div");
+  contentBox.className =
+    "h:100% m:0|auto max-w:1300px g-col p:0px|--md g-cols:repeat(1,auto)|1fr sm:g-cols:repeat(4,auto)|1fr gap:20px";
+
+  const list = [
+    () =>
+      Object.assign(document.createElement("span"), {
+        className:
+          "pointer fm:mono fw:900 fs:24px bgc:120deg,hsl(200,50%,50%),hsl(330,50%,20%)",
+        onclick: () => Route.push("/"),
+        textContent: "flavorcss",
+      }),
+    () =>
+      Object.assign(document.createElement("span"), {
+        className: headTitleCss + (isHome && "fw:800"),
+        onclick: () => Route.push("/"),
+        textContent: "Home",
+      }),
+    () =>
+      Object.assign(document.createElement("span"), {
+        className: headTitleCss + (isDoc && "fw:800"),
+        onclick: () => Route.push("/doc"),
+        textContent: "Document",
+      }),
+    () =>
+      Object.assign(document.createElement("span"), {
+        className: headTitleCss + (isExample && "fw:800"),
+        onclick: () => Route.push("/doc"),
+        textContent: "Example",
+      }),
+    () => {
+      const out = document.createElement("div");
+      out.className =
+        "self:end,center cursor:pointer radius:6px d:grid place-content:center :hover:bg:hsl(--h,55%,40%) bg:hsl(--h,55%,45%) p:8px color:--white :hover:box-shadow:0px|6px|10px|hsla(--h,55%,20%,0.2) ease:0.3s grid-gap:14px :hover:transform:translateY(-1px)";
+      out.onclick = () => window.open("https://github.com/ymzuiku/flavorcss");
+      out.innerHTML = githubSvg;
+      return out;
+    },
+  ].map((v) => v());
+
+  contentBox.append(...list);
+
+  out.append(content);
+  content.append(contentBox);
+
+  return out;
+};
