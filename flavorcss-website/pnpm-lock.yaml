@@ -1,10 +1,16 @@
 lockfileVersion: 5.3
 
 specifiers:
+  dary: ^1.0.2
+  vanilla-life: ^0.1.5
+  vanilla-ob: ^0.2.1
   vanilla-route: ^1.0.2
   vite: ^2.2.4
 
 dependencies:
+  dary: 1.0.2
+  vanilla-life: 0.1.5
+  vanilla-ob: 0.2.1
   vanilla-route: 1.0.2
   vite: 2.2.4
 
@@ -12,6 +18,10 @@ packages:
 
   /colorette/1.2.2:
     resolution: {integrity: sha512-MKGMzyfeuutC/ZJ1cba9NqcNpfeqMUcYmyF1ZFY6/Cn7CNSAKx6a+s48sqLqyAiZuaP2TcqMhoo+dlwFnVxT9w==}
+    dev: false
+
+  /dary/1.0.2:
+    resolution: {integrity: sha512-2vFPYyG5xxP5aND9cZwO429PGGcsjmoJ/HyE1QRs3082SmVRJWaZjI4XKmkUikmqt3SKr9L8pLNhCptsmbnpeA==}
     dev: false
 
   /esbuild/0.9.7:
@@ -36,6 +46,10 @@ packages:
     engines: {node: '>= 0.4.0'}
     dependencies:
       function-bind: 1.1.1
+    dev: false
+
+  /immer/9.0.2:
+    resolution: {integrity: sha512-mkcmzLtIfSp40vAqteRr1MbWNSoI7JE+/PB36FNPoSfJ9RQRmNKuTYCjKkyXyuq3Dgn07HuJBrwJd4ZSk2yUbw==}
     dev: false
 
   /is-core-module/2.3.0:
@@ -85,6 +99,17 @@ packages:
   /source-map/0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
     engines: {node: '>=0.10.0'}
+    dev: false
+
+  /vanilla-life/0.1.5:
+    resolution: {integrity: sha512-51dI4GdeKoVTLAlVhozx29LxtEQ1NiU44Ct8VD1d00GakTOohbQx29BN/Ixn7M3yju10Mh1xJUazqCzj6q06mw==}
+    dev: false
+
+  /vanilla-ob/0.2.1:
+    resolution: {integrity: sha512-GX9irS8zyrgJxYaLrsvXlTmwy2dwWF0zHe9ixRV1xOgMnn+f1NbjWGGGtP19kL0wZg9IAG7Z7BhPSrlksE3kHQ==}
+    dependencies:
+      immer: 9.0.2
+      vanilla-life: 0.1.5
     dev: false
 
   /vanilla-route/1.0.2:

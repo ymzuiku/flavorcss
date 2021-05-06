@@ -6,6 +6,9 @@
     "build": "vite build"
   },
   "dependencies": {
+    "dary": "^1.0.2",
+    "vanilla-life": "^0.1.5",
+    "vanilla-ob": "^0.2.1",
     "vanilla-route": "^1.0.2",
     "vite": "^2.2.4"
   }

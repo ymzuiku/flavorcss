@@ -160,12 +160,12 @@ ${modernNormalize}
 --a4: 40px;
 --a5: 50px;
 --a6: 60px;
---xs: 480px;
---sm: 640px;
---md: 768px;
---lg: 1024px;
---xl: 1280px;
---xxl: 1536px;
+--screen-xs: 480px;
+--screen-sm: 640px;
+--screen-md: 768px;
+--screen-lg: 1024px;
+--screen-xl: 1280px;
+--screen-xxl: 1536px;
 ${alphas}
 }
 :root {
@@ -305,7 +305,7 @@ as: align-self:$1;
 bg: background:$1;
 bgm: background-image:url('$1') background-repeat:no-repeat background-position:center|center background-size:cover;
 bgg: background-image:linear-gradient($1,$2,$3);
-cg: -webkit-background-clip:text gradient:$1,$2,$3 color:rgba(0,0,0,0);
+bgc: -webkit-background-clip:text background-image:linear-gradient($1,$2,$3) color:rgba(0,0,0,0);
 
 h: height:$1;
 min-h: min-height:$1;
@@ -350,7 +350,7 @@ bb-px: border-bottom:--px|solid|$1;
 
 z: z-index:$1;
 c: color:$1;
-bs: box-shadow:$1;
+shadow: box-shadow:$1;
 
 f: flex:$1;
 fl: filter:$1;

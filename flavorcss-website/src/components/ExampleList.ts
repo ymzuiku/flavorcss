@@ -8,12 +8,14 @@ export const ExampleList = async () => {
   });
   const datas = await Promise.all(pList);
 
-  return (
-    <div class="margin:0|auto">
-      {datas.map((code) => {
-        const [_title, _code] = code.split("<!-- edit-code -->");
-        return <ExamplePlan title={_title || ""} code={_code || ""} />;
-      })}
-    </div>
+  const out = document.createElement("div");
+  out.className = "margin:0|auto";
+  out.append(
+    ...datas.map((_code) => {
+      const [title, code] = _code.split("<!-- edit-code -->");
+      return ExamplePlan({ title, code });
+    })
   );
+
+  return out;
 };

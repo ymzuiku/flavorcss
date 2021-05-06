@@ -34,7 +34,7 @@ const lock = {} as any;
 
 const regs = Array(10)
   .fill(0)
-  .map((i) => {
+  .map((_, i) => {
     return new RegExp(`(\\$${i + 1})`, "g");
   });
 

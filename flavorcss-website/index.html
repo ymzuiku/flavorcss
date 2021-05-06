@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flavor CSS</title>
 
-    <link rel="stylesheet" href="/flaavrocss-base.js" />
+    <script type="module" src="/flavorcss-base.js"></script>
     <script type="module" src="/flavorcss.js"></script>
     <style>
+      body {
+        --h: 54px;
+      }
       .monaco-editor {
         padding: 10px 0px;
         border-radius: 10px;
@@ -21,7 +24,7 @@
     </template> -->
   </head>
 
-  <body>
+  <body class="light">
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>

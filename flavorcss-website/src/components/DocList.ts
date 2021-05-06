@@ -20,12 +20,23 @@ export const DocList = async () => {
   });
   const datas = await Promise.all(pList);
 
-  return (
-    <div class="margin:0|auto max-width:1100px">
-      {datas.map((code) => {
-        const [_title, _code] = code.split("<!-- edit-code -->");
-        return <DocPlan title={_title || ""} code={_code || ""} />;
-      })}
-    </div>
+  const out = document.createElement("div");
+  out.className = "margin:0|auto max-width:1100px";
+  out.append(
+    ...datas.map((_code) => {
+      const [title, code] = _code.split("<!-- edit-code -->");
+      return DocPlan({ title, code });
+    })
   );
+
+  return out;
+
+  // return (
+  //   <div class="margin:0|auto max-width:1100px">
+  //     {datas.map((code) => {
+  //       const [_title, _code] = code.split("<!-- edit-code -->");
+  //       return <DocPlan title={_title || ""} code={_code || ""} />;
+  //     })}
+  //   </div>
+  // );
 };

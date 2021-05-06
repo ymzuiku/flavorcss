@@ -5,7 +5,7 @@ import { addComponents } from "./addComponents";
 import { mediaList } from "./parser";
 import "./observeClass";
 
-const flavorcss = {
+export const flavorcss = {
   addStyle,
   os,
   addCss,
@@ -14,5 +14,3 @@ const flavorcss = {
 };
 
 (window as any).flavorcss = flavorcss;
-
-export default flavorcss;
