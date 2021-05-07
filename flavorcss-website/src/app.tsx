@@ -129,7 +129,7 @@ export function App() {
         <p class="md-info">Use unpkg modules:</p>
         <p class="md-code">
           &lt;script type=&quot;module&quot;
-          src=&quot;https://unpkg.com/flavorcss@0.6.9/es/index.js&quot;&gt;&lt;/script&gt;
+          src=&quot;https://unpkg.com/flavorcss@0.6.10/es/index.js&quot;&gt;&lt;/script&gt;
         </p>
         <h1 class="mt:20px font-size:30px font-weight:800 line-height:1">
           Case 2:
