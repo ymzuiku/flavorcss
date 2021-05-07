@@ -1,6 +1,10 @@
 import { addCss } from "./addCss";
 import { addComponents } from "./addComponents";
 
+export const observerSetting = {
+  ignoreObserveComponent: false,
+};
+
 function regComponents(ele: HTMLElement) {
   if (!ele.hasAttribute("flavor-css")) {
     return;
@@ -44,10 +48,15 @@ const _observer = () => {
             return;
           }
         }
+        if (!observerSetting.ignoreObserveComponent) {
+          regComponents(ele);
+        }
         regElement(ele);
-        regComponents(ele);
+
         if (mutation.addedNodes.length) {
-          ele.querySelectorAll("[flavor-css]").forEach(regComponents);
+          if (!observerSetting.ignoreObserveComponent) {
+            ele.querySelectorAll("[flavor-css]").forEach(regComponents);
+          }
           ele.querySelectorAll("[class]").forEach(regElement);
         }
       } else if (mutation.type === "attributes") {
@@ -61,7 +70,7 @@ const _observer = () => {
     childList: true,
     subtree: true,
     attributes: true,
-    attributeFilter: ["class"],
+    attributeFilter: ["class", "flavor-css"],
     characterData: false,
     attributeOldValue: false,
     characterDataOldValue: false,

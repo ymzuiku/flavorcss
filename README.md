@@ -34,7 +34,7 @@ We design base reboot css and base flavorcss group, you can add:
 ```html
 <script
   type="module"
-  src="https://unpkg.com/flavorcss-base@0.6.1/es/base.js"
+  src="https://unpkg.com/flavorcss-base@0.6.9/es/base.js"
 ></script>
 ```
 
