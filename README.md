@@ -11,7 +11,7 @@ Use unpkg:
 ```html
 <script
   type="module"
-  src="https://unpkg.com/flavorcss@0.6.10/es/index.js"
+  src="https://unpkg.com/flavorcss@0.6.11/es/index.js"
 ></script>
 ```
 

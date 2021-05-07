@@ -89,7 +89,7 @@ export const addStyle = ({
   } else {
     ele.textContent = `.${key}${pesudo}{${name}:${value}}`;
   }
-  console.log(ele.textContent);
+
   ele.setAttribute("flavor-css", "");
   document.head.append(ele);
 

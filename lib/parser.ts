@@ -115,7 +115,5 @@ export function parser(css: string, baseCss?: string): FixClassName {
   out.pesudo = pesudoList.join(":");
   out.pesudoName = out.pesudo;
 
-  console.log(css, out);
-
   return out;
 }
