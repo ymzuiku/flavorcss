@@ -2,15 +2,19 @@
 # yarn lockfile v1
 
 
-aoife@^1.7.6:
-  version "1.7.6"
-  resolved "https://registry.yarnpkg.com/aoife/-/aoife-1.7.6.tgz#a6cb801150f005ce1645772a94868bf4941ffc02"
-  integrity sha512-wuhmOczYRkAZs+Cnitb0TvoxviiK4V5cmQbOaPUsLSs/5MqllcVlSD8Vu/L8ChuXfvVcZr2dQi1xJBWHpEvRQw==
+aoife@^2.0.4:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/aoife/-/aoife-2.0.6.tgz#c3bd9e4ea453b1d69ee10a3fe6013eea322a7f1d"
+  integrity sha512-4AvvRU5zldlL6Viwp7i/9ms8CUO3pTNJ27kkmgAI5tesB0QVQzxINAa37kr3I7+CG7njlIX2yjOFNWnNXmxzpQ==
+  dependencies:
+    vanilla-life "^0.1.5"
+    vanilla-ob "^0.3.5"
+    vanilla-svg-tags "^0.1.2"
 
-colorette@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.2.1.tgz#4d0b921325c14faf92633086a536db6e89564b1b"
-  integrity sha512-puCDz0CzydiSYOrnXpz/PKd69zRrribezjtE9yd4zvytoRc8+RY/KJPvtPFKZS3E3wP6neGyMe0vOTlHO5L3Pw==
+colorette@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.2.2.tgz#cbcc79d5e99caea2dbf10eb3a26fd8b3e6acfa94"
+  integrity sha512-MKGMzyfeuutC/ZJ1cba9NqcNpfeqMUcYmyF1ZFY6/Cn7CNSAKx6a+s48sqLqyAiZuaP2TcqMhoo+dlwFnVxT9w==
 
 esbuild@^0.9.3:
   version "0.9.7"
@@ -41,10 +45,10 @@ is-core-module@^2.1.0:
   dependencies:
     has "^1.0.3"
 
-nanoid@^3.1.20:
-  version "3.1.20"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.20.tgz#badc263c6b1dcf14b71efaa85f6ab4c1d6cfc788"
-  integrity sha512-a1cQNyczgKbLX9jwbS/+d7W8fX/RfgYR7lVWwWOGIPNgK2m0MWvrGF6/m4kk6U3QcFMnZf3RIhL0v2Jgh/0Uxw==
+nanoid@^3.1.23:
+  version "3.1.23"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.23.tgz#f744086ce7c2bc47ee0a8472574d5c78e4183a81"
+  integrity sha512-FiB0kzdP0FFVGDKlRLEQ1BgDzU87dy5NnzjeW9YZNt+/c3+q82EQDUwniSAUxp/F0gFNI1ZhKU1FqYsMuqZVnw==
 
 path-parse@^1.0.6:
   version "1.0.6"
@@ -52,13 +56,13 @@ path-parse@^1.0.6:
   integrity sha512-GSmOT2EbHrINBf9SR7CDELwlJ8AENk3Qn7OikK4nFYAu3Ote2+JYNVvkpAEQm3/TLNEJFD/xZJjzyxg3KBWOzw==
 
 postcss@^8.2.1:
-  version "8.2.4"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.2.4.tgz#20a98a39cf303d15129c2865a9ec37eda0031d04"
-  integrity sha512-kRFftRoExRVXZlwUuay9iC824qmXPcQQVzAjbCCgjpXnkdMCJYBu2gTwAaFBzv8ewND6O8xFb3aELmEkh9zTzg==
+  version "8.3.4"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.3.4.tgz#41ece1c43f2f7c74dc7d90144047ce052757b822"
+  integrity sha512-/tZY0PXExXXnNhKv3TOvZAOUYRyuqcCbBm2c17YMDK0PlVII3K7/LKdt3ScHL+hhouddjUWi+1sKDf9xXW+8YA==
   dependencies:
-    colorette "^1.2.1"
-    nanoid "^3.1.20"
-    source-map "^0.6.1"
+    colorette "^1.2.2"
+    nanoid "^3.1.23"
+    source-map-js "^0.6.2"
 
 querystring-number@^1.0.8:
   version "1.0.8"
@@ -80,17 +84,32 @@ rollup@^2.38.5:
   optionalDependencies:
     fsevents "~2.3.1"
 
-source-map@^0.6.1:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
-  integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
+source-map-js@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-0.6.2.tgz#0bb5de631b41cfbda6cfba8bd05a80efdfd2385e"
+  integrity sha512-/3GptzWzu0+0MBQFrDKzw/DvvMTUORvgY6k6jd/VS6iCR4RDTKWH6v6WPwQoUO8667uQEf9Oe38DxAYWY5F/Ug==
 
-vanilla-route@^0.6.5:
-  version "0.6.5"
-  resolved "https://registry.yarnpkg.com/vanilla-route/-/vanilla-route-0.6.5.tgz#ef8c8495da9837ce3e6611b7a23ef5a38478af9b"
-  integrity sha512-VsXvq/9/0qSgPBmUSIexWFuTbhJaSXdqgT7qQP9CXybe+yijGKnKFXeQMnXa1z06NUNsr2ibfiU75Wey8bWrgQ==
+vanilla-life@^0.1.5:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/vanilla-life/-/vanilla-life-0.1.6.tgz#f137232f1b44407110c398b8d15ff7cbca30f5df"
+  integrity sha512-vpzcZtGjhB1RfdAV6u+MthxS/4kRMuqDFqtOI2uoQlaKS2Iq9hSq462K4QMBnkh1kbMsgcaRVGhbrfkV8pV0AQ==
+
+vanilla-ob@^0.3.5:
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/vanilla-ob/-/vanilla-ob-0.3.5.tgz#a393b8f12b4e264fcc7d8e3f36a7f5eb676b522e"
+  integrity sha512-zt9pvNgCBp9UJBAl+FWCOTBXMX04HWi72s9pL07DXtYsXePqeBNiXkxBiwjp+wwaZgat/1EpeUmBY33TVJWDnA==
+
+vanilla-route@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/vanilla-route/-/vanilla-route-1.0.3.tgz#aece745b96633e2f972b2f498d2cc3c38bcc8f3b"
+  integrity sha512-5NwDdHI5GouBeeuLVzpIrUiavRb+BUvKgUNE7cKbURkYUAEkAr/m7ud9PjVX8LMQTUq8jwGVBBtNTUX3nKQrgw==
   dependencies:
     querystring-number "^1.0.8"
+
+vanilla-svg-tags@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/vanilla-svg-tags/-/vanilla-svg-tags-0.1.2.tgz#e18fd9ef628bb3fa7ac4119593ad492799899ad8"
+  integrity sha512-RiD+2zaLtHGE9XsakFFxo0vsQUXcDims/5bZvGzb2UXz/pRx7fa8VrCOxhmbrN+biYUazcpefzYwJ1eRB/TiYA==
 
 vite@^2.1.5:
   version "2.1.5"
