@@ -3,7 +3,7 @@ export function ICP(){
      <div>版权所有©2021 深圳格物链 All Rights Reserved</div>
      <div class="margin-left:10px :hover:color:blue color:#66a cursor:pointer" onclick={()=>{
        window.open("https://beian.miit.gov.cn")
-     }}>粤ICP备20045772号-1</div>
+     }}>粤ICP备20045772号</div>
    </div>
 }
 
