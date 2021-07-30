@@ -1,7 +1,5 @@
 import { modernNormalize } from "./modernNormalize";
 
-const isNative = /native=1/.test(location.search);
-
 let alphas = "";
 
 [
