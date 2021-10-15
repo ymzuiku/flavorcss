@@ -2,18 +2,27 @@
   "name": "flavorcss",
   "version": "0.6.11",
   "description": "full build css",
-  "keywords": ["ui", "css", "atmoic css"],
-  "main": "es/index.js",
+  "keywords": [
+    "ui",
+    "css",
+    "atmoic css"
+  ],
+  "main": "esm/index.js",
   "module": "es/index.js",
   "types": "lib/index.ts",
-  "exports":{"import":"./lib/index.ts"},
+  "exports": {
+    "import": "./esm/index.js",
+    "require": "./cjs/index.js"
+  },
   "license": "MIT",
   "private": false,
   "scripts": {
     "build-mini": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=es --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag --minify --splitting",
     "build-css": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" flavorcss-base/lib/index.ts --outdir=flavorcss-base/es --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag --minify --splitting",
     "cp-base": "cp -rf flavorcss-base/es/base.js es/base.js",
-    "build": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=es --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag  --splitting",
+    "build:esm": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=esm --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag  --splitting",
+    "build:cjs": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=cjs --bundle --format=cjs --jsx-factory=aoife --jsx-fragment=aoife.Frag",
+    "build": "npm run build:esm && npm run build:cjs",
     "lib": "yarn build-css && yarn build-mini && cp -rf es/index.js flavorcss-website/public/flavorcss.js && cp -rf flavorcss-base/es/index.js flavorcss-website/public/flavorcss-base.js"
   },
   "devDependencies": {

@@ -77,9 +77,11 @@ const _observer = () => {
   });
 };
 
-window.addEventListener("load", () => {
-  document.querySelectorAll("[flavor-css]").forEach(regComponents);
-  document.querySelectorAll("[class]").forEach(regElement);
+if (typeof window !== undefined) {
+  window.addEventListener("load", () => {
+    document.querySelectorAll("[flavor-css]").forEach(regComponents);
+    document.querySelectorAll("[class]").forEach(regElement);
 
-  _observer();
-});
+    _observer();
+  });
+}

@@ -1,5 +1,3 @@
-import { parser } from "./parser";
-
 const lastErrorMap = {
   "(": 1,
   ";": 1,
@@ -74,7 +72,7 @@ export const addStyle = ({
   // 常用标点符号转译
   const key = css.replace(
     /(\:|#|\*|!|,|\.|>|<|@|~|%|\||\$|\{|\}|\[|\]|\(|\)|\+|\*|\/)/g,
-    (v) => "\\" + v
+    (v) => "\\" + v,
   );
 
   if (/^(\w|\*)/.test(pesudo)) {
@@ -95,7 +93,8 @@ export const addStyle = ({
 
   if (mediaName) {
     const mediaEle = document.createElement("style");
-    mediaEle.textContent = `.media-${mediaName} .${key}${pesudo}{${name}:${value}}`;
+    mediaEle.textContent =
+      `.media-${mediaName} .${key}${pesudo}{${name}:${value}}`;
     mediaEle.setAttribute("flavor-css", "");
     document.head.append(mediaEle);
   }

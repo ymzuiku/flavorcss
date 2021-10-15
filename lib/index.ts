@@ -15,4 +15,6 @@ export const flavorcss = {
   observerSetting,
 };
 
-(window as any).flavorcss = flavorcss;
+if (typeof window !== undefined) {
+  (window as any).flavorcss = flavorcss;
+}
