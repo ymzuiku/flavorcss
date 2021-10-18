@@ -1,119 +1,101 @@
-import { compList } from "./addComponents";
-import { os } from "./os";
+import { addStyle } from "./addStyle";
+import { atomCache, classCache } from "./caches";
+import { medias } from "./medias";
 
-interface FixClassName {
-  css: string;
-  compName: string;
-  comp: ((params: string) => string)[];
-  pesudo: string;
-  pesudoName: string;
-  media: string;
-  mediaName: string;
-  name: string;
-  query: string;
-  value: string;
-}
-
-export const mediaList = {
-  all: "",
-  print: "@media print",
-  speech: "@media speech",
-  fine: "@media (pointer: fine)",
-  dark: "@media (prefers-color-scheme: dark)",
-  xs: "@media screen and (min-width: 480px)",
-  sm: "@media screen and (min-width: 640px)",
-  md: "@media screen and (min-width: 768px)",
-  lg: "@media screen and (min-width: 1024px)",
-  xl: "@media screen and (min-width: 1280px)",
-  xxl: "@media screen and (min-width: 1536px)",
-  "in-xs": "@media screen (max-width:479px) and (min-width: 0px)",
-  "in-sm": "@media screen (max-width:767px) and (min-width: 479px)",
-  "in-md": "@media screen (max-width:1023px) and (min-width: 767px)",
-  "in-lg": "@media screen (max-width:1279px) and (min-width: 1023px)",
-  "in-xl": "@media screen (max-width:1535px) and (min-width: 1279px)",
-  "in-xxl": "@media screen (max-width:9999px) and (min-width: 1535px)",
-} as any;
-
-function setCompAndName(fix: FixClassName, val: string) {
-  fix.comp = compList[val];
-  fix.compName = val;
-}
-
-function setMedia(fix: FixClassName, val: string) {
-  if (mediaList[val]) {
-    fix.media = mediaList[val];
-    fix.mediaName = val;
-  } else if ((os as any)[val] !== void 0) {
-    fix.media = `@media screen and (min-width: ${
-      (os as any)[val] ? "0px" : "9999px"
-    })`;
-    fix.mediaName = val;
-  }
-}
-
-function setValue(fix: FixClassName, value: string) {
-  if (!value) {
+export function parseClass(className: string) {
+  if (classCache[className]) {
     return;
   }
-  // 若是组件的参数，将逗号替换成^^^
-  if ((fix as any).comp) {
-    value = value.replace(/\((.*?)\)/g, (v) => {
-      return v.replace(/\,/g, "^^^");
-    });
-  }
-  fix.value = value;
+  className[className] = true;
+  const list = className.split(" ");
+  list.forEach((css) => {
+    const cssText = parseAtom(css);
+    if (cssText) {
+      addStyle(cssText);
+    }
+  });
 }
 
-export function parser(css: string, baseCss?: string): FixClassName {
-  const _key = "_$$_" + css;
+function changeSymbol(css: string) {
+  // 常用标点符号转译
+  return css.replace(
+    /(\:|#|\*|!|,|\.|>|<|@|~|%|\||\$|\{|\}|\[|\]|\(|\)|\+|\*|\/)/g,
+    (v) => "\\" + v,
+  );
+}
 
-  const out: FixClassName = {
-    css: baseCss || css,
-    compName: "",
-    comp: void 0 as any,
-    pesudo: "",
-    pesudoName: "",
-    media: "",
-    mediaName: "",
-    name: "",
-    value: "",
-    query: "",
-  };
+function changeVariable(val: string) {
+  return val.replace(/((?!\-)-\-|\+|\*|\/)/, (v) => ` ${v} `)
+    .replace(
+      /(--[a-zA-Z0-9]*)/g,
+      (v) => `var(${v})`,
+    ).split("|").join(
+      " ",
+    );
+  return val.replace(/--/g, "~~").replace(/(\-|\+|\*|\/)/, (v) => ` ${v} `)
+    .replace(/~~/g, "--").replace(
+      /(--[a-zA-Z0-9]*)/g,
+      (v) => `var(${v})`,
+    ).split("|").join(
+      " ",
+    );
+  // return val.split("|").map((v) => {
+  //   if (/^--/.test(v)) {
+  //     return `var(${v})`;
+  //   }
+  //   return v;
+  // }).join(" ");
+}
 
-  // 双斜杠可以注释 component
-  if (!css || (css[0] === "/" && css[1] === "/")) {
-    return out;
+export function parseAtom(css: string): string {
+  if (atomCache[css]) {
+    return "";
   }
-
+  atomCache[css] = true;
   const list = css.split(":");
-
-  // 最后一位为媒体查询
-  setMedia(out, list[0]);
-  if (out.mediaName) {
-    list.shift();
-  }
-
   const len = list.length;
-  let last = list[len - 1];
-  let secLast = len >= 2 ? list[len - 2] : "";
-  // 兼容无参数的情况
-  if (len === 1) {
-    secLast = last;
-    last = "";
+  if (len === 2) {
+    return `.${changeSymbol(css)} { ${list[0]}: ${changeVariable(list[1])} }`;
   }
-  const pesudoList = [...list];
-  if (secLast) {
-    out.name = secLast;
-    setCompAndName(out, secLast);
-    setValue(out, last);
-    pesudoList.pop();
-    pesudoList.pop();
-  } else {
-    out.name = last;
-    pesudoList.pop();
-  }
-  out.pesudo = pesudoList.join(":");
-  out.pesudoName = out.pesudo;
 
-  return out;
+  if (len === 3) {
+    const media = medias[list[0]];
+    if (media) {
+      return `${media} { .${changeSymbol(css)} { ${list[1]}: ${
+        changeVariable(list[2])
+      } } }`;
+    }
+    return `.${changeSymbol(css)}:${list[0]} { ${list[1]}: ${
+      changeVariable(list[2])
+    } }`;
+  }
+
+  if (len === 4) {
+    const media = medias[list[0]];
+    if (media) {
+      const media2 = medias[list[1]];
+      if (media2) {
+        return `${media} { ${media2} { .${changeSymbol(css)} { ${list[2]}: ${
+          changeVariable(list[3])
+        } } } }`;
+      }
+      return `${media} { .${changeSymbol(css)}:${list[1]} { ${list[2]}: ${
+        changeVariable(list[3])
+      } } }`;
+    }
+  }
+
+  if (len === 5) {
+    const media = medias[list[0]];
+    if (media) {
+      const media2 = medias[list[1]];
+      if (media2) {
+        return `${media} { ${media2} { .${changeSymbol(css)}:${list[2]} { ${
+          list[3]
+        }: ${changeVariable(list[4])} } } }`;
+      }
+    }
+  }
+
+  return "";
 }

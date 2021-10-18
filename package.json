@@ -17,6 +17,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
+    "test": "jest --watch",
     "build-mini": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=es --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag --minify --splitting",
     "build-css": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" flavorcss-base/lib/index.ts --outdir=flavorcss-base/es --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag --minify --splitting",
     "cp-base": "cp -rf flavorcss-base/es/base.js es/base.js",
@@ -26,7 +27,11 @@
     "lib": "yarn build-css && yarn build-mini && cp -rf es/index.js flavorcss-website/public/flavorcss.js && cp -rf flavorcss-base/es/index.js flavorcss-website/public/flavorcss-base.js"
   },
   "devDependencies": {
+    "@types/jest": "^27.0.2",
     "fs-extra": "^9.0.0",
+    "esbuild": "^0.13.1",
+    "esbuild-jest": "^0.5.0",
+    "jest": "^27.2.1",
     "typescript": "^4.1.3"
   },
   "repository": {
