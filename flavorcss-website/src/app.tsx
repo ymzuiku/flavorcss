@@ -26,20 +26,28 @@ const details = [
 
 export function App() {
   return (
-    <div class="max-w:100vw overflow:hidden md:max-w:1100px margin:0|auto">
+    <div class="max-w:100vw flow:hidden md:max-w:1100px margin:0|auto">
       <Header />
-      <div class="mt:40px sm:mt:100px p:--lg lg:p:--xl grid-gap:--xxl d:grid place-content:center">
+      <div
+        class="mt:40px sm:mt:100px p:--lg lg:p:--xl gap:--xxl d:grid pc:center"
+      >
         <div class="max-w:900px">
-          <h1 class="lg:text-align:center fs:46px lg:fs:56px xl:fs:60px font-weight:800 line-height:1">
+          <h1
+            class="lg:ta:center font:46px lg:font:56px xl:font:60px weight:800 line-height:1"
+          >
             Don't need to memorize key words'{" "}
-            <span class="color:hsl(150,50%,50%)">Runtime</span> atomic class CSS
-            library
+            <span class="color:hsl(150,50%,50%)">Runtime</span>{" "}
+            atomic class CSS library
           </h1>
-          <p class="lg:text-align:center mt:--xl fs:--h3 fw:300 color:hsl(--h,20%,40%)">
+          <p
+            class="lg:text-align:center mt:--xl font:--h3 weight:300 color:hsl(--h,20%,40%)"
+          >
             If you like tailwind css, you will fall in love with flavor css.
           </p>
         </div>
-        <div class="margin:0|auto rows:1fr|1fr sm:rows:1fr sm:cols:1fr|1fr m:--md mt:40px max-w:800px grid-gap:--lg place-self:center">
+        <div
+          class="margin:0|auto rows:1fr|1fr sm:rows:1fr sm:cols:1fr|1fr m:--md mt:40px max-w:800px gap:--lg ps:center"
+        >
           <Card
             h={200}
             title="Read the docs"
@@ -57,18 +65,24 @@ export function App() {
           />
         </div>
       </div>
-      {/* <div class="mt:50px lg:max-w:1100px margin:0|auto">
-        <p class="d:none lg:d:block lg:text-align:center mt:--xl fs:--h3 fw:300 color:hsl(--h,20%,40%)">
+      {
+        /* <div class="mt:50px lg:max-w:1100px margin:0|auto">
+        <p class="d:none lg:d:block lg:text-align:center mt:--xl font:--h3 weight:300 color:hsl(--h,20%,40%)">
           Change Right codes to learn Flavor CSS:
         </p>
-      </div> */}
-      <div class="margin:100px|20px">
-        <section class="xxl:text-align:center:* max-width:1100px margin:0|auto display:grid md:place-content:center max-width:1000px:*">
+      </div> */
+      }
+      <div class="m:100px|20px">
+        <section
+          class="xxl:ta:center:* max-width:1100px margin:0|auto d:grid md:pc:center *:max-w:1000px"
+        >
           <h3 class="color:hsl(220,50%,35%) font-weight:700">FEATURES</h3>
           <h2 class="color:hsl(220,60%,10%) font-size:36px font-weight:800 ">
             Solve the following problems for the current atomic class
           </h2>
-          <h4 class="color:hsl(200,40%,30%) font-size:22px font-weight:300 margin:20px|auto">
+          <h4
+            class="color:hsl(200,40%,30%) font:22px weight:300 m:20px|auto"
+          >
             The scheme of flavourcss avoids the problem of how to determine the
             boundary of the number of atomic classes. Flavourcss compiles atomic
             class at runtime, which directly solves the volume and engineering
@@ -83,7 +97,9 @@ export function App() {
         >
           {details.map((item) => {
             return (
-              <setcion class="max-width:400px display:grid grid-template-columns:50px|auto grid-gap:20px">
+              <setcion
+                class="max-width:400px display:grid grid-template-columns:50px|auto grid-gap:20px"
+              >
                 <i class="color:hsl(125,50%,50%)">
                   <svg
                     t="1612493665093"
@@ -99,14 +115,19 @@ export function App() {
                       d="M715.360865 384.064577L488.715532 610.70991a27.232865 27.232865 0 0 1-38.524541 0l-121.25636-121.25636a37.251459 37.251459 0 0 0-52.694487 0 37.251459 37.251459 0 0 0 0 52.694486l133.673514 133.673514a84.207856 84.207856 0 0 0 119.079207 0l239.062486-239.062487a37.251459 37.251459 0 0 0 0-52.694486 37.251459 37.251459 0 0 0-52.694486 0z"
                       p-id="2404"
                       fill="currentColor"
-                    ></path>
+                    >
+                    </path>
                   </svg>
                 </i>
                 <div class="diplay:grid grid-template-rows:50px|auto">
-                  <h3 class="font-weight:500 font-size:20px color:hsl(220,50%,20%)">
+                  <h3
+                    class="font-weight:500 font-size:20px color:hsl(220,50%,20%)"
+                  >
                     {item.title}
                   </h3>
-                  <h4 class="font-weight:300 font-size:16px color:hsl(200,50%,35%)">
+                  <h4
+                    class="font-weight:300 font-size:16px color:hsl(200,50%,35%)"
+                  >
                     {item.info}
                   </h4>
                 </div>

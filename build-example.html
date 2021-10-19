@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @media (prefers-color-scheme: dark) {
+        .dark\:hover\:background\:\#f00:hover {
+          background: #f00;
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        @media screen and (min-width: 640px) {
+          .dark\:sm\:hover\:background\:\#f00:hover {
+            background: #f00;
+          }
+        }
+      }
+
+      .hover\:background\:\#00f:hover {
+        background: #00f;
+      }
+
+      :root {
+        --red-500: 200, 50, 50;
+        --m2: #f66;
+        --red: #f00;
+      }
+      .rgb {
+        font-size: 50px;
+        background: rgba(var(--red-500), 0.3);
+      }
+
+      .background\:\#00f {
+        background: #00f;
+      }
+      .background\:--red {
+        background: var(--red);
+      }
+
+      .border\:2px\|solid\|\#888 {
+        border: 2px solid var(--red);
+      }
+      .div\>ul\:hover\:background\:\#f00 div > ul:hover {
+        background: #f00;
+      }
+
+      @media screen and (min-width: 640px) {
+        .div\>ul\:sm\:background\:\#f00 div > ul {
+          background: #f00;
+        }
+      }
+
+      @media screen and (min-width: 640px) {
+        .div\>ul\:sm\:hover\:background\:--m2 div > ul:hover {
+          background: var(--m2);
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        @media screen and (min-width: 640px) {
+          .div\>ul\:dark\:sm\:hover\:background\:--m2 div > ul:hover {
+            background: var(--m2);
+          }
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="rgb">rgba()</div>
+    <div class="background:#00f">background:#00f</div>
+    <div class="background:--red">background:--red</div>
+    <div class="hover:background:#00f">hover:background:#00f</div>
+    <div class="dark:hover:background:#f00">dark:hover:background:#f00</div>
+    <div class="dark:sm:hover:background:#f00">dark:hover:background:#f00</div>
+    <div class="border:2px|solid|--red">border:2px|solid|</div>
+    <div class="div>ul:hover:background:#f00">
+      <ul>
+        div>ul:hover:background:#f00
+      </ul>
+      <div>
+        div
+        <ul>
+          div-ul
+        </ul>
+      </div>
+    </div>
+    <div class="div>ul:sm:background:#f00">
+      <ul>
+        div>ul:sm:background:#f00
+      </ul>
+      <div>
+        div
+        <ul>
+          div-ul
+        </ul>
+      </div>
+    </div>
+    <div class="div>ul:sm:hover:background:--m2">
+      <ul>
+        div>ul:sm:hover:background:--m2
+      </ul>
+      <div>
+        div
+        <ul>
+          div-ul
+        </ul>
+      </div>
+    </div>
+    <div class="div>ul:dark:sm:hover:background:--m2">
+      <ul>
+        div>ul:dark:sm:hover:background:--m2
+      </ul>
+      <div>
+        div
+        <ul>
+          div-ul
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

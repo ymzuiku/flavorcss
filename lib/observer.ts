@@ -1,3 +1,5 @@
+import { addStyle } from "./addStyle";
+import { modernNormalize } from "./modernNormalize";
 import { parseClass } from "./parser";
 
 const _observer = () => {
@@ -14,17 +16,17 @@ const _observer = () => {
             return;
           }
         }
-        if (ele.className && parseClass[ele.className]) {
-          parseClass[ele.className];
+        if (ele.className) {
+          parseClass(ele.className);
         }
 
         if (mutation.addedNodes.length) {
           ele.querySelectorAll("[class]").forEach((e) =>
-            parseClass[e.className]
+            parseClass(e.className)
           );
         }
       } else if (mutation.type === "attributes" && mutation.target.className) {
-        parseClass[mutation.target.className];
+        parseClass(mutation.target.className);
       }
     }
   };
@@ -42,7 +44,8 @@ const _observer = () => {
 };
 
 export function obserer() {
-  if (typeof window !== undefined) {
+  if (typeof window !== "undefined") {
+    addStyle(modernNormalize);
     window.addEventListener("load", () => {
       document.querySelectorAll("[class]").forEach((e) =>
         parseClass(e.className)

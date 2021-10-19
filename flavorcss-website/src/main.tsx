@@ -1,3 +1,4 @@
+import "flavorcss";
 import "aoife";
 import { App } from "./app";
 import { Route } from "vanilla-route";
@@ -10,6 +11,6 @@ document.body.append(
   Route({ url: "/example", render: () => import("./example") }),
   ICP(),
 );
-setTimeout(()=>{
+setTimeout(() => {
   document.body.hidden = false;
-}, 100)
+}, 100);

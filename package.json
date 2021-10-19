@@ -18,13 +18,9 @@
   "private": false,
   "scripts": {
     "test": "jest --watch",
-    "build-mini": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=es --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag --minify --splitting",
-    "build-css": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" flavorcss-base/lib/index.ts --outdir=flavorcss-base/es --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag --minify --splitting",
-    "cp-base": "cp -rf flavorcss-base/es/base.js es/base.js",
-    "build:esm": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=esm --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag  --splitting",
-    "build:cjs": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=cjs --bundle --format=cjs --jsx-factory=aoife --jsx-fragment=aoife.Frag",
-    "build": "npm run build:esm && npm run build:cjs",
-    "lib": "yarn build-css && yarn build-mini && cp -rf es/index.js flavorcss-website/public/flavorcss.js && cp -rf flavorcss-base/es/index.js flavorcss-website/public/flavorcss-base.js"
+    "build:esm": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=esm --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag --splitting --minify",
+    "build:cjs": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=cjs --bundle --format=cjs --jsx-factory=aoife --jsx-fragment=aoife.Frag --minify",
+    "build": "npm run build:esm && npm run build:cjs"
   },
   "devDependencies": {
     "@types/jest": "^27.0.2",
