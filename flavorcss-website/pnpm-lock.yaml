@@ -2,11 +2,15 @@ lockfileVersion: 5.3
 
 specifiers:
   aoife: ^2.0.4
+  nano-indexed: ^1.0.6
+  nano-storage: ^1.1.2
   vanilla-route: ^1.0.3
   vite: ^2.1.5
 
 dependencies:
   aoife: 2.0.4
+  nano-indexed: 1.0.6
+  nano-storage: 1.1.2
   vanilla-route: 1.0.3
 
 devDependencies:
@@ -55,6 +59,14 @@ packages:
     dependencies:
       has: 1.0.3
     dev: true
+
+  /nano-indexed/1.0.6:
+    resolution: {integrity: sha512-rvBlFMHux13j/Wwc5JQggYiy5kSVgFwclMoEpZMATENBA13YMTD2wSQUvH4vkYi4TEi3e1lfElQDyhUya91TDw==}
+    dev: false
+
+  /nano-storage/1.1.2:
+    resolution: {integrity: sha512-6H48h/QP4Mt9XvXQJE60gOzsb7S6YUy7DJr3ZbSnV/mgLGKj0FFrnB+lUFKNqBW8gg0A5q3HELxUX3wD/CRceQ==}
+    dev: false
 
   /nanoid/3.1.22:
     resolution: {integrity: sha512-/2ZUaJX2ANuLtTvqTlgqBQNJoQO398KyJgZloL0PZkC0dpysjncRUPsFe3DUPzz/y3h+u7C46np8RMuvF3jsSQ==}
