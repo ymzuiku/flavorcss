@@ -1,9 +1,8 @@
-// import { obserer } from "./observer";
-import { proxyClass } from "./proxyClass";
+import { obserer } from "./observer";
+import { addStyle } from "./addStyle";
+import { modernNormalize } from "./modernNormalize";
 
-// export {  obserer };
-
-
-proxyClass();
-
-// obserer()
+if (typeof window !== "undefined") {
+  addStyle(modernNormalize);
+  obserer();
+}

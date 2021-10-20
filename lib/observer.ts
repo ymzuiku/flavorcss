@@ -1,4 +1,4 @@
-import { parseClass } from "./parser";
+import { parseClass } from "./parseClass";
 
 const _observer = () => {
   // 页面内容变更监听 recordSetAttr
@@ -19,9 +19,7 @@ const _observer = () => {
         }
 
         if (mutation.addedNodes.length) {
-          ele.querySelectorAll("[class]").forEach((e) =>
-            parseClass(e.className)
-          );
+          ele.querySelectorAll("[class]").forEach((e) => parseClass(e.className));
         }
       } else if (mutation.type === "attributes" && mutation.target.className) {
         parseClass(mutation.target.className);
@@ -41,14 +39,35 @@ const _observer = () => {
   });
 };
 
-export function obserer() {
-  if (typeof window !== "undefined") {
-    window.addEventListener("load", () => {
-      document.querySelectorAll("[class]").forEach((e) =>
-        parseClass(e.className)
-      );
+// 仅使用 MutationObserver
+// const bindAttribute = (Target: HTMLElement | SVGSVGElement) => {
+//   const setAttribute = (Target as any).prototype.setAttribute;
+//   (Target as any).prototype.setAttribute = function (name: any, value: any) {
+//     if (name === "class") {
+//       if ((this as any).__flavorIgnore) {
+//         //
+//       } else if (this.closest("[flavor-ignore]")) {
+//         (this as any).__flavorIgnore = true;
+//       } else {
+//         parseClass(value);
+//       }
+//     }
+//     setAttribute.call(this, name, value);
+//   };
 
-      _observer();
-    });
-  }
+//   Object.defineProperty((Target as any).prototype, "className", {
+//     set: function (v: string) {
+//       this.setAttribute("class", v);
+//     },
+//   });
+// };
+
+export function obserer() {
+  // bindAttribute(HTMLElement as any);
+  // bindAttribute(SVGSVGElement as any);
+
+  window.addEventListener("load", () => {
+    document.querySelectorAll("[class]").forEach((e) => parseClass(e.className));
+    _observer();
+  });
 }

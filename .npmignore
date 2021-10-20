@@ -1,6 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-flavorcss-base
+build-example.html
 flavorcss-website
 pages/*
 static/*
@@ -9,7 +9,9 @@ out/*
 rollup.config.js
 rollup.tsconfig.json
 deploy.js
+jest.config.js
 tslint.json
+pnpm-lock.yaml
 yarn.lock
 components
 hooks

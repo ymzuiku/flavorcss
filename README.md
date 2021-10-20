@@ -9,10 +9,7 @@ Runtime Build Atomic Class
 Use unpkg:
 
 ```html
-<script
-  type="module"
-  src="https://unpkg.com/flavorcss@0.6.11/es/index.js"
-></script>
+<script type="module" src="https://unpkg.com/flavorcss@0.6.11/es/index.js"></script>
 ```
 
 Use npm:
@@ -32,10 +29,7 @@ import "flavorcss";
 We design base reboot css and base flavorcss group, you can add:
 
 ```html
-<script
-  type="module"
-  src="https://unpkg.com/flavorcss-base@0.6.9/es/base.js"
-></script>
+<script type="module" src="https://unpkg.com/flavorcss-base@0.6.9/es/base.js"></script>
 ```
 
 Or use npm:
@@ -43,5 +37,3 @@ Or use npm:
 ```js
 import "flavorcss-base";
 ```
-
-![https://flavor.writeflowy.com](./document/public/imgs/website.png)

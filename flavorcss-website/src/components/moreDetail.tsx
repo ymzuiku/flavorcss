@@ -1,8 +1,6 @@
 export const medias = (
   <div class="padding:20px">
-    <p class="font-weight:500 font-size:30px padding:20px|0px">
-      All medias list:
-    </p>
+    <p class="font-weight:500 font-size:30px padding:20px|0px">All medias list:</p>
     <table class="w:100% *:border:1px|solid|hsl(0,0%,80%) *:padding:8px">
       <tr class="background:hsl(0,0%,95%) font-size:17px font-weight:500">
         <td>Key</td>
@@ -23,6 +21,42 @@ export const medias = (
       <tr>
         <td>dark</td>
         <td>@media (prefers-color-scheme: dark)</td>
+      </tr>
+      <tr>
+        <td>light</td>
+        <td>@media (prefers-color-scheme: light)</td>
+      </tr>
+      <tr>
+        <td>android</td>
+        <td>@media screen and (min-width: (android ? "0px" : "9999px")</td>
+      </tr>
+      <tr>
+        <td>ios</td>
+        <td>@media screen and (min-width: (ios ? "0px" : "9999px")</td>
+      </tr>
+      <tr>
+        <td>desktop</td>
+        <td>@media screen and (min-width: (desktop ? "0px" : "9999px")</td>
+      </tr>
+      <tr>
+        <td>phone</td>
+        <td>@media screen and (min-width: (phone ? "0px" : "9999px")</td>
+      </tr>
+      <tr>
+        <td>safari</td>
+        <td>@media screen and (min-width: (safari ? "0px" : "9999px")</td>
+      </tr>
+      <tr>
+        <td>chrome</td>
+        <td>@media screen and (min-width: (chrome ? "0px" : "9999px")</td>
+      </tr>
+      <tr>
+        <td>firefox</td>
+        <td>@media screen and (min-width: (firefox ? "0px" : "9999px")</td>
+      </tr>
+      <tr>
+        <td>wechat</td>
+        <td>@media screen and (min-width: (wechat ? "0px" : "9999px")</td>
       </tr>
       <tr>
         <td>xs</td>
@@ -71,38 +105,6 @@ export const medias = (
       <tr>
         <td>in-xxl</td>
         <td>@media screen (max-width:9999px) and (min-width: 1535px)</td>
-      </tr>
-      <tr>
-        <td>android</td>
-        <td>@media screen and (min-width: (android ? "0px" : "9999px")</td>
-      </tr>
-      <tr>
-        <td>ios</td>
-        <td>@media screen and (min-width: (ios ? "0px" : "9999px")</td>
-      </tr>
-      <tr>
-        <td>desktop</td>
-        <td>@media screen and (min-width: (desktop ? "0px" : "9999px")</td>
-      </tr>
-      <tr>
-        <td>phone</td>
-        <td>@media screen and (min-width: (phone ? "0px" : "9999px")</td>
-      </tr>
-      <tr>
-        <td>safari</td>
-        <td>@media screen and (min-width: (safari ? "0px" : "9999px")</td>
-      </tr>
-      <tr>
-        <td>chrome</td>
-        <td>@media screen and (min-width: (chrome ? "0px" : "9999px")</td>
-      </tr>
-      <tr>
-        <td>firefox</td>
-        <td>@media screen and (min-width: (firefox ? "0px" : "9999px")</td>
-      </tr>
-      <tr>
-        <td>wechat</td>
-        <td>@media screen and (min-width: (wechat ? "0px" : "9999px")</td>
       </tr>
     </table>
   </div>

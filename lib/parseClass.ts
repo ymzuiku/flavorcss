@@ -7,7 +7,12 @@ export function parseClass(name: string) {
     return;
   }
   classCache[name] = true;
-  const list = name.split(" ");
+
+  const list = name
+    .replace("\n", " ")
+    .split(" ")
+    .map((v) => v.trim())
+    .filter(Boolean);
   list.forEach((css) => {
     if (atomCache[css]) {
       return;

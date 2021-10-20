@@ -1,6 +1,6 @@
 {
   "name": "flavorcss",
-  "version": "0.6.11",
+  "version": "0.7.0",
   "description": "full build css",
   "keywords": [
     "ui",
@@ -12,8 +12,7 @@
   "types": "lib/index.ts",
   "exports": {
     "import": "./esm/index.js",
-    "require": "./cjs/index.js",
-    "base.css": "./base.css"
+    "require": "./cjs/index.js"
   },
   "license": "MIT",
   "private": false,
@@ -24,12 +23,22 @@
     "build": "npm run build:esm && npm run build:cjs"
   },
   "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
     "@types/jest": "^27.0.2",
-    "fs-extra": "^9.0.0",
     "esbuild": "^0.13.1",
     "esbuild-jest": "^0.5.0",
+    "fs-extra": "^9.1.0",
     "jest": "^27.2.1",
     "typescript": "^4.1.3"
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "tabWidth": 2,
+    "semi": true,
+    "printWidth": 120,
+    "singleQuote": false,
+    "jsxBracketSameLine": true,
+    "useTabs": false
   },
   "repository": {
     "type": "git",

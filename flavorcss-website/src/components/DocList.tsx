@@ -7,8 +7,8 @@ const list = [
   "doc-css-selector",
   "doc-pseudo",
   "doc-media",
-  "doc-custom",
-  "doc-place-media",
+  // "doc-custom",
+  // "doc-place-media",
   "doc-ignore",
 ];
 

@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
     "types": [],
     "allowJs": false,
     "skipLibCheck": false,
@@ -18,5 +22,9 @@
     "jsxFactory": "aoife",
     "jsxFragmentFactory": "aoife.Frag"
   },
-  "include": ["src", "lib"]
+  "include": [
+    "src",
+    "lib",
+    "../lib/modernNormalize.ts"
+  ]
 }

@@ -4,7 +4,11 @@
 <p class="md-info">Add media before background:</p>
 <p class="md-code">sm:background:hsl(200,50%,45%)</p>
 <p class="md-info">Use media and pseudo, only works in Desktop and hover:</p>
-<p class="md-code">desktop::hover:background:hsl(125,50%,45%)</p>
+<p class="md-code">desktop:hover:background:hsl(125,50%,45%)</p>
+<p class="md-info">Use System Dark theme:</p>
+<p class="md-code">dark:background:hsl(125,50%,45%)</p>
+<p class="md-info">Use CSS selector and Media and Pseudo classes:</p>
+<p class="md-code">>div:sm:hover:background:hsl(125,50%,45%)</p>
 <div class="mb:30px"></div>
 <!-- edit-code -->
 <div
@@ -12,6 +16,20 @@
 >
   Try Resize Browser window
 </div>
+<div
+  class="background:hsl(125,50%,50%) dark:background:hsl(220,50%,50%) color:#fff width:200px padding:20px margin:20px border-radius:10px"
+>
+  Try Change System to 'Dark' or 'Light'
+</div>
 <div class="cursor:pointer lg::hover:font-size:20px padding:20px margin:20px">
   Media and pesudo class
 </div>
+
+<div class=">div:sm:hover:background:hsl(125,50%,45%) padding:20px margin:20px">
+  <div>Use CSS selector and Media and Pseudo classes</div>
+  <p>other</p>
+</div>
+
+
+
+

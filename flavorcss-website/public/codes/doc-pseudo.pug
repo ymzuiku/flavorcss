@@ -3,26 +3,27 @@
 </h1>
 <p class="md-info">Your can use all Pseudo class:</p>
 <p class="md-code">
-  :hover:background:hsl(200,50%,45%)
+  hover:background:hsl(200,50%,45%)
 </p>
 <p class="md-code">
-  ::before:content:'Hello'
-</p>
-<p class="md-code">
-  :not(.red):background:#00f
+  before:content:'Hello'
 </p>
 <p class="md-info">Your can use CSS selector + Pseudo class:</p>
 <p class="md-code">
   div>ul:hover:background:#00f
 </p>
+<p class="md-info">Pseudo-classes with parameters are not supported:</p>
+<p class="md-code">
+  not(.dog):background:#00f  //error
+</p>
 <div class="mb:30px"></div>
 <!-- edit-code -->
 <button class="
-    sm::hover:box-shadow:0px|8px|0px|hsla(200,50%,20%,0.15)
-    sm::hover:background:hsl(200,50%,45%)
-    :active:background:hsl(210,50%,40%)
-    :active:transform:translateY(2px)
-    :active:box-shadow:0px|2px|0px|hsla(200,50%,20%,0.15)
+    sm:hover:box-shadow:0px|8px|0px|hsla(200,50%,20%,0.15)
+    sm:hover:background:hsl(200,50%,45%)
+    active:background:hsl(210,50%,40%)
+    active:transform:translateY(2px)
+    active:box-shadow:0px|2px|0px|hsla(200,50%,20%,0.15)
     background:hsl(200,50%,50%)
     color:#fff
     padding:8px|16px
