@@ -15,7 +15,7 @@ const list = [
 export const DocList = async () => {
   const pList = [] as Promise<string>[];
   list.forEach((v) => {
-    pList.push(fetch(`/codes/${v}.pug`).then((v) => v.text()));
+    pList.push(fetch(`/codes/${v}.pug?v=0.7.0`).then((v) => v.text()));
   });
   const datas = await Promise.all(pList);
 
