@@ -15,16 +15,6 @@ it("background:#f00", () => {
   expect(css.trim()).toEqual(`.background\\:\\#f00 { background: #f00; }`);
 });
 
-it("bg:rgba(--red-500,0.1)", () => {
-  const css = parser("bg:rgba(--red-500,0.1)");
-  expect(css.trim()).toEqual(`.bg\\:rgba\\(--red-500\\,0\\.1\\) { background: rgba(var(--red-500),0.1); }`);
-});
-
-it("bg:#f00", () => {
-  const css = parser("bg:#f00");
-  expect(css.trim()).toEqual(`.bg\\:\\#f00 { background: #f00; }`);
-});
-
 it("border:2px|solid|#888", () => {
   const css = parser("border:2px|solid|#888");
   expect(css.trim()).toEqual(`.border\\:2px\\|solid\\|\\#888 { border: 2px solid #888; }`);
