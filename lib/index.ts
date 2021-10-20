@@ -1,6 +1,9 @@
-import { obserer } from "./observer";
-import { alias } from "./caches";
+// import { obserer } from "./observer";
+import { proxyClass } from "./proxyClass";
 
-export { alias, obserer };
+// export {  obserer };
 
-obserer();
+
+proxyClass();
+
+// obserer()

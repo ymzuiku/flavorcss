@@ -12,7 +12,8 @@
   "types": "lib/index.ts",
   "exports": {
     "import": "./esm/index.js",
-    "require": "./cjs/index.js"
+    "require": "./cjs/index.js",
+    "base.css": "./base.css"
   },
   "license": "MIT",
   "private": false,

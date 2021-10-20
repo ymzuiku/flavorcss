@@ -5,22 +5,22 @@ export const Header = () => {
   const isExample = /example/.test(window.location.pathname);
   const isHome = !isDoc && !isExample;
   return (
-    <div class="w:1px h:--bar-height">
+    <div class="width:1px height:--bar-height">
       <div
-        class="pos:fixed w:100% bg:--white z:9999 top:0px left:0px shadow:0px|1px|4px|hsla(0,0%,0%,0.05) h:--bar-height"
+        class="position:fixed width:100% background:--white z-index:9999 top:0px left:0px box-shadow:0px|1px|4px|hsla(0,0%,0%,0.05) height:--bar-height sm:padding:0|20px"
       >
         <div
-          class="h:100% m:0|auto max-w:1300px d:grid jc:start ai:center p:0px|--md cols:repeat(1,auto)|1fr sm:cols:repeat(4,auto)|1fr self:auto,center:>label grid-gap:20px place-centent:center"
+          class="height:100% margin:0|auto max-width:1300px display:flex justify-content:start align-items:center padding:0px|--md place-content:center2 >h2:margin-left:20px"
         >
           <span
-            class="cursor:pointer mono fw:900 fs:24px text-gradient:120deg,hsl(200,50%,50%),hsl(330,50%,20%) line-height:2"
+            class="cursor:pointer font-family:--mono font-weight:900 font-size:24px -webkit-background-clip:text  background-image:linear-gradient(120deg,hsl(200,50%,50%),hsl(330,50%,20%)) color:rgba(0,0,0,0) line-height:2"
             onclick={() => Route.push("/")}
           >
             flavorcss
           </span>
           <h2
             class={[
-              "cursor:pointer d:none sm:d:grid content:center,center w:60px",
+              "cursor:pointer display:none sm:display:grid place-content:center width:60px",
               isHome ? "fw:800" : "",
             ].join(" ")}
             onclick={() => Route.push("/")}
@@ -29,7 +29,7 @@ export const Header = () => {
           </h2>
           <h2
             class={[
-              "cursor:pointer d:none sm:d:grid content:center,center width:80px",
+              "cursor:pointer display:none sm:display:grid place-content:center width:80px",
               isDoc ? "fw:800" : "",
             ].join(" ")}
             onclick={() => Route.push("/doc")}
@@ -38,15 +38,16 @@ export const Header = () => {
           </h2>
           <h2
             class={[
-              "cursor:pointer d:none sm:d:grid jc:center ai:center width:80px",
+              "cursor:pointer display:none sm:display:grid place-content:center width:80px",
               isExample ? "fw:800" : "",
             ].join(" ")}
             onclick={() => Route.push("/example")}
           >
             Example
           </h2>
+          <div class="flex:1"></div>
           <div
-            class="jc:end ai:center cursor:pointer radius:6px d:grid pc:center :hover:bg:hsl(--h,55%,40%) bg:hsl(--h,55%,45%) p:8px color:--white :hover:box-shadow:0px|6px|10px|hsla(--h,55%,20%,0.2) ease:0.3s grid-gap:14px :hover:transform:translateY(-1px)"
+            class="place-content:center cursor:pointer border-radius:6px dispay:grid place-content:center hover:background:hsl(--h,55%,40%) background:hsl(--h,55%,45%) padding:6px|14px color:--white hover:box-shadow:0px|6px|10px|hsla(--h,55%,20%,0.2) transition:all|0.3s|--ease grid-gap:14px hover:transform:translateY(-1px)"
             onclick={() => window.open("https://github.com/ymzuiku/flavorcss")}
           >
             <svg

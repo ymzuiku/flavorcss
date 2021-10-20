@@ -1,4 +1,5 @@
 import "flavorcss";
+import "flavorcss/base.css";
 import "aoife";
 import { App } from "./app";
 import { Route } from "vanilla-route";

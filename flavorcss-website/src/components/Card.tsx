@@ -15,16 +15,16 @@ export function Card({
 }) {
   return (
     <div
-      class={`p:--xl p:--lg gradient:155deg,hsl(${h},50%,50%),hsl(${
+      class={`display:grid padding:--xl background-image:linear-gradient(155deg,hsl(${h},50%,50%),hsl(${
         h + 10
-      },60%,45%) color:--white radius:--lg rows:auto|auto|--bar-height shadow:0px|--lg|--lg|hsla(160,50%,30%,0.15)`}
+      },60%,45%)) color:--white border-radius:--lg grid-template-rows:auto|auto|--bar-height box-shadow:0px|--lg|--lg|hsla(160,50%,30%,0.15)`}
     >
-      <h2 class="fs:--h3 fw:500">{title}</h2>
-      <p class="fs:--h5 fw:300">{info}</p>
+      <h2 class="font-size:--h3 font-weight:500">{title}</h2>
+      <p class="font-size:--h5 font-weight:300">{info}</p>
       <button
-        class={`time:0.2s,--ease bg:hsl(${
+        class={`time:0.2s,--ease background:hsl(${
           h + 10
-        },50%,40%) radius:--md mt:--md :hover:bg:hsl(${h + 10},50%,35%) fw:500`}
+        },50%,40%) border-radius:--md margin-top:--md hover:background:hsl(${h + 10},50%,35%) fw:500`}
         onclick={() => {
           Route.push(url);
         }}

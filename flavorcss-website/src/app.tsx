@@ -26,27 +26,27 @@ const details = [
 
 export function App() {
   return (
-    <div class="max-w:100vw flow:hidden md:max-w:1100px margin:0|auto">
+    <div class="max-width:100vw overflow:hidden md:max-width:1100px margin:0|auto">
       <Header />
       <div
-        class="mt:40px sm:mt:100px p:--lg lg:p:--xl gap:--xxl d:grid pc:center"
+        class="margin-top:40px sm:margin-top:100px padding:--lg lg:padding:--xl grid-gap:--xxl display:grid place-content:center"
       >
         <div class="max-w:900px">
           <h1
-            class="lg:ta:center font:46px lg:font:56px xl:font:60px weight:800 line-height:1"
+            class="lg:text-align:center font-size:46px lg:font-size:56px xl:font-size:60px font-weight:800 line-height:1"
           >
             Don't need to memorize key words'{" "}
             <span class="color:hsl(150,50%,50%)">Runtime</span>{" "}
             atomic class CSS library
           </h1>
           <p
-            class="lg:text-align:center mt:--xl font:--h3 weight:300 color:hsl(--h,20%,40%)"
+            class="lg:text-align:center margin-top:--xl font-size:--h3 font-weight:300 color:hsl(--h,20%,40%)"
           >
             If you like tailwind css, you will fall in love with flavor css.
           </p>
         </div>
         <div
-          class="margin:0|auto rows:1fr|1fr sm:rows:1fr sm:cols:1fr|1fr m:--md mt:40px max-w:800px gap:--lg ps:center"
+          class="margin:0|auto display:grid grid-template-rows:1fr|1fr sm:grid-template-rows:1fr sm:grid-template-columns:1fr|1fr m:--md mt:40px max-w:800px gap:--lg place-content:center"
         >
           <Card
             h={200}
@@ -72,16 +72,16 @@ export function App() {
         </p>
       </div> */
       }
-      <div class="m:100px|20px">
+      <div class="margin:100px|20px">
         <section
-          class="xxl:ta:center:* max-width:1100px margin:0|auto d:grid md:pc:center *:max-w:1000px"
+          class="xxl:text-align:center:* max-width:1100px margin:0|auto display:grid md:place-content:center max-width:1000px"
         >
           <h3 class="color:hsl(220,50%,35%) font-weight:700">FEATURES</h3>
           <h2 class="color:hsl(220,60%,10%) font-size:36px font-weight:800 ">
             Solve the following problems for the current atomic class
           </h2>
           <h4
-            class="color:hsl(200,40%,30%) font:22px weight:300 m:20px|auto"
+            class="color:hsl(200,40%,30%) font-size:22px font-weight:300 margin:20px|auto"
           >
             The scheme of flavourcss avoids the problem of how to determine the
             boundary of the number of atomic classes. Flavourcss compiles atomic
@@ -137,14 +137,14 @@ export function App() {
         </main>
       </div>
       <div class="margin:20px|auto max-width:1000px padding:20px">
-        <h1 class="mt:40px font-size:40px font-weight:800 line-height:1">
+        <h1 class="margin-top:40px font-size:40px font-weight:800 line-height:1">
           Getting started
         </h1>
         <p class="md-info">
           Flavor don't neet hundreds and thousands of css class list, replace by
           a grammatical rule.
         </p>
-        <h1 class="mt:20px font-size:30px font-weight:800 line-height:1">
+        <h1 class="margin-top:20px font-size:30px font-weight:800 line-height:1">
           Case 1:
         </h1>
         <p class="md-info">Use unpkg modules:</p>

@@ -1,5 +1,3 @@
-import { addStyle } from "./addStyle";
-import { modernNormalize } from "./modernNormalize";
 import { parseClass } from "./parser";
 
 const _observer = () => {
@@ -45,7 +43,6 @@ const _observer = () => {
 
 export function obserer() {
   if (typeof window !== "undefined") {
-    addStyle(modernNormalize);
     window.addEventListener("load", () => {
       document.querySelectorAll("[class]").forEach((e) =>
         parseClass(e.className)
