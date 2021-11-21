@@ -37,3 +37,12 @@ Or use npm:
 ```js
 import "flavorcss-base";
 ```
+
+
+## Flavorcss-website
+
+Need use pnpm link
+
+```
+pnpm link ../
+```
