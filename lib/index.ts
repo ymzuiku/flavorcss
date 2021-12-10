@@ -1,8 +1,7 @@
 import { obserer } from "./observer";
-import { addStyle } from "./addStyle";
-import { modernNormalize } from "./modernNormalize";
+import { parseClass } from "./parseClass";
 
-if (typeof window !== "undefined") {
-  addStyle(modernNormalize);
-  obserer();
-}
+// eslint-disable-next-line
+(window as any).flavorcss = obserer;
+
+export { obserer, parseClass };

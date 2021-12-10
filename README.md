@@ -9,7 +9,11 @@ Runtime Build Atomic Class
 Use unpkg:
 
 ```html
+
 <script type="module" src="https://unpkg.com/flavorcss@0.6.11/es/index.js"></script>
+<script>
+    window.flavorcss()
+</script>
 ```
 
 Use npm:
@@ -20,29 +24,18 @@ npm i flavorcss
 
 Import in your project
 
-```js
-import "flavorcss";
-```
-
-## Use Base Css
-
-We design base reboot css and base flavorcss group, you can add:
-
-```html
-<script type="module" src="https://unpkg.com/flavorcss-base@0.6.9/es/base.js"></script>
-```
-
-Or use npm:
+Auto observer html change:
 
 ```js
-import "flavorcss-base";
+import {obserer} from "./observer";
+
+obserer()
 ```
 
+Or manual use className
 
-## Flavorcss-website
+```js
+import {parseClass} from "./observer";
 
-Need use pnpm link
-
-```
-pnpm link ../
+parseClass()
 ```
