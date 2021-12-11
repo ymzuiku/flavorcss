@@ -1,25 +1,25 @@
 {
   "name": "flavorcss",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "full build css",
   "keywords": [
     "ui",
     "css",
     "atmoic css"
   ],
-  "main": "esm/index.js",
-  "module": "es/index.js",
+  "main": "esm/esm.js",
+  "module": "esm/esm.js",
   "types": "lib/index.ts",
   "exports": {
-    "import": "./esm/index.js",
-    "require": "./cjs/index.js"
+    "import": "./esm/esm.js",
+    "require": "./cjs/cjs.js"
   },
   "license": "MIT",
   "private": false,
   "scripts": {
     "test": "jest --watch",
-    "build:esm": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=esm --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag --splitting --minify",
-    "build:cjs": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=cjs --bundle --format=cjs --jsx-factory=aoife --jsx-fragment=aoife.Frag --minify",
+    "build:esm": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/esm.ts --outdir=esm --bundle --format=esm --jsx-factory=aoife --jsx-fragment=aoife.Frag --splitting --minify",
+    "build:cjs": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/cjs.ts --outdir=cjs --bundle --format=cjs --jsx-factory=aoife --jsx-fragment=aoife.Frag --minify",
     "build": "npm run build:esm && npm run build:cjs"
   },
   "devDependencies": {
