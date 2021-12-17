@@ -1,13 +1,13 @@
 {
   "name": "flavorcss",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "full build css",
   "keywords": [
     "ui",
     "css",
     "atmoic css"
   ],
-  "main": "esm/esm.js",
+  "main": "cjs/cjs.js",
   "module": "esm/esm.js",
   "types": "lib/index.ts",
   "exports": {
