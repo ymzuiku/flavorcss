@@ -3,9 +3,9 @@ import { addStyle } from "./addStyle";
 import { atomCache, classCache } from "./caches";
 import { parser } from "./parser";
 
-export function parseClass(name: string) {
+export function flavor(name: string): string {
   if (classCache[name]) {
-    return;
+    return name;
   }
   classCache[name] = true;
 
@@ -24,4 +24,6 @@ export function parseClass(name: string) {
       addStyle(cssText);
     }
   });
+
+  return name;
 }

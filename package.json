@@ -1,6 +1,6 @@
 {
   "name": "flavorcss",
-  "version": "0.8.3",
+  "version": "0.8.7",
   "description": "full build css",
   "keywords": [
     "ui",
@@ -9,7 +9,7 @@
   ],
   "main": "cjs/cjs.js",
   "module": "esm/esm.js",
-  "types": "lib/index.ts",
+  "types": "lib/esm.ts",
   "exports": {
     "import": "./esm/esm.js",
     "require": "./cjs/cjs.js"

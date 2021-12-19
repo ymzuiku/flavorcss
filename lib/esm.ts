@@ -1,4 +1,4 @@
-import { obserer } from "./observer";
-import { parseClass } from "./parseClass";
+import { flavorObserver } from "./observer";
+import { flavor } from "./parseClass";
 
-export { obserer, parseClass };
+export { flavorObserver, flavor };

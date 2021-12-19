@@ -4,15 +4,15 @@ Runtime Build Atomic Class
 
 ## Document: [https://flavor.writeflowy.com](https://flavor.writeflowy.com)
 
-## Install
+## Use Auto observer
 
-Use unpkg:
+Auto observer use in MutationObserver.
 
 ```html
 
 <script type="module" src="https://unpkg.com/flavorcss@0.6.11/es/index.js"></script>
 <script>
-    window.flavorcss()
+    window.flavorObserver()
 </script>
 ```
 
@@ -27,15 +27,18 @@ Import in your project
 Auto observer html change:
 
 ```js
-import {obserer} from "./observer";
+import {flavorObserver} from "flavorcss";
 
-obserer()
+flavorObserver()
 ```
 
-Or manual use className
+## 
+If you not use MutationObserver, you can manual use className:
 
 ```js
-import {parseClass} from "./observer";
+import {flavor} from "flavorcss";
 
-parseClass()
+function App(){
+    return <div className={flavor("background:#f00")}></div>
+}
 ```

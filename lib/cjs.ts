@@ -1,10 +1,10 @@
-import { obserer } from "./observer";
-import { parseClass } from "./parseClass";
+import { flavorObserver } from "./observer";
+import { flavor } from "./parseClass";
 
 // eslint-disable-next-line
-(window as any).flavorcss = obserer;
-(window as any).flavorParse = parseClass;
+(window as any).flavorObserver = flavorObserver;
+(window as any).flavor = flavor;
 module.exports = {
-  obserer,
-  parseClass,
+  flavorObserver,
+  flavor,
 };
