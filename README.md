@@ -32,7 +32,8 @@ import {flavorObserver} from "flavorcss";
 flavorObserver()
 ```
 
-## 
+## Use className
+
 If you not use MutationObserver, you can manual use className:
 
 ```js
