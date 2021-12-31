@@ -1,5 +1,4 @@
 import { addStyle } from "./addStyle";
-
 import { atomCache, classCache } from "./caches";
 import { parser } from "./parser";
 
@@ -26,4 +25,8 @@ export function flavor(name: string): string {
   });
 
   return name;
+}
+
+if (typeof window !== "undefined") {
+  flavor("flex-direction:column flex-direction:row flex-direction:column-reverse flex-direction:row-reverse");
 }
