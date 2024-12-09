@@ -10,6 +10,6 @@
     "vanilla-route": "^1.0.3"
   },
   "devDependencies": {
-    "vite": "^2.1.5"
+    "vite": "^2.9.13"
   }
 }
